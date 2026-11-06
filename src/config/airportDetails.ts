@@ -6,6 +6,9 @@ import heathrowTo from "../../public/brand/heathrow-journey-to.png";
 import londonCityArrival from "../../public/brand/london-city-arrival.png";
 import londonCityFrom from "../../public/brand/london-city-journey-from.png";
 import londonCityTo from "../../public/brand/london-city-journey-to.png";
+import southendArrival from "../../public/brand/southend-arrival.png";
+import southendFrom from "../../public/brand/southend-journey-from.png";
+import southendTo from "../../public/brand/southend-journey-to.png";
 import stanstedArrival from "../../public/brand/stansted-arrival.png";
 import stanstedFrom from "../../public/brand/stansted-journey-from.png";
 import stanstedTo from "../../public/brand/stansted-journey-to.png";
@@ -365,5 +368,12 @@ export const airportDetails: Record<string, AirportDetail> = {
     "Pre-booked minicabs collect from the pick-up area in London City’s Short Stay car park. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Based on londoncityairport.com, November 2026.",
     "London City charges for its drop-off zone.",
+  ),
+  southend: oneTerminal(
+    "Southend",
+    { to: southendTo, from: southendFrom, arrival: southendArrival },
+    "Southend’s pickups use its Express Pick-up and Drop-off area or the Superior car park. Your booking confirmation will say where to meet.",
+    "Your booking confirmation is always your final instruction. Last checked on southendairport.com on 6 November 2026.",
+    "Southend charges for its Express Pick-up and Drop-off area and Superior car park.",
   ),
 };
