@@ -7,10 +7,16 @@ import { container, eyebrow, h2, section } from "./ui";
 
 type Guide = NonNullable<AirportDetail["guide"]>;
 
-function GuidePanel({ item }: { item: Guide["items"][number] }) {
+type Item = Guide["items"][number];
+
+// Heathrow's terminals are numbered; Gatwick's are named.
+const itemId = ({ number, label }: Item) => (number ?? label ?? "").toLowerCase();
+const itemName = ({ number, label }: Item) => (number ? `Terminal ${number}` : `${label} Terminal`);
+
+function GuidePanel({ item }: { item: Item }) {
   return (
     <>
-      <h3 className={`${eyebrow} text-primary`}>TERMINAL {item.number}</h3>
+      <h3 className={`${eyebrow} text-primary`}>{itemName(item).toUpperCase()}</h3>
       <p className="mt-5 text-[1.0625rem] text-background">Head for</p>
       <p className="mt-1 font-display text-[clamp(1.5rem,2.6vw,2.25rem)] font-semibold leading-tight text-background">
         {item.headFor}
@@ -49,36 +55,38 @@ export function AirportGuide({ guide }: { guide: Guide }) {
 
         {/* Green panel, so the focus ring switches to gold. */}
         <div className="mt-8 rounded-control bg-foreground p-5 [--color-ring:var(--color-primary)] sm:p-8 lg:grid lg:grid-cols-[auto_1fr] lg:gap-12 lg:p-10">
-          <div role="tablist" aria-label="Choose your terminal" onKeyDown={onKeyDown} className="grid grid-cols-4 gap-2 lg:w-24 lg:grid-cols-1">
-            {items.map(({ number }, i) => (
+          <div role="tablist" aria-label="Choose your terminal" onKeyDown={onKeyDown} className={`grid gap-2 lg:w-24 lg:grid-cols-1 lg:self-center ${items.length === 2 ? "grid-cols-2" : "grid-cols-4"}`}>
+            {items.map((item, i) => (
               <button
-                key={number}
+                key={itemId(item)}
                 ref={(el) => {
                   tabs.current[i] = el;
                 }}
                 type="button"
                 role="tab"
-                id={`terminal-tab-${number}`}
-                aria-label={`Terminal ${number}`}
+                id={`terminal-tab-${itemId(item)}`}
+                aria-label={itemName(item)}
                 aria-selected={active === i}
-                aria-controls={`terminal-panel-${number}`}
+                aria-controls={`terminal-panel-${itemId(item)}`}
                 tabIndex={active === i ? 0 : -1}
                 onClick={() => setActive(i)}
-                className={`flex min-h-16 items-center justify-center rounded-control border border-primary font-display text-[2rem] font-semibold transition-colors ${
+                className={`flex min-h-16 items-center justify-center rounded-control border border-primary font-display font-semibold transition-colors ${
+                  item.number ? "text-[2rem]" : "text-[1.25rem]"
+                } ${
                   active === i ? "bg-primary text-primary-foreground" : "text-primary hover:bg-primary/15"
                 }`}
               >
-                {number}
+                {item.number ?? item.label}
               </button>
             ))}
           </div>
 
           {items.map((item, i) => (
             <div
-              key={item.number}
+              key={itemId(item)}
               role="tabpanel"
-              id={`terminal-panel-${item.number}`}
-              aria-labelledby={`terminal-tab-${item.number}`}
+              id={`terminal-panel-${itemId(item)}`}
+              aria-labelledby={`terminal-tab-${itemId(item)}`}
               tabIndex={0}
               hidden={active !== i}
               className="mt-6 text-background lg:mt-0 lg:self-center"

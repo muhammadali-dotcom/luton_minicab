@@ -1,4 +1,6 @@
 import type { StaticImageData } from "next/image";
+import gatwickFrom from "../../public/brand/gatwick-journey-from.png";
+import gatwickTo from "../../public/brand/gatwick-journey-to.png";
 import heathrowFrom from "../../public/brand/heathrow-journey-from.png";
 import heathrowTo from "../../public/brand/heathrow-journey-to.png";
 import lutonArrival from "../../public/brand/luton-arrival.png";
@@ -28,7 +30,7 @@ export type AirportDetail = {
     note: string;
     calloutTitle: string;
     calloutText: string;
-    items: { number: string; headFor: string; goodToKnow: string }[];
+    items: { number?: string; label?: string; headFor: string; goodToKnow: string }[];
   };
   // Extra arrivals help inside the meeting section, for airports without a board.
   arrival?: {
@@ -197,6 +199,83 @@ export const airportDetails: Record<string, AirportDetail> = {
       flightDelay,
       driverWait,
       { q: "Do I pay the Heathrow drop-off charge?", a: "Yes. It’s added to your quote, so you’ll see the full cost before you book." },
+      childSeat,
+    ],
+  },
+  gatwick: {
+    heroHeading: "Gatwick, door to door.",
+    journeys: {
+      eyebrow: "GATWICK AIRPORT JOURNEYS",
+      subline: "A simple journey, whichever way you’re going.",
+      items: [
+        {
+          image: gatwickTo,
+          alt: "Illustration: a car on a road leading from a house to Gatwick Airport.",
+          start: "YOUR DOOR",
+          end: "GATWICK AIRPORT",
+          title: "To Gatwick Airport",
+          text: "North or South Terminal? Tell us which when you book. We’ll collect you from your chosen address and take you to the airport.",
+        },
+        {
+          image: gatwickFrom,
+          alt: "Illustration: a car on a road leading from Gatwick Airport to a house.",
+          start: "GATWICK AIRPORT",
+          end: "YOUR NEXT STOP",
+          title: "From Gatwick Airport",
+          text: "Share your flight and terminal when booking. We’ll arrange your pickup and take you to your next stop.",
+        },
+      ],
+    },
+    meetDriver: {
+      heading: "Landed at Gatwick? Here’s what happens next.",
+      subline: "Three simple steps from arrivals to your next stop.",
+      steps: [
+        collectBags,
+        {
+          title: "Check your meeting point",
+          text: "Check whether you’ve landed at North or South Terminal, then follow the meeting instructions for your booking.",
+        },
+        { title: "Meet your driver", text: "Head to the agreed meeting point for your terminal." },
+      ],
+    },
+    // Recheck regularly and update the date in `note`. Gatwick names no public meeting
+    // point, and whether drivers use these bays is for the owner to confirm.
+    guide: {
+      eyebrow: "NORTH OR SOUTH",
+      heading: "Which terminal are you landing at?",
+      subline: "Pick yours, and we’ll show you where to head.",
+      note: "Your booking confirmation is always your final instruction. Last checked on gatwickairport.com on 6 November 2026.",
+      calloutTitle,
+      calloutText,
+      items: [
+        {
+          label: "North",
+          headFor: "The meeting point in your booking confirmation.",
+          goodToKnow:
+            "Gatwick’s pickups use its Short Stay car parks. At North Terminal, the express pick-up bays are on Level 4 of Car Park 6.",
+        },
+        {
+          label: "South",
+          headFor: "The meeting point in your booking confirmation.",
+          goodToKnow:
+            "Gatwick’s pickups use its Short Stay car parks. At South Terminal, the express pick-up bays are on the ground floor of Car Park 3.",
+        },
+      ],
+    },
+    faqs: [
+      { q: "Which terminals do you cover?", a: "Both: North Terminal and South Terminal, whether you’re flying out or landing." },
+      {
+        q: "Do I need to tell you my terminal?",
+        a: "Yes. Share your terminal and flight details when you book, so we can arrange your pickup.",
+      },
+      { q: "What if my airline changes terminal?", a: "Tell us as soon as you know, and we’ll update your booking." },
+      meetDriver,
+      flightDelay,
+      { q: "How long will my driver wait?", a: "Please ask when you book, and we’ll confirm what applies to your journey." },
+      {
+        q: "Are there airport charges?",
+        a: "Gatwick charges for its drop-off zones and pick-up car parks. Ask when you book, and we’ll confirm what’s in your quote.",
+      },
       childSeat,
     ],
   },
