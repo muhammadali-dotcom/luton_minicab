@@ -3,6 +3,9 @@ import gatwickFrom from "../../public/brand/gatwick-journey-from.png";
 import gatwickTo from "../../public/brand/gatwick-journey-to.png";
 import heathrowFrom from "../../public/brand/heathrow-journey-from.png";
 import heathrowTo from "../../public/brand/heathrow-journey-to.png";
+import londonCityArrival from "../../public/brand/london-city-arrival.png";
+import londonCityFrom from "../../public/brand/london-city-journey-from.png";
+import londonCityTo from "../../public/brand/london-city-journey-to.png";
 import stanstedArrival from "../../public/brand/stansted-arrival.png";
 import stanstedFrom from "../../public/brand/stansted-journey-from.png";
 import stanstedTo from "../../public/brand/stansted-journey-to.png";
@@ -355,5 +358,12 @@ export const airportDetails: Record<string, AirportDetail> = {
     "Stansted’s pick-up areas are outside Departures, with Short Stay car parks nearby. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Last checked on stanstedairport.com on 6 November 2026.",
     "Stansted charges for its Express Set Down area and Short Stay car parks.",
+  ),
+  "london-city": oneTerminal(
+    "London City",
+    { to: londonCityTo, from: londonCityFrom, arrival: londonCityArrival },
+    "Pre-booked minicabs collect from the pick-up area in London City’s Short Stay car park. Your booking confirmation will say where to meet.",
+    "Your booking confirmation is always your final instruction. Based on londoncityairport.com, November 2026.",
+    "London City charges for its drop-off zone.",
   ),
 };
