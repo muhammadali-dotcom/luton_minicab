@@ -139,9 +139,9 @@ function oneTerminal(
   };
 }
 
-// Airports on the full layout, keyed by slug; the others use the shared wording in
-// AirportPage. Only state what the owner has confirmed for that airport: the
-// 15 free minutes is confirmed for Luton and Heathrow only.
+// One entry for each airport in `airports`, keyed by slug. Only state what the owner
+// has confirmed for that airport: the 15 free minutes is confirmed for Luton and
+// Heathrow only.
 export const airportDetails: Record<string, AirportDetail> = {
   luton: {
     journeys: {
