@@ -1,4 +1,10 @@
 import type { StaticImageData } from "next/image";
+import gatwickCard from "../../public/brand/airport-gatwick-card.png";
+import heathrowCard from "../../public/brand/airport-heathrow-card.png";
+import londonCityCard from "../../public/brand/airport-london-city-card.png";
+import lutonCard from "../../public/brand/airport-luton-card.png";
+import southendCard from "../../public/brand/airport-southend-card.png";
+import stanstedCard from "../../public/brand/airport-stansted-card.png";
 import gatwickFrom from "../../public/brand/gatwick-journey-from.png";
 import gatwickTo from "../../public/brand/gatwick-journey-to.png";
 import heathrowFrom from "../../public/brand/heathrow-journey-from.png";
@@ -27,7 +33,8 @@ type Journey = {
 
 export type AirportDetail = {
   hero: { heading: string; text: string };
-  // Practical line for this airport's card on /airports.
+  // Photo and practical line for this airport's card on /airports.
+  cardImage: StaticImageData;
   cardText: string;
   journeys: { eyebrow: string; subline: string; items: Journey[] };
   // Three steps, in the order of the icons in AirportMeetDriver.
@@ -82,6 +89,7 @@ const collectBags = { title: "Collect your bags", text: "Go through passport con
 function oneTerminal(
   name: string,
   hero: AirportDetail["hero"],
+  cardImage: StaticImageData,
   images: { to: StaticImageData; from: StaticImageData; arrival: StaticImageData },
   goodToKnow: string,
   note: string,
@@ -90,6 +98,7 @@ function oneTerminal(
   const upper = `${name.toUpperCase()} AIRPORT`;
   return {
     hero,
+    cardImage,
     cardText: `Pickup guidance and transfers to and from ${name}.`,
     journeys: {
       eyebrow: `${upper} JOURNEYS`,
@@ -152,6 +161,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Your local ride to Luton Airport.",
       text: "Sit back and relax. We’ll take care of the road.",
     },
+    cardImage: lutonCard,
     cardText: "Pickup guidance and transfers to and from your local airport.",
     journeys: {
       eyebrow: "LUTON AIRPORT JOURNEYS",
@@ -206,6 +216,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Landing at Heathrow? We’ll take you home.",
       text: "After a long flight, all you need to do is sit back.",
     },
+    cardImage: heathrowCard,
     cardText: "Pickup guidance and transfers to and from Terminals 2, 3, 4 and 5.",
     journeys: {
       eyebrow: "HEATHROW AIRPORT JOURNEYS",
@@ -296,6 +307,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Back at Gatwick? Let’s get you home.",
       text: "You’ve done the flying. We’ll do the driving.",
     },
+    cardImage: gatwickCard,
     cardText: "Pickup guidance and transfers to and from North and South Terminals.",
     journeys: {
       eyebrow: "GATWICK AIRPORT JOURNEYS",
@@ -378,6 +390,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Your holiday starts at your front door.",
       text: "We’ll drive you to Stansted, so you can start relaxing early.",
     },
+    stanstedCard,
     { to: stanstedTo, from: stanstedFrom, arrival: stanstedArrival },
     "Stansted’s pick-up areas are outside Departures, with Short Stay car parks nearby. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Last checked on stanstedairport.com on 6 November 2026.",
@@ -386,6 +399,7 @@ export const airportDetails: Record<string, AirportDetail> = {
   "london-city": oneTerminal(
     "London City",
     { heading: "Quick flight. Easy ride.", text: "To or from London City Airport, we’ll keep it simple." },
+    londonCityCard,
     { to: londonCityTo, from: londonCityFrom, arrival: londonCityArrival },
     "Pre-booked minicabs collect from the pick-up area in London City’s Short Stay car park. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Based on londoncityairport.com, November 2026.",
@@ -394,6 +408,7 @@ export const airportDetails: Record<string, AirportDetail> = {
   southend: oneTerminal(
     "Southend",
     { heading: "Small airport. Simple ride.", text: "A calm journey to or from Southend Airport." },
+    southendCard,
     { to: southendTo, from: southendFrom, arrival: southendArrival },
     "Southend’s pickups use its Express Pick-up and Drop-off area or the Superior car park. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Last checked on southendairport.com on 6 November 2026.",

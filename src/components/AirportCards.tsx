@@ -3,10 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { airportDetails } from "@/config/airportDetails";
 import { airports } from "@/config/site";
-import { heroPhotos } from "./AirportPage";
 import { container, h2, section } from "./ui";
 
-// Photos come from each airport's page; the lines are practical `cardText`.
+// Each card has its own terminal photo and a practical line, from `airportDetails`.
 export function AirportCards() {
   return (
     <section aria-labelledby="main-airports-heading" className={`band-alt border-t border-border ${section}`}>
@@ -23,8 +22,8 @@ export function AirportCards() {
               >
                 <span className="relative block aspect-video">
                   <Image
-                    src={heroPhotos[slug].image}
-                    alt={heroPhotos[slug].alt}
+                    src={airportDetails[slug].cardImage}
+                    alt="The front entrance of an airport terminal."
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover"
