@@ -27,7 +27,7 @@ const photoFade = "from-background/98 via-background/95 via-52% to-transparent t
 const terminalAlt = "View from the back seat of a car, looking out at a glass airport terminal.";
 
 // Every airport in `airports` needs a photo here and an entry in `airportDetails`.
-const heroPhotos: Record<string, HeroPhoto> = {
+export const heroPhotos: Record<string, HeroPhoto> = {
   luton: { image: lutonTerminalHero, alt: "A dark saloon parked outside an airport terminal.", photoRight: true },
   heathrow: { image: heathrowHero, alt: terminalAlt, fade: photoFade },
   gatwick: { image: gatwickHero, alt: terminalAlt, fade: photoFade },
