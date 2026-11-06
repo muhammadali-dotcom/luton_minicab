@@ -133,7 +133,7 @@ Every page uses **`PageHero`** (`src/components/PageHero.tsx`) and the class con
 - **Ending:** every page ends with the green booking banner, then the footer (both in the layout).
 
 ## 4d. Type scale (reduced November 2026)
-The whole site runs at a **14px root** (`html { font-size: 87.5% }` in `globals.css`), so every rem-based size below renders 12.5% smaller than its nominal value.
+The whole site runs at a **14px root** (`html { font-size: 87.5% }` in `globals.css`), so every rem-based size below renders 12.5% smaller than its nominal value. On mouse and trackpad devices from 1024px up, `body { zoom: 0.8 }` then scales everything to 80%, so body text renders at about 12px and eyebrow labels at about 10px. Phones and touch tablets stay at full size.
 | Element | Size |
 |---|---|
 | Hero h1 | `clamp(2rem,3.4vw,3rem)` |

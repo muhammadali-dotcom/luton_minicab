@@ -31,7 +31,7 @@ const defaultPhoto: HeroPhoto = {
 };
 
 // Covers the text column, then clears before the terminal signs (the earliest starts at about 66%).
-const photoFade = "from-background/96 via-background/93 via-52% to-transparent to-66%";
+const photoFade = "from-background/98 via-background/95 via-52% to-transparent to-66%";
 const terminalAlt = "View from the back seat of a car, looking out at a glass airport terminal.";
 
 // Airports with their own hero photo; any other airport uses the default.

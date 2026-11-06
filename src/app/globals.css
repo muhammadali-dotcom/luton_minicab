@@ -70,6 +70,14 @@ body {
   color: var(--color-foreground);
 }
 
+/* Site-wide scale on desktop and laptop: the one place to change the size. Mouse and
+   trackpad only, so phones and tablets stay easy to read and tap. */
+@media (min-width: 1024px) and (pointer: fine) {
+  body {
+    zoom: 0.8;
+  }
+}
+
 /* Deeper-cream band for alternating sections. It also redefines the
    background token, so illustration fills inside the band match it. */
 .band-alt {
