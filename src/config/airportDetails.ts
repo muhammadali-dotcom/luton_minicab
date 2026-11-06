@@ -3,6 +3,9 @@ import gatwickFrom from "../../public/brand/gatwick-journey-from.png";
 import gatwickTo from "../../public/brand/gatwick-journey-to.png";
 import heathrowFrom from "../../public/brand/heathrow-journey-from.png";
 import heathrowTo from "../../public/brand/heathrow-journey-to.png";
+import stanstedArrival from "../../public/brand/stansted-arrival.png";
+import stanstedFrom from "../../public/brand/stansted-journey-from.png";
+import stanstedTo from "../../public/brand/stansted-journey-to.png";
 import lutonArrival from "../../public/brand/luton-arrival.png";
 import lutonFrom from "../../public/brand/luton-journey-from.png";
 import lutonTo from "../../public/brand/luton-journey-to.png";
@@ -36,6 +39,9 @@ export type AirportDetail = {
   arrival?: {
     calloutTitle: string;
     calloutText: string;
+    // The airport's own pickup rule, with where and when it was checked.
+    goodToKnow?: string;
+    note?: string;
     image: StaticImageData;
     alt: string;
   };
@@ -62,6 +68,70 @@ const driverWait = {
 const calloutTitle = "Before you head outside";
 const calloutText = "Keep your booking details handy and check any messages about your pickup.";
 const collectBags = { title: "Collect your bags", text: "Go through passport control and collect your luggage." };
+
+// One-terminal airports share the Luton layout. Check `goodToKnow` on the airport's
+// own site, and keep waiting and charges wording general until the owner confirms it.
+function oneTerminal(
+  name: string,
+  images: { to: StaticImageData; from: StaticImageData; arrival: StaticImageData },
+  goodToKnow: string,
+  note: string,
+  charges: string,
+): AirportDetail {
+  const upper = `${name.toUpperCase()} AIRPORT`;
+  return {
+    heroHeading: `${name}, door to door.`,
+    journeys: {
+      eyebrow: `${upper} JOURNEYS`,
+      subline: "A simple journey, whichever way you’re going.",
+      items: [
+        {
+          image: images.to,
+          alt: `Illustration: a car on a road leading from a house to ${name} Airport.`,
+          start: "YOUR DOOR",
+          end: upper,
+          title: `To ${name} Airport`,
+          text: "We’ll collect you from your chosen address and take you to the airport.",
+        },
+        {
+          image: images.from,
+          alt: `Illustration: a car on a road leading from ${name} Airport to a house.`,
+          start: upper,
+          end: "YOUR NEXT STOP",
+          title: `From ${name} Airport`,
+          text: "Share your flight details when booking. We’ll arrange your pickup and take you to your next stop.",
+        },
+      ],
+    },
+    meetDriver: {
+      heading: `Landed at ${name}? Here’s what happens next.`,
+      subline: "Three simple steps from arrivals to your next stop.",
+      steps: [
+        collectBags,
+        {
+          title: "Check your meeting point",
+          text: "Follow the pickup instructions in your booking confirmation. Your meeting point may depend on the service you have booked.",
+        },
+        { title: "Meet your driver", text: "Head to the agreed meeting point for your journey." },
+      ],
+    },
+    arrival: {
+      calloutTitle,
+      calloutText,
+      goodToKnow,
+      note,
+      image: images.arrival,
+      alt: `Illustration: a car waiting outside ${name} Airport, with a map pin marking the meeting point.`,
+    },
+    faqs: [
+      meetDriver,
+      flightDelay,
+      { q: "How long will my driver wait?", a: "Please ask when you book, and we’ll confirm what applies to your journey." },
+      { q: "Are there airport charges?", a: `${charges} Ask when you book, and we’ll confirm what’s in your quote.` },
+      childSeat,
+    ],
+  };
+}
 
 // Airports on the full layout, keyed by slug; the others use the shared wording in
 // AirportPage. Only state what the owner has confirmed for that airport: the
@@ -279,4 +349,11 @@ export const airportDetails: Record<string, AirportDetail> = {
       childSeat,
     ],
   },
+  stansted: oneTerminal(
+    "Stansted",
+    { to: stanstedTo, from: stanstedFrom, arrival: stanstedArrival },
+    "Stansted’s pick-up areas are outside Departures, with Short Stay car parks nearby. Your booking confirmation will say where to meet.",
+    "Your booking confirmation is always your final instruction. Last checked on stanstedairport.com on 6 November 2026.",
+    "Stansted charges for its Express Set Down area and Short Stay car parks.",
+  ),
 };

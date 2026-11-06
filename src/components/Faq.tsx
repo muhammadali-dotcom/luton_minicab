@@ -34,15 +34,17 @@ const homepageFaqs = [
 type Props = {
   // Questions to show; the homepage six by default.
   items?: { q: string; a: string }[];
+  // Deeper-cream background, for pages where the section above is plain cream.
+  band?: boolean;
   // Extra content below the FAQ, inside the same section.
   children?: ReactNode;
 };
 
 const contactClass = "inline-flex min-h-[44px] items-center underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2";
 
-export function Faq({ items = homepageFaqs, children }: Props) {
+export function Faq({ items = homepageFaqs, band = false, children }: Props) {
   return (
-    <section id="faqs" aria-labelledby="faq-heading" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
+    <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="max-w-4xl">
           <p className="text-sm font-semibold tracking-[0.2em] text-accent">FAQS</p>

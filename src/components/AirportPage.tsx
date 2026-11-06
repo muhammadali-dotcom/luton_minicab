@@ -206,7 +206,7 @@ export function AirportPage({ airport }: { airport: Airport }) {
       {detail?.localAreas && <AirportLocalAreas />}
 
       {detail ? (
-        <Faq items={detail.faqs}>
+        <Faq items={detail.faqs} band={!!arrival && !detail.localAreas}>
           {otherAirportsNav}
         </Faq>
       ) : (
