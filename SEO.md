@@ -22,7 +22,7 @@ Titles are around 60 characters or fewer, and descriptions 155 or fewer. Titles 
 | Contact `/contact` | Contact Luton Minicab | Contact Us | Book online, call or message us on WhatsApp, day or night. |
 | Airports `/airports` | Airport taxi Luton / airport transfers | Airport Transfers | Transfers to and from all UK airports, with flight tracking and meet and greet. (live, indexable) |
 | `/airports/[slug]` (9 short pages) | None yet | [Airport] Airport Transfers | `noindex` until each has real details. No flight claims |
-| `/airports/[slug]` (6) | "[Airport] taxi", "taxi to [Airport] from Luton" | [Airport] Airport Transfers | "Taxis to and from [Airport] Airport with flight tracking, meet and greet and fixed fares. Book online or call, day or night." (live, indexable). All six have their own arrivals details, and Luton links its local area pages; add airport-specific detail to the others over time |
+| `/airports/[slug]` (6) | "[Airport] taxi", "taxi to [Airport] from Luton" | [Airport] Airport Transfers | "Taxis to and from [Airport] Airport with flight tracking, meet and greet and fixed fares. Book online or call, day or night." (live, indexable). All six have their own arrivals details and airport facts, and Luton links its local area pages; add airport-specific detail to the others over time |
 | `/services/[slug]` (5) | e.g. "school run taxi Luton", "station taxi Luton" | Service name | One per service, from the content brief |
 
 The holding pages are currently `noindex`. **Remove `noindex` from each page once its real content is approved.**

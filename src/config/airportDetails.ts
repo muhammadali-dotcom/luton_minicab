@@ -50,13 +50,13 @@ export type AirportDetail = {
     calloutText: string;
     items: { number?: string; label?: string; headFor: string; goodToKnow: string }[];
   };
+  // Three short facts from the airport's own site, with where and when they were checked.
+  facts: string[];
+  factsNote: string;
   // Extra arrivals help inside the meeting section, for airports without a board.
   arrival?: {
     calloutTitle: string;
     calloutText: string;
-    // The airport's own pickup rule, with where and when it was checked.
-    goodToKnow?: string;
-    note?: string;
     image: StaticImageData;
     alt: string;
   };
@@ -70,7 +70,7 @@ const flightDelay = {
 };
 const meetDriver = {
   q: "Where do I meet my driver?",
-  a: "Meet your driver at the point agreed for your booking, or where your driver tells you. We’ll share your driver’s details before you travel.",
+  a: "Inside arrivals with a name board, or at the pickup point agreed for your booking. Your booking confirmation will tell you which.",
 };
 const childSeat = {
   q: "Can I ask for a child seat?",
@@ -92,8 +92,8 @@ function oneTerminal(
   cardImage: StaticImageData,
   cardText: string,
   images: { to: StaticImageData; from: StaticImageData; arrival: StaticImageData },
-  goodToKnow: string,
-  note: string,
+  facts: string[],
+  factsNote: string,
   charges: string,
 ): AirportDetail {
   const upper = `${name.toUpperCase()} AIRPORT`;
@@ -101,6 +101,8 @@ function oneTerminal(
     hero,
     cardImage,
     cardText,
+    facts,
+    factsNote,
     journeys: {
       eyebrow: `${upper} JOURNEYS`,
       subline: "A simple journey, whichever way you’re going.",
@@ -138,15 +140,13 @@ function oneTerminal(
     arrival: {
       calloutTitle,
       calloutText,
-      goodToKnow,
-      note,
       image: images.arrival,
       alt: `Illustration: a car waiting outside ${name} Airport, with a map pin marking the meeting point.`,
     },
     faqs: [
       meetDriver,
       flightDelay,
-      { q: "How long will my driver wait?", a: "Please ask when you book, and we’ll confirm what applies to your journey." },
+      driverWait,
       { q: "Are there airport charges?", a: `${charges} Ask when you book, and we’ll confirm what’s in your quote.` },
       childSeat,
     ],
@@ -154,8 +154,8 @@ function oneTerminal(
 }
 
 // One entry for each airport in `airports`, keyed by slug. Only state what the owner
-// has confirmed for that airport: the 15 free minutes is confirmed for Luton and
-// Heathrow only.
+// has confirmed for that airport. The 15 free minutes and meeting wording are confirmed
+// for all six; airport charges vary, so don't state them without asking.
 export const airportDetails: Record<string, AirportDetail> = {
   luton: {
     hero: {
@@ -163,6 +163,12 @@ export const airportDetails: Record<string, AirportDetail> = {
       text: "Sit back and relax. We’ll take care of the road.",
     },
     cardImage: lutonCard,
+    facts: [
+      "The airport’s guidance sends pre-booked passengers to the Pick Up Zone or an agreed meeting area.",
+      "The Pick Up Zone is about a 5-minute walk from the terminal entrance, through a tunnel under the road.",
+      "Time in the Pick Up Zone is limited, so keep your phone switched on when you land.",
+    ],
+    factsNote: "Your booking confirmation is always your final instruction. Checked on london-luton.co.uk on 6 November 2026.",
     cardText: "Pickup guidance and transfers to and from your local airport.",
     journeys: {
       eyebrow: "LUTON AIRPORT JOURNEYS",
@@ -218,6 +224,12 @@ export const airportDetails: Record<string, AirportDetail> = {
       text: "After a long flight, all you need to do is sit back.",
     },
     cardImage: heathrowCard,
+    facts: [
+      "Heathrow has four passenger terminals: 2, 3, 4 and 5.",
+      "Cars can’t collect passengers on the terminal forecourts, so pickups happen away from the kerb.",
+      "At Terminals 2, 3 and 5, Terminal Parking is about a 2-minute walk from the terminal doors.",
+    ],
+    factsNote: "Your booking confirmation is always your final instruction. Checked on heathrow.com on 6 November 2026.",
     cardText: "Pickup guidance and transfers to and from Terminals 2, 3, 4 and 5.",
     journeys: {
       eyebrow: "HEATHROW AIRPORT JOURNEYS",
@@ -293,10 +305,7 @@ export const airportDetails: Record<string, AirportDetail> = {
         a: "Yes. Share your terminal and flight details when you book, so we can arrange your pickup.",
       },
       { q: "My terminal has changed. What should I do?", a: "Tell us as soon as you know, and we’ll update your booking." },
-      {
-        q: "Where do I meet my driver?",
-        a: "Inside arrivals with a name board, or at the pickup point agreed for your booking. Your booking confirmation will tell you which.",
-      },
+      meetDriver,
       flightDelay,
       driverWait,
       { q: "Do I pay the Heathrow drop-off charge?", a: "Yes. It’s added to your quote, so you’ll see the full cost before you book." },
@@ -309,6 +318,12 @@ export const airportDetails: Record<string, AirportDetail> = {
       text: "You’ve done the flying. We’ll do the driving.",
     },
     cardImage: gatwickCard,
+    facts: [
+      "Gatwick has two terminals, North and South, so check yours before you travel.",
+      "Express pick-up bays are inside the Short Stay car parks at both terminals.",
+      "An inter-terminal shuttle links North and South, if you land at one and need the other.",
+    ],
+    factsNote: "Your booking confirmation is always your final instruction. Checked on gatwickairport.com on 6 November 2026.",
     cardText: "Pickup guidance and transfers to and from North and South Terminals.",
     journeys: {
       eyebrow: "GATWICK AIRPORT JOURNEYS",
@@ -377,7 +392,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       { q: "What if my airline changes terminal?", a: "Tell us as soon as you know, and we’ll update your booking." },
       meetDriver,
       flightDelay,
-      { q: "How long will my driver wait?", a: "Please ask when you book, and we’ll confirm what applies to your journey." },
+      driverWait,
       {
         q: "Are there airport charges?",
         a: "Gatwick charges for its drop-off zones and pick-up car parks. Ask when you book, and we’ll confirm what’s in your quote.",
@@ -394,8 +409,12 @@ export const airportDetails: Record<string, AirportDetail> = {
     stanstedCard,
     "Guidance on Stansted’s pick-up areas, with transfers both ways.",
     { to: stanstedTo, from: stanstedFrom, arrival: stanstedArrival },
-    "Stansted’s pick-up areas are outside Departures, with Short Stay car parks nearby. Your booking confirmation will say where to meet.",
-    "Your booking confirmation is always your final instruction. Last checked on stanstedairport.com on 6 November 2026.",
+    [
+      "Stansted’s pick-up and drop-off areas are just outside Departures.",
+      "The Express Set Down area has no barriers, so cars can drive straight through.",
+      "The Mid Stay car park is a short shuttle bus ride from the terminal.",
+    ],
+    "Your booking confirmation is always your final instruction. Checked on stanstedairport.com on 6 November 2026.",
     "Stansted charges for its Express Set Down area and Short Stay car parks.",
   ),
   "london-city": oneTerminal(
@@ -404,7 +423,11 @@ export const airportDetails: Record<string, AirportDetail> = {
     londonCityCard,
     "Transfers to and from London City, for work trips and weekends away.",
     { to: londonCityTo, from: londonCityFrom, arrival: londonCityArrival },
-    "Pre-booked minicabs collect from the pick-up area in London City’s Short Stay car park. Your booking confirmation will say where to meet.",
+    [
+      "Pre-booked minicabs collect from the pick-up area in the Short Stay car park.",
+      "Time in the drop-off zone is limited to 10 minutes.",
+      "Cars reach the airport from the west over Connaught Bridge, and from the east over Redgrave Bridge.",
+    ],
     "Your booking confirmation is always your final instruction. Based on londoncityairport.com, November 2026.",
     "London City charges for its drop-off zone.",
   ),
@@ -414,8 +437,12 @@ export const airportDetails: Record<string, AirportDetail> = {
     southendCard,
     "Guidance on the Express Pick-up area, with transfers both ways.",
     { to: southendTo, from: southendFrom, arrival: southendArrival },
-    "London Southend’s pickups use its Express Pick-up and Drop-off area or the Superior car park. Your booking confirmation will say where to meet.",
-    "Your booking confirmation is always your final instruction. Last checked on southendairport.com on 6 November 2026.",
+    [
+      "Pickups use the Express Pick-up and Drop-off area or the Superior car park.",
+      "Charges apply in both, so ask about them when you book.",
+      "The airport has its own railway station, linked to the terminal by a pedestrian tunnel.",
+    ],
+    "Your booking confirmation is always your final instruction. Checked on southendairport.com on 6 November 2026.",
     "London Southend charges for its Express Pick-up and Drop-off area and Superior car park.",
   ),
 };

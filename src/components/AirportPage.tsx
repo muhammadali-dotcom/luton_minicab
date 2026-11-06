@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { airportDetails } from "@/config/airportDetails";
 import { airports } from "@/config/site";
 import { AirportArrival } from "./AirportArrival";
+import { AirportDetails } from "./AirportDetails";
 import { AirportFleet } from "./AirportFleet";
 import { AirportGuide } from "./AirportGuide";
 import { AirportJourneys } from "./AirportJourneys";
@@ -92,7 +93,10 @@ export function AirportPage({ airport }: { airport: Airport }) {
 
       {localAreas && <AirportLocalAreas />}
 
-      <Faq items={detail.faqs} band={!!arrival && !localAreas}>
+      {/* Keeps the light and dark rhythm whichever sections an airport has. */}
+      <AirportDetails name={name} facts={detail.facts} note={detail.factsNote} band={!!arrival && !localAreas} />
+
+      <Faq items={detail.faqs} band={!!guide || !!localAreas}>
         {otherAirportsNav}
       </Faq>
     </main>
