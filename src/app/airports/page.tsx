@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AirportCards } from "@/components/AirportCards";
-import { PageHero, trustAirport } from "@/components/PageHero";
+import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, h2, section } from "@/components/ui";
 import { regionalAirports, site } from "@/config/site";
 import heroPhoto from "../../../public/brand/airport-luton-hero.png";
@@ -22,7 +22,7 @@ export default function Page() {
         eyebrow="AIRPORT TRANSFERS"
         heading={<span className="block text-balance">Which airport are you travelling to or from?</span>}
         text="Pick your airport, and leave the road to us."
-        trust={trustAirport}
+        trust={trustLocal}
         compact
       />
 
@@ -34,7 +34,7 @@ export default function Page() {
           <h2 id="other-airports-heading" className={h2}>
             Other UK airports
           </h2>
-          <p className="mt-3 text-[1.125rem] text-foreground">Book online, or contact us for a quote.</p>
+          <p className="mt-3 text-[1.125rem] text-foreground">Don’t see yours? Just ask.</p>
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {regionalAirports.map(({ region, airports: regional }) => (
               <div key={region}>
