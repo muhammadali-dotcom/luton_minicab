@@ -406,12 +406,12 @@ export const airportDetails: Record<string, AirportDetail> = {
     "London City charges for its drop-off zone.",
   ),
   southend: oneTerminal(
-    "Southend",
-    { heading: "Small airport. Simple ride.", text: "A calm journey to or from Southend Airport." },
+    "London Southend",
+    { heading: "Small airport. Simple ride.", text: "A calm journey to or from London Southend Airport." },
     southendCard,
     { to: southendTo, from: southendFrom, arrival: southendArrival },
-    "Southend’s pickups use its Express Pick-up and Drop-off area or the Superior car park. Your booking confirmation will say where to meet.",
+    "London Southend’s pickups use its Express Pick-up and Drop-off area or the Superior car park. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Last checked on southendairport.com on 6 November 2026.",
-    "Southend charges for its Express Pick-up and Drop-off area and Superior car park.",
+    "London Southend charges for its Express Pick-up and Drop-off area and Superior car park.",
   ),
 };

@@ -11,7 +11,7 @@ const homepageFaqs = [
   },
   {
     q: "Which airports do you cover?",
-    a: "Transfers to and from all UK airports, including Luton, Heathrow, Gatwick, Stansted, London City and Southend, with flight tracking and meet and greet.",
+    a: "Transfers to and from all UK airports, including Luton, Heathrow, Gatwick, Stansted, London City and London Southend, with flight tracking and meet and greet.",
   },
   {
     q: "How can I pay?",

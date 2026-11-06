@@ -91,7 +91,7 @@ Briefs for the pages that are still **holding pages**: Services, Our Fleet, Area
 - Any response-time wording you're comfortable promising? If not, say nothing.
 
 ## 6. Airport pages (`/airports` and `/airports/[slug]`)
-**Purpose:** one page per main airport (Luton, Heathrow, Gatwick, Stansted, London City, Southend), for passengers searching for that airport. The `/airports` overview is live and also lists nine more airports by region. Those have short `noindex` pages; give one a full page only when there are real details for it.
+**Purpose:** one page per main airport (Luton, Heathrow, Gatwick, Stansted, London City, London Southend), for passengers searching for that airport. The `/airports` overview is live and also lists nine more airports by region. Those have short `noindex` pages; give one a full page only when there are real details for it.
 
 **Can use:** transfers to and from the airport, flight tracking, meet and greet, fixed fares, 24/7, child seats on request, and pickups across Luton plus Mill Hill, Hounslow and Heathrow.
 

@@ -29,7 +29,7 @@ export const airports: AirportEntry[] = [
   { slug: "gatwick", name: "Gatwick", code: "LGW" },
   { slug: "stansted", name: "Stansted", code: "STN" },
   { slug: "london-city", name: "London City", code: "LCY" },
-  { slug: "southend", name: "Southend", code: "SEN" },
+  { slug: "southend", name: "London Southend", code: "SEN" },
 ];
 
 // Grouped on /airports, each with a short page at /airports/[slug] (noindex, and
