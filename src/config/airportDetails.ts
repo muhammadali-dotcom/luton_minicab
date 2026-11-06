@@ -26,7 +26,7 @@ type Journey = {
 };
 
 export type AirportDetail = {
-  heroHeading?: string;
+  hero: { heading: string; text: string };
   journeys: { eyebrow: string; subline: string; items: Journey[] };
   // Three steps, in the order of the icons in AirportMeetDriver.
   meetDriver: { heading: string; subline: string; steps: { title: string; text: string }[] };
@@ -79,6 +79,7 @@ const collectBags = { title: "Collect your bags", text: "Go through passport con
 // own site, and keep waiting and charges wording general until the owner confirms it.
 function oneTerminal(
   name: string,
+  hero: AirportDetail["hero"],
   images: { to: StaticImageData; from: StaticImageData; arrival: StaticImageData },
   goodToKnow: string,
   note: string,
@@ -86,7 +87,7 @@ function oneTerminal(
 ): AirportDetail {
   const upper = `${name.toUpperCase()} AIRPORT`;
   return {
-    heroHeading: `${name}, door to door.`,
+    hero,
     journeys: {
       eyebrow: `${upper} JOURNEYS`,
       subline: "A simple journey, whichever way you’re going.",
@@ -144,6 +145,10 @@ function oneTerminal(
 // Heathrow only.
 export const airportDetails: Record<string, AirportDetail> = {
   luton: {
+    hero: {
+      heading: "Your local ride to Luton Airport.",
+      text: "Sit back and relax. We’ll take care of the road.",
+    },
     journeys: {
       eyebrow: "LUTON AIRPORT JOURNEYS",
       subline: "A simple journey, whichever way you’re going.",
@@ -193,7 +198,10 @@ export const airportDetails: Record<string, AirportDetail> = {
     localAreas: true,
   },
   heathrow: {
-    heroHeading: "Heathrow, door to door.",
+    hero: {
+      heading: "Landing at Heathrow? We’ll take you home.",
+      text: "After a long flight, all you need to do is sit back.",
+    },
     journeys: {
       eyebrow: "HEATHROW AIRPORT JOURNEYS",
       subline: "A simple journey, whichever way you’re going.",
@@ -279,7 +287,10 @@ export const airportDetails: Record<string, AirportDetail> = {
     ],
   },
   gatwick: {
-    heroHeading: "Gatwick, door to door.",
+    hero: {
+      heading: "Back at Gatwick? Let’s get you home.",
+      text: "You’ve done the flying. We’ll do the driving.",
+    },
     journeys: {
       eyebrow: "GATWICK AIRPORT JOURNEYS",
       subline: "A simple journey, whichever way you’re going.",
@@ -357,6 +368,10 @@ export const airportDetails: Record<string, AirportDetail> = {
   },
   stansted: oneTerminal(
     "Stansted",
+    {
+      heading: "Your holiday starts at your front door.",
+      text: "We’ll drive you to Stansted, so you can start relaxing early.",
+    },
     { to: stanstedTo, from: stanstedFrom, arrival: stanstedArrival },
     "Stansted’s pick-up areas are outside Departures, with Short Stay car parks nearby. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Last checked on stanstedairport.com on 6 November 2026.",
@@ -364,6 +379,7 @@ export const airportDetails: Record<string, AirportDetail> = {
   ),
   "london-city": oneTerminal(
     "London City",
+    { heading: "Quick flight. Easy ride.", text: "To or from London City Airport, we’ll keep it simple." },
     { to: londonCityTo, from: londonCityFrom, arrival: londonCityArrival },
     "Pre-booked minicabs collect from the pick-up area in London City’s Short Stay car park. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Based on londoncityairport.com, November 2026.",
@@ -371,6 +387,7 @@ export const airportDetails: Record<string, AirportDetail> = {
   ),
   southend: oneTerminal(
     "Southend",
+    { heading: "Small airport. Simple ride.", text: "A calm journey to or from Southend Airport." },
     { to: southendTo, from: southendFrom, arrival: southendArrival },
     "Southend’s pickups use its Express Pick-up and Drop-off area or the Superior car park. Your booking confirmation will say where to meet.",
     "Your booking confirmation is always your final instruction. Last checked on southendairport.com on 6 November 2026.",

@@ -74,10 +74,8 @@ export function AirportPage({ airport }: { airport: Airport }) {
         fade={photo.fade}
         photoRight={photo.photoRight}
         eyebrow={`${name.toUpperCase()} AIRPORT TRANSFERS`}
-        heading={
-          detail.heroHeading ? <span className="block text-balance">{detail.heroHeading}</span> : "Your trip starts before take-off."
-        }
-        text={`Settle in for a comfortable ride to or from ${name} Airport.`}
+        heading={<span className="block text-balance">{detail.hero.heading}</span>}
+        text={detail.hero.text}
         trust={trustAirport}
       />
 
