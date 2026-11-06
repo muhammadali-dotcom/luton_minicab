@@ -1,0 +1,31 @@
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { AreaPage } from "@/components/AreaPage";
+import { areas } from "@/config/site";
+
+const find = (slug: string) => areas.find((a) => a.slug === slug);
+
+export function generateStaticParams() {
+  return areas.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): Promise<Metadata> {
+  const area = find((await params).slug);
+  return area ? { title: area.heading, description: `${area.intro} Book online or call, day or night.` } : {};
+}
+
+// params is URL data, so it's read inside Suspense to keep navigation instant.
+export default function Page({ params }: PageProps<"/areas/[slug]">) {
+  return (
+    <Suspense fallback={<main id="main" className="flex-1" />}>
+      <AreaContent params={params} />
+    </Suspense>
+  );
+}
+
+async function AreaContent({ params }: { params: PageProps<"/areas/[slug]">["params"] }) {
+  const area = find((await params).slug);
+  if (!area) notFound();
+  return <AreaPage area={area} />;
+}

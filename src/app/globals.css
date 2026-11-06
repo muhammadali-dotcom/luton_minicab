@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Theme palette: Cream & Forest. Cream dominates, deep green carries the
+   text, and soft gold is reserved for booking buttons and small highlights. */
+@theme {
+  --color-*: initial;
+  --color-background: #faf7ef;
+  /* Deeper cream for the scrolled header, alternate sections and footer. */
+  --color-surface: #f3eee2;
+  --color-alt: #f3eee2;
+  --color-card: #f3eee2;
+  --color-border: #e4ddcd;
+  --color-input: #536d60;
+  --color-foreground: #244638;
+  --color-muted: #536d60;
+  --color-primary: #e8c76a;
+  --color-primary-hover: #d0b864;
+  --color-primary-foreground: #244638;
+  /* Deep gold for the small uppercase labels only. */
+  --color-accent: #846614;
+  --color-ring: #244638;
+  --color-tint: #eef0e6;
+  /* Illustration road and route line; small line-art details stay gold. */
+  --color-road: #3a6150;
+  --color-illustration: var(--color-primary);
+  /* Reserved for a WhatsApp button once a real number is supplied. */
+  --color-whatsapp: #25d366;
+  /* Fixed cream that bands don't override, e.g. cards inside a band-alt section. */
+  --color-paper: #faf7ef;
+
+  --radius-control: 12px;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  color-scheme: light;
+  /* Site-wide scale: 14px root. Every rem-based size follows it. */
+  font-size: 87.5%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Forest-green page scrollbar. Standard property for Firefox and current Chromium;
+   the ::-webkit rules cover Safari and older Chromium. */
+html {
+  scrollbar-color: var(--color-foreground) var(--color-alt);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-foreground);
+  border: 3px solid var(--color-alt);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Deeper-cream band for alternating sections. It also redefines the
+   background token, so illustration fills inside the band match it. */
+.band-alt {
+  --color-background: var(--color-alt);
+  background: var(--color-alt);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
+}
+
+/* Keep illustration line weights crisp at every size. */
+.line-art * {
+  vector-effect: non-scaling-stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Contained cutouts move between a central stage and two smaller previews. */
+.fleet-stage {
+  height: clamp(13rem, 32vw, 29rem);
+  isolation: isolate;
+}
+
+/* Stationary platform behind the central cutout, below the wheel line. */
+.fleet-stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: max(0.75rem, calc((100% - 27.5vw) / 2 + 0.75rem));
+  width: 38.5%;
+  height: clamp(0.75rem, 2vw, 2rem);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--color-foreground);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.fleet-car {
+  position: absolute;
+  inset: 0;
+  margin-inline: auto;
+  width: 55%;
+  transition: transform 450ms ease, opacity 450ms ease;
+  pointer-events: none;
+}
+
+.fleet-car--active { transform: translateX(0) scale(1); opacity: 1; }
+.fleet-car--previous { transform: translateX(-112%) scale(0.6); opacity: 0.8; }
+.fleet-car--next { transform: translateX(112%) scale(0.6); opacity: 0.8; }
+.fleet-car--hidden { transform: scale(0.6); opacity: 0; visibility: hidden; }
+
+.fleet-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  border: 2px solid var(--color-foreground);
+  border-radius: 50%;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.fleet-arrow:hover { background: var(--color-surface); }
+
+@media (max-width: 767px) {
+  .fleet-stage { height: clamp(15rem, 57vw, 26rem); padding-bottom: 3.5rem; }
+  .fleet-stage::before {
+    width: 63%;
+    bottom: 4rem;
+    height: clamp(0.75rem, 2vw, 1rem);
+  }
+  .fleet-car { width: 90%; bottom: 3.5rem; }
+  .fleet-car--previous, .fleet-car--next { opacity: 0; }
 }

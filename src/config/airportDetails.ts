@@ -1,0 +1,203 @@
+import type { StaticImageData } from "next/image";
+import heathrowFrom from "../../public/brand/heathrow-journey-from.png";
+import heathrowTo from "../../public/brand/heathrow-journey-to.png";
+import lutonArrival from "../../public/brand/luton-arrival.png";
+import lutonFrom from "../../public/brand/luton-journey-from.png";
+import lutonTo from "../../public/brand/luton-journey-to.png";
+
+type Journey = {
+  image: StaticImageData;
+  alt: string;
+  start: string;
+  end: string;
+  title: string;
+  text: string;
+};
+
+export type AirportDetail = {
+  heroHeading?: string;
+  journeys: { eyebrow: string; subline: string; items: Journey[] };
+  // Three steps, in the order of the icons in AirportMeetDriver.
+  meetDriver: { heading: string; subline: string; steps: { title: string; text: string }[] };
+  faqs: { q: string; a: string }[];
+  // Terminal board with tabs, for airports with several terminals.
+  guide?: {
+    eyebrow: string;
+    heading: string;
+    subline: string;
+    note: string;
+    calloutTitle: string;
+    calloutText: string;
+    items: { number: string; headFor: string; goodToKnow: string }[];
+  };
+  // Extra arrivals help inside the meeting section, for airports without a board.
+  arrival?: {
+    calloutTitle: string;
+    calloutText: string;
+    image: StaticImageData;
+    alt: string;
+  };
+  // Adds links to the local area pages.
+  localAreas?: boolean;
+};
+
+const flightDelay = {
+  q: "What if my flight is delayed?",
+  a: "We track your flight, so your pickup follows your actual landing time.",
+};
+const meetDriver = {
+  q: "Where do I meet my driver?",
+  a: "Meet your driver at the point agreed for your booking, or where your driver tells you. We’ll share your driver’s details before you travel.",
+};
+const childSeat = {
+  q: "Can I ask for a child seat?",
+  a: "Yes, child seats are available on request. Just mention it when you book.",
+};
+const driverWait = {
+  q: "How long will my driver wait?",
+  a: "Your driver waits free for 15 minutes once they reach your pickup point at the agreed time. After that, waiting charges apply. We’ll discuss these with you before you confirm your booking.",
+};
+const calloutTitle = "Before you head outside";
+const calloutText = "Keep your booking details handy and check any messages about your pickup.";
+const collectBags = { title: "Collect your bags", text: "Go through passport control and collect your luggage." };
+
+// Airports on the full layout, keyed by slug; the others use the shared wording in
+// AirportPage. Only state what the owner has confirmed for that airport: the
+// 15 free minutes is confirmed for Luton and Heathrow only.
+export const airportDetails: Record<string, AirportDetail> = {
+  luton: {
+    journeys: {
+      eyebrow: "LUTON AIRPORT JOURNEYS",
+      subline: "A simple journey, whichever way you’re going.",
+      items: [
+        {
+          image: lutonTo,
+          alt: "Illustration: a car on a road leading from a house to Luton Airport.",
+          start: "YOUR DOOR",
+          end: "LUTON AIRPORT",
+          title: "To Luton Airport",
+          text: "We’ll collect you from your chosen address and take you to the airport.",
+        },
+        {
+          image: lutonFrom,
+          alt: "Illustration: a car on a road leading from Luton Airport to a house.",
+          start: "LUTON AIRPORT",
+          end: "YOUR NEXT STOP",
+          title: "From Luton Airport",
+          text: "Share your flight details when booking. We’ll arrange your pickup and take you to your next stop.",
+        },
+      ],
+    },
+    meetDriver: {
+      heading: "Landed? Here’s what happens next.",
+      subline: "Three simple steps from arrivals to your next stop.",
+      steps: [
+        collectBags,
+        {
+          title: "Check your meeting point",
+          text: "Follow the pickup instructions in your booking confirmation. Your meeting point may depend on the service you have booked.",
+        },
+        { title: "Meet your driver", text: "Head to the agreed meeting point for your journey." },
+      ],
+    },
+    faqs: [
+      meetDriver,
+      flightDelay,
+      driverWait,
+      childSeat,
+    ],
+    arrival: {
+      calloutTitle,
+      calloutText,
+      image: lutonArrival,
+      alt: "Illustration: a car waiting outside Luton Airport, with a map pin marking the meeting point.",
+    },
+    localAreas: true,
+  },
+  heathrow: {
+    heroHeading: "Heathrow, door to door.",
+    journeys: {
+      eyebrow: "HEATHROW AIRPORT JOURNEYS",
+      subline: "A simple journey, whichever way you’re going.",
+      items: [
+        {
+          image: heathrowTo,
+          alt: "Illustration: a car on a road leading from a house to Heathrow Airport.",
+          start: "YOUR DOOR",
+          end: "HEATHROW AIRPORT",
+          title: "To Heathrow Airport",
+          text: "Tell us your terminal when you book. We’ll collect you from your chosen address and take you to the airport.",
+        },
+        {
+          image: heathrowFrom,
+          alt: "Illustration: a car on a road leading from Heathrow Airport to a house.",
+          start: "HEATHROW AIRPORT",
+          end: "YOUR NEXT STOP",
+          title: "From Heathrow Airport",
+          text: "Share your flight and terminal details when booking. We’ll arrange your pickup and take you to your next stop.",
+        },
+      ],
+    },
+    meetDriver: {
+      heading: "Landed at Heathrow? Here’s what happens next.",
+      subline: "Three simple steps from arrivals to your next stop.",
+      steps: [
+        collectBags,
+        {
+          title: "Check your meeting point",
+          text: "Check your booked terminal, then follow the meeting instructions provided for your booking.",
+        },
+        { title: "Meet your driver", text: "Head to the agreed meeting point for your terminal." },
+      ],
+    },
+    // Recheck regularly and update the date in `note`: Heathrow's arrangements change
+    // (T4 did in June 2026).
+    guide: {
+      eyebrow: "TERMINAL BY TERMINAL",
+      heading: "Which terminal are you landing at?",
+      subline: "Pick yours, and we’ll show you where to head.",
+      note: "These are Heathrow’s public meeting points. Your booking confirmation is always your final instruction. Last checked on heathrow.com on 5 November 2026.",
+      calloutTitle,
+      calloutText,
+      items: [
+      {
+        number: "2",
+        headFor: "Across from the international arrivals exit.",
+        goodToKnow: "Drivers can’t wait outside the terminal here, so your car will be in Terminal Parking nearby.",
+      },
+      {
+        number: "3",
+        headFor: "The ground-floor seating area in Arrivals.",
+        goodToKnow: "Drivers can’t wait outside the terminal here, so your car will be in Terminal Parking nearby.",
+      },
+      {
+        number: "4",
+        headFor: "Beside WHSmith, on the ground floor of Arrivals.",
+        goodToKnow:
+          "T4’s car park closed in June 2026, so your pickup may use Priority Pick-Up outside the terminal or Park & Ride Zone A by shuttle bus. Your booking confirmation will say which.",
+      },
+      {
+        number: "5",
+        headFor: "Two points in Arrivals: north, opposite Travelex, or south, near Costa Coffee.",
+        goodToKnow: "Your booking confirmation will say which one to use. Your car will be in Terminal Parking nearby.",
+      },
+      ],
+    },
+    faqs: [
+      { q: "Which terminals do you cover?", a: "All four: Terminals 2, 3, 4 and 5, whether you’re flying out or landing." },
+      {
+        q: "Do I need to tell you my terminal?",
+        a: "Yes. Share your terminal and flight details when you book, so we can arrange your pickup.",
+      },
+      { q: "My terminal has changed. What should I do?", a: "Tell us as soon as you know, and we’ll update your booking." },
+      {
+        q: "Where do I meet my driver?",
+        a: "Inside arrivals with a name board, or at the pickup point agreed for your booking. Your booking confirmation will tell you which.",
+      },
+      flightDelay,
+      driverWait,
+      { q: "Do I pay the Heathrow drop-off charge?", a: "Yes. It’s added to your quote, so you’ll see the full cost before you book." },
+      childSeat,
+    ],
+  },
+};
