@@ -27,6 +27,8 @@ type Journey = {
 
 export type AirportDetail = {
   hero: { heading: string; text: string };
+  // Practical line for this airport's card on /airports.
+  cardText: string;
   journeys: { eyebrow: string; subline: string; items: Journey[] };
   // Three steps, in the order of the icons in AirportMeetDriver.
   meetDriver: { heading: string; subline: string; steps: { title: string; text: string }[] };
@@ -88,6 +90,7 @@ function oneTerminal(
   const upper = `${name.toUpperCase()} AIRPORT`;
   return {
     hero,
+    cardText: `Pickup guidance and transfers to and from ${name}.`,
     journeys: {
       eyebrow: `${upper} JOURNEYS`,
       subline: "A simple journey, whichever way you’re going.",
@@ -149,6 +152,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Your local ride to Luton Airport.",
       text: "Sit back and relax. We’ll take care of the road.",
     },
+    cardText: "Pickup guidance and transfers to and from your local airport.",
     journeys: {
       eyebrow: "LUTON AIRPORT JOURNEYS",
       subline: "A simple journey, whichever way you’re going.",
@@ -202,6 +206,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Landing at Heathrow? We’ll take you home.",
       text: "After a long flight, all you need to do is sit back.",
     },
+    cardText: "Pickup guidance and transfers to and from Terminals 2, 3, 4 and 5.",
     journeys: {
       eyebrow: "HEATHROW AIRPORT JOURNEYS",
       subline: "A simple journey, whichever way you’re going.",
@@ -291,6 +296,7 @@ export const airportDetails: Record<string, AirportDetail> = {
       heading: "Back at Gatwick? Let’s get you home.",
       text: "You’ve done the flying. We’ll do the driving.",
     },
+    cardText: "Pickup guidance and transfers to and from North and South Terminals.",
     journeys: {
       eyebrow: "GATWICK AIRPORT JOURNEYS",
       subline: "A simple journey, whichever way you’re going.",

@@ -36,6 +36,8 @@ type Props = {
   // Desktop: shows a photo uncropped on the right at full hero height, blending its left
   // edge into the page. For photos too tall for the hero with a plain area on the left.
   photoRight?: boolean;
+  // Shorter hero, for pages where visitors need to reach a choice quickly.
+  compact?: boolean;
 };
 
 const actionClass =
@@ -47,19 +49,21 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
   return (
     <section
       aria-labelledby="page-heading"
-      className={`relative overflow-hidden ${image ? "lg:flex lg:min-h-[clamp(35rem,38vw,40rem)] lg:items-center" : ""}`}
+      className={`relative overflow-hidden ${
+        image ? `lg:flex lg:items-center ${compact ? "lg:min-h-[clamp(27rem,29vw,31rem)]" : "lg:min-h-[clamp(35rem,38vw,40rem)]"}` : ""
+      }`}
     >
       {image && (
         <>
           <div
-            className={`relative aspect-[16/9] lg:absolute ${
+            className={`relative lg:absolute ${compact ? "aspect-[2/1]" : "aspect-[16/9]"} ${
               photoRight
                 ? "lg:inset-y-0 lg:right-0 lg:aspect-[7/4] lg:[mask-image:linear-gradient(to_right,transparent,rgb(0_0_0/0.6)_34%,black_42%)]"
                 : "lg:inset-0 lg:aspect-auto"
@@ -82,7 +86,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
       )}
 
       <div className={`relative w-full ${dark ? "bg-foreground [--color-ring:var(--color-primary)] lg:bg-transparent" : ""}`}>
-        <div className={`${container} py-12 sm:py-14 lg:py-20`}>
+        <div className={`${container} ${compact ? "py-9 sm:py-10 lg:py-12" : "py-12 sm:py-14 lg:py-20"}`}>
           <div className={`max-w-xl ${textTone}`}>
             <p className={`${eyebrowClass} ${dark ? "text-background" : "text-accent"}`}>{eyebrow}</p>
             <h1 id="page-heading" className={`mt-4 ${h1}`}>

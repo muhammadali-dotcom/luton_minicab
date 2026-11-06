@@ -6,7 +6,7 @@ import { airports } from "@/config/site";
 import { heroPhotos } from "./AirportPage";
 import { container, h2, section } from "./ui";
 
-// Photos and lines come from each airport's own page, so they stay in step.
+// Photos come from each airport's page; the lines are practical `cardText`.
 export function AirportCards() {
   return (
     <section aria-labelledby="main-airports-heading" className={`band-alt border-t border-border ${section}`}>
@@ -32,7 +32,7 @@ export function AirportCards() {
                 </span>
                 <span className="flex flex-1 flex-col px-5 py-5">
                   <span className="font-display text-[1.5rem] font-semibold leading-tight text-foreground">{name} Airport</span>
-                  <span className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">{airportDetails[slug].hero.text}</span>
+                  <span className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">{airportDetails[slug].cardText}</span>
                   <span className="mt-auto inline-flex min-h-[44px] items-center gap-2 pt-3 font-semibold text-foreground">
                     View {name} Airport
                     <ArrowRight aria-hidden size={18} className="transition-transform group-hover:translate-x-1" />
