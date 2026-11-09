@@ -73,6 +73,7 @@ Business brief, approved decisions and open items for **lutonminicab.com**. Keep
   - MPV7 6/4/4
   - Executive 3/2/2
 - Don't invent capacities, luggage limits or vehicle availability.
+- **Fleet page approved** (November 2026): /fleet is indexable. Hero "A car that fits your journey.", six cards (name, "Best for" label, line and Book Online), "Exact passenger and luggage limits are shown when you book. Pictures are examples, and the model may vary.", three "Not sure which car?" steps and three questions. No capacities until verified.
 
 ## 7. Confirmed benefits (the only claims allowed)
 - Fixed fares
@@ -149,7 +150,7 @@ The dropdown labels open their menu only; they don't link anywhere themselves. S
 | 8 | Booking banner (**on every page**, rendered in the layout above the footer): deep green with decorative gold route lines; eyebrow "WHEREVER LIFE TAKES YOU"; heading "You make the plans. We'll take you there."; text "A trip across town or a journey further afield. Book your ride with us."; **Book Online →** and **Call to Book** | green |
 | 9 | Footer (every page): top row with logo, tagline "Local rides, school runs and airport journeys. Here for your everyday plans.", Call Us / WhatsApp / Email Us (become links once the details are supplied) and "Available 24/7"; five columns (Explore, Airports, Our Services, Areas We Cover, Our Fleet); line-art street scene; bottom bar "© 2026 Luton Minicab", "**Powered by MyCabify**" (links to https://mycabify.com), Privacy Policy, Terms & Conditions, Cookies and back to top. "Operated by A2B Radio Cars" no longer appears in the footer | light |
 
-**Inner pages:** /areas, the nine /areas/[slug] pages, /airports and the six main /airports/[slug] pages are real, indexable pages. The nine short airport pages are real but `noindex`. /services, /fleet, /about, /contact and the five /services/[slug] pages exist only as minimal holding pages ("This page is being prepared."), set to `noindex`, so the nav has no broken links. Their content is **not yet approved**.
+**Inner pages:** /areas, the nine /areas/[slug] pages, /airports, the six main /airports/[slug] pages and /fleet are real, indexable pages. The nine short airport pages are real but `noindex`. /services, /about, /contact and the five /services/[slug] pages exist only as minimal holding pages ("This page is being prepared."), set to `noindex`, so the nav has no broken links. Their content is **not yet approved**.
 
 ## 14. Confirmed decisions (Q&A)
 | Topic | Decision |

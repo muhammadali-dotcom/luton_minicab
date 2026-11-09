@@ -21,7 +21,7 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
 - `src/config/site.ts`: the single source for the booking URL (`NEXT_PUBLIC_BOOKING_URL` overrides it), nav items and contact details. Phone, WhatsApp, email and operator licence are `null` placeholders.
 - `src/app/page.tsx`: the homepage, in this order: Hero, ServiceStrip, Services, WhyTravel, Vehicles, Areas, Faq, FinalCta.
 - **Holding pages** (`HoldingPage`, set to `noindex`):
-  - `src/app/{services,fleet,about,contact}/page.tsx`
+  - `src/app/{services,about,contact}/page.tsx`
   - `src/app/services/[slug]`, which uses `generateStaticParams` from `services` in `site.ts` and calls `notFound()` for unknown slugs
 - `not-found.tsx` is the branded 404.
 - **Navigation:**
@@ -108,4 +108,5 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
 ## Vehicles carousel
 - `Vehicles.tsx` is a client component with six illustrative cutouts from `public/brand/Charcoal*.png`, in Saloon, Estate, MPV6, MPV Plus, MPV7, Executive order.
 - Five-second rotation, 450ms transitions, desktop side previews, mobile swipe, arrows, dots, category selectors and pause/play. Hover, off-screen and hidden tabs suspend rotation; focus pauses until explicit restart. Reduced motion defaults to no autoplay and disables transitions.
-- No capacity figures or prices. Book Online opens the general external booker without vehicle preselection; `/fleet` remains a holding page.
+- No capacity figures or prices. Book Online opens the general external booker without vehicle preselection.
+- **Fleet page** (`src/app/fleet/page.tsx`): hero, `FleetCards` (six cards from `fleet`, each with an `id` anchor that the footer links to), `FleetSteps` and three questions in the homepage `Faq`. No capacities until the owner verifies them; add them to `fleet` in `site.ts` then.

@@ -15,7 +15,7 @@ Titles are around 60 characters or fewer, and descriptions 155 or fewer. Titles 
 |---|---|---|---|
 | Home `/` | Luton minicab / taxi Luton | Luton Minicab \| Local, School & Airport Journeys | From the school gates to airport goodbyes: local journeys, school runs and airport transfers from Luton and beyond. Book online or call, day or night. (live) |
 | Services `/services` | Taxi services Luton | Taxi & Minicab Services | Local journeys, airport transfers, school runs, assisted travel, business and long-distance trips from Luton. Fixed fares, available 24/7. |
-| Our Fleet `/fleet` | Minicab, estate, MPV and executive cars in Luton | Our Fleet: Saloon, Estate, MPV & Executive | From everyday saloons to estates, MPVs and executive cars. Choose the right vehicle for your passengers and luggage when you book. |
+| Our Fleet `/fleet` | Minicab, estate, MPV and executive cars in Luton | Our Fleet: Saloon, Estate, MPV & Executive | From everyday saloons to estates, MPVs and executive cars. Choose the right vehicle for your passengers and luggage when you book. (live, indexable) |
 | `/areas/[slug]` (9) | "taxi [area]", "minicab [area]", e.g. "taxi Dunstable" | Taxis in [Area] | The area's intro line + "Book online or call, day or night." (live, indexable). Add genuinely local detail over time to avoid thin, near-duplicate pages |
 | Areas `/areas` | Taxi Luton, Mill Hill, Hounslow, Heathrow | Areas We Cover | Based in Luton, with pickups across the surrounding areas, Hounslow, Mill Hill and Heathrow, and transfers to and from all UK airports. |
 | About `/about` | About Luton Minicab | About Us | Luton Minicab is a local minicab service operated by A2B Radio Cars. Find out who we are and how we work. |

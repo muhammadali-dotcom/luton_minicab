@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
-import { airports, areas, services, site } from "@/config/site";
+import { airports, areas, fleet, services, site } from "@/config/site";
 import footerStreet from "../../public/brand/footer-street.png";
 import { Logo } from "./Logo";
 
@@ -51,8 +51,8 @@ const columns: { title: string; links: FooterLink[] }[] = [
   },
   {
     title: "OUR FLEET",
-    // No per-vehicle pages yet; all go to the fleet page.
-    links: ["Saloon", "Estate", "MPV6", "MPV Plus", "MPV7", "Executive"].map((label) => ({ label, href: "/fleet" })),
+    // Each opens its card on the fleet page.
+    links: fleet.map((v) => ({ label: v.name, href: `/fleet#${v.id}` })),
   },
 ];
 

@@ -30,7 +30,7 @@ Briefs for the pages that are still **holding pages**: Services, Our Fleet, Area
 - Should corporate travel mention anything about how businesses book?
 
 ## 2. Our Fleet (`/fleet`)
-**Purpose:** help passengers pick the right vehicle for their group and luggage.
+**Purpose:** help passengers pick the right vehicle for their group and luggage. **Live** (November 2026) without capacities; add them once verified.
 
 **Sections:**
 1. **Intro:** the right car for your journey; choose your vehicle when you book.
