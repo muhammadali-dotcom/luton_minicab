@@ -20,7 +20,7 @@ export function LocalAreaCards() {
   return (
     <section aria-labelledby="local-areas-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
-        <p className={`${eyebrow} text-accent`}>WHERE WE PICK UP</p>
+        <p className={`${eyebrow} text-accent`}>AROUND LUTON</p>
         <h2 id="local-areas-heading" className={`${h2} mt-4 text-foreground`}>
           Local areas we cover.
         </h2>

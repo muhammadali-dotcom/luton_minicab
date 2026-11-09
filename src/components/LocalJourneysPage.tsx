@@ -1,17 +1,41 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, MapPin } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { LocalAreaCards } from "./LocalAreaCards";
-import { LutonPlaces } from "./LutonPlaces";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
 import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
 import everydayStreet from "../../public/brand/local-journeys-everyday.png";
 
+// Place examples are plain public names, used only as destinations (owner to confirm).
 const everyday = [
-  { title: "Shopping & errands", text: ["Room for your bags.", "A ride there and back."] },
-  { title: "Appointments", text: ["One less thing to plan", "for your appointment."] },
-  { title: "Family & friends", text: ["More time with the", "people you love."] },
-  { title: "Evenings out", text: ["Enjoy your evening.", "Plan your ride home."] },
+  {
+    title: "Shopping & errands",
+    text: ["Room for your bags.", "A ride there and back."],
+    places: ["The Mall Luton", "Luton town centre"],
+  },
+  {
+    title: "Appointments",
+    text: ["One less thing to plan", "for your appointment."],
+    places: ["Luton and Dunstable Hospital", "your GP or dentist"],
+  },
+  {
+    title: "Family & friends",
+    text: ["More time with the", "people you love."],
+    places: ["Leagrave", "Stopsley", "Dunstable and nearby"],
+  },
+  {
+    title: "Evenings & days out",
+    text: ["Enjoy your evening.", "Plan your ride home."],
+    places: ["Wardown Park", "the cinema", "The Hat Factory"],
+  },
+];
+
+const otherJourneys = [
+  { label: "Luton Airport", href: "/airports/luton" },
+  { label: "Train stations", href: "/services/station-hotel-transfers" },
+  { label: "School runs", href: "/services/school-runs" },
 ];
 
 // Covers only the text column on the photo's plain cream wall, so the street and car stay bright.
@@ -48,7 +72,7 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
           />
           {/* Four columns, each centred under its gold dot on the road (dots at about 14%, 38%, 61% and 86%). */}
           <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 text-center md:grid-cols-[26fr_23.5fr_24fr_26.5fr] md:gap-x-0">
-            {everyday.map(({ title, text }) => (
+            {everyday.map(({ title, text, places }) => (
               <li key={title} className="md:px-2">
                 <h3 className="font-display text-[1.375rem] font-semibold leading-tight text-foreground">{title}</h3>
                 <p className="mx-auto mt-2 text-[1.0625rem] leading-relaxed text-foreground">
@@ -60,15 +84,41 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
                     </span>
                   ))}
                 </p>
+                {/* Each place stays whole, so lines break between places. */}
+                <p className="mx-auto mt-3 max-w-[17rem] text-base leading-relaxed text-foreground">
+                  {places.map((place, i) => (
+                    <span key={place} className="inline-block">
+                      {i === 0 && (
+                        <MapPin aria-hidden size={16} strokeWidth={1.75} className="mr-1 inline-block align-[-0.15em] text-accent" />
+                      )}
+                      {place}
+                      {i < places.length - 1 && "\u00a0·\u00a0"}
+                    </span>
+                  ))}
+                </p>
               </li>
             ))}
           </ul>
+          <nav
+            aria-label="Other journeys"
+            className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-border pt-6 md:justify-center"
+          >
+            <p className="w-full font-semibold text-foreground sm:w-auto">Other journeys:</p>
+            {otherJourneys.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="group inline-flex min-h-[44px] items-center gap-1.5 text-[1.0625rem] font-medium text-foreground underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2"
+              >
+                {label}
+                <ArrowRight aria-hidden size={16} className="shrink-0 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </nav>
         </div>
       </section>
 
       <LocalAreaCards />
-
-      <LutonPlaces />
     </main>
   );
 }
