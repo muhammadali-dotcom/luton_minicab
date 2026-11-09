@@ -156,8 +156,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "local-journeys": {
     hero: {
-      heading: "Around the corner, or across town.",
-      text: "Shopping, appointments and visits, across Luton and nearby towns.",
+      heading: "Your everyday plans. A ride away.",
+      text: "Trips to the shops, appointments or a visit to someone special. Book your local journey around Luton.",
     },
     image: localJourneys,
     alt: "A dark saloon parked on a British high street lined with shops and hanging flowers.",
