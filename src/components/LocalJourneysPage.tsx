@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { ServiceDetail } from "@/config/serviceDetails";
-import { DriverHelp } from "./DriverHelp";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
@@ -67,18 +66,6 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
       </section>
 
       <LocalAreaCards />
-
-      <section aria-labelledby="help-heading" className={`band-alt border-t border-border ${section}`}>
-        <div className={container}>
-          <DriverHelp
-            heading="Need help with your journey?"
-            headingId="help-heading"
-            level="h2"
-            divider={false}
-            text="Travelling with extra bags or need a return pickup? Tell us what you need."
-          />
-        </div>
-      </section>
     </main>
   );
 }
