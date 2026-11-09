@@ -14,7 +14,7 @@ Titles are around 60 characters or fewer, and descriptions 155 or fewer. Titles 
 | Page | Main search theme | Draft title | Draft meta description |
 |---|---|---|---|
 | Home `/` | Luton minicab / taxi Luton | Luton Minicab \| Local, School & Airport Journeys | From the school gates to airport goodbyes: local journeys, school runs and airport transfers from Luton and beyond. Book online or call, day or night. (live) |
-| Services `/services` | Taxi services Luton | Taxi & Minicab Services | Local journeys, airport transfers, school runs, assisted travel, business and long-distance trips from Luton. Fixed fares, available 24/7. |
+| Services `/services` | Taxi services Luton | Taxi & Minicab Services | Local journeys, airport transfers, school runs, assisted travel, business and long-distance trips from Luton. Fixed fares, available 24/7. (live, indexable) |
 | Our Fleet `/fleet` | Minicab, estate, MPV and executive cars in Luton | Our Fleet: Saloon, Estate, MPV & Executive | From everyday saloons to estates, MPVs and executive cars. Choose the right vehicle for your passengers and luggage when you book. (live, indexable) |
 | `/areas/[slug]` (9) | "taxi [area]", "minicab [area]", e.g. "taxi Dunstable" | Taxis in [Area] | The area's intro line + "Book online or call, day or night." (live, indexable). Add genuinely local detail over time to avoid thin, near-duplicate pages |
 | Areas `/areas` | Taxi Luton, Mill Hill, Hounslow, Heathrow | Areas We Cover | Based in Luton, with pickups across the surrounding areas, Hounslow, Mill Hill and Heathrow, and transfers to and from all UK airports. |
@@ -23,7 +23,7 @@ Titles are around 60 characters or fewer, and descriptions 155 or fewer. Titles 
 | Airports `/airports` | Airport taxi Luton / airport transfers | Airport Transfers | Transfers to and from all UK airports, with flight tracking and meet and greet. (live, indexable) |
 | `/airports/[slug]` (9 short pages) | None yet | [Airport] Airport Transfers | `noindex` until each has real details. No flight claims |
 | `/airports/[slug]` (6) | "[Airport] taxi", "taxi to [Airport] from Luton" | [Airport] Airport Transfers | "Taxis to and from [Airport] Airport with flight tracking, meet and greet and fixed fares. Book online or call, day or night." (live, indexable). All six have their own arrivals details and airport facts, and Luton links its local area pages; add airport-specific detail to the others over time |
-| `/services/[slug]` (5) | e.g. "school run taxi Luton", "station taxi Luton" | Service name | One per service, from the content brief |
+| `/services/[slug]` (5) | e.g. "school run taxi Luton", "station taxi Luton" | Service name | Hero line plus "Luton Minicab: fixed fares, DBS-checked drivers, available 24/7." (live, indexable) |
 
 The holding pages are currently `noindex`. **Remove `noindex` from each page once its real content is approved.**
 

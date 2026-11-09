@@ -10,7 +10,7 @@ Briefs for the pages that are still **holding pages**: Services, Our Fleet, Area
 - Every page ends with the booking banner ("Ready when you are.") and Book Online in the same tab.
 
 ## 1. Services (`/services`)
-**Purpose:** explain each service clearly enough that a passenger knows it fits their journey, then send them to book.
+**Purpose:** explain each service clearly enough that a passenger knows it fits their journey, then send them to book. **Live** (November 2026): overview plus five service pages; add details here as the owner confirms them.
 
 **Sections:**
 1. **Intro:** one or two lines on journeys for every part of the day, from Luton and beyond.

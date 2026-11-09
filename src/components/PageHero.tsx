@@ -39,6 +39,9 @@ type Props = {
   // With photoRight: "content" starts the photo at the page content's left edge and covers
   // to the right edge, so a photo with a wide plain left side sits close to the text.
   photoFrom?: "edge" | "content";
+  // With photoRight: "narrow" fades only the photo's left edge from xl up, for photos with
+  // people on the left (below xl the photo reaches the text, so it keeps the wide fade).
+  photoMask?: "wide" | "narrow";
   // Shorter hero, for pages where visitors need to reach a choice quickly.
   compact?: boolean;
   // Replaces Book Online with an on-page link (with a down arrow); Call to Book stays.
@@ -56,7 +59,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge" }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide" }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -72,7 +75,11 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
           <div
             className={`relative lg:absolute ${compact ? "aspect-[2/1]" : "aspect-[16/9]"} ${
               photoRight
-                ? `lg:inset-y-0 lg:right-0 lg:[mask-image:linear-gradient(to_right,transparent,rgb(0_0_0/0.6)_34%,black_42%)] ${
+                ? `lg:inset-y-0 lg:right-0 ${
+                    photoMask === "narrow"
+                      ? "lg:[mask-image:linear-gradient(to_right,transparent,rgb(0_0_0/0.6)_34%,black_42%)] xl:[mask-image:linear-gradient(to_right,transparent,black_18%)]"
+                      : "lg:[mask-image:linear-gradient(to_right,transparent,rgb(0_0_0/0.6)_34%,black_42%)]"
+                  } ${
                     photoFrom === "content" ? "lg:left-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] lg:aspect-auto" : "lg:aspect-[7/4]"
                   }`
                 : "lg:inset-0 lg:aspect-auto"

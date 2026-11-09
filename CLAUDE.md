@@ -21,8 +21,7 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
 - `src/config/site.ts`: the single source for the booking URL (`NEXT_PUBLIC_BOOKING_URL` overrides it), nav items and contact details. Phone, WhatsApp, email and operator licence are `null` placeholders.
 - `src/app/page.tsx`: the homepage, in this order: Hero, ServiceStrip, Services, WhyTravel, Vehicles, Areas, Faq, FinalCta.
 - **Holding pages** (`HoldingPage`, set to `noindex`):
-  - `src/app/{services,about,contact}/page.tsx`
-  - `src/app/services/[slug]`, which uses `generateStaticParams` from `services` in `site.ts` and calls `notFound()` for unknown slugs
+  - `src/app/{about,contact}/page.tsx`
 - `not-found.tsx` is the branded 404.
 - **Navigation:**
   - `site.nav` mixes `NavLink` and `NavGroup` (dropdown) items; use `isNavGroup()`.
@@ -52,6 +51,7 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
   - `AirportDetails.tsx` sits above the FAQ on every airport: `facts` and `factsNote` from `airportDetails.ts`, plus the "Why travel with us" list. Recheck the facts on each airport's site and update the date.
   - `AirportFleet` shows three travel choices from the `fleet` images, with no capacities or slider.
 - **All Airports page:** `src/app/airports/page.tsx` has a compact hero (`PageHero` `compact`, for this page only), the six as photo cards (`AirportCards.tsx`, using `cardImage` and `cardText` from `airportDetails.ts`; photos are `public/brand/airport-<slug>-card.png`, originals in `assets/brand/`, AI images, so keep the alt text neutral. Five are retouched copies with the invented logos removed, keeping the names; Heathrow never had one), then `regionalAirports` from `site.ts` by region, and one "Ask about another airport" button (calls for now: point it at /contact once that page is real).
+- **Service pages:** `/services` (compact dark hero and `ServiceCards`: five services plus Airport Transfers) and `/services/[slug]` (`ServicePage.tsx`, with wording, photo and questions from `src/config/serviceDetails.ts`; slugs from `services` in `site.ts`). Indexable. Heroes use `photoRight` with `photoMask="narrow"`, as the people are on the left of the photos. Only confirmed facts: no prices, distances, contracts, accounts, invoicing, minibuses, wheelchair access, escorts or medical care. School runs are booked per journey; SEND uses the approved wording only.
 - **Short airport pages:** those nine use `AirportShortPage.tsx` through the same /airports/[slug] route. They're `noindex`, use `trustLocal`, and must not mention flight tracking, meet and greet or landing, because some may not have regular passenger flights. To upgrade one, move it into `airports`, but only with real details for its page: that list drives the full page, menu, footer and homepage.
 - **Area pages:**
   - `areas` in `site.ts` (slug, name, heading, intro) drives the nav dropdown, the homepage list, `/areas` (overview) and `/areas/[slug]` (`AreaPage.tsx`). They're indexable.

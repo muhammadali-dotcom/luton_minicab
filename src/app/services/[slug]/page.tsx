@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { HoldingPage } from "@/components/HoldingPage";
+import { ServicePage } from "@/components/ServicePage";
+import { serviceDetails } from "@/config/serviceDetails";
 import { services } from "@/config/site";
 
 const titleFor = (slug: string) => services.find((s) => s.slug === slug)?.name ?? null;
@@ -12,7 +13,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const title = titleFor((await params).slug);
-  return title ? { title, robots: { index: false } } : {};
+  const slug = (await params).slug;
+  return title ? { title, description: `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.` } : {};
 }
 
 // params is URL data, so it's read inside Suspense to keep navigation instant.
@@ -25,7 +27,8 @@ export default function Page({ params }: PageProps<"/services/[slug]">) {
 }
 
 async function Content({ params }: { params: PageProps<"/services/[slug]">["params"] }) {
-  const title = titleFor((await params).slug);
+  const { slug } = await params;
+  const title = titleFor(slug);
   if (!title) notFound();
-  return <HoldingPage title={title} />;
+  return <ServicePage slug={slug} name={title} detail={serviceDetails[slug]} />;
 }
