@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ServiceDetail } from "@/config/serviceDetails";
-import { AirportLocalAreas } from "./AirportLocalAreas";
 import { DriverHelp } from "./DriverHelp";
+import { LocalAreaCards } from "./LocalAreaCards";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
 import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
@@ -66,12 +66,7 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
         </div>
       </section>
 
-      <AirportLocalAreas
-        eyebrow="AROUND LUTON"
-        heading="Local areas we cover."
-        text="Luton neighbourhoods and the towns nearby."
-        band={false}
-      />
+      <LocalAreaCards />
 
       <section aria-labelledby="help-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
