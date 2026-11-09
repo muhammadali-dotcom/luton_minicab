@@ -11,7 +11,7 @@ const steps = [
 
 export function FleetSteps() {
   return (
-    <section aria-labelledby="fleet-steps-heading" className={`border-t border-border ${section}`}>
+    <section id="not-sure" aria-labelledby="fleet-steps-heading" className={`scroll-mt-20 border-t border-border ${section}`}>
       <div className={container}>
         <h2 id="fleet-steps-heading" className={`${h2} text-foreground`}>
           Not sure which car?

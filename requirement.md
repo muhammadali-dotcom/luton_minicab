@@ -74,7 +74,7 @@ Business brief, approved decisions and open items for **lutonminicab.com**. Keep
   - Executive 3/2/2
 - Don't invent capacities, luggage limits or vehicle availability.
 - **No car brands** (owner's decision, November 2026): vehicle pictures show no maker badges or names. Category names (Saloon, Estate, MPV6, MPV Plus, MPV7, Executive) stay, as they match the booker.
-- **Fleet page approved** (November 2026): /fleet is indexable. Hero (owner's reference, November 2026) "Your plans. Your people. Your kind of car." / "From everyday trips to family holidays and business travel, find a car that suits your journey.", Explore Our Cars and Call to Book, and Everyday journeys, Family & group trips, Business travel; then six cards (name, "Best for" label, line and Book Online), "Exact passenger and luggage limits are shown when you book. Pictures are examples, and the model may vary.", three "Not sure which car?" steps and three questions. No capacities until verified.
+- **Fleet page approved** (November 2026): /fleet is indexable. Hero (owner's reference, November 2026) "Your plans. Your people. Your kind of car." / "From everyday trips to family holidays and business travel, find a car that suits your journey.", Explore Our Cars and Call to Book, and Everyday journeys, Family & group trips, Business travel; then "Find your fit" section (owner's reference): heading "Six ways to make it your journey.", a Need help choosing button, six numbered vehicles each with a tagline, Book Online and "Example vehicle", and "Passenger and luggage limits are shown when booking. Vehicle models may vary.", three "Not sure which car?" steps and three questions. No capacities until verified.
 
 ## 7. Confirmed benefits (the only claims allowed)
 - Fixed fares
