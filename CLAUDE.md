@@ -106,7 +106,7 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
 - Verify UI changes in a real browser (Playwright, or Chrome DevTools) at 1440, 1024, 768 and 375 widths, with no horizontal overflow.
 
 ## Vehicles carousel
-- `Vehicles.tsx` is a client component with six illustrative cutouts from `public/brand/Charcoal*.png`, in Saloon, Estate, MPV6, MPV Plus, MPV7, Executive order. Maker badges (grille, bonnet, wheel caps, the saloon's HYBRID badge) are retouched out; the Mercedes and Toyota grille badges became plain dark plates. Untouched originals are in `assets/brand/fleet-original/`. Don't show car brands.
+- `Vehicles.tsx` is a client component with six illustrative cutouts, `public/brand/fleet-<id>.png`, in Saloon, Estate, MPV6, MPV Plus, MPV7, Executive order. Maker badges (grille, bonnet, wheel caps, the saloon's HYBRID badge) are retouched out; the Mercedes and Toyota grille badges became plain dark plates. Untouched originals (with badges, old `Charcoal*` names) are in `assets/brand/fleet-original/`. Don't show car brands.
 - Five-second rotation, 450ms transitions, desktop side previews, mobile swipe, arrows, dots, category selectors and pause/play. Hover, off-screen and hidden tabs suspend rotation; focus pauses until explicit restart. Reduced motion defaults to no autoplay and disables transitions.
 - No capacity figures or prices. Book Online opens the general external booker without vehicle preselection.
 - **Fleet page** (`src/app/fleet/page.tsx`): hero, `FleetCards` (six cards from `fleet`, each with an `id` anchor that the footer links to), `FleetSteps` and three questions in the homepage `Faq`. No capacities until the owner verifies them; add them to `fleet` in `site.ts` then.

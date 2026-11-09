@@ -129,12 +129,12 @@ export const areas: AreaEntry[] = [
 // categories, not guaranteed models. Capacities await verification.
 // `id` is the card's anchor on /fleet, used by the footer links.
 export const fleet = [
-  { id: "saloon", name: "Saloon", bestFor: "Just you, or two", text: "Everyday local trips and airport runs.", image: "Charcoal hybrid saloon minicab-4.png" },
-  { id: "estate", name: "Estate", bestFor: "Extra luggage", text: "Extra boot space for luggage.", image: "Charcoal estate wagon, front-left view-2.png" },
-  { id: "mpv6", name: "MPV6", bestFor: "Families and small groups", text: "More seats for families and small groups.", image: "Charcoal family MPV cutout-1.png" },
-  { id: "mpv-plus", name: "MPV Plus", bestFor: "Bigger groups and luggage", text: "Extra space for bigger groups and luggage.", image: "Charcoal long-wheelbase MPV cutout-6.png" },
-  { id: "mpv7", name: "MPV7", bestFor: "Families and groups", text: "Room for families and groups.", image: "Charcoal Caravelle-style minivan cutout-3.png" },
-  { id: "executive", name: "Executive", bestFor: "Business travel", text: "A more refined car for business travel.", image: "Charcoal executive saloon, three-quarter view-5.png" },
+  { id: "saloon", name: "Saloon", bestFor: "Just you, or two", text: "Everyday local trips and airport runs.", image: "fleet-saloon.png" },
+  { id: "estate", name: "Estate", bestFor: "Extra luggage", text: "Extra boot space for luggage.", image: "fleet-estate.png" },
+  { id: "mpv6", name: "MPV6", bestFor: "Families and small groups", text: "More seats for families and small groups.", image: "fleet-mpv6.png" },
+  { id: "mpv-plus", name: "MPV Plus", bestFor: "Bigger groups and luggage", text: "Extra space for bigger groups and luggage.", image: "fleet-mpv-plus.png" },
+  { id: "mpv7", name: "MPV7", bestFor: "Families and groups", text: "Room for families and groups.", image: "fleet-mpv7.png" },
+  { id: "executive", name: "Executive", bestFor: "Business travel", text: "A more refined car for business travel.", image: "fleet-executive.png" },
 ];
 
 // Each entry has a holding page at /services/[slug] until content is approved.
