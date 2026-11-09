@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import { Faq } from "@/components/Faq";
 import { FleetCards } from "@/components/FleetCards";
 import { FleetSteps } from "@/components/FleetSteps";
-import { PageHero, trustLocal } from "@/components/PageHero";
-import heroPhoto from "../../../public/brand/hero-photo.png";
+import { Briefcase, CarFront, Users } from "lucide-react";
+import { PageHero } from "@/components/PageHero";
+import heroPhoto from "../../../public/brand/fleet-hero.png";
+
+const uses = [
+  { label: "Everyday journeys", Icon: CarFront },
+  { label: "Family & group trips", Icon: Users },
+  { label: "Business travel", Icon: Briefcase },
+];
 
 export const metadata: Metadata = {
   title: "Our Fleet: Saloon, Estate, MPV & Executive",
@@ -27,13 +34,22 @@ export default function Page() {
   return (
     <main id="main" className="flex-1">
       <PageHero
-        tone="dark"
+        tone="light"
         image={heroPhoto}
-        alt="A driver opens the car door for a smiling passenger outside a brick house."
+        photoRight
+        alt="Three dark cars parked on a sunny forecourt outside a brick building."
         eyebrow="OUR FLEET"
-        heading="A car that fits your journey."
-        text="From everyday trips to family holidays and business travel, choose the car that suits you."
-        trust={trustLocal}
+        heading={
+          <>
+            <span className="block">Your plans.</span>
+            <span className="block">Your people.</span>
+            <span className="block">Your kind of car.</span>
+          </>
+        }
+        text="From everyday trips to family holidays and business travel, find a car that suits your journey."
+        primary={{ label: "Explore Our Cars", href: "#choose-your-car" }}
+        trust={uses}
+        trustStyle="stacked"
       />
       <FleetCards />
       <FleetSteps />

@@ -6,7 +6,11 @@ import { container, h2, section } from "./ui";
 // Pictures are category examples, not the real fleet. No capacities until the owner verifies them.
 export function FleetCards() {
   return (
-    <section aria-labelledby="fleet-cards-heading" className={`band-alt border-t border-border ${section}`}>
+    <section
+      id="choose-your-car"
+      aria-labelledby="fleet-cards-heading"
+      className={`scroll-mt-20 band-alt border-t border-border ${section}`}
+    >
       <div className={container}>
         <h2 id="fleet-cards-heading" className={`${h2} text-foreground`}>
           Choose your car
