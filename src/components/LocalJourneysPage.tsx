@@ -1,10 +1,11 @@
+import Image from "next/image";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { AirportLocalAreas } from "./AirportLocalAreas";
 import { DriverHelp } from "./DriverHelp";
-import { EverydayStreet } from "./EverydayStreet";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
 import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
+import everydayStreet from "../../public/brand/local-journeys-everyday.png";
 
 const everyday = [
   { title: "Shopping & errands", text: ["Room for your bags.", "A ride there and back."] },
@@ -38,7 +39,13 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
           <h2 id="everyday-heading" className={`${h2} mt-4 text-foreground`}>
             For the trips that fill your day.
           </h2>
-          <EverydayStreet />
+          {/* The owner's street illustration; its background is matched to the band-alt cream. */}
+          <Image
+            src={everydayStreet}
+            alt=""
+            sizes="(min-width: 1280px) 1120px, 100vw"
+            className="-mx-4 mt-10 w-[calc(100%+2rem)] max-w-none sm:mx-0 sm:w-full"
+          />
           {/* Four columns, each centred under its gold dot on the road (dots at about 14%, 38%, 61% and 86%). */}
           <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 text-center md:grid-cols-[26fr_23.5fr_24fr_26.5fr] md:gap-x-0">
             {everyday.map(({ title, text }) => (
