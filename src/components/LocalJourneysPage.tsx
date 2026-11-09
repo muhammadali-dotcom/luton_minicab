@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { LocalAreaCards } from "./LocalAreaCards";
+import { LutonPlaces } from "./LutonPlaces";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
 import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
@@ -66,6 +67,8 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
       </section>
 
       <LocalAreaCards />
+
+      <LutonPlaces />
     </main>
   );
 }
