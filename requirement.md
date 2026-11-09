@@ -73,6 +73,7 @@ Business brief, approved decisions and open items for **lutonminicab.com**. Keep
   - MPV7 6/4/4
   - Executive 3/2/2
 - Don't invent capacities, luggage limits or vehicle availability.
+- **No car brands** (owner's decision, November 2026): vehicle pictures show no maker badges or names. Category names (Saloon, Estate, MPV6, MPV Plus, MPV7, Executive) stay, as they match the booker.
 - **Fleet page approved** (November 2026): /fleet is indexable. Hero "A car that fits your journey.", six cards (name, "Best for" label, line and Book Online), "Exact passenger and luggage limits are shown when you book. Pictures are examples, and the model may vary.", three "Not sure which car?" steps and three questions. No capacities until verified.
 
 ## 7. Confirmed benefits (the only claims allowed)
