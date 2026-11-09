@@ -37,6 +37,7 @@ export default function Page() {
         tone="light"
         image={heroPhoto}
         photoRight
+        photoFrom="content"
         alt="Three dark cars parked on a sunny forecourt outside a brick building."
         eyebrow="OUR FLEET"
         heading={

@@ -129,7 +129,7 @@ Every page uses **`PageHero`** (`src/components/PageHero.tsx`) and the class con
   | Pages | Photo |
   |---|---|
   | Homepage, areas, /areas | `hero-photo` (dark) |
-  | /fleet | `fleet-hero` (light, `photoRight`) |
+  | /fleet | `fleet-hero` (light, `photoRight`, `photoFrom="content"`) |
   | Luton Airport | `airport-luton-terminal-hero` (light, `photoRight`, number plate blanked) |
   | /airports, short airport pages | `airport-luton-hero` (light, default fade; also the fallback) |
   | Other airports | `airport-<slug>-hero` (light, shared `photoFade` in `AirportPage.tsx`) |
