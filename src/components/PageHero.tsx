@@ -38,6 +38,8 @@ type Props = {
   photoRight?: boolean;
   // With photoRight: "content" starts the photo at the page content's left edge and covers
   // to the right edge, so a photo with a wide plain left side sits close to the text.
+  // Full-width photo: "content" lines the photo up so the text starts about 12% into it,
+  // keeping text on a plain left area of the photo at every desktop width.
   photoFrom?: "edge" | "content";
   // With photoRight: "narrow" fades only the photo's left edge from xl up, for photos with
   // people on the left (below xl the photo reaches the text, so it keeps the wide fade).
@@ -82,7 +84,9 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                   } ${
                     photoFrom === "content" ? "lg:left-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] lg:aspect-auto" : "lg:aspect-[7/4]"
                   }`
-                : "lg:inset-0 lg:aspect-auto"
+                : photoFrom === "content"
+                  ? "lg:inset-y-0 lg:right-0 lg:left-[calc((max(2.5rem,(100%-80rem)/2+2.5rem)-12%)/0.88)] lg:aspect-auto lg:[mask-image:linear-gradient(to_right,transparent,black_6%)]"
+                  : "lg:inset-0 lg:aspect-auto"
             }`}
           >
             <Image
@@ -92,7 +96,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               loading="eager"
               fetchPriority="high"
               sizes={photoRight ? "(min-width: 1024px) 70vw, 100vw" : "100vw"}
-              className={`object-cover ${photoRight && photoFrom === "content" ? "object-[68%_center] lg:object-[center_68%]" : "object-[68%_center]"}`}
+              className={`object-cover ${photoFrom === "content" ? "object-[68%_center] lg:object-[center_68%]" : "object-[68%_center]"}`}
             />
           </div>
           {!photoRight && (

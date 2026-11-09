@@ -4,6 +4,7 @@ import { AirportLocalAreas } from "./AirportLocalAreas";
 import { DriverHelp } from "./DriverHelp";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
+import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
 
 const everyday = [
   { title: "Shopping & errands", text: "Get there and back with your bags, without the bus.", Icon: ShoppingBag },
@@ -12,16 +13,19 @@ const everyday = [
   { title: "Evenings out", text: "Dinner, the cinema or a night with friends, and a ride home after.", Icon: Moon },
 ];
 
+// Covers only the text column on the photo's plain cream wall, so the street and car stay bright.
+const heroFade = "from-background/70 via-background/45 via-40% to-transparent to-55%";
+
 // The owner's own structure for this service, shorter than the shared ServicePage.
 export function LocalJourneysPage({ name, detail }: { name: string; detail: ServiceDetail }) {
   return (
     <main id="main" className="flex-1">
       <PageHero
         tone="light"
-        image={detail.image}
-        alt={detail.alt}
-        photoRight
-        photoMask="narrow"
+        image={heroPhoto}
+        alt="A dark estate car parked on a sunny high street, beside a cream wall, shopfronts and hanging flowers."
+        fade={heroFade}
+        photoFrom="content"
         eyebrow={name.toUpperCase()}
         heading={<span className="block text-balance">{detail.hero.heading}</span>}
         text={detail.hero.text}
