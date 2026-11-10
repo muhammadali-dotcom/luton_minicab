@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { serviceDetails } from "@/config/serviceDetails";
 import { services } from "@/config/site";
-import { container, h2, section } from "./ui";
-import airportPhoto from "../../public/brand/airport-luton.png";
+import { container, eyebrow, h2, section } from "./ui";
 
+// The five main services; Airport Transfers has its own banner on /services.
 const cards = [
   ...services.map(({ slug, name }) => ({
     name,
@@ -14,20 +14,14 @@ const cards = [
     alt: serviceDetails[slug].alt,
     text: serviceDetails[slug].cardText,
   })),
-  {
-    name: "Airport Transfers",
-    href: "/airports",
-    image: airportPhoto,
-    alt: "A dark saloon waiting at the kerb outside a glass airport terminal.",
-    text: "To and from all UK airports, with flight tracking.",
-  },
 ];
 
 export function ServiceCards() {
   return (
     <section id="services-list" aria-labelledby="services-list-heading" className={`scroll-mt-20 band-alt border-t border-border ${section}`}>
       <div className={container}>
-        <h2 id="services-list-heading" className={`${h2} text-foreground`}>
+        <p className={`${eyebrow} text-accent`}>OUR MAIN SERVICES</p>
+        <h2 id="services-list-heading" className={`${h2} mt-4 text-foreground`}>
           Choose your journey
         </h2>
         <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
