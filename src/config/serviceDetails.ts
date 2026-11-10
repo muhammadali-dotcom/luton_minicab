@@ -9,6 +9,7 @@ import longDistanceHero from "../../public/brand/services/long-distance-travel-h
 import schoolRuns from "../../public/brand/services/school-runs.png";
 import schoolRunsHero from "../../public/brand/services/school-runs-hero.png";
 import stationTransfers from "../../public/brand/services/station-transfers.png";
+import stationHotelHero from "../../public/brand/services/station-hotel-transfers-hero.png";
 
 export type ServiceDetail = {
   hero: { heading: string; text: string };
@@ -170,10 +171,17 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "station-hotel-transfers": {
     hero: {
-      heading: "Smooth connections, door to door.",
-      text: "Rides to and from stations and hotels, with time to spare.",
+      heading: "Your next stop, made easy.",
+      text: "From station platforms to hotel doors, arrange your ride and enjoy the rest of your journey.",
     },
     trust: [doorToDoor, fixedFares, allHours],
+    heroPhoto: {
+      image: stationHotelHero,
+      alt: "A dark estate car parked outside a station entrance with a glass canopy, beside a hotel.",
+      // Two lines, as in the owner's reference, so it stays on the wall.
+      headingWidth: "max-w-[8.5em]",
+      fade: "from-background/88 via-background/65 via-40% to-transparent to-55%",
+    },
     image: stationTransfers,
     alt: "A passenger with a suitcase walks towards a waiting car outside a railway station.",
     cardText: "Rides to and from stations and hotels, with time to spare.",
