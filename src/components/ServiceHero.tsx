@@ -24,7 +24,7 @@ export function ServiceHero({ name, detail }: { name: string; detail: ServiceDet
           }
         : { image: detail.image, alt: detail.alt, photoRight: true, photoMask: "narrow" as const })}
       eyebrow={name.toUpperCase()}
-      heading={<span className="block text-balance">{detail.hero.heading}</span>}
+      heading={<span className={`block text-balance ${photo?.headingWidth ?? ""}`}>{detail.hero.heading}</span>}
       text={detail.hero.text}
       secondary={whatsapp ? { label: "Discuss on WhatsApp", href: whatsapp } : undefined}
       trust={detail.trust}

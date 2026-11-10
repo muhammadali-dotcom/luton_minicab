@@ -5,6 +5,7 @@ import corporateTravelHero from "../../public/brand/services/corporate-travel-he
 import localJourneys from "../../public/brand/services/local-journeys.png";
 import localJourneysHero from "../../public/brand/services/local-journeys-hero.png";
 import longDistanceTravel from "../../public/brand/services/long-distance-travel.png";
+import longDistanceHero from "../../public/brand/services/long-distance-travel-hero.png";
 import schoolRuns from "../../public/brand/services/school-runs.png";
 import schoolRunsHero from "../../public/brand/services/school-runs-hero.png";
 import stationTransfers from "../../public/brand/services/station-transfers.png";
@@ -16,7 +17,8 @@ export type ServiceDetail = {
   // Wall-style hero photo (cream wall on the left, scene on the right), used full width by
   // ServiceHero. Without one, the hero shows `image` on the right until the photo arrives.
   // `fade` covers only the text column: tune it so every hero text line stays at 4.5:1.
-  heroPhoto?: { image: StaticImageData; alt: string; fade: string };
+  // `headingWidth` narrows the heading (e.g. "max-w-[7.5em]") when the photo's wall is narrow.
+  heroPhoto?: { image: StaticImageData; alt: string; fade: string; headingWidth?: string };
   // School Runs: the hero's second button is "Discuss on WhatsApp" instead of Call to Book.
   whatsappSecond?: boolean;
   // Card photo on /services, and the hero photo until `heroPhoto` is set.
@@ -130,10 +132,17 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "long-distance-travel": {
     hero: {
-      heading: "Further afield? Sit back.",
-      text: "A comfortable ride for longer journeys, from your door to theirs.",
+      heading: "Going further? Make yourself comfortable.",
+      text: "From your door to your destination, settle in and leave the driving to us.",
     },
     trust: [doorToDoor, fixedFares, planAhead],
+    heroPhoto: {
+      image: longDistanceHero,
+      alt: "A dark estate car parked beside a stone cottage on a country road, with rolling hills behind.",
+      // Three lines, as in the owner's reference, so it stays on the cottage wall.
+      headingWidth: "max-w-[7.5em]",
+      fade: "from-background/88 via-background/65 via-40% to-transparent to-55%",
+    },
     image: longDistanceTravel,
     alt: "A couple with a suitcase beside a dark saloon on a country road, with green hills behind.",
     cardText: "Longer journeys beyond Luton, from door to door.",
