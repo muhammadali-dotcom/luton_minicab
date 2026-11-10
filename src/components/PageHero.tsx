@@ -50,6 +50,9 @@ type Props = {
   primary?: { label: string; href: string };
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
+  // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
+  // that keeps the subject in view (default "object-[68%_center]").
+  mobilePhotoPosition?: string;
 };
 
 const actionClass =
@@ -61,7 +64,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide" }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]" }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -96,7 +99,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               loading="eager"
               fetchPriority="high"
               sizes={photoRight ? "(min-width: 1024px) 70vw, 100vw" : "100vw"}
-              className={`object-cover ${photoFrom === "content" ? "object-[68%_center] lg:object-[center_68%]" : "object-[68%_center]"}`}
+              className={`object-cover ${mobilePhotoPosition} ${photoFrom === "content" ? "lg:object-[center_68%]" : "lg:object-[68%_center]"}`}
             />
           </div>
           {!photoRight && (
