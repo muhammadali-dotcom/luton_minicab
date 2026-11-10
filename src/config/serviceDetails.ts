@@ -1,6 +1,7 @@
 import type { StaticImageData } from "next/image";
 import { CalendarCheck, CalendarDays, Car, Clock, DoorOpen, PoundSterling, Wallet, type LucideIcon } from "lucide-react";
 import corporateTravel from "../../public/brand/services/corporate-travel.png";
+import corporateTravelHero from "../../public/brand/services/corporate-travel-hero.png";
 import localJourneys from "../../public/brand/services/local-journeys.png";
 import localJourneysHero from "../../public/brand/services/local-journeys-hero.png";
 import longDistanceTravel from "../../public/brand/services/long-distance-travel.png";
@@ -97,9 +98,14 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "corporate-travel": {
     hero: {
       heading: "Arrive ready for business.",
-      text: "Comfortable rides to meetings, offices and events, booked one journey at a time.",
+      text: "From office meetings to business events, arrange your ride and focus on your day.",
     },
     trust: [fixedFares, allHours, { label: "Pay per journey", Icon: Wallet }],
+    heroPhoto: {
+      image: corporateTravelHero,
+      alt: "A dark saloon parked outside a modern office entrance on a sunny day.",
+      fade: "from-background/88 via-background/65 via-40% to-transparent to-55%",
+    },
     image: corporateTravel,
     alt: "A driver opens the car door for a businessman outside an office building.",
     cardText: "Rides to meetings, offices and events, paid per journey.",
