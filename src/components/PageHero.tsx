@@ -48,13 +48,19 @@ type Props = {
   compact?: boolean;
   // Replaces Book Online with an on-page link (with a down arrow); Call to Book stays.
   primary?: { label: string; href: string };
-  // Replaces Call to Book with an outlined outside link, e.g. "Discuss on WhatsApp".
-  secondary?: { label: string; href: string };
+  // Replaces Call to Book with an outlined link: "whatsapp" (default) shows a chat icon before
+  // the label, "down" an arrow after it for an on-page jump (e.g. "Explore Services").
+  secondary?: { label: string; href: string; icon?: "whatsapp" | "down" };
+  // Short line under the buttons, used in place of a trust row.
+  note?: string;
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
   // that keeps the subject in view (default "object-[68%_center]").
   mobilePhotoPosition?: string;
+  // From lg with photoFrom "content": the photo's object-position (default "lg:object-[center_68%]").
+  // A lower value shows more of the top, moving a car that sits further left below the text.
+  desktopPhotoPosition?: string;
 };
 
 const actionClass =
@@ -66,7 +72,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", secondary }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", secondary, note }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -101,7 +107,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               loading="eager"
               fetchPriority="high"
               sizes={photoRight ? "(min-width: 1024px) 70vw, 100vw" : "100vw"}
-              className={`object-cover ${mobilePhotoPosition} ${photoFrom === "content" ? "lg:object-[center_68%]" : "lg:object-[68%_center]"}`}
+              className={`object-cover ${mobilePhotoPosition} ${photoFrom === "content" ? desktopPhotoPosition : "lg:object-[68%_center]"}`}
             />
           </div>
           {!photoRight && (
@@ -146,8 +152,9 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                         dark ? "border-background text-background hover:bg-background/10" : "border-input text-foreground hover:border-foreground hover:bg-tint"
                       }`}
                     >
-                      <MessageCircle aria-hidden size={18} strokeWidth={1.75} />
+                      {secondary.icon !== "down" && <MessageCircle aria-hidden size={18} strokeWidth={1.75} />}
                       {secondary.label}
+                      {secondary.icon === "down" && <ArrowDown aria-hidden size={18} />}
                     </a>
                   ) : (
                     <CallToBook onDark={dark} size="lg" />
@@ -155,6 +162,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                 </>
               )}
             </div>
+            {note && <p className="mt-6 text-base">{note}</p>}
             {trust && trustStyle === "stacked" && (
               <ul className="mt-9 grid max-w-md grid-cols-3 gap-3 text-base">
                 {trust.map(({ label, Icon }) => (

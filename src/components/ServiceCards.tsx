@@ -25,7 +25,7 @@ const cards = [
 
 export function ServiceCards() {
   return (
-    <section aria-labelledby="services-list-heading" className={`band-alt border-t border-border ${section}`}>
+    <section id="services-list" aria-labelledby="services-list-heading" className={`scroll-mt-20 band-alt border-t border-border ${section}`}>
       <div className={container}>
         <h2 id="services-list-heading" className={`${h2} text-foreground`}>
           Choose your journey

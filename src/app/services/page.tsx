@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { PageHero, trustLocal } from "@/components/PageHero";
+import { PageHero } from "@/components/PageHero";
 import { ServiceCards } from "@/components/ServiceCards";
-import heroPhoto from "../../../public/brand/hero-photo.png";
+import heroPhoto from "../../../public/brand/services/services-hero.png";
 
 export const metadata: Metadata = {
   title: "Taxi & Minicab Services",
@@ -12,15 +12,20 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      {/* The owner's wall-style photo, set up like the service pages (no car badges to retouch). */}
       <PageHero
-        tone="dark"
+        tone="light"
         image={heroPhoto}
-        alt="A driver opens the car door for a smiling passenger outside a brick house."
+        alt="A dark estate car with its rear door open, parked outside a limestone house with a green front door."
+        fade="from-background/88 via-background/65 via-40% to-transparent to-55%"
+        photoFrom="content"
+        mobilePhotoPosition="object-[96%_center]"
+        desktopPhotoPosition="lg:object-[center_55%]"
         eyebrow="OUR SERVICES"
-        heading="Here for every part of your day."
-        text="From school runs to airport trips, pick the journey you need."
-        trust={trustLocal}
-        compact
+        heading={<span className="block text-balance">Whatever’s planned, your ride starts here.</span>}
+        text="Local trips, school runs and journeys further afield. Find the service that fits your plans."
+        secondary={{ label: "Explore Services", href: "#services-list", icon: "down" }}
+        note="Your journey. Your choice."
       />
       <ServiceCards />
     </main>
