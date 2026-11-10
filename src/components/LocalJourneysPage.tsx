@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
-import { DriverHelp } from "./DriverHelp";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { PageHero, trustLocal } from "./PageHero";
 import { container, eyebrow, h2, section } from "./ui";
@@ -121,19 +120,6 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
       </section>
 
       <LocalAreaCards />
-
-      {/* A slim strip rather than a full section, just before the booking banner. */}
-      <section aria-labelledby="help-heading" className="band-alt border-t border-border py-10 sm:py-12">
-        <div className={container}>
-          <DriverHelp
-            heading="Extra bags or a return trip?"
-            headingId="help-heading"
-            level="h2"
-            divider={false}
-            text="Just tell us when you book, or message us first."
-          />
-        </div>
-      </section>
     </main>
   );
 }

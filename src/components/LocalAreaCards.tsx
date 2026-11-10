@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, MessageCircle, Phone } from "lucide-react";
 import { areas, site } from "@/config/site";
 import { container, eyebrow, h2, section } from "./ui";
 
@@ -14,6 +14,9 @@ const places: Record<string, string> = {
 };
 
 const localAreas = areas.filter((a) => a.slug in places);
+
+const buttonClass =
+  "inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-control px-6 text-base font-semibold transition-colors";
 
 // Local Journeys only: the six local areas as cards. Luton Airport keeps AirportLocalAreas.
 export function LocalAreaCards() {
@@ -51,19 +54,31 @@ export function LocalAreaCards() {
           ))}
         </ul>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-            <p className="text-[1.125rem] text-foreground">Don’t see your area? Just ask.</p>
-            <a
-              href={site.phone ? `tel:${site.phone.replace(/\s+/g, "")}` : "/contact"}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 self-start rounded-control border border-input px-6 text-base font-semibold text-foreground transition-colors hover:border-foreground hover:bg-tint"
-            >
-              Ask about your area
-            </a>
+        {/* One help row (merged from the old help strip), then straight into the booking banner. */}
+        <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
+            <p className="text-[1.125rem] text-foreground">Don’t see your area? Extra bags or a return trip? Just ask.</p>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              {site.phone && (
+                <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className={`${buttonClass} bg-primary text-primary-foreground hover:bg-primary-hover`}>
+                  <Phone aria-hidden size={16} strokeWidth={1.75} />
+                  Call us
+                </a>
+              )}
+              {site.whatsapp && (
+                <a
+                  href={`https://wa.me/${site.whatsapp}`}
+                  className={`${buttonClass} border border-input text-foreground hover:border-foreground hover:bg-tint`}
+                >
+                  <MessageCircle aria-hidden size={16} strokeWidth={1.75} />
+                  WhatsApp us
+                </a>
+              )}
+            </div>
           </div>
-          <Link
+        <Link
             href="/areas"
-            className="inline-flex min-h-[44px] items-center gap-2 self-start font-semibold text-foreground underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2 sm:self-auto"
+            className="inline-flex min-h-[44px] shrink-0 items-center gap-2 self-start font-semibold text-foreground underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2 lg:self-auto"
           >
             View All Areas
             <ArrowRight aria-hidden size={18} />
