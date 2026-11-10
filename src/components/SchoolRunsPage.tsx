@@ -1,16 +1,30 @@
-import { Baby, Clock, HeartHandshake, House, PoundSterling, School, ShieldCheck, Sunrise, Wallet } from "lucide-react";
+import Image from "next/image";
+import { Baby, Clock, HeartHandshake, PoundSterling, ShieldCheck, Wallet } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { ContactButtons, LocalAreaCards } from "./LocalAreaCards";
 import { ServiceHero } from "./ServiceHero";
 import { container, eyebrow, h2, section } from "./ui";
+import bag from "../../public/brand/school-day-bag.png";
+import home from "../../public/brand/school-day-home.png";
+import morning from "../../public/brand/school-day-morning.png";
 
 // Confirmed facts only: no school names, contracts, regular plans, escorts, wheelchair access,
 // medical care or prices. Each school journey is booked on its own.
-const day = [
-  { title: "Morning pickup", text: "We collect from your door at the time you book.", Icon: Sunrise },
-  { title: "At the school gate", text: "Dropped off and ready for the day.", Icon: School },
-  { title: "Home time", text: "Book the ride home too, for an easy end to the day.", Icon: House },
+// The owner's two illustrations (badges on the cars retouched out), background matched to band-alt.
+const journeys = [
+  {
+    label: "THE MORNING JOURNEY",
+    title: "Off to school",
+    text: "Arrange a pickup from home for the journey to school.",
+    image: morning,
+  },
+  {
+    label: "THE JOURNEY HOME",
+    title: "Heading home",
+    text: "Book the return journey for the end of the school day.",
+    image: home,
+  },
 ];
 
 const reassurances = [
@@ -33,26 +47,24 @@ export function SchoolRunsPage({ name, detail }: { name: string; detail: Service
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>THE SCHOOL DAY</p>
           <h2 id="school-day-heading" className={`${h2} mt-4 text-foreground`}>
-            Door to school gate, and home again.
+            To school and home again.
           </h2>
-          {/* A dashed road joins the three stops: across on wider screens, down on phones. */}
-          <ol className="relative mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
-            <span
-              aria-hidden
-              className="absolute top-7 bottom-7 left-7 border-l-2 border-dashed border-road/50 md:top-7 md:right-[16.67%] md:bottom-auto md:left-[16.67%] md:border-t-2 md:border-l-0"
-            />
-            {day.map(({ title, text, Icon }) => (
-              <li key={title} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
-                <span className={`${iconCircle} ring-8 ring-alt`}>
-                  <Icon aria-hidden size={26} strokeWidth={1.5} />
-                </span>
-                <div className="md:mt-5">
-                  <h3 className={h3}>{title}</h3>
-                  <p className="mt-2 max-w-xs text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
+          <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-0">
+            {journeys.map(({ label, title, text, image }, i) => (
+              <article key={title} className={i === 1 ? "md:border-l md:border-border md:pl-8 lg:pl-10" : "md:pr-8 lg:pr-10"}>
+                <Image src={image} alt="" sizes="(min-width: 768px) 50vw, 100vw" className="h-auto w-full" />
+                <p className={`${eyebrow} mt-6 text-accent`}>{label}</p>
+                <div className="mt-2 flex items-end justify-between gap-4">
+                  <h3 className="font-display text-[clamp(1.875rem,3vw,2.5rem)] font-semibold leading-tight text-foreground">
+                    {title}
+                  </h3>
+                  {i === 1 && <Image src={bag} alt="" sizes="120px" className="hidden h-auto w-[7.5rem] shrink-0 sm:block" />}
                 </div>
-              </li>
+                <p className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
+              </article>
             ))}
-          </ol>
+          </div>
+          <p className="mt-10 text-center text-[1.125rem] text-foreground">Arrange each journey in advance.</p>
         </div>
       </section>
 
