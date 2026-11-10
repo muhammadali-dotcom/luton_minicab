@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Baby, Clock, HeartHandshake, PoundSterling, ShieldCheck, Wallet } from "lucide-react";
+import { Baby, CalendarClock, Clock, HeartHandshake, MapPin, MessageCircleMore, PoundSterling, School, ShieldCheck, Wallet } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { ContactButtons, LocalAreaCards } from "./LocalAreaCards";
@@ -25,6 +25,15 @@ const journeys = [
     text: "Book the return journey for the end of the school day.",
     image: home,
   },
+];
+
+// What to have ready when booking (owner's reference). "Any other needs" rather than
+// "additional needs", so the SEND wording stays the approved line only.
+const details = [
+  { title: "Pickup address", text: "Where should we collect from?", Icon: MapPin },
+  { title: "School or college", text: "Tell us the name and drop-off location.", Icon: School },
+  { title: "Dates and times", text: "Include the pickup time and any return journey.", Icon: CalendarClock },
+  { title: "Anything else?", text: "Let us know about child seats or any other needs.", Icon: MessageCircleMore },
 ];
 
 const reassurances = [
@@ -106,26 +115,35 @@ export function SchoolRunsPage({ name, detail }: { name: string; detail: Service
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>HOW TO BOOK</p>
           <h2 id="book-heading" className={`${h2} mt-4 text-foreground`}>
-            Three simple steps.
+            Let’s plan your school run.
           </h2>
-          <ol className="mt-10 grid gap-8 md:grid-cols-3">
-            {detail.steps.map(({ title, text }, i) => (
-              <li key={title} className="flex gap-4 md:flex-col">
-                <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary font-display text-2xl font-semibold text-primary-foreground">
-                  {i + 1}
+          <p className="mt-3 text-[1.125rem] text-foreground">Have these details ready, and we’ll help you arrange the journey.</p>
+          {/* Four details in a 2 x 2 grid with rules between the rows, as in the owner's reference. */}
+          <ul className="mt-8 grid md:grid-cols-2 md:gap-x-12">
+            {details.map(({ title, text, Icon }, i) => (
+              <li key={title} className={`flex gap-6 border-b border-primary/50 py-7 ${i >= 2 ? "md:border-b-0" : ""} ${i === 3 ? "border-b-0" : ""}`}>
+                {/* Line icon over a soft gold circle, set up and to the left. */}
+                <span aria-hidden className="relative flex size-16 shrink-0 items-center justify-center">
+                  <span className="absolute top-0 left-0 size-11 rounded-full bg-primary/35" />
+                  <Icon size={44} strokeWidth={1.5} className="relative text-foreground" />
                 </span>
                 <div>
-                  <h3 className={h3}>{title}</h3>
-                  <p className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
+                  <h3 className="font-display text-[clamp(1.5rem,2.4vw,1.875rem)] font-semibold leading-tight text-foreground">
+                    {title}
+                  </h3>
+                  <p className="mt-1 text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
                 </div>
               </li>
             ))}
-          </ol>
-          <div className="mt-10 flex flex-col gap-5 border-t border-border pt-8 lg:flex-row lg:items-center lg:justify-between">
-            <p className="text-[1.125rem] font-semibold text-foreground">Ready to book a school run?</p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <BookOnlineLink arrow />
-              <ContactButtons outline />
+          </ul>
+          <div className="mt-2 flex flex-col gap-5 border-t border-primary/50 pt-8 lg:flex-row lg:items-start lg:justify-between">
+            <p className="text-[1.25rem] text-foreground lg:mt-2">Ready to arrange the journey?</p>
+            <div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <BookOnlineLink arrow />
+                <ContactButtons outline />
+              </div>
+              <p className="mt-3 text-base text-foreground">We’ll confirm the journey details and fare with you.</p>
             </div>
           </div>
         </div>
