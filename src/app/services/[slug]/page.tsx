@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CorporateTravelPage } from "@/components/CorporateTravelPage";
 import { LocalJourneysPage } from "@/components/LocalJourneysPage";
 import { SchoolRunsPage } from "@/components/SchoolRunsPage";
 import { StationHotelPage } from "@/components/StationHotelPage";
@@ -36,5 +37,6 @@ async function Content({ params }: { params: PageProps<"/services/[slug]">["para
   if (slug === "local-journeys") return <LocalJourneysPage name={title} detail={serviceDetails[slug]} />;
   if (slug === "school-runs") return <SchoolRunsPage name={title} detail={serviceDetails[slug]} />;
   if (slug === "station-hotel-transfers") return <StationHotelPage name={title} detail={serviceDetails[slug]} />;
+  if (slug === "corporate-travel") return <CorporateTravelPage name={title} detail={serviceDetails[slug]} />;
   return <ServicePage slug={slug} name={title} detail={serviceDetails[slug]} />;
 }
