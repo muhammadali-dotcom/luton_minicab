@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { FinalCta } from "@/components/FinalCta";
+import { HideOnPaths } from "@/components/HideOnPaths";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
@@ -38,7 +39,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SiteHeader />
         {children}
-        <FinalCta />
+        {/* The owner removed the banner from /services, which ends with its own FAQs. */}
+        <HideOnPaths paths={["/services"]}>
+          <FinalCta />
+        </HideOnPaths>
         <SiteFooter />
       </body>
     </html>

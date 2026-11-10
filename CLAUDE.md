@@ -58,7 +58,7 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
   - `areas` in `site.ts` (slug, name, heading, intro) drives the nav dropdown, the homepage list, `/areas` (overview) and `/areas/[slug]` (`AreaPage.tsx`). They're indexable.
   - Dynamic `[slug]` pages read `params` inside `<Suspense>` (required under Cache Components). Unknown slugs therefore stream the 404 page with `noindex` and HTTP 200, which is documented behaviour.
 - **Areas section** (`Areas.tsx`): nine areas, each linking to its own page, and an illustration at `public/brand/areas-illustration.png`, whose background is matched to the band-alt cream (original in `assets/brand/areas-illustration-original.png`).
-- **Booking banner** (`FinalCta.tsx`): rendered once in `layout.tsx` above the footer, so it's on every page. Don't add it to individual pages.
+- **Booking banner** (`FinalCta.tsx`): rendered once in `layout.tsx` above the footer, so it's on every page except those listed in its `HideOnPaths` wrapper (currently `/services`, at the owner's request). Don't add it to individual pages.
 - **Footer** (`SiteFooter.tsx`; street art is `public/brand/footer-street.png`, cropped from the owner's reference `assets/brand/footer-reference.png`; the earlier SVG version is in `assets/legacy/FooterStreet.tsx`):
   - Five link columns built from `site.ts`. The contact icons become `tel:`/`wa.me`/`mailto:` links only once their values are set.
   - "Powered by MyCabify" links to https://mycabify.com.
