@@ -91,7 +91,7 @@ export function Services() {
             Here for every part of your day.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
-            From everyday errands to journeys further afield, we&rsquo;re here to help.
+            Whether you’re going down the street or across the world, we’re with you.
           </p>
         </div>
 
