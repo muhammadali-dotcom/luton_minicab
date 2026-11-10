@@ -7,6 +7,7 @@ type Props = {
   onDark?: boolean;
   // Larger button, used in the photo hero.
   size?: "md" | "lg";
+  label?: string;
 };
 
 const baseClass =
@@ -17,7 +18,7 @@ const sizes = {
   lg: "min-h-13 px-7 text-[1.0625rem]",
 };
 
-export function CallToBook({ onDark = false, size = "md" }: Props) {
+export function CallToBook({ onDark = false, size = "md", label = "Call to Book" }: Props) {
   const noteId = useId();
   const toneClass = `${sizes[size]} ${onDark ? "border-background text-background" : "border-input text-foreground"}`;
 
@@ -28,7 +29,7 @@ export function CallToBook({ onDark = false, size = "md" }: Props) {
         className={`${baseClass} ${toneClass} transition-colors ${onDark ? "hover:bg-background/10" : "hover:border-foreground hover:bg-tint"}`}
       >
         <Phone aria-hidden size={size === "lg" ? 18 : 16} strokeWidth={1.75} />
-        Call to Book
+        {label}
       </a>
     );
   }
@@ -42,7 +43,7 @@ export function CallToBook({ onDark = false, size = "md" }: Props) {
         className={`${baseClass} ${toneClass} cursor-not-allowed`}
       >
         <Phone aria-hidden size={size === "lg" ? 18 : 16} strokeWidth={1.75} />
-        Call to Book
+        {label}
       </span>
       <span id={noteId} className={`text-xs ${onDark ? "text-background/75" : "text-foreground/80"}`}>
         [Placeholder: phone number to be added]

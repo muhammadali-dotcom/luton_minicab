@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowDown, Clock, PlaneLanding, PoundSterling, ShieldCheck, Handshake, type LucideIcon } from "lucide-react";
+import { ArrowDown, ArrowRight, Clock, PlaneLanding, PoundSterling, ShieldCheck, Handshake, type LucideIcon } from "lucide-react";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { CallToBook } from "./CallToBook";
 import { container, eyebrow as eyebrowClass, h1, lead } from "./ui";
@@ -46,8 +46,11 @@ type Props = {
   photoMask?: "wide" | "narrow";
   // Shorter hero, for pages where visitors need to reach a choice quickly.
   compact?: boolean;
-  // Replaces Book Online with an on-page link (with a down arrow); Call to Book stays.
-  primary?: { label: string; href: string };
+  // Replaces Book Online with another link: an on-page jump (down arrow, the default) or,
+  // with arrow "right", an outside link such as WhatsApp. Call to Book stays.
+  primary?: { label: string; href: string; arrow?: "down" | "right" };
+  // Label for the call button (default "Call to Book").
+  callLabel?: string;
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
@@ -64,7 +67,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]" }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", callLabel }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -132,12 +135,12 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                   {primary ? (
                     <a href={primary.href} className={`${actionClass} gap-2`}>
                       {primary.label}
-                      <ArrowDown aria-hidden size={18} />
+                      {primary.arrow === "right" ? <ArrowRight aria-hidden size={18} /> : <ArrowDown aria-hidden size={18} />}
                     </a>
                   ) : (
                     <BookOnlineLink arrow size="lg" />
                   )}
-                  <CallToBook onDark={dark} size="lg" />
+                  <CallToBook onDark={dark} size="lg" label={callLabel} />
                 </>
               )}
             </div>

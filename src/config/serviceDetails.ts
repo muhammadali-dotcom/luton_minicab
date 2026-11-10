@@ -34,8 +34,8 @@ const steps = [
 export const serviceDetails: Record<string, ServiceDetail> = {
   "school-runs": {
     hero: {
-      heading: "A calm start to the school day.",
-      text: "Friendly, DBS-checked drivers for the journey to school and home again.",
+      heading: "A little less rush. Every school day.",
+      text: "Plan the journey to school and home again. Book each school run online, or speak to us first.",
     },
     image: schoolRuns,
     alt: "A driver opens the car door for a smiling mother and her son in school uniform.",
