@@ -1,24 +1,12 @@
-import { Baby, CalendarCheck, CalendarDays, Car, Clock, HeartHandshake, House, PoundSterling, School, ShieldCheck, Sunrise, Wallet } from "lucide-react";
+import { Baby, Clock, HeartHandshake, House, PoundSterling, School, ShieldCheck, Sunrise, Wallet } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
-import { site } from "@/config/site";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { ContactButtons, LocalAreaCards } from "./LocalAreaCards";
-import { PageHero } from "./PageHero";
+import { ServiceHero } from "./ServiceHero";
 import { container, eyebrow, h2, section } from "./ui";
-import heroPhoto from "../../public/brand/services/school-runs-hero.png";
 
 // Confirmed facts only: no school names, contracts, regular plans, escorts, wheelchair access,
 // medical care or prices. Each school journey is booked on its own.
-// Hero trust row from the owner's reference, worded for journeys booked one at a time.
-const trustSchool = [
-  { label: "Morning runs", Icon: CalendarDays },
-  { label: "Home time pickups", Icon: Car },
-  { label: "Plan ahead", Icon: CalendarCheck },
-];
-
-// Covers only the text column on the photo's plain cream wall, so the gate and car stay bright.
-const heroFade = "from-background/82 via-background/60 via-40% to-transparent to-55%";
-
 const day = [
   { title: "Morning pickup", text: "We collect from your door at the time you book.", Icon: Sunrise },
   { title: "At the school gate", text: "Dropped off and ready for the day.", Icon: School },
@@ -39,20 +27,7 @@ const h3 = "font-display text-[1.375rem] font-semibold leading-tight text-foregr
 export function SchoolRunsPage({ name, detail }: { name: string; detail: ServiceDetail }) {
   return (
     <main id="main" className="flex-1">
-      <PageHero
-        tone="light"
-        image={heroPhoto}
-        alt="A dark estate car parked outside a school gate on a sunny, tree-lined street."
-        fade={heroFade}
-        photoFrom="content"
-        mobilePhotoPosition="object-[96%_center]"
-        eyebrow={name.toUpperCase()}
-        heading={<span className="block text-balance">{detail.hero.heading}</span>}
-        text={detail.hero.text}
-        primary={site.whatsapp ? { label: "Discuss your school run", href: `https://wa.me/${site.whatsapp}`, arrow: "right" } : undefined}
-        callLabel="Call us"
-        trust={trustSchool}
-      />
+      <ServiceHero name={name} detail={detail} />
 
       <section aria-labelledby="school-day-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>

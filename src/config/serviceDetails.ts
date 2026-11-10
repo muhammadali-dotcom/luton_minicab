@@ -1,12 +1,24 @@
 import type { StaticImageData } from "next/image";
+import { CalendarCheck, CalendarDays, Car, Clock, DoorOpen, PoundSterling, Wallet, type LucideIcon } from "lucide-react";
 import corporateTravel from "../../public/brand/services/corporate-travel.png";
 import localJourneys from "../../public/brand/services/local-journeys.png";
+import localJourneysHero from "../../public/brand/services/local-journeys-hero.png";
 import longDistanceTravel from "../../public/brand/services/long-distance-travel.png";
 import schoolRuns from "../../public/brand/services/school-runs.png";
+import schoolRunsHero from "../../public/brand/services/school-runs-hero.png";
 import stationTransfers from "../../public/brand/services/station-transfers.png";
 
 export type ServiceDetail = {
   hero: { heading: string; text: string };
+  // The hero's trust row, picked by the owner for each service (confirmed facts only).
+  trust: { label: string; Icon: LucideIcon }[];
+  // Wall-style hero photo (cream wall on the left, scene on the right), used full width by
+  // ServiceHero. Without one, the hero shows `image` on the right until the photo arrives.
+  // `fade` covers only the text column: tune it so every hero text line stays at 4.5:1.
+  heroPhoto?: { image: StaticImageData; alt: string; fade: string };
+  // School Runs: the hero's second button is "Discuss on WhatsApp" instead of Call to Book.
+  whatsappSecond?: boolean;
+  // Card photo on /services, and the hero photo until `heroPhoto` is set.
   image: StaticImageData;
   alt: string;
   // Line for this service's card on /services.
@@ -15,6 +27,11 @@ export type ServiceDetail = {
   steps: { title: string; text: string }[];
   faqs: { q: string; a: string }[];
 };
+
+const fixedFares = { label: "Fixed fares", Icon: PoundSterling };
+const allHours = { label: "Available 24/7", Icon: Clock };
+const doorToDoor = { label: "Door to door", Icon: DoorOpen };
+const planAhead = { label: "Plan ahead", Icon: CalendarCheck };
 
 // Only confirmed facts (requirement.md): no prices, distances, contracts, accounts,
 // minibuses, wheelchair access, escorts or medical care.
@@ -37,6 +54,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       heading: "A little less rush. Every school day.",
       text: "Plan the journey to school and home again. Book each school run online, or speak to us first.",
     },
+    trust: [{ label: "Morning runs", Icon: CalendarDays }, { label: "Home time pickups", Icon: Car }, planAhead],
+    heroPhoto: {
+      image: schoolRunsHero,
+      alt: "A dark estate car parked outside a school gate on a sunny, tree-lined street.",
+      fade: "from-background/82 via-background/60 via-40% to-transparent to-55%",
+    },
+    whatsappSecond: true,
     image: schoolRuns,
     alt: "A driver opens the car door for a smiling mother and her son in school uniform.",
     cardText: "Rides to school and home again, with DBS-checked drivers.",
@@ -75,6 +99,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       heading: "Arrive ready for business.",
       text: "Comfortable rides to meetings, offices and events, booked one journey at a time.",
     },
+    trust: [fixedFares, allHours, { label: "Pay per journey", Icon: Wallet }],
     image: corporateTravel,
     alt: "A driver opens the car door for a businessman outside an office building.",
     cardText: "Rides to meetings, offices and events, paid per journey.",
@@ -102,6 +127,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       heading: "Further afield? Sit back.",
       text: "A comfortable ride for longer journeys, from your door to theirs.",
     },
+    trust: [doorToDoor, fixedFares, planAhead],
     image: longDistanceTravel,
     alt: "A couple with a suitcase beside a dark saloon on a country road, with green hills behind.",
     cardText: "Longer journeys beyond Luton, from door to door.",
@@ -132,6 +158,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       heading: "Smooth connections, door to door.",
       text: "Rides to and from stations and hotels, with time to spare.",
     },
+    trust: [doorToDoor, fixedFares, allHours],
     image: stationTransfers,
     alt: "A passenger with a suitcase walks towards a waiting car outside a railway station.",
     cardText: "Rides to and from stations and hotels, with time to spare.",
@@ -158,6 +185,12 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     hero: {
       heading: "Your everyday plans. A ride away.",
       text: "Trips to the shops, appointments or someone special. We’ll help you get there.",
+    },
+    trust: [doorToDoor, fixedFares, allHours],
+    heroPhoto: {
+      image: localJourneysHero,
+      alt: "A dark estate car parked on a sunny high street, beside a cream wall, shopfronts and hanging flowers.",
+      fade: "from-background/70 via-background/45 via-40% to-transparent to-55%",
     },
     image: localJourneys,
     alt: "A dark saloon parked on a British high street lined with shops and hanging flowers.",

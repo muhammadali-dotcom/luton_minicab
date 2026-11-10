@@ -3,9 +3,8 @@ import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { LocalAreaCards } from "./LocalAreaCards";
-import { PageHero, trustLocal } from "./PageHero";
+import { ServiceHero } from "./ServiceHero";
 import { container, eyebrow, h2, section } from "./ui";
-import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
 import everydayStreet from "../../public/brand/local-journeys-everyday.png";
 
 // Place examples are plain public names, used only as destinations (owner to confirm).
@@ -38,25 +37,11 @@ const otherJourneys = [
   { label: "School runs", href: "/services/school-runs" },
 ];
 
-// Covers only the text column on the photo's plain cream wall, so the street and car stay bright.
-const heroFade = "from-background/70 via-background/45 via-40% to-transparent to-55%";
-
 // The owner's own structure for this service, shorter than the shared ServicePage.
 export function LocalJourneysPage({ name, detail }: { name: string; detail: ServiceDetail }) {
   return (
     <main id="main" className="flex-1">
-      <PageHero
-        tone="light"
-        image={heroPhoto}
-        alt="A dark estate car parked on a sunny high street, beside a cream wall, shopfronts and hanging flowers."
-        fade={heroFade}
-        photoFrom="content"
-        mobilePhotoPosition="object-[96%_center]"
-        eyebrow={name.toUpperCase()}
-        heading={<span className="block text-balance">{detail.hero.heading}</span>}
-        text={detail.hero.text}
-        trust={trustLocal}
-      />
+      <ServiceHero name={name} detail={detail} />
 
       <section aria-labelledby="everyday-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>

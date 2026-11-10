@@ -3,7 +3,7 @@ import { ArrowRight, BedDouble, Briefcase, Luggage, Plane, TrainFront } from "lu
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { ContactButtons } from "./LocalAreaCards";
-import { PageHero, trustLocal } from "./PageHero";
+import { ServiceHero } from "./ServiceHero";
 import { container, eyebrow, h2, section } from "./ui";
 
 // Stations are plain destinations; no train tracking (only flight tracking is confirmed),
@@ -27,17 +27,7 @@ const h3 = "font-display text-[1.375rem] font-semibold leading-tight text-foregr
 export function StationHotelPage({ name, detail }: { name: string; detail: ServiceDetail }) {
   return (
     <main id="main" className="flex-1">
-      <PageHero
-        tone="light"
-        image={detail.image}
-        alt={detail.alt}
-        photoRight
-        photoMask="narrow"
-        eyebrow={name.toUpperCase()}
-        heading={<span className="block text-balance">{detail.hero.heading}</span>}
-        text={detail.hero.text}
-        trust={trustLocal}
-      />
+      <ServiceHero name={name} detail={detail} />
 
       <section aria-labelledby="stations-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>

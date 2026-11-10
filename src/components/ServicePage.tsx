@@ -3,7 +3,7 @@ import { ArrowRight, Baby, Clock, PoundSterling, ShieldCheck, Wallet } from "luc
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { services } from "@/config/site";
 import { Faq } from "./Faq";
-import { PageHero, trustLocal } from "./PageHero";
+import { ServiceHero } from "./ServiceHero";
 import { container, eyebrow, h2, section } from "./ui";
 
 // Confirmed benefits only (requirement.md).
@@ -22,17 +22,7 @@ export function ServicePage({ slug, name, detail }: { slug: string; name: string
   ];
   return (
     <main id="main" className="flex-1">
-      <PageHero
-        tone="light"
-        image={detail.image}
-        alt={detail.alt}
-        photoRight
-        photoMask="narrow"
-        eyebrow={name.toUpperCase()}
-        heading={<span className="block text-balance">{detail.hero.heading}</span>}
-        text={detail.hero.text}
-        trust={trustLocal}
-      />
+      <ServiceHero name={name} detail={detail} />
 
       <section aria-labelledby="for-who-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
