@@ -1,6 +1,7 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import { MessageCircle } from "lucide-react";
 import { site } from "@/config/site";
 
 const fieldClass =
@@ -8,9 +9,10 @@ const fieldClass =
 const labelClass = "block text-base font-semibold text-foreground";
 const types = ["New journey", "Existing booking", "Other"];
 
-// No email service yet: "Send Message" opens WhatsApp with the enquiry written out, ready to
+// No email service yet: "Continue on WhatsApp" opens WhatsApp with the enquiry written out, ready to
 // send, so nothing is stored on the website.
 export function ContactForm() {
+  const [type, setType] = useState(types[0]);
   if (!site.whatsapp) return null;
   const number = site.whatsapp;
 
@@ -20,8 +22,9 @@ export function ContactForm() {
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const text = [
       `Enquiry: ${get("type")}`,
+      ...(get("reference") ? [`Booking reference: ${get("reference")}`] : []),
       `Name: ${get("name")}`,
-      `Email: ${get("email")}`,
+      ...(get("email") ? [`Email: ${get("email")}`] : []),
       ...(get("phone") ? [`Phone: ${get("phone")}`] : []),
       "",
       get("message"),
@@ -40,9 +43,9 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="cf-email" className={labelClass}>
-            Email
+            Email <span className="font-normal">(optional)</span>
           </label>
-          <input id="cf-email" name="email" type="email" required autoComplete="email" className={fieldClass} />
+          <input id="cf-email" name="email" type="email" autoComplete="email" className={fieldClass} />
         </div>
       </div>
       <div>
@@ -54,17 +57,32 @@ export function ContactForm() {
       <fieldset>
         <legend className={labelClass}>Enquiry type</legend>
         <div className="mt-2 flex flex-wrap gap-3">
-          {types.map((type, i) => (
+          {types.map((option) => (
             <label
-              key={type}
+              key={option}
               className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border border-input bg-paper px-4 text-base text-foreground has-[:checked]:border-foreground has-[:checked]:bg-primary/45"
             >
-              <input type="radio" name="type" value={type} defaultChecked={i === 0} className="accent-foreground" />
-              {type}
+              <input
+                type="radio"
+                name="type"
+                value={option}
+                checked={type === option}
+                onChange={() => setType(option)}
+                className="accent-foreground"
+              />
+              {option}
             </label>
           ))}
         </div>
       </fieldset>
+      {type === "Existing booking" && (
+        <div>
+          <label htmlFor="cf-reference" className={labelClass}>
+            Booking reference <span className="font-normal">(optional)</span>
+          </label>
+          <input id="cf-reference" name="reference" type="text" className={fieldClass} />
+        </div>
+      )}
       <div>
         <label htmlFor="cf-message" className={labelClass}>
           Message
@@ -73,9 +91,10 @@ export function ContactForm() {
       </div>
       <button
         type="submit"
-        className="inline-flex min-h-[44px] w-full items-center justify-center rounded-control bg-primary px-7 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:w-auto"
+        className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-control bg-primary px-7 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:w-auto"
       >
-        Send Message
+        <MessageCircle aria-hidden size={18} strokeWidth={1.75} />
+        Continue on WhatsApp
       </button>
       <p className="text-base text-foreground">This opens WhatsApp with your message ready to send. We don’t store it on this website.</p>
     </form>

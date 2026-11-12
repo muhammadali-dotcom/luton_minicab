@@ -57,6 +57,7 @@ export default function Page() {
         text="Planning a journey or asking about a booking? Call, WhatsApp or send us a message."
         compact
         buttons={false}
+        centered
       />
 
       <section aria-labelledby="contact-details-heading" className={`band-alt border-t border-border ${section}`}>
@@ -153,7 +154,6 @@ export default function Page() {
                 View on Google Maps
                 <ArrowUpRight aria-hidden size={20} strokeWidth={2} />
               </a>
-              <p className="mt-4 text-base text-foreground">Office location: Mill Hill, north London.</p>
             </div>
           </div>
         </div>

@@ -55,6 +55,8 @@ type Props = {
   note?: string;
   // false hides the button row (Contact, where the contact options follow straight away).
   buttons?: boolean;
+  // Centres the text (heroes without a photo only, e.g. Contact).
+  centered?: boolean;
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
@@ -77,7 +79,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", photoLeft, secondary, note, buttons = true }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", photoLeft, secondary, note, buttons = true, centered = false }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -123,14 +125,14 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
 
       <div className={`relative w-full ${dark ? "bg-foreground [--color-ring:var(--color-primary)] lg:bg-transparent" : ""}`}>
         <div className={`${container} ${compact ? "py-9 sm:py-10 lg:py-12" : "py-12 sm:py-14 lg:py-20"}`}>
-          <div className={`max-w-xl ${textTone}`}>
+          <div className={`max-w-xl ${textTone} ${centered && !image ? "mx-auto text-center" : ""}`}>
             <p className={`${eyebrowClass} ${dark ? "text-background" : "text-accent"}`}>{eyebrow}</p>
             <h1 id="page-heading" className={`mt-4 ${h1}`}>
               {heading}
             </h1>
-            <p className={`mt-5 max-w-md ${lead}`}>{text}</p>
+            <p className={`mt-5 max-w-md ${lead} ${centered && !image ? "mx-auto" : ""}`}>{text}</p>
             {buttons && (
-            <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start">
+            <div className={`mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start ${centered && !image ? "sm:justify-center" : ""}`}>
               {action ? (
                 action.href.startsWith("http") ? (
                   <a href={action.href} className={actionClass}>
@@ -181,7 +183,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               </ul>
             )}
             {trust && trustStyle === "inline" && (
-              <ul className="mt-9 flex flex-wrap gap-x-5 gap-y-3 text-base">
+              <ul className={`mt-9 flex flex-wrap gap-x-5 gap-y-3 text-base ${centered && !image ? "justify-center" : ""}`}>
                 {trust.map(({ label, Icon }) => (
                   <li
                     key={label}

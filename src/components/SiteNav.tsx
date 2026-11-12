@@ -53,11 +53,11 @@ export function SiteNav() {
   }, [openDropdown]);
 
   const topLinkClass =
-    "py-2 text-[0.95rem] text-muted transition-colors hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:underline aria-[current=page]:decoration-primary aria-[current=page]:underline-offset-8";
+    "inline-flex min-h-[44px] items-center text-[0.95rem] leading-none text-muted transition-colors hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:underline aria-[current=page]:decoration-primary aria-[current=page]:underline-offset-8";
 
   return (
     <>
-      <nav ref={desktopRef} aria-label="Main" className="hidden items-center gap-8 xl:flex">
+      <nav ref={desktopRef} aria-label="Main" className="hidden items-center gap-8 lg:flex">
         <ul className="flex items-center gap-7">
           {site.nav.map((item) => {
             if (!isNavGroup(item)) {
@@ -85,7 +85,7 @@ export function SiteNav() {
                   aria-expanded={isOpen}
                   aria-controls={`menu-${item.id}`}
                   onClick={() => setDropdown(isOpen ? null : { id: item.id, at: pathname })}
-                  className={`inline-flex items-center gap-1 py-2 text-[0.95rem] transition-colors hover:text-foreground ${
+                  className={`inline-flex min-h-[44px] items-center gap-1 text-[0.95rem] leading-none transition-colors hover:text-foreground ${
                     active ? "text-foreground underline decoration-primary underline-offset-8" : "text-muted"
                   }`}
                 >
@@ -139,7 +139,7 @@ export function SiteNav() {
         aria-controls="mobile-menu"
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((value) => !value)}
-        className="-mr-2 inline-flex size-[44px] items-center justify-center text-foreground xl:hidden"
+        className="-mr-2 inline-flex size-[44px] items-center justify-center text-foreground lg:hidden"
       >
         {open ? <X aria-hidden size={24} /> : <Menu aria-hidden size={24} />}
       </button>
@@ -148,7 +148,7 @@ export function SiteNav() {
         id="mobile-menu"
         aria-label="Main"
         hidden={!open}
-        className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-border bg-surface px-4 pb-8 pt-2 sm:px-6 xl:hidden"
+        className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-border bg-surface px-4 pb-8 pt-2 sm:px-6 lg:hidden"
       >
         <ul className="divide-y divide-border">
           {site.nav.map((item) => {

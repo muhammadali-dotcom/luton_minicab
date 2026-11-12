@@ -107,6 +107,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     heroPhoto: {
       image: corporateTravelHero,
       alt: "A dark saloon parked outside a modern office entrance on a sunny day.",
+      // Two lines, as in the owner's reference, so it stays on the wall at every width.
+      headingWidth: "max-w-[7.5em]",
       fade: "from-background/88 via-background/65 via-40% to-transparent to-55%",
     },
     image: corporateTravel,
