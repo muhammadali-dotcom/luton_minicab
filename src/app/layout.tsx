@@ -39,8 +39,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SiteHeader />
         {children}
-        {/* The owner removed the banner from /services, which ends with its own FAQs. */}
-        <HideOnPaths paths={["/services"]}>
+        {/* The owner removed the banner from these pages. */}
+        <HideOnPaths paths={["/services", "/fleet", "/contact"]}>
           <FinalCta />
         </HideOnPaths>
         <SiteFooter />

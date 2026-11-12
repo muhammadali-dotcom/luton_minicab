@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Faq } from "@/components/Faq";
 import { FleetCards } from "@/components/FleetCards";
+import { FleetCompare } from "@/components/FleetCompare";
 import { FleetSteps } from "@/components/FleetSteps";
 import { Briefcase, CarFront, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import { fleet } from "@/config/site";
 import heroPhoto from "../../../public/brand/fleet-hero.png";
 
 const uses = [
@@ -15,7 +17,7 @@ const uses = [
 export const metadata: Metadata = {
   title: "Our Fleet: Saloon, Estate, MPV & Executive",
   description:
-    "From everyday saloons to estates, MPVs and executive cars. Choose the right vehicle for your passengers and luggage when you book.",
+    "Saloons and estates for up to 4 passengers, MPVs for up to 7, and executive cars. See passenger, suitcase and hand luggage space for each car.",
 };
 
 const faqs = [
@@ -26,9 +28,26 @@ const faqs = [
   { q: "Can I ask for a child seat?", a: "Yes, child seats are available on request. Just mention it when you book." },
   {
     q: "How do I know how many bags will fit?",
-    a: "Exact passenger and luggage limits are shown when you book. If you’re unsure, ask us before you confirm.",
+    a: "Each car shows how many large cases and pieces of hand luggage it takes. Space depends on bag sizes, so if you’re unsure, ask us before you confirm.",
   },
 ];
+
+// Structured data so search engines can read each car's capacity. No brands or prices.
+const fleetSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Luton Minicab fleet",
+  itemListElement: fleet.map(({ name, tagline, capacity }, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Vehicle",
+      name,
+      description: `${tagline} Up to ${capacity.passengers} passengers, ${capacity.cases} large cases and ${capacity.hand} pieces of hand luggage.`,
+      vehicleSeatingCapacity: capacity.passengers,
+    },
+  })),
+};
 
 export default function Page() {
   return (
@@ -53,8 +72,10 @@ export default function Page() {
         trustStyle="stacked"
       />
       <FleetCards />
-      <FleetSteps />
-      <Faq items={faqs} band />
+      <FleetCompare />
+      <FleetSteps band />
+      <Faq items={faqs} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(fleetSchema) }} />
     </main>
   );
 }

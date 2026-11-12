@@ -15,9 +15,10 @@ const buttonClass =
 
 // The illustration is a transparent cut-out from the owner's reference
 // (assets/brand/fleet-help-reference.png).
-export function FleetSteps() {
+// `band` gives it the deeper-cream background, to keep sections alternating on /fleet.
+export function FleetSteps({ band = false }: { band?: boolean }) {
   return (
-    <section id="not-sure" aria-labelledby="fleet-steps-heading" className={`scroll-mt-20 border-t border-border ${section}`}>
+    <section id="not-sure" aria-labelledby="fleet-steps-heading" className={`scroll-mt-20 border-t border-border ${band ? "band-alt " : ""}${section}`}>
       <div className={`${container} grid items-center gap-10 lg:grid-cols-2 lg:gap-14`}>
         <Image
           src={illustration}

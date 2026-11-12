@@ -31,8 +31,9 @@ const linkClass =
   "group inline-flex min-h-[44px] items-center gap-2 font-semibold text-foreground underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2";
 
 export function MoreServices() {
-  // Enquiries go to WhatsApp until the Contact page is built.
-  const enquire = site.whatsapp ? `https://wa.me/${site.whatsapp}` : null;
+  // Enquiries go to WhatsApp until the Contact page is built, each with its own opening line.
+  const enquire = (title: string) =>
+    site.whatsapp ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hello, I’d like to ask about ${title}.`)}` : null;
   return (
     <section aria-labelledby="more-services-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
@@ -49,8 +50,8 @@ export function MoreServices() {
               </span>
               <h3 className="mt-4 font-display text-[1.375rem] font-semibold leading-tight text-foreground">{title}</h3>
               <p className="mt-2 flex-1 text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
-              {enquire && (
-                <a href={enquire} className={`${linkClass} mt-3 self-start`}>
+              {enquire(title) && (
+                <a href={enquire(title)!} className={`${linkClass} mt-3 self-start`}>
                   Enquire about this service
                   <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-0.5" />
                 </a>
@@ -82,7 +83,7 @@ export function ServiceAirportBanner() {
           <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
             <p className={`${eyebrow} text-accent`}>AIRPORT TRANSFERS</p>
             <h2 id="airport-banner-heading" className={`${h2} mt-4 text-foreground`}>
-              Catching a flight?
+              Flying out or heading home?
             </h2>
             <p className="mt-3 text-[1.125rem] text-foreground">To and from all UK airports, with flight tracking.</p>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">

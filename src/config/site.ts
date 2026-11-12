@@ -126,16 +126,17 @@ export const areas: AreaEntry[] = [
 ];
 
 // Vehicle categories, matching the web booker. Images (in public/brand) illustrate
-// categories, not guaranteed models. Capacities await verification.
+// categories, not guaranteed models. `capacity` (passengers, large cases, hand luggage) was
+// confirmed by the owner in November 2026 and is shown as "up to" on /fleet.
 // `id` is the vehicle's anchor on /fleet, used by the footer links. `tagline` is its
 // line on /fleet; `text` is used by the homepage carousel.
 export const fleet = [
-  { id: "saloon", name: "Saloon", tagline: "Everyday comfort.", text: "Everyday local trips and airport runs.", image: "fleet-saloon.png" },
-  { id: "estate", name: "Estate", tagline: "A little more room for luggage.", text: "Extra boot space for luggage.", image: "fleet-estate.png" },
-  { id: "mpv6", name: "MPV6", tagline: "For family trips and small groups.", text: "More seats for families and small groups.", image: "fleet-mpv6.png" },
-  { id: "mpv-plus", name: "MPV Plus", tagline: "Extra space for people and bags.", text: "Extra space for bigger groups and luggage.", image: "fleet-mpv-plus.png" },
-  { id: "mpv7", name: "MPV7", tagline: "Bring the group together.", text: "Room for families and groups.", image: "fleet-mpv7.png" },
-  { id: "executive", name: "Executive", tagline: "Travel with a touch of refinement.", text: "A more refined car for business travel.", image: "fleet-executive.png" },
+  { id: "saloon", name: "Saloon", tagline: "Everyday comfort.", text: "Everyday local trips and airport runs.", capacity: { passengers: 4, cases: 2, hand: 2 }, image: "fleet-saloon.png" },
+  { id: "estate", name: "Estate", tagline: "A little more room for luggage.", text: "Extra boot space for luggage.", capacity: { passengers: 4, cases: 3, hand: 3 }, image: "fleet-estate.png" },
+  { id: "mpv6", name: "MPV6", tagline: "For family trips and small groups.", text: "More seats for families and small groups.", capacity: { passengers: 6, cases: 3, hand: 4 }, image: "fleet-mpv6.png" },
+  { id: "mpv-plus", name: "MPV Plus", tagline: "Extra space for people and bags.", text: "Extra space for bigger groups and luggage.", capacity: { passengers: 6, cases: 5, hand: 6 }, image: "fleet-mpv-plus.png" },
+  { id: "mpv7", name: "MPV7", tagline: "Bring the group together.", text: "Room for families and groups.", capacity: { passengers: 7, cases: 2, hand: 4 }, image: "fleet-mpv7.png" },
+  { id: "executive", name: "Executive", tagline: "Travel with a touch of refinement.", text: "A more refined car for business travel.", capacity: { passengers: 4, cases: 2, hand: 2 }, image: "fleet-executive.png" },
 ];
 
 // Each entry has a holding page at /services/[slug] until content is approved.

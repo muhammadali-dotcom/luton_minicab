@@ -53,6 +53,8 @@ type Props = {
   secondary?: { label: string; href: string; icon?: "whatsapp" | "down" };
   // Short line under the buttons, used in place of a trust row.
   note?: string;
+  // false hides the button row (Contact, where the contact options follow straight away).
+  buttons?: boolean;
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
@@ -61,6 +63,9 @@ type Props = {
   // From lg with photoFrom "content": the photo's object-position (default "lg:object-[center_68%]").
   // A lower value shows more of the top, moving a car that sits further left below the text.
   desktopPhotoPosition?: string;
+  // From lg with photoFrom "content": replaces where the photo starts (a "lg:left-[...]" class),
+  // to move a photo whose subject sits further left out from under the text.
+  photoLeft?: string;
 };
 
 const actionClass =
@@ -72,7 +77,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", secondary, note }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", photoLeft, secondary, note, buttons = true }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -96,7 +101,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                     photoFrom === "content" ? "lg:left-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] lg:aspect-auto" : "lg:aspect-[7/4]"
                   }`
                 : photoFrom === "content"
-                  ? "lg:inset-y-0 lg:right-0 lg:left-[calc((max(2.5rem,(100%-80rem)/2+2.5rem)-12%)/0.88)] lg:aspect-auto lg:[mask-image:linear-gradient(to_right,transparent,black_6%)]"
+                  ? `lg:inset-y-0 lg:right-0 ${photoLeft ?? "lg:left-[calc((max(2.5rem,(100%-80rem)/2+2.5rem)-12%)/0.88)]"} lg:aspect-auto lg:[mask-image:linear-gradient(to_right,transparent,black_6%)]`
                   : "lg:inset-0 lg:aspect-auto"
             }`}
           >
@@ -124,6 +129,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               {heading}
             </h1>
             <p className={`mt-5 max-w-md ${lead}`}>{text}</p>
+            {buttons && (
             <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start">
               {action ? (
                 action.href.startsWith("http") ? (
@@ -162,6 +168,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                 </>
               )}
             </div>
+            )}
             {note && <p className="mt-6 text-base">{note}</p>}
             {trust && trustStyle === "stacked" && (
               <ul className="mt-9 grid max-w-md grid-cols-3 gap-3 text-base">

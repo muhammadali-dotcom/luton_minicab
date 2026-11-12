@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase, Luggage, Users } from "lucide-react";
 import { fleet } from "@/config/site";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { container, eyebrow, h2, section } from "./ui";
@@ -33,7 +33,7 @@ export function FleetCards() {
         </div>
 
         <ul className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3">
-          {fleet.map(({ id, name, tagline, image }, i) => (
+          {fleet.map(({ id, name, tagline, image, capacity }, i) => (
             <li
               key={id}
               id={id}
@@ -44,6 +44,21 @@ export function FleetCards() {
                 {name}
               </h3>
               <p className="mt-1 text-[1.0625rem] text-foreground sm:pl-[2.6rem]">{tagline}</p>
+              <p className="sr-only">
+                Up to {capacity.passengers} passengers, {capacity.cases} large cases and {capacity.hand} pieces of hand luggage.
+              </p>
+              <ul aria-hidden className="mt-3 flex flex-wrap gap-2 text-base text-foreground sm:pl-[2.6rem]">
+                {[
+                  { label: `Up to ${capacity.passengers}`, Icon: Users },
+                  { label: `${capacity.cases} large`, Icon: Luggage },
+                  { label: `${capacity.hand} hand`, Icon: Briefcase },
+                ].map(({ label, Icon }) => (
+                  <li key={label} className="inline-flex items-center gap-1.5 rounded-full bg-primary/35 px-3 py-1">
+                    <Icon size={16} strokeWidth={1.75} />
+                    {label}
+                  </li>
+                ))}
+              </ul>
               <div className="relative mt-4 aspect-[2/1]">
                 <Image
                   src={`/brand/${image}`}
@@ -53,15 +68,14 @@ export function FleetCards() {
                   className="object-contain"
                 />
               </div>
-              <div className="mt-4 flex items-center justify-between gap-4">
+              <div className="mt-4">
                 <BookOnlineLink variant="link" className="underline decoration-1 underline-offset-4" />
-                <span className="text-sm italic text-muted">Example vehicle</span>
               </div>
             </li>
           ))}
         </ul>
         <p className="mt-6 text-base text-muted">
-          Passenger and luggage limits are shown when booking. Vehicle models may vary.
+          Up to: luggage space depends on bag sizes. Vehicle models may vary.
         </p>
       </div>
     </section>
