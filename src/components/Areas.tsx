@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
-import { areas, site } from "@/config/site";
+import { areas } from "@/config/site";
 import illustration from "../../public/brand/areas-illustration.png";
 
 
@@ -50,15 +50,9 @@ export function Areas() {
             <ArrowRight aria-hidden size={18} />
           </Link>
           <p className="mt-3">
-            {site.phone ? (
-              <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className={askClass}>
-                Not sure we cover your pickup? Ask us.
-              </a>
-            ) : (
-              <Link href="/contact" className={askClass}>
-                Not sure we cover your pickup? Ask us.
-              </Link>
-            )}
+            <Link href="/contact" className={askClass}>
+              Not sure we cover your pickup? Ask us.
+            </Link>
           </p>
         </div>
 

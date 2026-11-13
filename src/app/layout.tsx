@@ -39,8 +39,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SiteHeader />
         {children}
-        {/* The owner removed the banner from these pages. */}
-        <HideOnPaths paths={["/services", "/fleet", "/contact", "/about"]}>
+        {/* Every page ends with the booking banner except Contact (owner's rule). */}
+        <HideOnPaths paths={["/contact"]}>
           <FinalCta />
         </HideOnPaths>
         <SiteFooter />

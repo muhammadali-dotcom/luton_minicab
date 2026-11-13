@@ -1,19 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, MapPin, MessageCircle, Phone } from "lucide-react";
-import { areas, site } from "@/config/site";
+import { areaPlaces, areas, site } from "@/config/site";
 import { container, eyebrow, h2, section } from "./ui";
 
-// Short location lines, taken only from the geography in each area's intro in site.ts.
-const places: Record<string, string> = {
-  luton: "Across the town, day or night",
-  leagrave: "North-west Luton",
-  stopsley: "North-east Luton",
-  dunstable: "Just west of Luton",
-  "houghton-regis": "Just north of Dunstable",
-  harpenden: "South of Luton, in Hertfordshire",
-};
-
-const localAreas = areas.filter((a) => a.slug in places);
+// The six local areas, with their location lines from `areaPlaces` in site.ts.
+const localSlugs = ["luton", "leagrave", "stopsley", "dunstable", "houghton-regis", "harpenden"];
+const localAreas = areas.filter((a) => localSlugs.includes(a.slug));
+const places = areaPlaces;
 
 const buttonClass =
   "inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-control px-6 text-base font-semibold transition-colors";

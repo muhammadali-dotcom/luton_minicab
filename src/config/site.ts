@@ -125,6 +125,20 @@ export const areas: AreaEntry[] = [
   },
 ];
 
+// One short location line per area, from the geography in each intro. Used by the
+// Local Journeys / School Runs area cards and the Areas We Cover dropdown.
+export const areaPlaces: Record<string, string> = {
+  luton: "Across the town, day or night",
+  leagrave: "North-west Luton",
+  stopsley: "North-east Luton",
+  dunstable: "Just west of Luton",
+  "houghton-regis": "Just north of Dunstable",
+  harpenden: "South of Luton, in Hertfordshire",
+  "mill-hill": "North London",
+  hounslow: "West London, near Heathrow",
+  heathrow: "At and around the airport",
+};
+
 // Vehicle categories, matching the web booker. Images (in public/brand) illustrate
 // categories, not guaranteed models. `capacity` (passengers, large cases, hand luggage) was
 // confirmed by the owner in November 2026 and is shown as "up to" on /fleet.
@@ -177,14 +191,14 @@ export const site = {
     {
       id: "services",
       label: "Our Services",
-      overview: { label: "All services", href: "/services" },
+      overview: { label: "View All Services", href: "/services" },
       children: services.map((sv) => ({ label: sv.name, href: `/services/${sv.slug}` })),
     },
     { label: "Our Fleet", href: "/fleet" },
     {
       id: "areas",
       label: "Areas We Cover",
-      overview: { label: "All areas", href: "/areas" },
+      overview: { label: "View All Areas", href: "/areas" },
       children: areas.map((a) => ({ label: a.name, href: `/areas/${a.slug}` })),
     },
     { label: "About Us", href: "/about" },

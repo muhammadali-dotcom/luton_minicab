@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { AirportCards } from "@/components/AirportCards";
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, h2, section } from "@/components/ui";
-import { regionalAirports, site } from "@/config/site";
+import { regionalAirports } from "@/config/site";
 import heroPhoto from "../../../public/brand/airport-luton-hero.png";
 
 export const metadata: Metadata = {
@@ -60,12 +60,12 @@ export default function Page() {
               </div>
             ))}
           </div>
-          <a
-            href={site.phone ? `tel:${site.phone.replace(/\s+/g, "")}` : "/contact"}
+          <Link
+            href="/contact"
             className="mt-8 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-control border border-input px-6 text-base font-semibold text-foreground transition-colors hover:border-foreground hover:bg-tint"
           >
             Ask about another airport
-          </a>
+          </Link>
         </div>
       </section>
     </main>

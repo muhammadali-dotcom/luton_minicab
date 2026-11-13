@@ -1,8 +1,8 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { ArrowRight, Briefcase, CarFront, GraduationCap, Hotel, Phone, Route, TrainFront, type LucideIcon } from "lucide-react";
-import { site } from "@/config/site";
+import { ArrowRight, Briefcase, CarFront, GraduationCap, Plane, Route, TrainFront, type LucideIcon } from "lucide-react";
 import { serviceDetails } from "@/config/serviceDetails";
+import airportPhoto from "../../public/brand/airport-luton.png";
 
 type ServiceCard = {
   title: string;
@@ -53,8 +53,8 @@ const cards: ServiceCard[] = [
     imagePosition: "object-right",
   },
   {
-    title: "Station Transfers",
-    text: "From your front door to the station, and home again.",
+    title: "Station & Hotel Transfers",
+    text: "Rides to and from stations and hotels, with time to spare.",
     href: "/services/station-hotel-transfers",
     Icon: TrainFront,
     image: (serviceDetails["station-hotel-transfers"].heroPhoto?.image ?? serviceDetails["station-hotel-transfers"].image),
@@ -62,17 +62,16 @@ const cards: ServiceCard[] = [
     imagePosition: "object-right",
   },
   {
-    title: "Hotel Transfers",
-    text: "A warm welcome and an easy onward journey.",
-    href: "/services/station-hotel-transfers",
-    Icon: Hotel,
-    image: (serviceDetails["station-hotel-transfers"].heroPhoto?.image ?? serviceDetails["station-hotel-transfers"].image),
-    imageAlt: (serviceDetails["station-hotel-transfers"].heroPhoto?.alt ?? serviceDetails["station-hotel-transfers"].alt),
-    imagePosition: "object-right",
+    title: "Airport Transfers",
+    text: "To and from all UK airports, with flight tracking.",
+    href: "/airports",
+    Icon: Plane,
+    image: airportPhoto,
+    imageAlt: "A dark saloon waiting at the kerb outside a glass airport terminal.",
   },
 ];
 
-// Links to the contact page until a real phone number is set in site.ts.
+// "Talk to our team" links always open the Contact page (calls are labelled "Call").
 const talkClass =
   "inline-flex min-h-13 shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-control bg-primary px-7 text-[1.0625rem] font-semibold text-primary-foreground transition-colors hover:bg-primary-hover";
 
@@ -141,17 +140,10 @@ export function Services() {
               Business trips, longer journeys or something different&mdash;let&rsquo;s talk.
             </p>
           </div>
-          {site.phone ? (
-            <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className={talkClass}>
-              <Phone aria-hidden size={20} strokeWidth={1.75} />
-              Talk to Our Team
-            </a>
-          ) : (
-            <Link href="/contact" className={talkClass}>
-              <Phone aria-hidden size={20} strokeWidth={1.75} />
-              Talk to Our Team
-            </Link>
-          )}
+          <Link href="/contact" className={talkClass}>
+            Talk to Our Team
+            <ArrowRight aria-hidden size={20} />
+          </Link>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { Minus, Plus } from "lucide-react";
-import { site } from "@/config/site";
 
 // Answers stick to confirmed facts; the change-booking answer adds no policy terms.
 const homepageFaqs = [
@@ -71,15 +70,9 @@ export function Faq({ items = homepageFaqs, band = false, children }: Props) {
 
           <p className="mt-8 text-[1.125rem] text-foreground">
             Need more help?{" "}
-            {site.phone ? (
-              <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className={contactClass}>
-                Contact us
-              </a>
-            ) : (
-              <Link href="/contact" className={contactClass}>
-                Contact us
-              </Link>
-            )}
+            <Link href="/contact" className={contactClass}>
+              Contact us
+            </Link>
           </p>
         </div>
         {children}

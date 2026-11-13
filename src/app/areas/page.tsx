@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin, Plane } from "lucide-react";
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { h2 } from "@/components/ui";
-import { areas, site } from "@/config/site";
+import { areas } from "@/config/site";
 import heroPhoto from "../../../public/brand/hero-photo.png";
 
 export const metadata: Metadata = {
@@ -62,15 +62,9 @@ export default function Page() {
             </span>
           </p>
           <p className="mt-3">
-            {site.phone ? (
-              <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className={askClass}>
-                Not sure we cover your pickup? Ask us.
-              </a>
-            ) : (
-              <Link href="/contact" className={askClass}>
-                Not sure we cover your pickup? Ask us.
-              </Link>
-            )}
+            <Link href="/contact" className={askClass}>
+              Not sure we cover your pickup? Ask us.
+            </Link>
           </p>
         </div>
       </section>

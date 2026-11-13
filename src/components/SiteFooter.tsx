@@ -35,8 +35,7 @@ const columns: { title: string; links: FooterLink[] }[] = [
       ...services
         .filter((s) => s.slug !== "station-hotel-transfers")
         .map((s) => ({ label: s.name, href: `/services/${s.slug}` })),
-      { label: "Station Transfers", href: "/services/station-hotel-transfers" },
-      { label: "Hotel Transfers", href: "/services/station-hotel-transfers" },
+      { label: "Station & Hotel Transfers", href: "/services/station-hotel-transfers" },
     ],
   },
   {

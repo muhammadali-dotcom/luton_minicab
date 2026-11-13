@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  CalendarDays,
+  CalendarClock,
   CarFront,
   MapPin,
   MessageCircle,
@@ -45,15 +45,15 @@ const help = [
     Icon: MessageCircleMore,
   },
   {
-    title: "Plan your booking",
-    text: "Ask about pickup times, destinations or extra requirements.",
+    title: "Change a booking",
+    text: "Need to update a pickup time or address? Let us know as soon as you can.",
     link: {
-      label: "Get booking help",
+      label: "Update my booking",
       href: site.whatsapp
-        ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello, I’d like some help planning a booking.")}`
+        ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello, I’d like to change my booking.")}`
         : "/contact",
     },
-    Icon: CalendarDays,
+    Icon: CalendarClock,
   },
   {
     title: "Find the right vehicle",
@@ -90,11 +90,11 @@ export default function Page() {
             Here for wherever life takes you.
           </span>
         }
-        text="From everyday trips to airport journeys, our team at Bittacy Cars is here to help you get there."
+        text="From everyday trips to airport journeys, our team is here to help you get there."
         secondary={
           site.phone
             ? {
-                label: "Talk to our team",
+                label: "Call our team",
                 href: `tel:${site.phone.replace(/\s+/g, "")}`,
                 icon: "phone",
               }
@@ -129,7 +129,6 @@ export default function Page() {
               Luton and nearby towns get where they need to be.
             </p>
             <p className="mt-4 text-[1.125rem] leading-relaxed text-foreground">
-              Bookings are handled by our team at Bittacy Cars in Mill Hill.
               Book online, or speak to us about your journey.
             </p>
             <Link
@@ -166,7 +165,11 @@ export default function Page() {
               </div>
             )}
           </div>
-          <figure className="overflow-hidden rounded-2xl border border-border bg-paper">
+          <figure className="relative overflow-hidden rounded-2xl border border-border bg-paper">
+            {/* Makes clear this is a drawing, not the real office. */}
+            <span className="absolute top-3 right-3 rounded-full bg-paper/85 px-3 py-1 text-sm text-foreground">
+              Illustration
+            </span>
             <Image
               src={whoIllustration}
               alt=""
@@ -200,8 +203,8 @@ export default function Page() {
           <Image
             src={whatIllustration}
             alt=""
-            sizes="(min-width: 1280px) 1200px, 100vw"
-            className="-mx-4 mt-8 h-auto w-[calc(100%+2rem)] max-w-none sm:mx-0 sm:w-full"
+            sizes="(min-width: 768px) 70vw, 100vw"
+            className="-mx-4 mt-8 h-auto w-[calc(100%+2rem)] max-w-none sm:mx-0 sm:w-full md:mx-auto md:w-[70%]"
           />
           <ul className="mt-8 grid sm:grid-cols-2 md:grid-cols-3">
             {services.map(({ name, href }, i) => (

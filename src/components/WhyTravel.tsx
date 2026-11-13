@@ -9,7 +9,6 @@ import {
   PlaneTakeoff,
   ShieldCheck,
 } from "lucide-react";
-import { site } from "@/config/site";
 
 const reasons = [
   { title: "Clear fares", text: "Know your fare before you travel.", Icon: BadgePoundSterling },
@@ -57,17 +56,10 @@ export function WhyTravel() {
             <Phone aria-hidden size={24} strokeWidth={1.5} className="shrink-0" />
             A real person when you need a hand.
           </p>
-          {site.phone ? (
-            <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className={talkClass}>
-              Talk to our team
-              <ArrowRight aria-hidden size={18} />
-            </a>
-          ) : (
-            <Link href="/contact" className={talkClass}>
-              Talk to our team
-              <ArrowRight aria-hidden size={18} />
-            </Link>
-          )}
+          <Link href="/contact" className={talkClass}>
+            Talk to our team
+            <ArrowRight aria-hidden size={18} />
+          </Link>
         </div>
       </div>
     </section>
