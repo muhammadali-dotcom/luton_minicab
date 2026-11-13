@@ -48,7 +48,7 @@ const help = [
     title: "Change a booking",
     text: "Need to update a pickup time or address? Let us know as soon as you can.",
     link: {
-      label: "Update my booking",
+      label: "Request a change on WhatsApp",
       href: site.whatsapp
         ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello, I’d like to change my booking.")}`
         : "/contact",
@@ -129,7 +129,8 @@ export default function Page() {
               Luton and nearby towns get where they need to be.
             </p>
             <p className="mt-4 text-[1.125rem] leading-relaxed text-foreground">
-              Book online, or speak to us about your journey.
+              Bookings are handled by our team at Bittacy Cars in Mill Hill,
+              north London. Book online, or speak to us about your journey.
             </p>
             <Link
               href="/contact"
@@ -212,21 +213,20 @@ export default function Page() {
                 key={href}
                 className={`border-b border-primary/60 last:border-b-0 sm:pr-8 ${i < 3 ? "md:border-b" : "md:border-b-0"}`}
               >
+                {/* Name on the left, arrow pinned to the right of the column, so the arrows line up. */}
                 <Link
                   href={href}
-                  className="group inline-block min-h-[44px] py-5 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold leading-tight text-foreground hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4"
+                  className="group flex min-h-[44px] w-full items-center justify-between gap-4 py-5 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold leading-tight text-foreground"
                 >
-                  {name.slice(0, name.lastIndexOf(" ") + 1)}
-                  {/* The last word and arrow stay together when the name wraps. */}
-                  <span className="whitespace-nowrap">
-                    {name.slice(name.lastIndexOf(" ") + 1)}
-                    <ArrowRight
-                      aria-hidden
-                      size={26}
-                      strokeWidth={1.5}
-                      className="ml-3 inline-block align-[-0.15em] transition-transform group-hover:translate-x-1"
-                    />
+                  <span className="group-hover:underline group-hover:decoration-primary group-hover:decoration-2 group-hover:underline-offset-4">
+                    {name}
                   </span>
+                  <ArrowRight
+                    aria-hidden
+                    size={26}
+                    strokeWidth={1.5}
+                    className="shrink-0 transition-transform group-hover:translate-x-1"
+                  />
                 </Link>
               </li>
             ))}
@@ -249,7 +249,7 @@ export default function Page() {
             {help.map(({ title, text, link, Icon }, i) => (
               <li
                 key={title}
-                className={`py-8 md:py-0 ${i > 0 ? "border-t border-primary/70 md:border-t-0 md:border-l md:pl-10" : ""} ${i < 2 ? "md:pr-10" : ""}`}
+                className={`flex flex-col py-8 md:py-0 ${i > 0 ? "border-t border-primary/70 md:border-t-0 md:border-l md:pl-10" : ""} ${i < 2 ? "md:pr-10" : ""}`}
               >
                 <Icon
                   aria-hidden
@@ -263,7 +263,10 @@ export default function Page() {
                 <p className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">
                   {text}
                 </p>
-                <a href={link.href} className={`${linkClass} mt-3`}>
+                <a
+                  href={link.href}
+                  className={`${linkClass} mt-auto self-start pt-3`}
+                >
                   {link.label}
                   <ArrowRight
                     aria-hidden
