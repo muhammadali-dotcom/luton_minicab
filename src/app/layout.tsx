@@ -40,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         {children}
         {/* The owner removed the banner from these pages. */}
-        <HideOnPaths paths={["/services", "/fleet", "/contact"]}>
+        <HideOnPaths paths={["/services", "/fleet", "/contact", "/about"]}>
           <FinalCta />
         </HideOnPaths>
         <SiteFooter />

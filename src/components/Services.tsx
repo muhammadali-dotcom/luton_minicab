@@ -2,12 +2,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { ArrowRight, Briefcase, CarFront, GraduationCap, Hotel, Phone, Route, TrainFront, type LucideIcon } from "lucide-react";
 import { site } from "@/config/site";
-import localJourneys from "../../public/brand/services/local-journeys.png";
-import schoolRuns from "../../public/brand/services/school-runs.png";
-import corporateTravel from "../../public/brand/services/corporate-travel.png";
-import longDistanceTravel from "../../public/brand/services/long-distance-travel.png";
-import stationTransfers from "../../public/brand/services/station-transfers.png";
-import hotelTransfers from "../../public/brand/services/hotel-transfers.png";
+import { serviceDetails } from "@/config/serviceDetails";
 
 type ServiceCard = {
   title: string;
@@ -17,6 +12,7 @@ type ServiceCard = {
   // Photo for the card. Without one, a plain panel with the icon shows.
   image?: StaticImageData;
   imageAlt?: string;
+  imagePosition?: string;
 };
 
 const cards: ServiceCard[] = [
@@ -25,48 +21,54 @@ const cards: ServiceCard[] = [
     text: "Shopping, appointments or seeing someone you love.",
     href: "/services/local-journeys",
     Icon: CarFront,
-    image: localJourneys,
-    imageAlt: "A dark saloon parked on a British high street lined with shops and hanging flowers.",
+    image: (serviceDetails["local-journeys"].heroPhoto?.image ?? serviceDetails["local-journeys"].image),
+    imageAlt: (serviceDetails["local-journeys"].heroPhoto?.alt ?? serviceDetails["local-journeys"].alt),
+    imagePosition: "object-right",
   },
   {
     title: "School Runs",
     text: "A caring start to their school day.",
     href: "/services/school-runs",
     Icon: GraduationCap,
-    image: schoolRuns,
-    imageAlt: "A driver opens the car door for a smiling mother and her son in school uniform.",
+    image: (serviceDetails["school-runs"].heroPhoto?.image ?? serviceDetails["school-runs"].image),
+    imageAlt: (serviceDetails["school-runs"].heroPhoto?.alt ?? serviceDetails["school-runs"].alt),
+    imagePosition: "object-right",
   },
   {
     title: "Corporate Travel",
     text: "For your team, your clients and your next meeting.",
     href: "/services/corporate-travel",
     Icon: Briefcase,
-    image: corporateTravel,
-    imageAlt: "A driver opens the car door for a businessman outside an office building.",
+    image: (serviceDetails["corporate-travel"].heroPhoto?.image ?? serviceDetails["corporate-travel"].image),
+    imageAlt: (serviceDetails["corporate-travel"].heroPhoto?.alt ?? serviceDetails["corporate-travel"].alt),
+    imagePosition: "object-right",
   },
   {
     title: "Long-Distance Travel",
     text: "A comfortable ride, wherever you’re heading.",
     href: "/services/long-distance-travel",
     Icon: Route,
-    image: longDistanceTravel,
-    imageAlt: "A couple with a suitcase beside a dark saloon on a country road, with green hills behind.",
+    image: (serviceDetails["long-distance-travel"].heroPhoto?.image ?? serviceDetails["long-distance-travel"].image),
+    imageAlt: (serviceDetails["long-distance-travel"].heroPhoto?.alt ?? serviceDetails["long-distance-travel"].alt),
+    imagePosition: "object-right",
   },
   {
     title: "Station Transfers",
     text: "From your front door to the station, and home again.",
     href: "/services/station-hotel-transfers",
     Icon: TrainFront,
-    image: stationTransfers,
-    imageAlt: "A passenger with a suitcase walks towards a waiting car outside a railway station.",
+    image: (serviceDetails["station-hotel-transfers"].heroPhoto?.image ?? serviceDetails["station-hotel-transfers"].image),
+    imageAlt: (serviceDetails["station-hotel-transfers"].heroPhoto?.alt ?? serviceDetails["station-hotel-transfers"].alt),
+    imagePosition: "object-right",
   },
   {
     title: "Hotel Transfers",
     text: "A warm welcome and an easy onward journey.",
     href: "/services/station-hotel-transfers",
     Icon: Hotel,
-    image: hotelTransfers,
-    imageAlt: "A driver opens the car door for a couple with suitcases outside a hotel entrance.",
+    image: (serviceDetails["station-hotel-transfers"].heroPhoto?.image ?? serviceDetails["station-hotel-transfers"].image),
+    imageAlt: (serviceDetails["station-hotel-transfers"].heroPhoto?.alt ?? serviceDetails["station-hotel-transfers"].alt),
+    imagePosition: "object-right",
   },
 ];
 
@@ -96,7 +98,7 @@ export function Services() {
         </div>
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map(({ title, text, href, Icon, image, imageAlt }) => (
+          {cards.map(({ title, text, href, Icon, image, imageAlt, imagePosition }) => (
             <li key={title} className="flex flex-col overflow-hidden rounded-control border border-border bg-paper">
               <div className="relative aspect-[3/2] bg-alt">
                 {image ? (
@@ -105,7 +107,7 @@ export function Services() {
                     alt={imageAlt ?? ""}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover"
+                    className={`object-cover ${imagePosition ?? ""}`}
                   />
                 ) : (
                   <div aria-hidden className="flex size-full items-center justify-center text-muted/60">

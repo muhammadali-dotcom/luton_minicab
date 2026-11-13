@@ -3,23 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  Baby,
-  Briefcase,
+  CalendarDays,
   CarFront,
-  Clock,
-  GraduationCap,
-  Plane,
-  PlaneLanding,
-  PoundSterling,
-  Route,
-  ShieldCheck,
-  TrainFront,
-  Wallet,
+  MapPin,
+  MessageCircle,
+  MessageCircleMore,
+  Phone,
 } from "lucide-react";
-import { BookOnlineLink } from "@/components/BookOnlineLink";
-import { PageHero, trustLocal } from "@/components/PageHero";
+import { PageHero } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/ui";
-import officeIllustration from "../../../public/brand/contact-office.png";
+import { areas, site } from "@/config/site";
+import heroIllustration from "../../../public/brand/about-hero.png";
+import whatIllustration from "../../../public/brand/about-what.png";
+import whoIllustration from "../../../public/brand/about-who.png";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -29,83 +25,205 @@ export const metadata: Metadata = {
 
 // Confirmed facts only (requirement.md): no history, fleet or driver numbers, awards or reviews.
 const services = [
-  { name: "Local Journeys", href: "/services/local-journeys", Icon: CarFront },
-  { name: "School Runs", href: "/services/school-runs", Icon: GraduationCap },
-  { name: "Corporate Travel", href: "/services/corporate-travel", Icon: Briefcase },
-  { name: "Long-Distance Travel", href: "/services/long-distance-travel", Icon: Route },
-  { name: "Station & Hotel Transfers", href: "/services/station-hotel-transfers", Icon: TrainFront },
-  { name: "Airport Transfers", href: "/airports", Icon: Plane },
+  { name: "Local Journeys", href: "/services/local-journeys" },
+  { name: "School Runs", href: "/services/school-runs" },
+  { name: "Corporate Travel", href: "/services/corporate-travel" },
+  { name: "Long-Distance Travel", href: "/services/long-distance-travel" },
+  {
+    name: "Station & Hotel Transfers",
+    href: "/services/station-hotel-transfers",
+  },
+  { name: "Airport Transfers", href: "/airports" },
 ];
 
-const reasons = [
-  { title: "Available 24/7", text: "Early starts and late finishes, day or night.", Icon: Clock },
-  { title: "Fixed fares", text: "You’ll know your fare when you book.", Icon: PoundSterling },
-  { title: "DBS-checked drivers", text: "Every driver is DBS-checked.", Icon: ShieldCheck },
-  { title: "Child seats on request", text: "Just ask when you book.", Icon: Baby },
-  { title: "Flight tracking", text: "For airport pickups, we follow your flight.", Icon: PlaneLanding },
-  { title: "Easy to pay", text: "Cash, or online through a payment link.", Icon: Wallet },
+// Owner's reference: three ways we help, then the six local areas.
+const help = [
+  {
+    title: "Talk to our team",
+    text: "Tell us about your plans by phone or WhatsApp.",
+    link: { label: "Contact us", href: "/contact" },
+    Icon: MessageCircleMore,
+  },
+  {
+    title: "Plan your booking",
+    text: "Ask about pickup times, destinations or extra requirements.",
+    link: {
+      label: "Get booking help",
+      href: site.whatsapp
+        ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello, I’d like some help planning a booking.")}`
+        : "/contact",
+    },
+    Icon: CalendarDays,
+  },
+  {
+    title: "Find the right vehicle",
+    text: "Explore cars for your passengers and luggage.",
+    link: { label: "View our fleet", href: "/fleet" },
+    Icon: CarFront,
+  },
 ];
 
-const iconCircle = "flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/45 text-foreground";
+const localSlugs = [
+  "luton",
+  "leagrave",
+  "stopsley",
+  "dunstable",
+  "houghton-regis",
+  "harpenden",
+];
+const localAreas = localSlugs
+  .map((slug) => areas.find((a) => a.slug === slug)!)
+  .filter(Boolean);
+
 const linkClass =
   "group inline-flex min-h-[44px] items-center gap-2 font-semibold text-foreground underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2";
 
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      {/* From the owner's reference: the street scene is cropped from assets/brand/about-hero-reference.png,
+          with the car's grille retouched to remove the maker's design. */}
       <PageHero
-        eyebrow="ABOUT US"
-        heading="Local journeys. A friendly team."
-        text="Luton Minicab helps people across Luton and the towns nearby get where they need to be, day or night."
-        trust={trustLocal}
-        compact
+        eyebrow="ABOUT LUTON MINICAB"
+        heading={
+          <span className="block text-balance">
+            Here for wherever life takes you.
+          </span>
+        }
+        text="From everyday trips to airport journeys, our team at Bittacy Cars is here to help you get there."
+        secondary={
+          site.phone
+            ? {
+                label: "Talk to our team",
+                href: `tel:${site.phone.replace(/\s+/g, "")}`,
+                icon: "phone",
+              }
+            : undefined
+        }
         centered
+        illustration={{
+          image: heroIllustration,
+          alt: "Illustration of a Luton street with houses, a station and an airport, and a car on the road between them.",
+          caption: "LOCAL TRIPS. LONGER JOURNEYS. THE SAME CARE.",
+        }}
       />
 
-      <section aria-labelledby="who-heading" className={`band-alt border-t border-border ${section}`}>
-        <div className={`${container} grid items-center gap-10 lg:grid-cols-2 lg:gap-14`}>
+      {/* From the owner's reference (assets/brand/about-who-reference.png); the caption is real text. */}
+      <section
+        aria-labelledby="who-heading"
+        className={`band-alt border-t border-border ${section}`}
+      >
+        <div
+          className={`${container} grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14`}
+        >
           <div>
-            <p className={`${eyebrow} text-accent`}>WHO WE ARE</p>
+            <p className={`${eyebrow} flex items-center gap-4 text-accent`}>
+              WHO WE ARE
+              <span aria-hidden className="h-px w-16 bg-primary" />
+            </p>
             <h2 id="who-heading" className={`${h2} mt-4 text-foreground`}>
               A local service with a team you can reach.
             </h2>
-            <p className="mt-4 text-[1.125rem] leading-relaxed text-foreground">
-              Luton Minicab offers local journeys, school runs, airport transfers and longer trips from Luton and the towns nearby.
+            <p className="mt-5 text-[1.125rem] leading-relaxed text-foreground">
+              From everyday trips to airport transfers, we help people across
+              Luton and nearby towns get where they need to be.
             </p>
             <p className="mt-4 text-[1.125rem] leading-relaxed text-foreground">
-              Bookings are handled by our team at Bittacy Cars in Mill Hill, north London. You can book online, call us or send a WhatsApp
-              message at any time.
+              Bookings are handled by our team at Bittacy Cars in Mill Hill.
+              Book online, or speak to us about your journey.
             </p>
-            <Link href="/contact" className={`${linkClass} mt-4`}>
-              Contact us
-              <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-0.5" />
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex min-h-13 items-center justify-center gap-2 rounded-control bg-primary px-7 text-[1.0625rem] font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
+            >
+              Contact our team
+              <ArrowRight aria-hidden size={18} />
             </Link>
+            {(site.phone || site.whatsapp) && (
+              <div className="mt-6 flex items-center gap-3 text-[1.0625rem] text-foreground">
+                {site.phone && (
+                  <a
+                    href={`tel:${site.phone.replace(/\s+/g, "")}`}
+                    aria-label="Call us"
+                    className="inline-flex size-[44px] items-center justify-center rounded-full hover:bg-primary/30"
+                  >
+                    <Phone aria-hidden size={22} strokeWidth={1.75} />
+                  </a>
+                )}
+                {site.phone && site.whatsapp && (
+                  <span aria-hidden className="h-6 w-px bg-primary" />
+                )}
+                {site.whatsapp && (
+                  <a
+                    href={`https://wa.me/${site.whatsapp}`}
+                    aria-label="Message us on WhatsApp"
+                    className="inline-flex size-[44px] items-center justify-center rounded-full hover:bg-primary/30"
+                  >
+                    <MessageCircle aria-hidden size={22} strokeWidth={1.75} />
+                  </a>
+                )}
+                <span className="ml-1">Call us or message on WhatsApp</span>
+              </div>
+            )}
           </div>
-          {/* The office illustration's background is the page cream, so it sits on a matching card. */}
-          <div className="rounded-2xl border border-border bg-paper p-6 sm:p-8">
-            <Image src={officeIllustration} alt="" sizes="(min-width: 1024px) 34rem, 100vw" className="h-auto w-full" />
-          </div>
+          <figure className="overflow-hidden rounded-2xl border border-border bg-paper">
+            <Image
+              src={whoIllustration}
+              alt=""
+              sizes="(min-width: 1024px) 40rem, 100vw"
+              className="h-auto w-full"
+            />
+            <figcaption className="flex items-center gap-4 px-6 py-5 sm:gap-6 sm:px-10">
+              <span aria-hidden className="h-px flex-1 bg-primary" />
+              <span className="font-display text-[1.25rem] italic text-foreground sm:text-[1.375rem]">
+                A real team behind every booking.
+              </span>
+              <span aria-hidden className="h-px flex-1 bg-primary" />
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <section aria-labelledby="what-heading" className={`border-t border-border ${section}`}>
+      {/* From the owner's reference (assets/brand/about-what-reference.png; the hotel sign re-lettered). */}
+      <section
+        aria-labelledby="what-heading"
+        className={`border-t border-border ${section}`}
+      >
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>WHAT WE DO</p>
           <h2 id="what-heading" className={`${h2} mt-4 text-foreground`}>
             Here for every part of your day.
           </h2>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ name, href, Icon }) => (
-              <li key={href}>
+          <p className="mt-3 text-[1.125rem] text-foreground">
+            Local trips, working days and journeys further afield.
+          </p>
+          <Image
+            src={whatIllustration}
+            alt=""
+            sizes="(min-width: 1280px) 1200px, 100vw"
+            className="-mx-4 mt-8 h-auto w-[calc(100%+2rem)] max-w-none sm:mx-0 sm:w-full"
+          />
+          <ul className="mt-8 grid sm:grid-cols-2 md:grid-cols-3">
+            {services.map(({ name, href }, i) => (
+              <li
+                key={href}
+                className={`border-b border-primary/60 last:border-b-0 sm:pr-8 ${i < 3 ? "md:border-b" : "md:border-b-0"}`}
+              >
                 <Link
                   href={href}
-                  className="group flex min-h-[44px] items-center gap-4 rounded-2xl border border-border bg-alt p-5 text-foreground transition-colors hover:border-foreground"
+                  className="group inline-block min-h-[44px] py-5 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-semibold leading-tight text-foreground hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4"
                 >
-                  <span className={iconCircle}>
-                    <Icon aria-hidden size={22} strokeWidth={1.5} />
+                  {name.slice(0, name.lastIndexOf(" ") + 1)}
+                  {/* The last word and arrow stay together when the name wraps. */}
+                  <span className="whitespace-nowrap">
+                    {name.slice(name.lastIndexOf(" ") + 1)}
+                    <ArrowRight
+                      aria-hidden
+                      size={26}
+                      strokeWidth={1.5}
+                      className="ml-3 inline-block align-[-0.15em] transition-transform group-hover:translate-x-1"
+                    />
                   </span>
-                  <span className="font-display text-[1.375rem] font-semibold leading-tight">{name}</span>
-                  <ArrowRight aria-hidden size={20} className="ml-auto shrink-0 transition-transform group-hover:translate-x-1" />
                 </Link>
               </li>
             ))}
@@ -113,44 +231,99 @@ export default function Page() {
         </div>
       </section>
 
-      <section aria-labelledby="why-heading" className={`band-alt border-t border-border ${section}`}>
+      {/* From the owner's reference. Tones are swapped from the reference (this one dark, the next light)
+          so the page keeps alternating. */}
+      <section
+        aria-labelledby="help-heading"
+        className={`band-alt border-t border-border ${section}`}
+      >
         <div className={container}>
-          <p className={`${eyebrow} text-accent`}>WHY PEOPLE CHOOSE US</p>
-          <h2 id="why-heading" className={`${h2} mt-4 text-foreground`}>
-            The little things that make a journey easier.
+          <p className={`${eyebrow} text-accent`}>HERE TO HELP</p>
+          <h2 id="help-heading" className={`${h2} mt-4 text-foreground`}>
+            A little help with your journey.
           </h2>
-          <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {reasons.map(({ title, text, Icon }) => (
-              <li key={title} className="flex gap-4">
-                <span className={iconCircle}>
-                  <Icon aria-hidden size={22} strokeWidth={1.5} />
-                </span>
-                <div>
-                  <h3 className="font-display text-[1.375rem] font-semibold leading-tight text-foreground">{title}</h3>
-                  <p className="mt-1 text-[1.0625rem] text-foreground">{text}</p>
-                </div>
+          <ul className="mt-10 grid md:grid-cols-3">
+            {help.map(({ title, text, link, Icon }, i) => (
+              <li
+                key={title}
+                className={`py-8 md:py-0 ${i > 0 ? "border-t border-primary/70 md:border-t-0 md:border-l md:pl-10" : ""} ${i < 2 ? "md:pr-10" : ""}`}
+              >
+                <Icon
+                  aria-hidden
+                  size={44}
+                  strokeWidth={1.5}
+                  className="text-foreground"
+                />
+                <h3 className="mt-5 font-display text-[1.75rem] font-semibold leading-tight text-foreground">
+                  {title}
+                </h3>
+                <p className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">
+                  {text}
+                </p>
+                <a href={link.href} className={`${linkClass} mt-3`}>
+                  {link.label}
+                  <ArrowRight
+                    aria-hidden
+                    size={16}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
+                </a>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section aria-labelledby="where-heading" className={`border-t border-border ${section}`}>
-        <div className={`${container} flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between`}>
+      <section
+        aria-labelledby="where-heading"
+        className={`border-t border-border ${section}`}
+      >
+        <div
+          className={`${container} grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-14`}
+        >
           <div>
-            <p className={`${eyebrow} text-accent`}>WHERE WE PICK UP</p>
+            <p className={`${eyebrow} text-accent`}>AROUND LUTON</p>
             <h2 id="where-heading" className={`${h2} mt-4 text-foreground`}>
-              Across Luton and the towns nearby.
+              <span className="block">Local pickups.</span>
+              <span className="block">Nearby towns, too.</span>
             </h2>
-            <p className="mt-3 text-[1.125rem] text-foreground">Including Leagrave, Stopsley, Dunstable, Houghton Regis and Harpenden.</p>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <BookOnlineLink arrow />
-            <Link href="/areas" className={linkClass}>
-              View All Areas
-              <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-0.5" />
+            <p className="mt-4 text-[1.125rem] text-foreground">
+              Explore the places we cover around Luton.
+            </p>
+            <Link href="/areas" className={`${linkClass} mt-4`}>
+              View all areas
+              <ArrowRight
+                aria-hidden
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
             </Link>
           </div>
+          {/* Down then across, as in the reference. */}
+          <ul className="grid gap-x-10 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-3">
+            {localAreas.map(({ slug, name }) => (
+              <li key={slug}>
+                <Link
+                  href={`/areas/${slug}`}
+                  className="group flex min-h-[44px] items-center gap-3 border-b border-primary/60 py-4 text-[1.125rem] font-semibold text-foreground"
+                >
+                  <MapPin
+                    aria-hidden
+                    size={24}
+                    strokeWidth={1.5}
+                    className="shrink-0 text-accent"
+                  />
+                  {name}
+                  <ArrowRight
+                    aria-hidden
+                    size={20}
+                    strokeWidth={1.5}
+                    className="ml-auto shrink-0 transition-transform group-hover:translate-x-1"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </main>

@@ -1,7 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowDown, Clock, MessageCircle, PlaneLanding, PoundSterling, ShieldCheck, Handshake, type LucideIcon } from "lucide-react";
+import { ArrowDown, Clock, MessageCircle, Phone, PlaneLanding, PoundSterling, ShieldCheck, Handshake, type LucideIcon } from "lucide-react";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { CallToBook } from "./CallToBook";
 import { container, eyebrow as eyebrowClass, h1, lead } from "./ui";
@@ -50,13 +50,17 @@ type Props = {
   primary?: { label: string; href: string };
   // Replaces Call to Book with an outlined link: "whatsapp" (default) shows a chat icon before
   // the label, "down" an arrow after it for an on-page jump (e.g. "Explore Services").
-  secondary?: { label: string; href: string; icon?: "whatsapp" | "down" };
+  secondary?: { label: string; href: string; icon?: "whatsapp" | "down" | "phone" };
   // Short line under the buttons, used in place of a trust row.
   note?: string;
   // false hides the button row (Contact, where the contact options follow straight away).
   buttons?: boolean;
   // Centres the text (heroes without a photo only, e.g. Contact).
   centered?: boolean;
+  // Centred heroes without a photo (About): a wide illustration under the text. From lg its
+  // plain top band slides up behind the buttons, so the scene frames them; on phones it sits
+  // below, cropped to the middle. `caption` is a small strip between rules underneath.
+  illustration?: { image: StaticImageData; alt: string; caption?: string };
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
@@ -79,7 +83,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", photoLeft, secondary, note, buttons = true, centered = false }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", photoLeft, secondary, note, buttons = true, centered = false, illustration }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -123,14 +127,14 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
         </>
       )}
 
-      <div className={`relative w-full ${dark ? "bg-foreground [--color-ring:var(--color-primary)] lg:bg-transparent" : ""}`}>
+      <div className={`relative w-full ${illustration ? "z-10" : ""} ${dark ? "bg-foreground [--color-ring:var(--color-primary)] lg:bg-transparent" : ""}`}>
         <div className={`${container} ${compact ? "py-9 sm:py-10 lg:py-12" : "py-12 sm:py-14 lg:py-20"}`}>
-          <div className={`max-w-xl ${textTone} ${centered && !image ? "mx-auto text-center" : ""}`}>
+          <div className={`${illustration ? "max-w-3xl" : "max-w-xl"} ${textTone} ${centered && !image ? "mx-auto text-center" : ""}`}>
             <p className={`${eyebrowClass} ${dark ? "text-background" : "text-accent"}`}>{eyebrow}</p>
             <h1 id="page-heading" className={`mt-4 ${h1}`}>
               {heading}
             </h1>
-            <p className={`mt-5 max-w-md ${lead} ${centered && !image ? "mx-auto" : ""}`}>{text}</p>
+            <p className={`mt-5 ${illustration ? "max-w-2xl" : "max-w-md"} ${lead} ${centered && !image ? "mx-auto" : ""}`}>{text}</p>
             {buttons && (
             <div className={`mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start ${centered && !image ? "sm:justify-center" : ""}`}>
               {action ? (
@@ -160,7 +164,8 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                         dark ? "border-background text-background hover:bg-background/10" : "border-input text-foreground hover:border-foreground hover:bg-tint"
                       }`}
                     >
-                      {secondary.icon !== "down" && <MessageCircle aria-hidden size={18} strokeWidth={1.75} />}
+                      {secondary.icon === "phone" && <Phone aria-hidden size={18} strokeWidth={1.75} />}
+                      {(secondary.icon ?? "whatsapp") === "whatsapp" && <MessageCircle aria-hidden size={18} strokeWidth={1.75} />}
                       {secondary.label}
                       {secondary.icon === "down" && <ArrowDown aria-hidden size={18} />}
                     </a>
@@ -198,6 +203,31 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
           </div>
         </div>
       </div>
+      {illustration && !image && (
+        <>
+          {/* Below lg the plain top band (about 26% of the height) is trimmed off by over-sizing it. */}
+          <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[2/1] lg:-mt-[9%] lg:aspect-[1672/586] lg:overflow-visible">
+            <div className="absolute inset-x-0 bottom-0 h-[136%] lg:h-full">
+              <Image
+                src={illustration.image}
+                alt={illustration.alt}
+                fill
+                sizes="100vw"
+                className="object-cover object-[55%_bottom] lg:object-center"
+              />
+            </div>
+          </div>
+          {illustration.caption && (
+            <div className={`${container} flex items-center gap-4 py-5 sm:gap-6`}>
+              <span aria-hidden className="hidden h-px flex-1 bg-foreground/40 sm:block" />
+              <p className="flex-1 text-center text-sm font-semibold tracking-[0.15em] text-foreground sm:flex-none sm:tracking-[0.2em]">
+                {illustration.caption}
+              </p>
+              <span aria-hidden className="hidden h-px flex-1 bg-foreground/40 sm:block" />
+            </div>
+          )}
+        </>
+      )}
     </section>
   );
 }
