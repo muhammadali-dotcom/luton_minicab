@@ -25,7 +25,7 @@ export function LongDistanceJourney() {
     <section aria-labelledby="longer-journey-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>THE LONGER JOURNEY</p>
-        <h2 id="longer-journey-heading" className={`${h2} mt-4 text-foreground`}>
+        <h2 id="longer-journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           Further afield. Still door to door.
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">

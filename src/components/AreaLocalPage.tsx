@@ -1,11 +1,13 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  BedDouble,
   Briefcase,
   CalendarClock,
   CarFront,
   GraduationCap,
   HeartPulse,
+  Landmark,
   MapPin,
   MessageCircleMore,
   Plane,
@@ -41,6 +43,10 @@ const placeIcons: Record<AreaDetail["places"][number]["icon"], LucideIcon> = {
   health: HeartPulse,
   train: TrainFront,
   park: Trees,
+  plane: Plane,
+  bed: BedDouble,
+  landmark: Landmark,
+  work: Briefcase,
 };
 
 const iconCircle = "flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/45 text-foreground";
@@ -61,6 +67,9 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
     })),
     { name: "Airport Transfers", line: "To and from Luton and other UK airports.", href: "/airports", Icon: Plane },
   ];
+  const airportList = detail.airportFirst
+    ? [...airports.filter((a) => a.slug === detail.airportFirst), ...airports.filter((a) => a.slug !== detail.airportFirst)]
+    : airports;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -98,6 +107,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
           <h2 id="area-journeys-heading" className={`${h2} mt-4 text-foreground`}>
             Wherever you’re heading from {area.name}.
           </h2>
+          {detail.journeysText && <p className="mt-3 text-[1.125rem] text-foreground">{detail.journeysText}</p>}
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {journeys.map(({ name, line, href, Icon }) => (
               <li key={href}>
@@ -129,9 +139,9 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AROUND {area.name.toUpperCase()}</p>
           <h2 id="area-places-heading" className={`${h2} mt-4 text-foreground`}>
-            Places we take you in {area.name}.
+            {detail.placesHeading ?? `Places we take you in ${area.name}.`}
           </h2>
-          <p className="mt-3 text-[1.125rem] text-foreground">A few of the everyday trips we make.</p>
+          <p className="mt-3 text-[1.125rem] text-foreground">{detail.placesText ?? "A few of the everyday trips we make."}</p>
           <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {detail.places.map(({ title, line, icon }) => {
               const Icon = placeIcons[icon];
@@ -144,7 +154,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
               );
             })}
           </ul>
-          <p className="mt-8 text-[1.125rem] text-foreground">Somewhere else? Tell us where you’re going when you book.</p>
+          <p className="mt-8 text-[1.125rem] text-foreground">{detail.placesNote ?? "Somewhere else? Tell us where you’re going when you book."}</p>
         </div>
       </section>
 
@@ -152,11 +162,13 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AIRPORT TRANSFERS</p>
           <h2 id="area-airports-heading" className={`${h2} mt-4 text-foreground`}>
-            Flying from {area.name}?
+            {detail.airportsHeading ?? `Flying from ${area.name}?`}
           </h2>
-          <p className="mt-3 text-[1.125rem] text-foreground">Rides to and from the airports, with flight tracking on pickups.</p>
+          <p className="mt-3 text-[1.125rem] text-foreground">
+            {detail.airportsText ?? "Rides to and from the airports, with flight tracking on pickups."}
+          </p>
           <ul className="mt-10 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
-            {airports.map(({ slug, name }) => (
+            {airportList.map(({ slug, name }) => (
               <li key={slug}>
                 <Link
                   href={`/airports/${slug}`}
@@ -195,11 +207,12 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
       <Faq items={detail.faqs} band heading={`Taxis in ${area.name}: your questions.`} text="Here are a few helpful answers." />
 
       <LocalAreaCards
-        eyebrow="NEARBY AREAS"
-        heading={`Near ${area.name}, too.`}
-        text="We also pick up in the towns and neighbourhoods nearby."
+        eyebrow={detail.nearby ? "OTHER AREAS" : "NEARBY AREAS"}
+        heading={detail.nearby?.heading ?? `Near ${area.name}, too.`}
+        text={detail.nearby?.text ?? "We also pick up in the towns and neighbourhoods nearby."}
         helpText="Don’t see your area? Just ask."
         exclude={area.slug}
+        slugs={detail.nearby?.slugs}
       />
     </main>
   );

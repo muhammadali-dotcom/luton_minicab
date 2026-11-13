@@ -5,7 +5,6 @@ import { container, eyebrow, h2, section } from "./ui";
 
 // The six local areas, with their location lines from `areaPlaces` in site.ts.
 const localSlugs = ["luton", "leagrave", "stopsley", "dunstable", "houghton-regis", "harpenden"];
-const localAreas = areas.filter((a) => localSlugs.includes(a.slug));
 const places = areaPlaces;
 
 const buttonClass =
@@ -37,7 +36,7 @@ export function ContactButtons({ outline = false }: { outline?: boolean }) {
 }
 
 // `band` puts the section on band-alt, to keep a page alternating (default light).
-type Props = { eyebrow?: string; heading?: string; text?: string; helpText?: string; band?: boolean; exclude?: string };
+type Props = { eyebrow?: string; heading?: string; text?: string; helpText?: string; band?: boolean; exclude?: string; slugs?: string[]; contact?: boolean };
 
 // The six local areas as cards with a help row (Local Journeys and School Runs).
 // Luton Airport keeps AirportLocalAreas.
@@ -49,6 +48,11 @@ export function LocalAreaCards({
   band = false,
   // Leaves out one area (an area page doesn't list itself).
   exclude,
+  // Which areas to show (default: the six around Luton). Any slug from `areas` works.
+  slugs = localSlugs,
+  // Call and WhatsApp in the help row. Off by default: pages with a booking section already
+  // show them there (owner's rule, no repeated contact buttons). Local Journeys keeps them.
+  contact = false,
 }: Props) {
   return (
     <section aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
@@ -60,7 +64,7 @@ export function LocalAreaCards({
         <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {localAreas.filter((a) => a.slug !== exclude).map(({ slug, name }) => (
+          {slugs.map((slug) => areas.find((a) => a.slug === slug)).filter((a): a is (typeof areas)[number] => a !== undefined && a.slug !== exclude).map(({ slug, name }) => (
             <li key={slug}>
               <Link
                 href={`/areas/${slug}`}
@@ -87,8 +91,22 @@ export function LocalAreaCards({
         {/* One help row (merged from the old help strip), then straight into the booking banner. */}
         <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
-            <p className="text-[1.125rem] text-foreground">{helpText}</p>
-            <ContactButtons />
+            <p className="text-[1.125rem] text-foreground">
+              {contact || !helpText.endsWith("Just ask.") ? (
+                helpText
+              ) : (
+                <>
+                  {helpText.slice(0, -"Just ask.".length)}
+                  <Link
+                    href="/contact"
+                    className="inline-flex min-h-[44px] items-center font-semibold underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2"
+                  >
+                    Just ask.
+                  </Link>
+                </>
+              )}
+            </p>
+            {contact && <ContactButtons />}
           </div>
           <Link
             href="/areas"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { FinalCta } from "@/components/FinalCta";
 import { HideOnPaths } from "@/components/HideOnPaths";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <ScrollToTop />
         <SiteHeader />
         {children}
         {/* Every page ends with the booking banner except Contact (owner's rule). */}

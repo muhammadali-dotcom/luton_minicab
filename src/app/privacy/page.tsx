@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { HoldingPage } from "@/components/HoldingPage";
+import { LegalPage } from "@/components/LegalPage";
+import { privacySections } from "@/config/legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  robots: { index: false },
+  description: "How Luton Minicab collects, uses and protects your information when you book a journey, and your rights.",
 };
 
 export default function Page() {
-  return <HoldingPage title="Privacy Policy" />;
+  return <LegalPage title="Privacy Policy" intro="How we look after your information." sections={privacySections} />;
 }

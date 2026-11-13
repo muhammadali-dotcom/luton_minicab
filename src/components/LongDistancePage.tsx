@@ -1,4 +1,4 @@
-import { Baby, CalendarClock, DoorOpen, MapPin, MessageCircleMore, PoundSterling, ReceiptPoundSterling, ShieldCheck, Signpost, Wallet } from "lucide-react";
+import { Baby, CalendarClock, DoorOpen, MapPin, MessageCircleMore, PoundSterling, ShieldCheck, Signpost, Wallet } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { BookingDetails } from "./BookingDetails";
 import { CarChoices } from "./CarChoices";
@@ -20,7 +20,7 @@ export function LongDistancePage({ name, detail }: { name: string; detail: Servi
       <CarChoices
         id="cars-heading"
         label="ROOM FOR THE JOURNEY"
-        heading="Pick the car that fits your bags."
+        heading="Space for you and your luggage."
         text="Longer trips often mean more luggage. Here are three good places to start."
         cars={["saloon", "estate", "mpv-plus"]}
       />
@@ -37,11 +37,6 @@ export function LongDistancePage({ name, detail }: { name: string; detail: Servi
           { title: "Child seats on request", text: "Just mention it when you book.", Icon: Baby },
           { title: "Easy to pay", text: "Cash, or online through a payment link.", Icon: Wallet },
         ]}
-        card={{
-          title: "Know your fare first",
-          text: "Your fare is fixed when you book, however far you’re going.",
-          Icon: ReceiptPoundSterling,
-        }}
       />
 
       <BookingDetails

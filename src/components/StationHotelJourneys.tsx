@@ -26,20 +26,20 @@ export function StationHotelJourneys() {
     <section aria-labelledby="stations-hotels-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>STATIONS &amp; HOTELS</p>
-        <h2 id="stations-hotels-heading" className={`${h2} mt-4 text-foreground`}>
+        <h2 id="stations-hotels-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           From the station to your next stop.
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">
           Rides to and from stations and hotels, arranged around your plans.
         </p>
-        {/* Wide scene from md; on phones a 2:1 crop keeps the car large, losing the far edges. */}
+        {/* Wide scene from md; on phones a 2:1 crop keeps the station sign and the car, losing the hotel. */}
         <div className="relative -mx-4 mt-8 aspect-[2/1] overflow-hidden sm:mx-0 md:aspect-[1644/422]">
           <Image
             src={scene}
             alt="Illustration of a car on the road between a station and a hotel."
             fill
             sizes="(min-width: 1280px) 80rem, 100vw"
-            className="object-cover object-center"
+            className="object-cover object-[31%_center] md:object-center"
           />
         </div>
         <ul className="mt-8 grid gap-8 md:grid-cols-3 md:gap-10">

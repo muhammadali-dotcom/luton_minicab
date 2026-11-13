@@ -45,13 +45,13 @@ export function FleetCards() {
               </h3>
               <p className="mt-1 text-[1.0625rem] text-foreground sm:pl-[2.6rem]">{tagline}</p>
               <p className="sr-only">
-                Up to {capacity.passengers} passengers, {capacity.cases} large cases and {capacity.hand} pieces of hand luggage.
+                Up to {capacity.passengers} passengers, {capacity.cases} large cases and {capacity.hand} cabin bags.
               </p>
               <ul aria-hidden className="mt-3 flex flex-wrap gap-2 text-base text-foreground sm:pl-[2.6rem]">
                 {[
                   { label: `Up to ${capacity.passengers}`, Icon: Users },
-                  { label: `${capacity.cases} large`, Icon: Luggage },
-                  { label: `${capacity.hand} hand`, Icon: Briefcase },
+                  { label: `${capacity.cases} large cases`, Icon: Luggage },
+                  { label: `${capacity.hand} cabin bags`, Icon: Briefcase },
                 ].map(({ label, Icon }) => (
                   <li key={label} className="inline-flex items-center gap-1.5 rounded-full bg-primary/35 px-3 py-1">
                     <Icon size={16} strokeWidth={1.75} />

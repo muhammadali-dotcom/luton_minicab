@@ -34,7 +34,7 @@ export function BusinessJourneys() {
     <section aria-labelledby="business-journeys-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>BUSINESS JOURNEYS</p>
-        <h2 id="business-journeys-heading" className={`${h2} mt-4 text-foreground`}>
+        <h2 id="business-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           For wherever work takes you.
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">
@@ -45,7 +45,7 @@ export function BusinessJourneys() {
             <li key={title}>
               <Image src={image} alt={alt} sizes="(min-width: 768px) 30vw, 100vw" className="h-auto w-full" />
               <span aria-hidden className="mt-6 block h-0.5 w-16 bg-primary" />
-              <h3 className="mt-5 font-display text-[clamp(1.5rem,2.2vw,1.875rem)] font-semibold leading-tight text-foreground">
+              <h3 className="mt-5 text-balance font-display text-[clamp(1.5rem,2.2vw,1.875rem)] font-semibold leading-tight text-foreground">
                 {title}
               </h3>
               <p className="mt-2 text-[1.0625rem] leading-relaxed text-foreground">{text}</p>

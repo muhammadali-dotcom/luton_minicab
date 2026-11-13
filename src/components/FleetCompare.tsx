@@ -19,7 +19,7 @@ export function FleetCompare() {
                 <th scope="col" className="px-3 py-4 font-semibold sm:px-5">Car</th>
                 <th scope="col" className="px-3 py-4 font-semibold sm:px-5">Passengers</th>
                 <th scope="col" className="px-3 py-4 font-semibold sm:px-5">Large cases</th>
-                <th scope="col" className="px-3 py-4 font-semibold sm:px-5">Hand luggage</th>
+                <th scope="col" className="px-3 py-4 font-semibold sm:px-5">Cabin bags</th>
               </tr>
             </thead>
             <tbody>

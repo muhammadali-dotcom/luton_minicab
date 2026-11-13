@@ -27,7 +27,7 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
       <section aria-labelledby="stations-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>STATIONS NEAR YOU</p>
-          <h2 id="stations-heading" className={`${h2} mt-4 text-foreground`}>
+          <h2 id="stations-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             To the train, or home after it.
           </h2>
           <p className="mt-3 text-[1.125rem] text-foreground">Rides to and from the stations around Luton.</p>
@@ -38,7 +38,7 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
                   <TrainFront aria-hidden size={24} strokeWidth={1.5} />
                 </span>
                 <div>
-                  <h3 className="font-display text-[1.375rem] font-semibold leading-tight text-foreground">{station}</h3>
+                  <h3 className="text-balance font-display text-[1.375rem] font-semibold leading-tight text-foreground">{station}</h3>
                   <p className="mt-1 text-base text-foreground">{place}</p>
                 </div>
               </li>

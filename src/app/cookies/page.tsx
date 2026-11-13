@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { HoldingPage } from "@/components/HoldingPage";
+import { LegalPage } from "@/components/LegalPage";
+import { cookiesSections } from "@/config/legal";
 
 export const metadata: Metadata = {
   title: "Cookies",
-  robots: { index: false },
+  description: "Luton Minicab’s website doesn’t use cookies or tracking. Here’s what that means for you.",
 };
 
 export default function Page() {
-  return <HoldingPage title="Cookies" />;
+  return <LegalPage title="Cookies" intro="Short and simple: our website doesn’t use cookies." sections={cookiesSections} />;
 }

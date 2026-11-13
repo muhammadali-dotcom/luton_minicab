@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { PageFallback } from "@/components/PageFallback";
 import { AreaLocalPage } from "@/components/AreaLocalPage";
-import { AreaPage } from "@/components/AreaPage";
 import { areaDetails } from "@/config/areaDetails";
 import { areas } from "@/config/site";
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
 // params is URL data, so it's read inside Suspense to keep navigation instant.
 export default function Page({ params }: PageProps<"/areas/[slug]">) {
   return (
-    <Suspense fallback={<main id="main" className="flex-1" />}>
+    <Suspense fallback={<PageFallback />}>
       <AreaContent params={params} />
     </Suspense>
   );
@@ -32,5 +32,6 @@ async function AreaContent({ params }: { params: PageProps<"/areas/[slug]">["par
   const area = find((await params).slug);
   if (!area) notFound();
   const detail = areaDetails[area.slug];
-  return detail ? <AreaLocalPage area={area} detail={detail} /> : <AreaPage area={area} />;
+  if (!detail) notFound();
+  return <AreaLocalPage area={area} detail={detail} />;
 }

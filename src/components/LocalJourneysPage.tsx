@@ -104,7 +104,7 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
         </div>
       </section>
 
-      <LocalAreaCards />
+      <LocalAreaCards contact />
     </main>
   );
 }

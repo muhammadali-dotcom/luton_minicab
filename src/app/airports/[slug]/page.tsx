@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { PageFallback } from "@/components/PageFallback";
 import { AirportPage } from "@/components/AirportPage";
 import { AirportShortPage } from "@/components/AirportShortPage";
 import { airports, shortPageAirports } from "@/config/site";
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps<"/airports/[slug]">
 // params is URL data, so it's read inside Suspense to keep navigation instant.
 export default function Page({ params }: PageProps<"/airports/[slug]">) {
   return (
-    <Suspense fallback={<main id="main" className="flex-1" />}>
+    <Suspense fallback={<PageFallback />}>
       <Content params={params} />
     </Suspense>
   );
