@@ -37,7 +37,7 @@ const otherJourneys = [
   { label: "School runs", href: "/services/school-runs" },
 ];
 
-// The owner's own structure for this service, shorter than the shared ServicePage.
+// The owner's own structure for this service, shorter than the other service pages.
 export function LocalJourneysPage({ name, detail }: { name: string; detail: ServiceDetail }) {
   return (
     <main id="main" className="flex-1">

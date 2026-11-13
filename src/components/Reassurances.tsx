@@ -10,15 +10,17 @@ type Props = {
   items: Item[];
   // Optional side card for the page's own point (e.g. School Runs' SEND line).
   card?: { title: string; text: string; Icon: LucideIcon };
+  // true puts the section on band-alt, to keep a page alternating (default light).
+  band?: boolean;
 };
 
 const iconCircle = "flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/45 text-foreground";
 const h3 = "font-display text-[1.375rem] font-semibold leading-tight text-foreground";
 
-// Light section: icon reassurances in a grid, with an optional side card.
-export function Reassurances({ id, label, heading, items, card }: Props) {
+// Icon reassurances in a grid, with an optional side card.
+export function Reassurances({ id, label, heading, items, card, band = false }: Props) {
   return (
-    <section aria-labelledby={id} className={`border-t border-border ${section}`}>
+    <section aria-labelledby={id} className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
         <h2 id={id} className={`${h2} mt-4 text-foreground`}>
@@ -48,7 +50,7 @@ export function Reassurances({ id, label, heading, items, card }: Props) {
             ))}
           </ul>
           {card && (
-            <aside className="self-start rounded-2xl border border-border bg-alt p-6">
+            <aside className={`self-start rounded-2xl border border-border p-6 ${band ? "bg-paper" : "bg-alt"}`}>
               <span className={iconCircle}>
                 <card.Icon aria-hidden size={24} strokeWidth={1.5} />
               </span>

@@ -1,5 +1,5 @@
 // Central site settings. Contact values are deliberately null until the
-// business supplies real details — components render visible placeholders
+// business supplies real details. Components render visible placeholders
 // instead of working links while a value is missing.
 
 export type NavLink = {

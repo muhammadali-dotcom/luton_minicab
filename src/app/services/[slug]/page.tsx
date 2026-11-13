@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CorporateTravelPage } from "@/components/CorporateTravelPage";
 import { LocalJourneysPage } from "@/components/LocalJourneysPage";
+import { LongDistancePage } from "@/components/LongDistancePage";
 import { SchoolRunsPage } from "@/components/SchoolRunsPage";
 import { StationHotelPage } from "@/components/StationHotelPage";
-import { ServicePage } from "@/components/ServicePage";
 import { serviceDetails } from "@/config/serviceDetails";
 import { services } from "@/config/site";
 
@@ -38,5 +38,6 @@ async function Content({ params }: { params: PageProps<"/services/[slug]">["para
   if (slug === "school-runs") return <SchoolRunsPage name={title} detail={serviceDetails[slug]} />;
   if (slug === "station-hotel-transfers") return <StationHotelPage name={title} detail={serviceDetails[slug]} />;
   if (slug === "corporate-travel") return <CorporateTravelPage name={title} detail={serviceDetails[slug]} />;
-  return <ServicePage slug={slug} name={title} detail={serviceDetails[slug]} />;
+  if (slug === "long-distance-travel") return <LongDistancePage name={title} detail={serviceDetails[slug]} />;
+  notFound();
 }

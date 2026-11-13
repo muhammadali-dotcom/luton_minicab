@@ -137,7 +137,7 @@ export function Services() {
               Have another journey in mind?
             </h3>
             <p className="mt-1 text-[1.0625rem] text-paper/90">
-              Business trips, longer journeys or something different&mdash;let&rsquo;s talk.
+              Business trips, longer journeys or something different? Let&rsquo;s talk.
             </p>
           </div>
           <Link href="/contact" className={talkClass}>

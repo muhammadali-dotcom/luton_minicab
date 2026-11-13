@@ -36,7 +36,8 @@ export function ContactButtons({ outline = false }: { outline?: boolean }) {
   );
 }
 
-type Props = { eyebrow?: string; heading?: string; text?: string; helpText?: string };
+// `band` puts the section on band-alt, to keep a page alternating (default light).
+type Props = { eyebrow?: string; heading?: string; text?: string; helpText?: string; band?: boolean; exclude?: string };
 
 // The six local areas as cards with a help row (Local Journeys and School Runs).
 // Luton Airport keeps AirportLocalAreas.
@@ -45,9 +46,12 @@ export function LocalAreaCards({
   heading = "Local areas we cover.",
   text = "Luton neighbourhoods and the towns nearby.",
   helpText = "Don’t see your area? Extra bags or a return trip? Just ask.",
+  band = false,
+  // Leaves out one area (an area page doesn't list itself).
+  exclude,
 }: Props) {
   return (
-    <section aria-labelledby="local-areas-heading" className={`border-t border-border ${section}`}>
+    <section aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
         <h2 id="local-areas-heading" className={`${h2} mt-4 text-foreground`}>
@@ -56,11 +60,11 @@ export function LocalAreaCards({
         <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {localAreas.map(({ slug, name }) => (
+          {localAreas.filter((a) => a.slug !== exclude).map(({ slug, name }) => (
             <li key={slug}>
               <Link
                 href={`/areas/${slug}`}
-                className="group flex h-full min-h-[44px] items-center gap-4 rounded-2xl border border-border bg-alt p-5 text-foreground transition-colors hover:border-foreground"
+                className={`group flex h-full min-h-[44px] items-center gap-4 rounded-2xl border border-border p-5 text-foreground transition-colors hover:border-foreground ${band ? "bg-paper" : "bg-alt"}`}
               >
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/45">
                   <MapPin aria-hidden size={22} strokeWidth={1.5} />

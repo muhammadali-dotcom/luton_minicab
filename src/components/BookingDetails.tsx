@@ -10,18 +10,21 @@ type Props = {
   details: { title: string; text: string; Icon: LucideIcon }[];
   prompt?: string;
   note?: string;
+  // false puts the section on the light background, to keep a page alternating (default band-alt).
+  band?: boolean;
 };
 
-// Band-alt "How to book": what to have ready, then Book Online, Call and WhatsApp.
+// "How to book": what to have ready, then Book Online, Call and WhatsApp.
 export function BookingDetails({
   heading,
   text = "Have these details ready, and we’ll help you arrange the journey.",
   details,
   prompt = "Ready to arrange the journey?",
   note = "We’ll confirm the journey details and fare with you.",
+  band = true,
 }: Props) {
   return (
-    <section aria-labelledby="book-heading" className={`band-alt border-t border-border ${section}`}>
+    <section aria-labelledby="book-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>HOW TO BOOK</p>
         <h2 id="book-heading" className={`${h2} mt-4 text-foreground`}>

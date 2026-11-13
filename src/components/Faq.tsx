@@ -37,11 +37,14 @@ type Props = {
   band?: boolean;
   // Extra content below the FAQ, inside the same section.
   children?: ReactNode;
+  // Overrides the heading and line (area pages name the place, which helps local search).
+  heading?: string;
+  text?: string;
 };
 
 const contactClass = "inline-flex min-h-[44px] items-center underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2";
 
-export function Faq({ items = homepageFaqs, band = false, children }: Props) {
+export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are a few helpful answers." }: Props) {
   return (
     <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
@@ -51,9 +54,9 @@ export function Faq({ items = homepageFaqs, band = false, children }: Props) {
             id="faq-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground"
           >
-            Got a question?
+            {heading}
           </h2>
-          <p className="mt-2 text-[1.125rem] text-foreground">Here are a few helpful answers.</p>
+          <p className="mt-2 text-[1.125rem] text-foreground">{text}</p>
 
           <div className="mt-8">
             {items.map(({ q, a }, i) => (

@@ -1,7 +1,7 @@
-import { Briefcase, Building2, CalendarClock, Car, Clock, MapPin, MessageCircleMore, PoundSterling, ReceiptPoundSterling, ShieldCheck, Wallet } from "lucide-react";
+import { Building2, CalendarClock, Car, Clock, MapPin, MessageCircleMore, PoundSterling, ReceiptPoundSterling, ShieldCheck, Wallet } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { BookingDetails } from "./BookingDetails";
-import { JourneyPanels } from "./JourneyPanels";
+import { BusinessJourneys } from "./BusinessJourneys";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { Reassurances } from "./Reassurances";
 import { ServiceHero } from "./ServiceHero";
@@ -13,27 +13,7 @@ export function CorporateTravelPage({ name, detail }: { name: string; detail: Se
     <main id="main" className="flex-1">
       <ServiceHero name={name} detail={detail} />
 
-      {/* Icons stand in until the owner's two illustrations arrive (set `image` on each panel). */}
-      <JourneyPanels
-        id="working-day-heading"
-        label="THE WORKING DAY"
-        heading="To the meeting, and on to the next."
-        panels={[
-          {
-            label: "THE OUTWARD JOURNEY",
-            title: "Off to work",
-            text: "Arrange a pickup from home, the office or your hotel.",
-            Icon: Briefcase,
-          },
-          {
-            label: "THE RETURN JOURNEY",
-            title: "Heading back",
-            text: "Book the ride back for when the day is done.",
-            Icon: Building2,
-          },
-        ]}
-        note="Arrange each journey in advance."
-      />
+      <BusinessJourneys />
 
       <Reassurances
         id="business-heading"
