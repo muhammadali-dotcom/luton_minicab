@@ -216,3 +216,5 @@ Avoid:
 - Content works at 320px wide and at 200% zoom.
 
 - **Current area heroes (16 November 2026):** supersedes the earlier supplied-photograph mapping. Only the nine individual /areas/[slug] heroes use car-free golden-hour generated scenes from `public/brand/areas/<slug>-hero.png`. Cars were removed from source images 1–6, 8–9 and Mill Hill timber-fascia image 10. Keep originals, local headings, buttons and trust row. Neutral illustration alt text; do not label generated buildings as exact real landmarks. Remove the old Leagrave zoom. Per-area crops and cream fades protect readability. /areas overview and all other page images stay unchanged.
+
+- **Areas overview hero (16 November 2026):** /areas now uses the supplied “British places, elegantly woven into a panorama.png” illustration with the light cream/green hero treatment, gold buttons, existing headline/copy/trust row, responsive focal points and neutral panorama alt text. Replaces the previous driver/passenger photo only on /areas; individual area heroes and other pages are unchanged. Preserve the source image.
