@@ -1,9 +1,28 @@
-// Content for the upgraded area pages (/areas/[slug], `AreaLocalPage.tsx`). Areas without an
-// entry keep the older `AreaPage.tsx` until their content is approved.
+import type { StaticImageData } from "next/image";
+import lutonPhoto from "../../public/brand/areas/luton-hero.png";
+import leagravePhoto from "../../public/brand/areas/leagrave-hero.png";
+import stopsleyPhoto from "../../public/brand/areas/stopsley-hero.png";
+import dunstablePhoto from "../../public/brand/areas/dunstable-hero.png";
+import houghtonRegisPhoto from "../../public/brand/areas/houghton-regis-hero.png";
+import harpendenPhoto from "../../public/brand/areas/harpenden-hero.png";
+import millHillPhoto from "../../public/brand/areas/mill-hill-hero.png";
+import hounslowPhoto from "../../public/brand/areas/hounslow-hero.png";
+import heathrowPhoto from "../../public/brand/areas/heathrow-hero.png";
+
+// Content and car-free generated location illustrations for /areas/[slug], rendered by AreaLocalPage.
 // Places are plain public destinations: no partnerships, journey times, distances or prices.
 // Owner to confirm the place names (requirement.md).
 export type AreaDetail = {
-  hero: { heading: string; text: string };
+  hero: {
+    heading: string;
+    text: string;
+    image: StaticImageData;
+    alt: string;
+    mobilePhotoPosition: string;
+    desktopPhotoPosition: string;
+    // Optional stronger cream fade for a busy image (default in AreaLocalPage.tsx).
+    fade?: string;
+  };
   // Four groups of local places, one line each.
   places: { title: string; line: string; icon: "shopping" | "health" | "train" | "park" | "plane" | "bed" | "landmark" | "work" }[];
   faqs: { q: string; a: string }[];
@@ -27,6 +46,10 @@ const fixedFare = { q: "Is the fare fixed?", a: "Yes. You’ll know your fare wh
 export const areaDetails: Record<string, AreaDetail> = {
   luton: {
     hero: {
+      image: lutonPhoto,
+      alt: "A golden-hour illustration of a civic square with a clock tower and stone memorial.",
+      mobilePhotoPosition: "object-[90%_30%]",
+      desktopPhotoPosition: "lg:object-[68%_0%]",
       heading: "Your Luton taxi, day or night.",
       text: "Local trips, school runs and airport transfers across Luton. Book online, or speak to our team.",
     },
@@ -55,6 +78,10 @@ export const areaDetails: Record<string, AreaDetail> = {
 
   leagrave: {
     hero: {
+      image: leagravePhoto,
+      alt: "A golden-hour illustration of a red-brick station with a white canopy and footbridge.",
+      mobilePhotoPosition: "object-[90%_45%]",
+      desktopPhotoPosition: "lg:object-[68%_25%]",
       heading: "Leagrave rides, door to door.",
       text: "Rides from Leagrave in north-west Luton, to the station, the shops, school or the airport.",
     },
@@ -86,6 +113,10 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   stopsley: {
     hero: {
+      image: stopsleyPhoto,
+      alt: "A golden-hour illustration of village shops and an empty road with chalk hills beyond.",
+      mobilePhotoPosition: "object-[90%_45%]",
+      desktopPhotoPosition: "lg:object-[68%_30%]",
       heading: "Stopsley pickups, any time.",
       text: "Rides from Stopsley in north-east Luton, close to Luton Airport, for everyday trips, school runs and flights.",
     },
@@ -117,6 +148,10 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   dunstable: {
     hero: {
+      image: dunstablePhoto,
+      alt: "A golden-hour illustration of a stone church, historic street and green hills.",
+      mobilePhotoPosition: "object-[85%_35%]",
+      desktopPhotoPosition: "lg:object-[68%_0%]",
       heading: "Your Dunstable taxi, near and far.",
       text: "Rides from Dunstable, just west of Luton, to the station, the hospital, the airport or further afield.",
     },
@@ -148,6 +183,10 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   "houghton-regis": {
     hero: {
+      image: houghtonRegisPhoto,
+      alt: "A golden-hour illustration of a leafy village green and stone church.",
+      mobilePhotoPosition: "object-[90%_35%]",
+      desktopPhotoPosition: "lg:object-[68%_0%]",
       heading: "Houghton Regis rides, made simple.",
       text: "Rides from Houghton Regis, just north of Dunstable, for everyday trips, school runs and the station.",
     },
@@ -179,6 +218,10 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   harpenden: {
     hero: {
+      image: harpendenPhoto,
+      alt: "A golden-hour illustration of a tree-lined high street beside an open green.",
+      mobilePhotoPosition: "object-[90%_45%]",
+      desktopPhotoPosition: "lg:object-[68%_30%]",
       heading: "Harpenden journeys, planned your way.",
       text: "Rides from Harpenden, south of Luton in Hertfordshire, for the station, business trips and airport transfers.",
     },
@@ -210,8 +253,12 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   "mill-hill": {
     hero: {
+      image: millHillPhoto,
+      alt: "A golden-hour illustration of a suburban station entrance with a timber fascia and leafy street.",
+      mobilePhotoPosition: "object-[90%_40%]",
+      desktopPhotoPosition: "lg:object-[68%_20%]",
       heading: "Mill Hill rides, from our home base.",
-      text: "Bookings are handled by our team at Bittacy Cars in Mill Hill. Local trips, longer journeys and airport transfers, day or night.",
+      text: "Our booking team in Mill Hill helps arrange local trips, longer journeys and airport transfers, day or night.",
     },
     journeysText: "Around north London, up to Luton, or out to the airports.",
     placesText: "Around our part of north London.",
@@ -232,7 +279,7 @@ export const areaDetails: Record<string, AreaDetail> = {
     faqs: [
       {
         q: "Are you based in Mill Hill?",
-        a: "Yes. Bookings are handled by our team at Bittacy Cars in Mill Hill, north London.",
+        a: "Yes. Bookings are handled by our booking team in Mill Hill, north London.",
       },
       {
         q: "Can you take me from Mill Hill to the airport?",
@@ -247,6 +294,10 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   hounslow: {
     hero: {
+      image: hounslowPhoto,
+      alt: "A golden-hour illustration of a west London-style high street with a plane overhead.",
+      mobilePhotoPosition: "object-[90%_40%]",
+      desktopPhotoPosition: "lg:object-[68%_15%]",
       heading: "Hounslow to Heathrow, and beyond.",
       text: "Rides from Hounslow in west London, close to Heathrow, for airport transfers, local trips and longer journeys.",
     },
@@ -284,6 +335,10 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
   heathrow: {
     hero: {
+      image: heathrowPhoto,
+      alt: "A golden-hour illustration of a glass airport terminal and empty forecourt with a plane overhead.",
+      mobilePhotoPosition: "object-[90%_35%]",
+      desktopPhotoPosition: "lg:object-[68%_0%]",
       heading: "Landed at Heathrow? We’ll take it from here.",
       text: "Pickups at Heathrow’s terminals and nearby hotels, for the journey home or onward.",
     },

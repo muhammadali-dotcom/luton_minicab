@@ -18,7 +18,14 @@ export function ContactForm() {
 
   function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const requiredFields = [["name", "Enter your name."], ["message", "Enter a message."]] as const;
+    for (const [field, message] of requiredFields) {
+      const input = form.elements.namedItem(field) as HTMLInputElement | HTMLTextAreaElement;
+      input.setCustomValidity(input.value.trim() ? "" : message);
+    }
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const text = [
       `Enquiry: ${get("type")}`,
@@ -39,7 +46,15 @@ export function ContactForm() {
           <label htmlFor="cf-name" className={labelClass}>
             Name
           </label>
-          <input id="cf-name" name="name" type="text" required autoComplete="name" className={fieldClass} />
+          <input
+            id="cf-name"
+            name="name"
+            type="text"
+            required
+            onInput={(event) => event.currentTarget.setCustomValidity("")}
+            autoComplete="name"
+            className={fieldClass}
+          />
         </div>
         <div>
           <label htmlFor="cf-email" className={labelClass}>
@@ -87,7 +102,14 @@ export function ContactForm() {
         <label htmlFor="cf-message" className={labelClass}>
           Message
         </label>
-        <textarea id="cf-message" name="message" required rows={5} className={`${fieldClass} resize-y`} />
+        <textarea
+          id="cf-message"
+          name="message"
+          required
+          onInput={(event) => event.currentTarget.setCustomValidity("")}
+          rows={5}
+          className={`${fieldClass} resize-y`}
+        />
       </div>
       <button
         type="submit"

@@ -22,7 +22,6 @@ import type { AreaDetail } from "@/config/areaDetails";
 import { airportDetails } from "@/config/airportDetails";
 import { serviceDetails } from "@/config/serviceDetails";
 import { airports, services, site } from "@/config/site";
-import heroPhoto from "../../public/brand/services/local-journeys-hero.png";
 import { BookingDetails } from "./BookingDetails";
 import { Faq } from "./Faq";
 import { LocalAreaCards } from "./LocalAreaCards";
@@ -87,14 +86,14 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
     <main id="main" className="flex-1">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceSchema, faqSchema]) }} />
       <PageHero
+        // Full-width car-free location illustration, with a cream fade behind the text,
+        // clearing about 60% across so the rest of the photo keeps its colour. Green text.
         tone="light"
-        image={heroPhoto}
-        alt="A dark estate car parked on a sunny high street, beside a cream wall, shopfronts and hanging flowers."
-        fade="from-background/80 via-background/55 via-40% to-transparent to-55%"
-        photoFrom="content"
-        // Small laptops: start the photo 4rem later so the trust row stays clear of the planter.
-        photoLeft="lg:left-[calc((max(2.5rem,(100%-80rem)/2+2.5rem)-12%)/0.88+4rem)] xl:left-[calc((max(2.5rem,(100%-80rem)/2+2.5rem)-12%)/0.88)]"
-        mobilePhotoPosition="object-[96%_center]"
+        image={detail.hero.image}
+        alt={detail.hero.alt}
+        fade={detail.hero.fade ?? "from-background via-background/97 via-44% to-transparent to-60%"}
+        mobilePhotoPosition={detail.hero.mobilePhotoPosition}
+        desktopPhotoPosition={detail.hero.desktopPhotoPosition}
         eyebrow={`TAXIS IN ${area.name.toUpperCase()}`}
         heading={<span className="block text-balance">{detail.hero.heading}</span>}
         text={detail.hero.text}

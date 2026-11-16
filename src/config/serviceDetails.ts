@@ -144,7 +144,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       alt: "A dark estate car parked beside a stone cottage on a country road, with rolling hills behind.",
       // Three lines, as in the owner's reference, so it stays on the cottage wall.
       headingWidth: "max-w-[7.5em]",
-      fade: "from-background/88 via-background/65 via-40% to-transparent to-55%",
+      fade: "from-background/93 via-background/80 via-40% to-transparent to-55%",
     },
     image: longDistanceTravel,
     alt: "A couple with a suitcase beside a dark saloon on a country road, with green hills behind.",

@@ -15,13 +15,12 @@ export const metadata: Metadata = {
     "Call, WhatsApp, email or send a message to Luton Minicab. We’re available 24/7 to help with new journeys and existing bookings.",
 };
 
-// TEMPORARY: the shared Bittacy Cars team and office (owner's choice, November 2026), labelled
-// as Mill Hill, never as a Luton office. Replace with Luton Minicab's own details before launch.
+// Confirmed booking office in Mill Hill; never label it as a Luton office.
 const office = {
-  name: "Bittacy Cars",
+  name: "Our booking office",
   lines: ["2 Bittacy Hill", "Mill Hill, London", "NW7 1LB"],
 };
-const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${office.name}, ${office.lines.join(", ")}`)}`;
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.lines.join(", "))}`;
 
 // "447983527104" -> "+44 7983 527104"
 const formatWhatsapp = (n: string) => `+${n.slice(0, 2)} ${n.slice(2, 6)} ${n.slice(6)}`;
@@ -125,7 +124,7 @@ export default function Page() {
               <span className="block">A team you can reach.</span>
             </h2>
             <p className="mt-4 max-w-xl text-[1.125rem] leading-relaxed text-foreground">
-              Luton Minicab bookings are handled by our team at {office.name}, based in Mill Hill, north London.
+              Luton Minicab bookings are handled by our booking team in Mill Hill, north London.
             </p>
             <Image src={officeIllustration} alt="" sizes="(min-width: 1024px) 40rem, 100vw" className="mt-8 h-auto w-full max-w-2xl" />
           </div>

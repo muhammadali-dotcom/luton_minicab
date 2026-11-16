@@ -1,10 +1,12 @@
 // Content for /privacy, /terms and /cookies (rendered by LegalPage.tsx).
-// Adapted from Bittacy Cars' own privacy and terms pages (bittacycars.com) at the owner's
+// Adapted from the owner's supplied privacy and terms pages at the owner's
 // request, November 2026. Owner's choices: same rules, but no £ amounts (other charges are
 // confirmed before booking); airports keep the confirmed 15 free minutes; Luton Minicab is
-// named, with bookings handled by our team at Bittacy Cars in Mill Hill.
+// named, with bookings handled by our booking team in Mill Hill.
 // Left out on purpose: coach bookings, Eurostar meet and greet, wheelchair wording,
-// London-only law references and every fee amount. Have the terms reviewed before launch.
+// London-only law references and every fee amount. Owner confirmed (November 2026): card
+// payments by Stripe, 10 to 15 free minutes for non-airport pickups. Refund bank charge not
+// confirmed, so it stays "may be". Have the terms reviewed before launch.
 
 export type LegalSection = {
   id: string;
@@ -16,16 +18,16 @@ export type LegalSection = {
   links?: { label: string; href: string }[];
 };
 
-export const legalUpdated = "13 November 2026";
+export const legalUpdated = "16 November 2026";
 
-export const bittacyAddress = "2 Bittacy Hill, Mill Hill, London, NW7 1LB";
+export const bookingOfficeAddress = "2 Bittacy Hill, Mill Hill, London, NW7 1LB";
 
 export const privacySections: LegalSection[] = [
   {
     id: "who-we-are",
     heading: "Who we are",
     paragraphs: [
-      `Luton Minicab provides local journeys, airport transfers and longer trips. Bookings are handled by our team at Bittacy Cars, ${bittacyAddress}.`,
+      `Luton Minicab provides local journeys, airport transfers and longer trips. Bookings are handled by our booking team at ${bookingOfficeAddress}.`,
       "We are responsible for the personal information you share with us, and this policy explains how we look after it.",
     ],
   },
@@ -165,7 +167,7 @@ export const termsSections: LegalSection[] = [
     heading: "Waiting time",
     bullets: [
       "Airport pickups: your driver waits free for 15 minutes, starting once they reach the pickup point at the agreed time.",
-      "Other pickups, such as homes, hotels, offices and stations: a short free wait from the booked time.",
+      "Other pickups, such as homes, hotels, offices and stations: 10 to 15 minutes of free waiting from the booked time.",
       "After the free waiting time, waiting charges apply. We discuss these with you before your booking is confirmed.",
       "If you’re running late or your train is delayed, please tell us as soon as you can.",
     ],

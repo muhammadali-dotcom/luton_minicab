@@ -130,7 +130,8 @@ Every page uses **`PageHero`** (`src/components/PageHero.tsx`) and the class con
 
   | Pages | Photo |
   |---|---|
-  | Homepage, areas, /areas | `hero-photo` (dark) |
+  | Homepage, /areas | `hero-photo` (dark) |
+  | Individual /areas/[slug] pages | Supplied location photographs, mapped in `areaDetails.ts` (light tone); full-width photo in full colour, short cream fade behind green text (`from-background via-background/97 via-44% to-transparent to-60%`: solid behind the text so the gold eyebrow passes 4.5:1, then a quick blend; optional per-area `hero.fade`); individual desktop/mobile focal points; cream text block under the photo on phones |
   | /fleet | `fleet-hero` (light, `photoRight`, `photoFrom="content"`) |
   | Luton Airport | `airport-luton-terminal-hero` (light, `photoRight`, number plate blanked) |
   | /airports, short airport pages | `airport-luton-hero` (light, default fade; also the fallback) |
@@ -213,3 +214,5 @@ Avoid:
 - One h1 per page, h2 per section, and headings in order.
 - Icon-only buttons have labels; decorative graphics are hidden from screen readers.
 - Content works at 320px wide and at 200% zoom.
+
+- **Current area heroes (16 November 2026):** supersedes the earlier supplied-photograph mapping. Only the nine individual /areas/[slug] heroes use car-free golden-hour generated scenes from `public/brand/areas/<slug>-hero.png`. Cars were removed from source images 1–6, 8–9 and Mill Hill timber-fascia image 10. Keep originals, local headings, buttons and trust row. Neutral illustration alt text; do not label generated buildings as exact real landmarks. Remove the old Leagrave zoom. Per-area crops and cream fades protect readability. /areas overview and all other page images stay unchanged.

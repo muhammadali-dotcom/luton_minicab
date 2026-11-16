@@ -83,7 +83,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition = "lg:object-[center_68%]", photoLeft, secondary, note, buttons = true, centered = false, illustration }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition, photoLeft, secondary, note, buttons = true, centered = false, illustration }: Props) {
   const dark = tone === "dark" && Boolean(image);
   const textTone = dark ? "text-background" : "text-foreground";
 
@@ -97,7 +97,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
       {image && (
         <>
           <div
-            className={`relative lg:absolute ${compact ? "aspect-[2/1]" : "aspect-[16/9]"} ${
+            className={`relative overflow-hidden lg:absolute ${compact ? "aspect-[2/1]" : "aspect-[16/9]"} ${
               photoRight
                 ? `lg:inset-y-0 lg:right-0 ${
                     photoMask === "narrow"
@@ -118,7 +118,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               loading="eager"
               fetchPriority="high"
               sizes={photoRight ? "(min-width: 1024px) 70vw, 100vw" : "100vw"}
-              className={`object-cover ${mobilePhotoPosition} ${photoFrom === "content" ? desktopPhotoPosition : "lg:object-[68%_center]"}`}
+              className={`object-cover ${mobilePhotoPosition} ${desktopPhotoPosition ?? (photoFrom === "content" ? "lg:object-[center_68%]" : "lg:object-[68%_center]")}`}
             />
           </div>
           {!photoRight && (
