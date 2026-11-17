@@ -111,6 +111,7 @@ Marketing site for **Luton Minicab** (operated by A2B Radio Cars). Business rule
   - tap targets of 44px or more
 - **Link labels (owner's rule):** `tel:` links say "Call …", `wa.me` links say "WhatsApp …" (or name the action, e.g. "Update my booking"), and "Contact us", "Talk to our team" and "Ask …" links open `/contact`. Use "Station & Hotel Transfers" as one name everywhere.
 - **Fixed fares (owner's policy, November 2026):** the site promises fixed fares. The external booker's "How prices work" text still says the price can follow the distance driven, so the booking-system owner must update the booker and the confirmation email to match (open item in requirement.md).
+- **Heading alignment (owner's rule, 17 November 2026):** section headings start on the left by default. Centre only the showcase moments: the homepage hero (`centeredPhoto`) and About hero, the green booking banner (`FinalCta`), the homepage Services cards and the car carousel (`Vehicles`). New sections follow the left default, so a page never switches alignment halfway down.
 - Copy: simple British English, short and warm, with no superlatives or unverified claims. See requirement.md.
 - Never use em dashes (—) in code, copy, comments, docs or commit messages. Use a comma, colon, full stop or brackets instead (owner's rule).
 - Verify UI changes in a real browser (Playwright, or Chrome DevTools) at 1440, 1024, 768 and 375 widths, with no horizontal overflow.

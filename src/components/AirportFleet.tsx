@@ -34,7 +34,7 @@ const choices = [
 export function AirportFleet({ band = false }: { band?: boolean }) {
   return (
     <section aria-labelledby="fleet-heading" className={`border-t border-border ${section} ${band ? "band-alt" : ""}`}>
-      <div className={`${container} text-center`}>
+      <div className={container}>
         <p className={`${eyebrow} text-accent`}>TRAVEL YOUR WAY</p>
         <h2 id="fleet-heading" className={`${h2} mt-4 text-foreground`}>
           A car for every kind of journey.
@@ -58,9 +58,9 @@ export function AirportFleet({ band = false }: { band?: boolean }) {
               <h3 className="mt-5 font-display text-[clamp(1.75rem,2.6vw,2.25rem)] font-semibold leading-tight text-foreground">
                 {title}
               </h3>
-              <p className="mx-auto mt-2 max-w-xs text-[1.0625rem] leading-snug text-foreground">{text}</p>
+              <p className="mt-2 max-w-xs text-[1.0625rem] leading-snug text-foreground">{text}</p>
               <p className="mt-auto pt-3 text-[1.0625rem] text-foreground">{vehicles}</p>
-              <span aria-hidden className="mx-auto mt-4 block h-[2px] w-4/5 bg-primary" />
+              <span aria-hidden className="mt-4 block h-[2px] w-16 bg-primary" />
             </li>
           ))}
         </ul>

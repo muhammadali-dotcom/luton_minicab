@@ -8,7 +8,7 @@ import { container, eyebrow, h2, section } from "./ui";
 export function AirportJourneys({ eyebrow: label, subline, items }: AirportDetail["journeys"]) {
   return (
     <section aria-labelledby="journeys-heading" className={`border-t border-border ${section}`}>
-      <div className={`${container} text-center`}>
+      <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
         <h2 id="journeys-heading" className={`${h2} mt-4 text-foreground`}>
           Flying out or heading home?
@@ -18,7 +18,7 @@ export function AirportJourneys({ eyebrow: label, subline, items }: AirportDetai
         <div className="mt-10 grid divide-y divide-border sm:grid-cols-2 sm:divide-x sm:divide-y-0">
           {items.map(({ image, alt, start, end, title, text }, i) => (
             <div key={title} className={`py-8 sm:px-6 sm:py-0 lg:px-10 ${i === 0 ? "pt-0" : "pb-0"}`}>
-              <Image src={image} alt={alt} sizes="(min-width: 640px) 50vw, 100vw" className="mx-auto h-auto w-full max-w-[702px]" />
+              <Image src={image} alt={alt} sizes="(min-width: 640px) 50vw, 100vw" className="h-auto w-full max-w-[702px]" />
               <p className={`${eyebrow} mt-6 text-balance text-accent`}>
                 {start} <span aria-hidden>→</span>
                 <span className="sr-only">to</span> {end}
@@ -26,7 +26,7 @@ export function AirportJourneys({ eyebrow: label, subline, items }: AirportDetai
               <h3 className="mt-3 font-display text-[clamp(1.75rem,2.6vw,2.25rem)] font-semibold leading-tight text-foreground">
                 {title}
               </h3>
-              <p className="mx-auto mt-2 max-w-md text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
+              <p className="mt-2 max-w-md text-[1.0625rem] leading-relaxed text-foreground">{text}</p>
             </div>
           ))}
         </div>

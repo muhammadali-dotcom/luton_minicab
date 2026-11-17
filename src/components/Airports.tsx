@@ -16,11 +16,10 @@ export function Airports() {
   return (
     <section aria-labelledby="airports-heading" className="border-t border-border py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="text-center">
-          <p className="flex items-center justify-center gap-4 text-sm font-semibold tracking-[0.2em] text-accent">
-            <span aria-hidden className="h-px w-12 bg-primary" />
+        <div>
+          <p className="flex items-center gap-4 text-sm font-semibold tracking-[0.2em] text-accent">
             AIRPORT JOURNEYS
-            <span aria-hidden className="h-px w-12 bg-primary" />
+            <span aria-hidden className="h-px w-16 bg-primary" />
           </p>
           <h2
             id="airports-heading"
@@ -28,7 +27,7 @@ export function Airports() {
           >
             From your doorstep to your departure.
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
+          <p className="mt-3 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
             Flying away or coming home? We&rsquo;ll take care of the drive.
           </p>
         </div>
