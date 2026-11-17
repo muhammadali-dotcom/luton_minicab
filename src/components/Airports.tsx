@@ -2,6 +2,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { ArrowRight, Plane } from "lucide-react";
 import { airports } from "@/config/site";
+import { PopularRoutes } from "./PopularRoutes";
 import airportPhoto from "../../public/brand/airport-luton.png";
 
 // Photo for the featured Luton card. Without one, a plain panel with a plane shows.
@@ -108,6 +109,8 @@ export function Airports() {
           Pickups and drop-offs, day and night.
           <span aria-hidden className="h-px flex-1 bg-primary" />
         </p>
+
+        <PopularRoutes className="mt-10" />
       </div>
     </section>
   );

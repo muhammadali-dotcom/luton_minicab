@@ -47,7 +47,7 @@ export default function Page() {
             <span className="block text-balance">Wherever life takes you.</span>
           </>
         }
-        text="From your front door to your next stop, we’re here for journeys across Luton and nearby towns."
+        text="From your front door to your next stop, we cover Luton and nearby towns, plus Mill Hill, Hounslow and Heathrow."
         trust={trustLocal}
       />
       <section aria-labelledby="areas-list-heading" className="band-alt border-t border-border py-16 sm:py-20">

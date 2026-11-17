@@ -20,12 +20,12 @@ import {
 } from "lucide-react";
 import type { AreaDetail } from "@/config/areaDetails";
 import { airportDetails } from "@/config/airportDetails";
-import { serviceDetails } from "@/config/serviceDetails";
 import { airports, services, site } from "@/config/site";
 import { BookingDetails } from "./BookingDetails";
 import { Faq } from "./Faq";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { PageHero, trustLocal } from "./PageHero";
+import { PopularRoutes } from "./PopularRoutes";
 import { container, eyebrow, h2, section } from "./ui";
 
 type Area = { slug: string; name: string; intro: string };
@@ -37,6 +37,16 @@ const serviceIcons: Record<string, LucideIcon> = {
   "long-distance-travel": Route,
   "station-hotel-transfers": TrainFront,
 };
+// Area pages use neutral defaults rather than the Luton-focused service-page copy.
+const journeyDescriptions = {
+  "local-journeys": "Everyday rides, from door to door.",
+  "school-runs": "Rides to school and home again, with DBS-checked drivers.",
+  "corporate-travel": "Rides to meetings, offices and events, paid per journey.",
+  "long-distance-travel": "Longer journeys, from door to door.",
+  "station-hotel-transfers": "Rides to and from stations and hotels, with time to spare.",
+  "airport-transfers": "Transfers to and from UK airports.",
+} satisfies Required<NonNullable<AreaDetail["journeyDescriptions"]>>;
+
 const placeIcons: Record<AreaDetail["places"][number]["icon"], LucideIcon> = {
   shopping: ShoppingBag,
   health: HeartPulse,
@@ -60,11 +70,11 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
   const journeys = [
     ...services.map((s) => ({
       name: s.name,
-      line: serviceDetails[s.slug]?.cardText,
+      line: detail.journeyDescriptions?.[s.slug as keyof typeof journeyDescriptions] ?? journeyDescriptions[s.slug as keyof typeof journeyDescriptions],
       href: `/services/${s.slug}`,
       Icon: serviceIcons[s.slug] ?? CarFront,
     })),
-    { name: "Airport Transfers", line: "To and from Luton and other UK airports.", href: "/airports", Icon: Plane },
+    { name: "Airport Transfers", line: detail.journeyDescriptions?.["airport-transfers"] ?? journeyDescriptions["airport-transfers"], href: "/airports", Icon: Plane },
   ];
   const airportList = detail.airportFirst
     ? [...airports.filter((a) => a.slug === detail.airportFirst), ...airports.filter((a) => a.slug !== detail.airportFirst)]
@@ -178,7 +188,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
                     <span className="block text-[1.125rem] font-semibold">
                       {slug === "southend" ? "London Southend" : name} Airport
                     </span>
-                    <span className="block text-base">{airportDetails[slug]?.cardText}</span>
+                    <span className="block text-base">{slug === "luton" ? "Pickup guidance and transfers to and from Luton Airport." : airportDetails[slug]?.cardText}</span>
                   </span>
                   <ArrowRight aria-hidden size={20} strokeWidth={1.5} className="ml-auto shrink-0 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -203,7 +213,9 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         ]}
       />
 
-      <Faq items={detail.faqs} band heading={`Taxis in ${area.name}: your questions.`} text="Here are a few helpful answers." />
+      <Faq items={detail.faqs} band heading={`Taxis in ${area.name}: your questions.`} text="Here are a few helpful answers.">
+        {area.slug === "luton" && <PopularRoutes className="mt-12" />}
+      </Faq>
 
       <LocalAreaCards
         eyebrow={detail.nearby ? "OTHER AREAS" : "NEARBY AREAS"}

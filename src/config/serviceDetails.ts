@@ -174,7 +174,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "station-hotel-transfers": {
     hero: {
       heading: "Your next stop, made easy.",
-      text: "From station platforms to hotel doors, arrange your ride and enjoy the rest of your journey.",
+      text: "From station pickup points to hotel doors, arrange your ride and enjoy the rest of your journey.",
     },
     trust: [doorToDoor, fixedFares, allHours],
     heroPhoto: {

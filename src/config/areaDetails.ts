@@ -28,6 +28,7 @@ export type AreaDetail = {
   faqs: { q: string; a: string }[];
   // Optional overrides, so each page reads differently (defaults are Luton's wording).
   journeysText?: string;
+  journeyDescriptions?: Partial<Record<"local-journeys" | "school-runs" | "corporate-travel" | "long-distance-travel" | "station-hotel-transfers" | "airport-transfers", string>>;
   placesHeading?: string;
   placesText?: string;
   placesNote?: string;
@@ -261,6 +262,11 @@ export const areaDetails: Record<string, AreaDetail> = {
       text: "Our booking team in Mill Hill helps arrange local trips, longer journeys and airport transfers, day or night.",
     },
     journeysText: "Around north London, up to Luton, or out to the airports.",
+    journeyDescriptions: {
+      "local-journeys": "Local trips from Mill Hill, for shops, appointments and visits.",
+      "long-distance-travel": "Longer journeys from Mill Hill, from door to door.",
+      "airport-transfers": "Transfers from Mill Hill to Heathrow, Luton and other UK airports.",
+    },
     placesText: "Around our part of north London.",
     airportsText: "Heathrow, Luton or further: we track your flight on pickups.",
     places: [
@@ -302,6 +308,11 @@ export const areaDetails: Record<string, AreaDetail> = {
       text: "Rides from Hounslow in west London, close to Heathrow, for airport transfers, local trips and longer journeys.",
     },
     journeysText: "Heathrow close by, and longer trips when you need them.",
+    journeyDescriptions: {
+      "local-journeys": "Rides around Hounslow for shops, appointments and everyday plans.",
+      "long-distance-travel": "Travel further from Hounslow, with a return journey if needed.",
+      "airport-transfers": "Transfers from Hounslow to Heathrow and other UK airports.",
+    },
     placesText: "Local trips around Hounslow, and the airport next door.",
     airportsText: "Heathrow first, and the other airports when you need them.",
     places: [
@@ -343,6 +354,11 @@ export const areaDetails: Record<string, AreaDetail> = {
       text: "Pickups at Heathrow’s terminals and nearby hotels, for the journey home or onward.",
     },
     journeysText: "Home, a hotel, a meeting or another airport.",
+    journeyDescriptions: {
+      "local-journeys": "Local journeys from Heathrow terminals and nearby hotels.",
+      "long-distance-travel": "Onward travel from Heathrow to your destination.",
+      "airport-transfers": "Transfers between Heathrow and other UK airports.",
+    },
     placesHeading: "Getting around Heathrow.",
     placesText: "Pickups and drop-offs at and around the airport.",
     places: [

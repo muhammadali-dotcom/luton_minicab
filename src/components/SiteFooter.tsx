@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUp, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import { airports, areas, fleet, services, site } from "@/config/site";
 import footerStreet from "../../public/brand/footer-street.png";
+import { routes } from "@/config/routeDetails";
 import { Logo } from "./Logo";
 
 type FooterLink = { label: string; href: string; external?: boolean };
@@ -43,6 +44,14 @@ const columns: { title: string; links: FooterLink[] }[] = [
       // All nine areas, in site.ts order, so every area page has a footer link.
       ...areas.map((a) => ({ label: a.name, href: `/areas/${a.slug}` })),
       { label: "View All Areas", href: "/areas" },
+    ],
+  },
+  {
+    title: "POPULAR ROUTES",
+    links: [
+      ...routes.map((r) => ({ label: r.name, href: `/routes/${r.slug}` })),
+      { label: "Luton Airport guide", href: "/luton-airport-guide" },
+      { label: "Luton station transfers", href: "/luton-station-transfers" },
     ],
   },
   {
@@ -109,7 +118,7 @@ export function SiteFooter() {
         </div>
 
         {/* Link columns */}
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-3 lg:grid-cols-5">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-3 lg:grid-cols-6">
           {columns.map(({ title, links }) => (
             <div key={title}>
               <h2 className="text-sm font-bold tracking-[0.16em]">{title}</h2>

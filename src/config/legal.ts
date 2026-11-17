@@ -46,10 +46,10 @@ export const privacySections: LegalSection[] = [
     ],
   },
   {
-    id: "contact-form",
-    heading: "Our contact form",
+    id: "contacting-us",
+    heading: "Contacting us",
     paragraphs: [
-      "The form on our Contact page doesn’t store anything on our website. When you press the button, it opens WhatsApp with your message written out, and you choose whether to send it.",
+      "You can contact us by phone, WhatsApp or email using the links on our Contact page. We use the information you share to answer your enquiry and help arrange or manage your booking.",
     ],
   },
   {

@@ -126,8 +126,7 @@ export default function Page() {
               A local service with a team you can reach.
             </h2>
             <p className="mt-5 text-[1.125rem] leading-relaxed text-foreground">
-              Our booking team helps arrange local journeys, school runs, airport transfers and longer trips across Luton and the
-              surrounding towns. You can book online or contact us by phone or WhatsApp to discuss your journey.
+              Luton Minicab is a separate business providing local journeys, school runs, airport transfers and longer trips. Our booking team is based in Mill Hill, north London.
             </p>
             <Link
               href="/contact"

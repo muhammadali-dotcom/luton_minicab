@@ -17,6 +17,7 @@ import londonCityHero from "../../public/brand/airport-london-city-hero.png";
 import lutonTerminalHero from "../../public/brand/airport-luton-terminal-hero.png";
 import southendHero from "../../public/brand/airport-southend-hero.png";
 import stanstedHero from "../../public/brand/airport-stansted-hero.png";
+import { PopularRoutes } from "./PopularRoutes";
 import { PageHero, trustAirport } from "./PageHero";
 
 type Airport = (typeof airports)[number];
@@ -98,6 +99,7 @@ export function AirportPage({ airport }: { airport: Airport }) {
 
       <Faq items={detail.faqs} band={!!guide || !!localAreas}>
         {otherAirportsNav}
+        {airport.slug === "luton" && <PopularRoutes className="mt-12" />}
       </Faq>
     </main>
   );

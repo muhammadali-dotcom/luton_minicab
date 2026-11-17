@@ -1,4 +1,5 @@
-import { BedDouble, Briefcase, CalendarClock, Clock, Luggage, MapPin, MessageCircleMore, Plane, PoundSterling, Signpost, TrainFront } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, BedDouble, Briefcase, CalendarClock, Clock, Luggage, MapPin, MessageCircleMore, Plane, PoundSterling, Signpost, TrainFront } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { BookingDetails } from "./BookingDetails";
 import { LocalAreaCards } from "./LocalAreaCards";
@@ -44,6 +45,13 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
               </li>
             ))}
           </ul>
+          <Link
+            href="/luton-station-transfers"
+            className="group mt-6 inline-flex min-h-[44px] items-center gap-2 font-semibold text-foreground underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2"
+          >
+            Guide to Luton station pickups
+            <ArrowRight aria-hidden size={18} className="transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </section>
 

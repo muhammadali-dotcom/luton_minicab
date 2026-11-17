@@ -22,7 +22,7 @@ export function Areas() {
             <span className="block">Wherever life takes you.</span>
           </h2>
           <p className="mt-4 max-w-md text-[1.125rem] leading-snug text-foreground">
-            From your front door to your next stop, we&rsquo;re here for journeys across Luton and nearby towns.
+            From your front door to your next stop, we cover Luton and nearby towns, plus Mill Hill, Hounslow and Heathrow.
           </p>
 
           <ul className="mt-6 grid gap-x-8 sm:grid-cols-2">

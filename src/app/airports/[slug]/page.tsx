@@ -3,14 +3,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageFallback } from "@/components/PageFallback";
 import { AirportPage } from "@/components/AirportPage";
-import { AirportShortPage } from "@/components/AirportShortPage";
-import { airports, shortPageAirports } from "@/config/site";
+import { airports } from "@/config/site";
 
 const find = (slug: string) => airports.find((a) => a.slug === slug);
-const findShort = (slug: string) => shortPageAirports.find((a) => a.slug === slug);
 
 export function generateStaticParams() {
-  return [...airports, ...shortPageAirports].map(({ slug }) => ({ slug }));
+  return airports.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/airports/[slug]">): Promise<Metadata> {
@@ -23,15 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/airports/[slug]">
       description: `Taxis to and from ${airport.name} Airport with flight tracking, meet and greet and fixed fares. Book online or call, day or night.`,
     };
   }
-  const short = findShort(slug);
-  return short
-    ? {
-        title: `${short.name} Airport Transfers`,
-        alternates: { canonical: `/airports/${slug}` },
-        description: `Taxis to and from ${short.name} Airport with fixed fares. Book online or call, day or night.`,
-        robots: { index: false, follow: true },
-      }
-    : {};
+  return {};
 }
 
 // params is URL data, so it's read inside Suspense to keep navigation instant.
@@ -47,7 +37,5 @@ async function Content({ params }: { params: PageProps<"/airports/[slug]">["para
   const { slug } = await params;
   const airport = find(slug);
   if (airport) return <AirportPage airport={airport} />;
-  const short = findShort(slug);
-  if (!short) notFound();
-  return <AirportShortPage name={short.name} />;
+  notFound();
 }

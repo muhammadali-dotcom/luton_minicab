@@ -32,9 +32,7 @@ export const airports: AirportEntry[] = [
   { slug: "southend", name: "London Southend", code: "SEN" },
 ];
 
-// Grouped on /airports, each with a short page at /airports/[slug] (noindex, and
-// no flight wording). Move an airport into `airports` only once there are real
-// details for its full page: that also adds it to the menu, footer and homepage.
+// Enquiry-only airports, grouped on /airports. Their former detail URLs redirect there.
 export const regionalAirports: { region: string; airports: PageEntry[] }[] = [
   {
     region: "Midlands",
@@ -61,8 +59,6 @@ export const regionalAirports: { region: string; airports: PageEntry[] }[] = [
     ],
   },
 ];
-
-export const shortPageAirports = regionalAirports.flatMap((r) => r.airports);
 
 type AreaEntry = PageEntry & { heading: string; intro: string };
 
@@ -164,7 +160,6 @@ export const services: PageEntry[] = [
 
 export const site = {
   name: "Luton Minicab",
-  operator: "A2B Radio Cars",
 
   // Existing web booker. Override per environment with NEXT_PUBLIC_BOOKING_URL.
   bookingUrl:
