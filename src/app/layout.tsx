@@ -5,6 +5,8 @@ import { HideOnPaths } from "@/components/HideOnPaths";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { TopBar } from "@/components/TopBar";
+import { isSiteIndexable, siteOrigin } from "@/config/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,7 +21,8 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.lutonminicab.com"),
+  metadataBase: new URL(siteOrigin),
+  robots: { index: isSiteIndexable, follow: true },
   title: {
     default: "Luton Minicab | Local, School & Airport Journeys",
     template: "%s | Luton Minicab",
@@ -39,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <ScrollToTop />
+        <TopBar />
         <SiteHeader />
         {children}
         {/* Every page ends with the booking banner except Contact (owner's rule). */}

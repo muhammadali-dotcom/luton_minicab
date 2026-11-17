@@ -130,7 +130,7 @@ Every page uses **`PageHero`** (`src/components/PageHero.tsx`) and the class con
 
   | Pages | Photo |
   |---|---|
-  | Homepage, /areas | `hero-photo` (dark) |
+  | Homepage | `home-hero` town panorama (light): centred text in the sky, `PageHero` `centeredPhoto` |
   | Individual /areas/[slug] pages | Supplied location photographs, mapped in `areaDetails.ts` (light tone); full-width photo in full colour, short cream fade behind green text (`from-background via-background/97 via-44% to-transparent to-60%`: solid behind the text so the gold eyebrow passes 4.5:1, then a quick blend; optional per-area `hero.fade`); individual desktop/mobile focal points; cream text block under the photo on phones |
   | /fleet | `fleet-hero` (light, `photoRight`, `photoFrom="content"`) |
   | Luton Airport | `airport-luton-terminal-hero` (light, `photoRight`, number plate blanked) |

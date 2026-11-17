@@ -92,7 +92,7 @@ export function Services() {
             Here for every part of your day.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
-            Whether you’re going down the street or across the world, we’re with you.
+            Whether you’re heading across town or to the airport, we’re here to help.
           </p>
         </div>
 

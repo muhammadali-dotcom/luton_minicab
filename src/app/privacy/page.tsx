@@ -3,6 +3,7 @@ import { LegalPage } from "@/components/LegalPage";
 import { privacySections } from "@/config/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy" },
   title: "Privacy Policy",
   description: "How Luton Minicab collects, uses and protects your information when you book a journey, and your rights.",
 };

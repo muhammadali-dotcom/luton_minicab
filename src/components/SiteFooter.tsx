@@ -7,7 +7,6 @@ import { Logo } from "./Logo";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
-const footerAreas = ["luton", "dunstable", "houghton-regis", "harpenden", "leagrave", "stopsley"];
 
 const columns: { title: string; links: FooterLink[] }[] = [
   {
@@ -41,10 +40,8 @@ const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: "AREAS WE COVER",
     links: [
-      ...footerAreas.map((slug) => {
-        const area = areas.find((a) => a.slug === slug)!;
-        return { label: area.name, href: `/areas/${slug}` };
-      }),
+      // All nine areas, in site.ts order, so every area page has a footer link.
+      ...areas.map((a) => ({ label: a.name, href: `/areas/${a.slug}` })),
       { label: "View All Areas", href: "/areas" },
     ],
   },

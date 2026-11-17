@@ -25,7 +25,7 @@ export function AirportShortPage({ name }: { name: string }) {
         image={heroPhoto}
         alt="View from the back seat of a car, looking out at an airport terminal and a plane."
         eyebrow={`${name.toUpperCase()} AIRPORT TRANSFERS`}
-        heading="Your trip starts before take-off."
+        heading="Your airport journey, arranged."
         text={`Settle in for a comfortable ride to or from ${name} Airport.`}
         trust={trustLocal}
       />
@@ -52,10 +52,10 @@ export function AirportShortPage({ name }: { name: string }) {
         </div>
       </section>
 
-      <section aria-labelledby="other-ways-heading" className={`border-t border-border ${section}`}>
+      <section aria-labelledby="other-airports-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
-          <h2 id="other-ways-heading" className={h2}>
-            Other ways to travel
+          <h2 id="other-airports-heading" className={h2}>
+            Other airports we cover.
           </h2>
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
             {airports.map((a) => (

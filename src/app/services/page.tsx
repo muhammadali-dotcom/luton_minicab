@@ -6,6 +6,7 @@ import { ServiceCards } from "@/components/ServiceCards";
 import heroPhoto from "../../../public/brand/services/services-hero.png";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services" },
   title: "Taxi & Minicab Services",
   description:
     "Local journeys, airport transfers, school runs, assisted travel, business and long-distance trips from Luton. Fixed fares, available 24/7.",

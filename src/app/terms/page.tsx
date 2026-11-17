@@ -3,6 +3,7 @@ import { LegalPage } from "@/components/LegalPage";
 import { termsSections } from "@/config/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms & Conditions",
   description: "The terms for booking and travelling with Luton Minicab: fares, payment, waiting time, cancellations and more.",
 };

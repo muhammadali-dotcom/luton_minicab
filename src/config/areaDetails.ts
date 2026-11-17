@@ -86,7 +86,7 @@ export const areaDetails: Record<string, AreaDetail> = {
       text: "Rides from Leagrave in north-west Luton, to the station, the shops, school or the airport.",
     },
     journeysText: "Trains, school, work or a flight: tell us where you need to be.",
-    placesText: "Where Leagrave people often ask us to go.",
+    placesText: "Places we can take you from Leagrave.",
     airportsText: "From north-west Luton to Luton Airport and beyond, with flight tracking on pickups.",
     places: [
       { title: "Leagrave station", line: "Early trains and late arrivals", icon: "train" },
@@ -121,7 +121,7 @@ export const areaDetails: Record<string, AreaDetail> = {
       text: "Rides from Stopsley in north-east Luton, close to Luton Airport, for everyday trips, school runs and flights.",
     },
     journeysText: "Everyday trips, school mornings and flights from Luton Airport nearby.",
-    placesText: "Popular trips from this side of town.",
+    placesText: "Everyday destinations from Stopsley.",
     airportsText: "Luton Airport is the closest, and we cover the others too, with flight tracking on pickups.",
     places: [
       { title: "Luton Airport", line: "Luton Airport · Luton Airport Parkway station", icon: "plane" },
@@ -153,7 +153,7 @@ export const areaDetails: Record<string, AreaDetail> = {
       mobilePhotoPosition: "object-[85%_35%]",
       desktopPhotoPosition: "lg:object-[68%_0%]",
       heading: "Your Dunstable taxi, near and far.",
-      text: "Rides from Dunstable, just west of Luton, to the station, the hospital, the airport or further afield.",
+      text: "Rides from Dunstable, just west of Luton, to nearby stations, the hospital, the airport or further afield.",
     },
     journeysText: "No train station in town? We’ll take you to one.",
     placesText: "Regular trips from Dunstable and the Downs.",

@@ -72,3 +72,11 @@ src/
   5. Point DNS at Vercel.
 
   Pushes to `main` then deploy automatically.
+
+## Search launch configuration (16 November 2026)
+
+- Preferred production origin: `https://lutonminicab.com`; www redirects permanently to the same path/query on the non-www host. Configure DNS/TLS and HTTPS enforcement in hosting before launch.
+- `SITE_INDEXABLE` defaults to false. Keep false in development/staging; pages emit noindex and the sitemap is empty. At launch set `SITE_INDEXABLE=true` on production and rebuild. Do not enable it for previews.
+- Production sitemap contains the 30 indexable content URLs, generated from the existing service/area/main-airport lists. Nine short airport pages remain noindex and are excluded; crawlers can still read their noindex tags.
+- All 39 valid content pages have self-referencing non-www canonicals. No canonical is inherited from the homepage onto unrelated pages or the 404.
+- Before release verify production canonical tags, sitemap/robots, www redirect, HTTPS, mobile menus, booking/contact handoffs and build checks. Search Console verification/submission awaits a live site and account access; it has not been performed.

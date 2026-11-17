@@ -226,10 +226,10 @@ export const airportDetails: Record<string, AirportDetail> = {
     cardImage: heathrowCard,
     facts: [
       "Heathrow has four passenger terminals: 2, 3, 4 and 5.",
-      "Cars can’t collect passengers on the terminal forecourts, so pickups happen away from the kerb.",
+      "At Terminals 2, 3 and 5, pickups use the designated parking areas rather than the terminal forecourts; Terminal 4 also has a Priority Pick-Up area outside Arrivals.",
       "At Terminals 2, 3 and 5, Terminal Parking is about a 2-minute walk from the terminal doors.",
     ],
-    factsNote: "Your booking confirmation is always your final instruction. Checked on heathrow.com on 6 November 2026.",
+    factsNote: "Your booking confirmation is always your final instruction. Checked on heathrow.com on 16 November 2026.",
     cardText: "Pickup guidance and transfers to and from Terminals 2, 3, 4 and 5.",
     journeys: {
       eyebrow: "HEATHROW AIRPORT JOURNEYS",
@@ -424,11 +424,11 @@ export const airportDetails: Record<string, AirportDetail> = {
     "Transfers to and from London City, for work trips and weekends away.",
     { to: londonCityTo, from: londonCityFrom, arrival: londonCityArrival },
     [
-      "Pre-booked minicabs collect from the pick-up area in the Short Stay car park.",
+      "Pre-booked minicab collections use the designated Pick-Up area. Follow the meeting instructions in your booking confirmation.",
       "Time in the drop-off zone is limited to 10 minutes.",
       "Cars reach the airport from the west over Connaught Bridge, and from the east over Redgrave Bridge.",
     ],
-    "Your booking confirmation is always your final instruction. Based on londoncityairport.com, November 2026.",
+    "Your booking confirmation is always your final instruction. Pickup terminology checked on londoncityairport.com on 16 November 2026.",
     "London City charges for its drop-off zone.",
   ),
   southend: oneTerminal(
@@ -440,9 +440,9 @@ export const airportDetails: Record<string, AirportDetail> = {
     [
       "Pickups use the Express Pick-up and Drop-off area or the Superior car park.",
       "Charges apply in both, so ask about them when you book.",
-      "The airport has its own railway station, linked to the terminal by a pedestrian tunnel.",
+      "The airport’s railway station is opposite the terminal, reached via a covered walkway.",
     ],
-    "Your booking confirmation is always your final instruction. Checked on southendairport.com on 6 November 2026.",
+    "Your booking confirmation is always your final instruction. Station access checked on londonsouthendairport.com on 16 November 2026.",
     "London Southend charges for its Express Pick-up and Drop-off area and Superior car park.",
   ),
 };

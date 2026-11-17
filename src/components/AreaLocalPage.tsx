@@ -138,7 +138,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AROUND {area.name.toUpperCase()}</p>
           <h2 id="area-places-heading" className={`${h2} mt-4 text-foreground`}>
-            {detail.placesHeading ?? `Places we take you in ${area.name}.`}
+            {detail.placesHeading ?? `Places we take you from ${area.name}.`}
           </h2>
           <p className="mt-3 text-[1.125rem] text-foreground">{detail.placesText ?? "A few of the everyday trips we make."}</p>
           <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

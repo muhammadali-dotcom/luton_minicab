@@ -1,21 +1,23 @@
-import heroPhoto from "../../public/brand/hero-photo.png";
-import { PageHero, trustLocal } from "./PageHero";
+import heroPhoto from "../../public/brand/home-hero.png";
+import { PageHero } from "./PageHero";
 
+// From the owner's reference: centred text in the sky of the town panorama (original in
+// assets/brand/home-hero-panorama-original.png; the cars' bonnet badges retouched out).
+// Gold Book Online, green eyebrow, no trust row (owner's choices, November 2026).
 export function Hero() {
   return (
     <PageHero
-      tone="dark"
       image={heroPhoto}
-      alt="A driver opens the car door for a smiling passenger outside a brick house."
-      eyebrow="LUTON & BEYOND"
+      alt="Three dark cars parked in front of a town hall clock tower and a glass terminal building at sunset."
+      centeredPhoto={{ ratio: 1836 / 857 }}
+      eyebrow="LUTON MINICAB"
       heading={
         <>
-          <span className="block">Your everyday journeys.</span>
-          <em className="block">Taken care of.</em>
+          <span className="block">Your Luton ride,</span>
+          <span className="block">wherever life takes you.</span>
         </>
       }
-      text="School runs, airport trips and everyday journeys. Wherever you’re heading, we’re here to help."
-      trust={trustLocal}
+      text="Local trips, airport transfers and journeys further afield. Book online or call our team."
     />
   );
 }

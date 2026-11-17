@@ -3,6 +3,7 @@ import { LegalPage } from "@/components/LegalPage";
 import { cookiesSections } from "@/config/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cookies" },
   title: "Cookies",
   description: "Luton Minicab’s website doesn’t use cookies or tracking. Here’s what that means for you.",
 };

@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const title = titleFor((await params).slug);
   const slug = (await params).slug;
-  return title ? { title, description: `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.` } : {};
+  return title ? { title, alternates: { canonical: `/services/${slug}` }, description: `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.` } : {};
 }
 
 // params is URL data, so it's read inside Suspense to keep navigation instant.

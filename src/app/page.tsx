@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Airports } from "@/components/Airports";
 import { Areas } from "@/components/Areas";
 import { Faq } from "@/components/Faq";
@@ -6,6 +7,8 @@ import { ServiceStrip } from "@/components/ServiceStrip";
 import { Services } from "@/components/Services";
 import { Vehicles } from "@/components/Vehicles";
 import { WhyTravel } from "@/components/WhyTravel";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (

@@ -5,8 +5,9 @@
 // named, with bookings handled by our booking team in Mill Hill.
 // Left out on purpose: coach bookings, Eurostar meet and greet, wheelchair wording,
 // London-only law references and every fee amount. Owner confirmed (November 2026): card
-// payments by Stripe, 10 to 15 free minutes for non-airport pickups. Refund bank charge not
-// confirmed, so it stays "may be". Have the terms reviewed before launch.
+// payments by Stripe; 15 free minutes for all pickups. Eligible prepaid cancellations
+// are refunded minus bank/payment-processing charges. Journeys within 12 hours require
+// a call to confirm. Have the terms reviewed before launch.
 
 export type LegalSection = {
   id: string;
@@ -167,7 +168,7 @@ export const termsSections: LegalSection[] = [
     heading: "Waiting time",
     bullets: [
       "Airport pickups: your driver waits free for 15 minutes, starting once they reach the pickup point at the agreed time.",
-      "Other pickups, such as homes, hotels, offices and stations: 10 to 15 minutes of free waiting from the booked time.",
+      "Other pickups, such as homes, hotels, offices and stations: 15 minutes of free waiting from the booked time.",
       "After the free waiting time, waiting charges apply. We discuss these with you before your booking is confirmed.",
       "If you’re running late or your train is delayed, please tell us as soon as you can.",
     ],
@@ -185,7 +186,7 @@ export const termsSections: LegalSection[] = [
     id: "cancellations",
     heading: "Cancellations and refunds",
     bullets: [
-      "To cancel a prepaid journey and get a refund, tell us at least 12 hours before the pickup time. Bank charges may be taken from the refund.",
+      "To cancel a prepaid journey and get a refund, tell us at least 12 hours before the pickup time. Bank or payment-processing charges are deducted from the refund.",
       "We can’t refund cancellations made less than 12 hours before pickup, bookings made with the wrong date or flight details, or journeys where the passenger leaves the pickup point without telling us.",
       "Missed your flight? Call us straight away, before the driver goes into the airport. We can move your pickup to a later flight.",
     ],

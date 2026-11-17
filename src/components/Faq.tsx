@@ -40,11 +40,13 @@ type Props = {
   // Overrides the heading and line (area pages name the place, which helps local search).
   heading?: string;
   text?: string;
+  // false hides the closing "Need more help? Contact us" line (the Contact page itself).
+  contactLink?: boolean;
 };
 
 const contactClass = "inline-flex min-h-[44px] items-center underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2";
 
-export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are a few helpful answers." }: Props) {
+export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are a few helpful answers.", contactLink = true }: Props) {
   return (
     <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
@@ -71,12 +73,14 @@ export function Faq({ items = homepageFaqs, band = false, children, heading = "G
             ))}
           </div>
 
-          <p className="mt-8 text-[1.125rem] text-foreground">
-            Need more help?{" "}
-            <Link href="/contact" className={contactClass}>
-              Contact us
-            </Link>
-          </p>
+          {contactLink && (
+            <p className="mt-8 text-[1.125rem] text-foreground">
+              Need more help?{" "}
+              <Link href="/contact" className={contactClass}>
+                Contact us
+              </Link>
+            </p>
+          )}
         </div>
         {children}
       </div>

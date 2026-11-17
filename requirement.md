@@ -114,6 +114,12 @@ Business brief, approved decisions and open items for **lutonminicab.com**. Keep
   - Hounslow: Heathrow Terminals 2 to 5; Hounslow, Hounslow Central and Hounslow East stations; Hounslow High Street, West Middlesex University Hospital; Osterley Park, Hounslow Heath.
   - Heathrow: the terminals, airport hotels (no names), central London, Mill Hill, Hounslow, Luton and other UK airports. FAQs use the confirmed meeting point, flight tracking and 15 free waiting minutes.
 
+## Top bar (17 November 2026)
+- Owner replaced the cream "Travelling within the next 12 hours?" strip with a forest-green bar above the header, centred: "Call us to book · Bookings 020 8343 4444 · Alternative 020 8569 4040". The 12-hour call-to-confirm rule remains in the Terms only.
+
+## Contact page (November 2026)
+- Owner asked for a contact page similar to heathrowminicab.com/contact, with no form. Built in Luton's style: hero with the office illustration, Ways to reach us (booking steps plus Call, WhatsApp and Email), What to send us, What happens next, Can't find your driver?, the Mill Hill booking office, five FAQs. The old WhatsApp message form was removed.
+
 ## Pricing (November 2026)
 - **Owner's decision: fixed fares.** The site says "Fixed fares" and "You'll know your fare when you book" (an "Upfront quotes" wording was tried and reverted).
 - [ ] **Booking-system owner to update the booker to match:** the "How prices work" text on heathrowminicabbooking.com says the final price can go up or down with the distance driven, and the booking confirmation email must not say otherwise. Both should say the quoted fare is the fare, unless the customer changes the journey (extra stops, a different route, waiting past the free time).
@@ -227,3 +233,19 @@ The dropdown labels open their menu only; they don't link anywhere themselves. S
 - **Areas overview sections (16 November 2026):** after the confirmed area list, “Where are you heading?” links to Local journeys, Station transfers (combined station/hotel page) and Airport transfers using icon cards. A separate “Other pickup areas” / “Can’t see your pickup area?” panel links to /contact to confirm a pickup address, destination and travel date. It replaces the old short airport/contact links. Do not name additional areas as covered until the owner supplies and confirms them.
 
 - **Additional pickup coverage confirmed by owner (16 November 2026):** /areas “More areas we serve” lists Around Luton: Caddington, Slip End, Barton-le-Clay, Toddington; Around Mill Hill: Edgware, Burnt Oak, Colindale, Hendon, Elstree, Borehamwood; Around Hounslow: Heston, Cranford, Isleworth, Feltham; Around Heathrow: Harlington (west London, not Bedfordshire), West Drayton, Harmondsworth, Stanwell. Plain grouped lists only; no new detail pages or nav links. One “Ask about your pickup” contact link below, retaining the unlisted-area enquiry wording. This confirmation supersedes the earlier pending-area note.
+
+- **Airport guidance corrections (16 November 2026):** Heathrow general facts now distinguish T2/3/5 parking collections from the T4 Priority Pick-Up area outside Arrivals; London City uses the designated Pick-Up area terminology and directs passengers to booking-confirmation meeting instructions; Southend station access is via the covered walkway opposite the terminal. Verified against official airport guidance. Owner subsequently confirmed refund deductions, 15 minutes for non-airport waiting and the next-12-hours call rule; see the customer-policy confirmation below. Booking availability/fleet reconciliation were explicitly deferred by the owner.
+
+- **Customer policies confirmed (16 November 2026):** eligible prepaid cancellations made at least 12 hours before pickup are refunded minus bank/payment-processing charges (no amount supplied, do not invent one). Non-airport pickups at homes, hotels, offices and stations receive 15 free waiting minutes from the booked time. Airport waiting remains 15 minutes from driver arrival at the agreed pickup time. Customers travelling within the next 12 hours must call to confirm; surface this in the site-wide notice below the header and the closing booking banner. Supersedes earlier 10–15 minute/unconfirmed-refund notes.
+
+- **Area/airport wording cleanup (16 November 2026):** shared area destination heading is “Places we take you from [area].”; Dunstable hero says “nearby stations”; Leagrave and Stopsley destination introductions are neutral, without demand/popularity claims. Nine short airport pages use “Your airport journey, arranged.” and “Other airports we cover.”; intentional noindex remains. /airports description is “Transfers to and from UK airports. Book online or contact our team to arrange your journey.” Layouts, images and local hero headlines remain unchanged.
+
+## Search launch configuration (16 November 2026)
+
+- Preferred production origin: `https://lutonminicab.com`; www redirects permanently to the same path/query on the non-www host. Configure DNS/TLS and HTTPS enforcement in hosting before launch.
+- `SITE_INDEXABLE` defaults to false. Keep false in development/staging; pages emit noindex and the sitemap is empty. At launch set `SITE_INDEXABLE=true` on production and rebuild. Do not enable it for previews.
+- Production sitemap contains the 30 indexable content URLs, generated from the existing service/area/main-airport lists. Nine short airport pages remain noindex and are excluded; crawlers can still read their noindex tags.
+- All 39 valid content pages have self-referencing non-www canonicals. No canonical is inherited from the homepage onto unrelated pages or the 404.
+- Before release verify production canonical tags, sitemap/robots, www redirect, HTTPS, mobile menus, booking/contact handoffs and build checks. Search Console verification/submission awaits a live site and account access; it has not been performed.
+
+- **Panorama production asset:** /areas imports the identical image at `public/brand/areas-overview-hero.png`; the original descriptive filename is preserved. This avoids the production image-optimisation 404 observed with spaces/comma in the original filename.

@@ -8,8 +8,9 @@ import { regionalAirports } from "@/config/site";
 import heroPhoto from "../../../public/brand/airport-luton-hero.png";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/airports" },
   title: "Airport Transfers",
-  description: "Transfers to and from all UK airports, with flight tracking and meet and greet.",
+  description: "Transfers to and from UK airports. Book online or contact our team to arrange your journey.",
 };
 
 export default function Page() {

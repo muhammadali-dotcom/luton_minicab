@@ -174,6 +174,8 @@ export const site = {
   // TEMPORARY: taken from bittacycars.com at the owner's request. Replace with
   // Luton Minicab's own details before launch.
   phone: "020 8343 4444" as string | null,
+  // Second line shown as "Alternative" in the top bar (owner, November 2026).
+  phoneAlt: "020 8569 4040" as string | null,
   // International format, digits only.
   whatsapp: "447983527104" as string | null,
   email: "bittacycs@hotmail.com" as string | null,

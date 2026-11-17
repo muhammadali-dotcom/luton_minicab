@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
   const area = find((await params).slug);
   if (!area) return {};
   const detail = areaDetails[area.slug];
-  return { title: area.heading, description: detail ? `${detail.hero.text} Fixed fares, DBS-checked drivers, available 24/7.` : `${area.intro} Book online or call, day or night.` };
+  return { title: area.heading, alternates: { canonical: `/areas/${area.slug}` }, description: detail ? `${detail.hero.text} Fixed fares, DBS-checked drivers, available 24/7.` : `${area.intro} Book online or call, day or night.` };
 }
 
 // params is URL data, so it's read inside Suspense to keep navigation instant.

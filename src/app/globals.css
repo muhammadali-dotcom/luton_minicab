@@ -72,7 +72,15 @@ body {
 
 /* Site-wide scale on desktop and laptop (90%, owner's choice): the one place to change the size. Mouse and
    trackpad only, so phones and tablets stay easy to read and tap. */
+/* --page-zoom mirrors the zoom, so screen-height maths (svh) can undo it: under zoom,
+   100svh renders at 90% of the window. */
+:root {
+  --page-zoom: 1;
+}
 @media (min-width: 1024px) and (pointer: fine) {
+  :root {
+    --page-zoom: 0.9;
+  }
   body {
     zoom: 0.9;
   }

@@ -18,6 +18,7 @@ import whatIllustration from "../../../public/brand/about-what.png";
 import whoIllustration from "../../../public/brand/about-who.png";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About Us",
   description:
     "Luton Minicab offers local journeys, school runs, airport transfers and longer trips from Luton, with a team you can reach day or night.",

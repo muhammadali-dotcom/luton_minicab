@@ -4,9 +4,10 @@ import { ArrowRight, CarFront, MapPin, MessageCircle, Plane, TrainFront } from "
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/ui";
 import { areas } from "@/config/site";
-import heroPhoto from "../../../public/brand/British places, elegantly woven into a panorama.png";
+import heroPhoto from "../../../public/brand/areas-overview-hero.png";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/areas" },
   title: "Areas We Cover",
   description:
     "Taxis across Luton, Leagrave and Stopsley, plus Dunstable, Houghton Regis, Harpenden, Mill Hill, Hounslow and Heathrow, with transfers to all UK airports.",
@@ -24,9 +25,9 @@ const additionalAreas = [
 ];
 
 const journeys = [
-  { title: "Local journeys", text: "Shopping, appointments or a visit across town.", href: "/services/local-journeys", Icon: CarFront },
-  { title: "Station transfers", text: "Arrange a ride to the station or a pickup for your arrival.", href: "/services/station-hotel-transfers", Icon: TrainFront },
-  { title: "Airport transfers", text: "Plan your journey to or from a UK airport.", href: "/airports", Icon: Plane },
+  { title: "Local Journeys", text: "Shopping, appointments or a visit across town.", href: "/services/local-journeys", Icon: CarFront },
+  { title: "Station & Hotel Transfers", text: "Rides to and from the station or your hotel.", href: "/services/station-hotel-transfers", Icon: TrainFront },
+  { title: "Airport Transfers", text: "Plan your journey to or from a UK airport.", href: "/airports", Icon: Plane },
 ];
 
 export default function Page() {
@@ -40,7 +41,12 @@ export default function Page() {
         mobilePhotoPosition="object-[95%_40%]"
         desktopPhotoPosition="lg:object-[68%_0%]"
         eyebrow="AREAS WE COVER"
-        heading="Your local ride. Wherever life takes you."
+        heading={
+          <>
+            <span className="block">Your local ride.</span>
+            <span className="block text-balance">Wherever life takes you.</span>
+          </>
+        }
         text="From your front door to your next stop, we’re here for journeys across Luton and nearby towns."
         trust={trustLocal}
       />
@@ -84,7 +90,7 @@ export default function Page() {
                   <h3 className="mt-5 font-display text-[1.5rem] font-semibold leading-tight">{title}</h3>
                   <p className="mt-3 text-[1.0625rem] leading-relaxed">{text}</p>
                   <span className="mt-auto inline-flex min-h-[44px] items-center gap-2 pt-5 font-semibold underline-offset-4 group-hover:underline">
-                    Explore {title.toLowerCase()}<ArrowRight aria-hidden size={18} />
+                    Explore {title}<ArrowRight aria-hidden size={18} />
                   </span>
                 </Link>
               </li>

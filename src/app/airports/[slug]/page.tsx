@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps<"/airports/[slug]">
   if (airport) {
     return {
       title: `${airport.name} Airport Transfers`,
+      alternates: { canonical: `/airports/${slug}` },
       description: `Taxis to and from ${airport.name} Airport with flight tracking, meet and greet and fixed fares. Book online or call, day or night.`,
     };
   }
@@ -26,8 +27,9 @@ export async function generateMetadata({ params }: PageProps<"/airports/[slug]">
   return short
     ? {
         title: `${short.name} Airport Transfers`,
+        alternates: { canonical: `/airports/${slug}` },
         description: `Taxis to and from ${short.name} Airport with fixed fares. Book online or call, day or night.`,
-        robots: { index: false },
+        robots: { index: false, follow: true },
       }
     : {};
 }

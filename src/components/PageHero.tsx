@@ -61,6 +61,14 @@ type Props = {
   // plain top band slides up behind the buttons, so the scene frames them; on phones it sits
   // below, cropped to the middle. `caption` is a small strip between rules underneath.
   illustration?: { image: StaticImageData; alt: string; caption?: string };
+  // Heroes without a photo (Contact): an illustration in a rounded cream panel beside the text
+  // from lg, below it on phones.
+  sideImage?: { image: StaticImageData; alt: string };
+  // Homepage: centred text in the sky of a wide panorama (owner's reference). From lg the photo
+  // fills the hero at its own shape, anchored to the bottom so the cars stay whole; below lg the
+  // text sits on cream above a taller crop of the photo. `glow` is an optional soft cream wash
+  // behind the text column for contrast.
+  centeredPhoto?: { ratio: number; mobilePosition?: string; glow?: boolean };
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
@@ -83,8 +91,59 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition, photoLeft, secondary, note, buttons = true, centered = false, illustration }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition, photoLeft, secondary, note, buttons = true, centered = false, illustration, sideImage, centeredPhoto }: Props) {
   const dark = tone === "dark" && Boolean(image);
+
+  if (centeredPhoto && image) {
+    return (
+      <section
+        aria-labelledby="page-heading"
+        // From lg, full width and the smaller of: the photo's own shape, or the window below the
+        // top bar and header (8.5rem), so the whole scene fits on screen. Only sky is trimmed (the
+        // photo is anchored to the bottom). vw and svh are divided by the page zoom, which
+        // otherwise shrinks them.
+        style={{ ["--hero-ratio" as string]: centeredPhoto.ratio }}
+        className="relative flex flex-col overflow-hidden lg:block lg:h-[max(30rem,min(calc(100vw/var(--page-zoom)/var(--hero-ratio)),calc(100svh/var(--page-zoom)-8.5rem)))]"
+      >
+        <div className="relative order-2 aspect-[2/1] lg:absolute lg:inset-0 lg:aspect-auto">
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            loading="eager"
+            fetchPriority="high"
+            sizes="100vw"
+            className={`object-cover ${centeredPhoto.mobilePosition ?? "object-[50%_85%]"} lg:object-bottom`}
+          />
+        </div>
+        {centeredPhoto.glow && (
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 hidden h-[62%] bg-[radial-gradient(ellipse_42%_70%_at_50%_30%,var(--color-background)_0%,transparent_100%)] opacity-80 lg:block"
+          />
+        )}
+        <div className={`relative order-1 ${container} pt-10 pb-8 text-center text-foreground sm:pt-12 lg:pt-[clamp(2rem,3vw,3.5rem)] lg:pb-0 lg:[@media(max-height:760px)]:pt-6`}>
+          <p className={`${eyebrowClass} text-foreground`}>{eyebrow}</p>
+          <h1 id="page-heading" className={`mx-auto mt-4 max-w-4xl text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
+            {heading}
+          </h1>
+          <p className={`mx-auto mt-5 max-w-3xl ${lead} lg:[@media(max-height:760px)]:mt-3`}>
+            {/* One sentence per line from lg, as in the reference. On short windows (760px or less)
+                the text block tightens so the buttons stay above the cars. */}
+            {text.split(/(?<=\.) /).map((sentence) => (
+              <span key={sentence} className="lg:block">
+                {sentence}{" "}
+              </span>
+            ))}
+          </p>
+          <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:justify-center lg:[@media(max-height:760px)]:mt-5">
+            <BookOnlineLink arrow size="lg" />
+            <CallToBook size="lg" />
+          </div>
+        </div>
+      </section>
+    );
+  }
   const textTone = dark ? "text-background" : "text-foreground";
 
   return (
@@ -128,7 +187,11 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
       )}
 
       <div className={`relative w-full ${illustration ? "z-10" : ""} ${dark ? "bg-foreground [--color-ring:var(--color-primary)] lg:bg-transparent" : ""}`}>
-        <div className={`${container} ${compact ? "py-9 sm:py-10 lg:py-12" : "py-12 sm:py-14 lg:py-20"}`}>
+        <div
+          className={`${container} ${compact ? "py-9 sm:py-10 lg:py-12" : "py-12 sm:py-14 lg:py-20"} ${
+            sideImage && !image ? "grid gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center lg:gap-14" : ""
+          }`}
+        >
           <div className={`${illustration ? "max-w-3xl" : "max-w-xl"} ${textTone} ${centered && !image ? "mx-auto text-center" : ""}`}>
             <p className={`${eyebrowClass} ${dark ? "text-background" : "text-accent"}`}>{eyebrow}</p>
             <h1 id="page-heading" className={`mt-4 ${h1}`}>
@@ -201,6 +264,11 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               </ul>
             )}
           </div>
+          {sideImage && !image && (
+            <div className="overflow-hidden rounded-2xl border border-border bg-paper">
+              <Image src={sideImage.image} alt={sideImage.alt} sizes="(min-width: 1024px) 36rem, 100vw" loading="eager" fetchPriority="high" className="h-auto w-full" />
+            </div>
+          )}
         </div>
       </div>
       {illustration && !image && (
