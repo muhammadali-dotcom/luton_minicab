@@ -15,14 +15,15 @@ import { container, eyebrow, h2, section } from "@/components/ui";
 import { areas, site } from "@/config/site";
 import heroIllustration from "../../../public/brand/about-hero.png";
 import whatIllustration from "../../../public/brand/about-what.png";
+import { pageMetadata } from "@/config/seo";
 import whoIllustration from "../../../public/brand/about-who.png";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/about" },
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
     "Luton Minicab offers local journeys, school runs, airport transfers and longer trips from Luton, with a team you can reach day or night.",
-};
+  path: "/about",
+});
 
 // Confirmed facts only (requirement.md): no history, fleet or driver numbers, awards or reviews.
 const services = [

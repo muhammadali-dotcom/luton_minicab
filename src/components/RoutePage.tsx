@@ -52,11 +52,6 @@ export function RoutePage({ route }: { route: RouteDetail }) {
       provider: { "@type": "LocalBusiness", name: site.name },
       areaServed: [{ "@type": "Place", name: "Luton" }, { "@type": "Place", name: airport ? `${airport.name} Airport` : "Central London" }],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: route.faqs.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-    },
   ];
 
   return (

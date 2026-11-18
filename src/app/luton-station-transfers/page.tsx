@@ -6,14 +6,15 @@ import { Faq } from "@/components/Faq";
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { container, eyebrow, h2, section } from "@/components/ui";
+import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/services/station-hotel-transfers-hero.png";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Luton Station Taxis: Luton, Parkway and Leagrave",
-  alternates: { canonical: "/luton-station-transfers" },
   description:
     "Taxis to and from Luton, Luton Airport Parkway and Leagrave stations. Pickups at the station pickup point, fixed fares, DBS-checked drivers, available 24/7.",
-};
+  path: "/luton-station-transfers",
+});
 
 // Written differently from the "Stations near you" section of /services/station-hotel-transfers,
 // which links here. No train tracking (only flight tracking is confirmed) and no times or prices.
@@ -60,16 +61,6 @@ const faqs = [
 export default function Page() {
   return (
     <main id="main" className="flex-1">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-          }),
-        }}
-      />
       <PageHero
         tone="light"
         image={heroPhoto}

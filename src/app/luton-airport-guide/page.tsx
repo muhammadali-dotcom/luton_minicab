@@ -6,14 +6,15 @@ import { Faq } from "@/components/Faq";
 import { PageHero, trustAirport } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { container, eyebrow, h2, section } from "@/components/ui";
+import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-terminal-hero.png";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Luton Airport Guide: Drop-off, Pickup and Taxis",
-  alternates: { canonical: "/luton-airport-guide" },
   description:
     "A practical guide to getting to and from London Luton Airport by taxi: the drop-off and pickup zone, the free long-stay option, when to arrive and meeting your driver.",
-};
+  path: "/luton-airport-guide",
+});
 
 // Practical help that /airports/luton doesn't cover. Facts only from london-luton.co.uk
 // (dropping-off, picking-up and taxi pages), checked on 17 November 2026. No charge amounts:
@@ -70,16 +71,6 @@ const faqs = [
 export default function Page() {
   return (
     <main id="main" className="flex-1">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-          }),
-        }}
-      />
       <PageHero
         tone="light"
         image={heroPhoto}

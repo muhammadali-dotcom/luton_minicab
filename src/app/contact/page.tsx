@@ -16,14 +16,15 @@ import { Faq } from "@/components/Faq";
 import { PageHero } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/ui";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/config/seo";
 import officeIllustration from "../../../public/brand/contact-office.png";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/contact" },
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Call, WhatsApp or email Luton Minicab. Our team is available 24/7 to help with new journeys and existing bookings.",
-};
+  path: "/contact",
+});
 
 // Similar in flow to the owner's reference (heathrowminicab.com/contact), in Luton's own style.
 // No form: every way to reach us is a direct link. Confirmed facts only.

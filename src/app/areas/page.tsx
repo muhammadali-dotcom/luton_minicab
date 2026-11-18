@@ -3,26 +3,20 @@ import Link from "next/link";
 import { ArrowRight, CarFront, MapPin, MessageCircle, Plane, TrainFront } from "lucide-react";
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/ui";
-import { areas } from "@/config/site";
+import { additionalAreas, areas } from "@/config/site";
+import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/areas-overview-hero.png";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/areas" },
+export const metadata: Metadata = pageMetadata({
   title: "Areas We Cover",
   description:
     "Taxis across Luton, Leagrave and Stopsley, plus Dunstable, Houghton Regis, Harpenden, Mill Hill, Hounslow and Heathrow, with transfers to all UK airports.",
-};
+  path: "/areas",
+});
 
 const rowLink =
   "group flex min-h-[44px] items-center gap-3 border-b border-border text-[1.0625rem] font-medium text-foreground";
 
-// Additional pickup coverage confirmed by the owner; these places do not have individual pages.
-const additionalAreas = [
-  { heading: "Around Luton", places: ["Caddington", "Slip End", "Barton-le-Clay", "Toddington"] },
-  { heading: "Around Mill Hill", places: ["Edgware", "Burnt Oak", "Colindale", "Hendon", "Elstree", "Borehamwood"] },
-  { heading: "Around Hounslow", places: ["Heston", "Cranford", "Isleworth", "Feltham"] },
-  { heading: "Around Heathrow", places: ["Harlington, west London", "West Drayton", "Harmondsworth", "Stanwell"] },
-];
 
 const journeys = [
   { title: "Local Journeys", text: "Shopping, appointments or a visit across town.", href: "/services/local-journeys", Icon: CarFront },

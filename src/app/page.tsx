@@ -6,9 +6,14 @@ import { Hero } from "@/components/Hero";
 import { ServiceStrip } from "@/components/ServiceStrip";
 import { Services } from "@/components/Services";
 import { Vehicles } from "@/components/Vehicles";
+import { pageMetadata } from "@/config/seo";
 import { WhyTravel } from "@/components/WhyTravel";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = pageMetadata({
+  description:
+    "Local trips, school runs and airport transfers from Luton, with fixed fares and DBS-checked drivers. Book online or call, day or night.",
+  path: "/",
+});
 
 export default function Home() {
   return (

@@ -44,15 +44,16 @@ Validate these with real search volume data (for example Google Search Console a
 - Descriptive internal links (e.g. "airport transfers", not "click here").
 - Descriptive `alt` text on meaningful images; decorative illustrations stay hidden from screen readers.
 - Fast, mobile-friendly and accessible. The site is static, lightweight and has no layout shift.
-- A canonical URL on the final domain: `https://www.lutonminicab.com` (confirmed: www, with the bare domain redirecting to it).
+- A canonical URL on the final domain: `https://lutonminicab.com` (live setup: www and lutonminicab.vercel.app redirect to it).
 
 ## 4. Technical SEO (to add before launch)
-- [ ] `metadataBase` set to the final domain in `layout.tsx`
-- [ ] `src/app/sitemap.ts` listing the live (indexable) pages
-- [ ] `src/app/robots.ts` allowing crawling and pointing to the sitemap
-- [ ] Open Graph and Twitter sharing image (1200×630, from DESIGN.md) and favicon set
-- [ ] Structured data (JSON-LD), **only once real details exist**: `LocalBusiness` / `TaxiService` with name, phone, area served (Luton, Mill Hill, Hounslow, Heathrow), opening hours (24/7) and URL. Add `FAQPage` markup for the homepage FAQs.
-- [ ] Google Search Console verified, with the sitemap submitted
+- [x] `metadataBase` set to the final domain (`https://lutonminicab.com`) in `layout.tsx`
+- [x] `src/app/sitemap.ts` listing all live pages with `lastModified`, `changeFrequency`, and `priority`
+- [x] `src/app/robots.ts` allowing crawling and pointing to `https://lutonminicab.com/sitemap.xml` (previews block crawling)
+- [x] Open Graph, Twitter cards, and canonical alternates configured
+- [x] Structured data (JSON-LD): site-wide `TaxiService` (name, phone, email, Mill Hill booking office address, 24/7, areas served) and `WebSite`; `FAQPage` on every page with FAQs; `BreadcrumbList` on service, area, airport and route pages
+- [x] Web app manifest (`src/app/manifest.ts`)
+- [ ] Google Search Console verified (set `GOOGLE_SITE_VERIFICATION` in Vercel), with the sitemap submitted
 - [ ] Analytics, if wanted. Add a privacy/cookie notice if it sets cookies.
 
 ## 5. Local SEO (off-site)

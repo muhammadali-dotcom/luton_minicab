@@ -60,6 +60,15 @@ export const regionalAirports: { region: string; airports: PageEntry[] }[] = [
   },
 ];
 
+// Additional pickup coverage confirmed by the owner (listed on /areas and in the site-wide
+// business data); these places do not have individual pages.
+export const additionalAreas = [
+  { heading: "Around Luton", places: ["Caddington", "Slip End", "Barton-le-Clay", "Toddington"] },
+  { heading: "Around Mill Hill", places: ["Edgware", "Burnt Oak", "Colindale", "Hendon", "Elstree", "Borehamwood"] },
+  { heading: "Around Hounslow", places: ["Heston", "Cranford", "Isleworth", "Feltham"] },
+  { heading: "Around Heathrow", places: ["Harlington, west London", "West Drayton", "Harmondsworth", "Stanwell"] },
+];
+
 type AreaEntry = PageEntry & { heading: string; intro: string };
 
 // Each entry has its own page at /areas/[slug]. Intros stick to confirmed

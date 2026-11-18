@@ -6,6 +6,7 @@ import { FleetSteps } from "@/components/FleetSteps";
 import { Briefcase, CarFront, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { fleet } from "@/config/site";
+import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/fleet-hero.png";
 
 const uses = [
@@ -14,12 +15,12 @@ const uses = [
   { label: "Business travel", Icon: Briefcase },
 ];
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/fleet" },
+export const metadata: Metadata = pageMetadata({
   title: "Our Fleet: Saloon, Estate, MPV & Executive",
   description:
     "Saloons and estates for up to 4 passengers, MPVs for up to 7, and executive cars. See passenger, suitcase and hand luggage space for each car.",
-};
+  path: "/fleet",
+});
 
 const faqs = [
   {

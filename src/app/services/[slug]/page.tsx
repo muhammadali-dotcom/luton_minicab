@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -8,6 +9,8 @@ import { LongDistancePage } from "@/components/LongDistancePage";
 import { SchoolRunsPage } from "@/components/SchoolRunsPage";
 import { StationHotelPage } from "@/components/StationHotelPage";
 import { serviceDetails } from "@/config/serviceDetails";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { pageMetadata } from "@/config/seo";
 import { services } from "@/config/site";
 
 const titleFor = (slug: string) => services.find((s) => s.slug === slug)?.name ?? null;
@@ -19,7 +22,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const title = titleFor((await params).slug);
   const slug = (await params).slug;
-  return title ? { title, alternates: { canonical: `/services/${slug}` }, description: `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.` } : {};
+  return title
+    ? pageMetadata({ title, description: `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.`, path: `/services/${slug}` })
+    : {};
 }
 
 // params is URL data, so it's read inside Suspense to keep navigation instant.
@@ -35,10 +40,20 @@ async function Content({ params }: { params: PageProps<"/services/[slug]">["para
   const { slug } = await params;
   const title = titleFor(slug);
   if (!title) notFound();
-  if (slug === "local-journeys") return <LocalJourneysPage name={title} detail={serviceDetails[slug]} />;
-  if (slug === "school-runs") return <SchoolRunsPage name={title} detail={serviceDetails[slug]} />;
-  if (slug === "station-hotel-transfers") return <StationHotelPage name={title} detail={serviceDetails[slug]} />;
-  if (slug === "corporate-travel") return <CorporateTravelPage name={title} detail={serviceDetails[slug]} />;
-  if (slug === "long-distance-travel") return <LongDistancePage name={title} detail={serviceDetails[slug]} />;
-  notFound();
+  const detail = serviceDetails[slug];
+  const pages: Record<string, ReactNode> = {
+    "local-journeys": <LocalJourneysPage name={title} detail={detail} />,
+    "school-runs": <SchoolRunsPage name={title} detail={detail} />,
+    "station-hotel-transfers": <StationHotelPage name={title} detail={detail} />,
+    "corporate-travel": <CorporateTravelPage name={title} detail={detail} />,
+    "long-distance-travel": <LongDistancePage name={title} detail={detail} />,
+  };
+  const page = pages[slug];
+  if (!page) notFound();
+  return (
+    <>
+      <BreadcrumbSchema items={[{ name: "Services", path: "/services" }, { name: title, path: `/services/${slug}` }]} />
+      {page}
+    </>
+  );
 }

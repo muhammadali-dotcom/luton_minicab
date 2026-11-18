@@ -3,14 +3,15 @@ import { Faq } from "@/components/Faq";
 import { MoreServices, ServiceAirportBanner } from "@/components/MoreServices";
 import { PageHero } from "@/components/PageHero";
 import { ServiceCards } from "@/components/ServiceCards";
+import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/services/services-hero.png";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/services" },
+export const metadata: Metadata = pageMetadata({
   title: "Taxi & Minicab Services",
   description:
     "Local journeys, airport transfers, school runs, assisted travel, business and long-distance trips from Luton. Fixed fares, available 24/7.",
-};
+  path: "/services",
+});
 
 // Approved answers, reused from the homepage and service pages.
 const faqs = [

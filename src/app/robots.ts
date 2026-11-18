@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
 import { isSiteIndexable, siteOrigin } from "@/config/seo";
 
+// Previews and non-production builds block all crawling (pages also carry noindex).
+// Production allows everything and points to the sitemap.
 export default function robots(): MetadataRoute.Robots {
+  if (!isSiteIndexable) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    // Allow crawlers to read page-level noindex on previews and short airport pages.
-    rules: { userAgent: "*", allow: "/" },
-    ...(isSiteIndexable ? { sitemap: `${siteOrigin}/sitemap.xml` } : {}),
+    rules: { userAgent: "*", allow: "/", disallow: "/api/" },
+    sitemap: `${siteOrigin}/sitemap.xml`,
+    host: siteOrigin,
   };
 }

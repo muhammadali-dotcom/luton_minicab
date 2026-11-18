@@ -5,13 +5,15 @@ import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, h2, section } from "@/components/ui";
 import { regionalAirports } from "@/config/site";
 import { PopularRoutes } from "@/components/PopularRoutes";
+import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-hero.png";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/airports" },
+export const metadata: Metadata = pageMetadata({
   title: "Airport Transfers",
-  description: "Transfers to and from UK airports. Book online or contact our team to arrange your journey.",
-};
+  description:
+    "Transfers to and from UK airports. Book online or contact our team to arrange your journey.",
+  path: "/airports",
+});
 
 export default function Page() {
   return (

@@ -79,11 +79,6 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
   const airportList = detail.airportFirst
     ? [...airports.filter((a) => a.slug === detail.airportFirst), ...airports.filter((a) => a.slug !== detail.airportFirst)]
     : airports;
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: detail.faqs.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-  };
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "TaxiService",
@@ -94,7 +89,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
 
   return (
     <main id="main" className="flex-1">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceSchema, faqSchema]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <PageHero
         // Full-width car-free location illustration, with a cream fade behind the text,
         // clearing about 60% across so the rest of the photo keeps its colour. Green text.

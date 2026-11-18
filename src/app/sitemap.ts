@@ -1,19 +1,36 @@
 import type { MetadataRoute } from "next";
 import { airports, areas, services } from "@/config/site";
-import { isSiteIndexable, siteOrigin } from "@/config/seo";
+import { contentUpdated, isSiteIndexable, siteOrigin } from "@/config/seo";
 import { routes } from "@/config/routeDetails";
 
+type Entry = [path: string, priority: number, changeFrequency: "weekly" | "monthly" | "yearly"];
+
+// Every indexable page. Enquiry-only airports redirect to /airports and have no pages;
+// the extra pickup towns on /areas have no pages of their own.
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!isSiteIndexable) return [];
-  // Enquiry-only airport URLs redirect to /airports; additional pickup names have no routes.
-  const paths = [
-    "", "/about", "/contact", "/fleet", "/services", "/airports", "/areas",
-    "/privacy", "/terms", "/cookies",
-    ...services.map(({ slug }) => `/services/${slug}`),
-    ...airports.map(({ slug }) => `/airports/${slug}`),
-    ...areas.map(({ slug }) => `/areas/${slug}`),
-    ...routes.map(({ slug }) => `/routes/${slug}`),
-    "/luton-airport-guide", "/luton-station-transfers",
+  const entries: Entry[] = [
+    ["/", 1, "weekly"],
+    ["/services", 0.9, "weekly"],
+    ["/airports", 0.9, "weekly"],
+    ["/areas", 0.9, "weekly"],
+    ["/fleet", 0.8, "monthly"],
+    ["/luton-airport-guide", 0.85, "monthly"],
+    ["/luton-station-transfers", 0.85, "monthly"],
+    ...services.map(({ slug }): Entry => [`/services/${slug}`, 0.85, "monthly"]),
+    ...airports.map(({ slug }): Entry => [`/airports/${slug}`, 0.85, "monthly"]),
+    ...routes.map(({ slug }): Entry => [`/routes/${slug}`, 0.85, "monthly"]),
+    ...areas.map(({ slug }): Entry => [`/areas/${slug}`, 0.75, "monthly"]),
+    ["/about", 0.7, "monthly"],
+    ["/contact", 0.7, "monthly"],
+    ["/privacy", 0.3, "yearly"],
+    ["/terms", 0.3, "yearly"],
+    ["/cookies", 0.3, "yearly"],
   ];
-  return paths.map((path) => ({ url: `${siteOrigin}${path}` }));
+  return entries.map(([path, priority, changeFrequency]) => ({
+    url: `${siteOrigin}${path === "/" ? "" : path}`,
+    lastModified: contentUpdated,
+    changeFrequency,
+    priority,
+  }));
 }

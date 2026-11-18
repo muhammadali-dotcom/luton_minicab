@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { PageFallback } from "@/components/PageFallback";
 import { AreaLocalPage } from "@/components/AreaLocalPage";
 import { areaDetails } from "@/config/areaDetails";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { pageMetadata } from "@/config/seo";
 import { areas } from "@/config/site";
 
 const find = (slug: string) => areas.find((a) => a.slug === slug);
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
   const area = find((await params).slug);
   if (!area) return {};
   const detail = areaDetails[area.slug];
-  return { title: area.heading, alternates: { canonical: `/areas/${area.slug}` }, description: detail ? `${detail.hero.text} Fixed fares, DBS-checked drivers, available 24/7.` : `${area.intro} Book online or call, day or night.` };
+  return pageMetadata({ title: area.heading, path: `/areas/${area.slug}`, description: detail ? `${detail.hero.text} Fixed fares, DBS-checked drivers, available 24/7.` : `${area.intro} Book online or call, day or night.` });
 }
 
 // params is URL data, so it's read inside Suspense to keep navigation instant.
@@ -33,5 +35,10 @@ async function AreaContent({ params }: { params: PageProps<"/areas/[slug]">["par
   if (!area) notFound();
   const detail = areaDetails[area.slug];
   if (!detail) notFound();
-  return <AreaLocalPage area={area} detail={detail} />;
+  return (
+    <>
+      <BreadcrumbSchema items={[{ name: "Areas", path: "/areas" }, { name: area.name, path: `/areas/${area.slug}` }]} />
+      <AreaLocalPage area={area} detail={detail} />
+    </>
+  );
 }
