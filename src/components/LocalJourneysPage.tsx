@@ -47,7 +47,7 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>EVERYDAY JOURNEYS</p>
           <h2 id="everyday-heading" className={`${h2} mt-4 text-foreground`}>
-            For the trips that fill your day.
+            The trips that make up your week.
           </h2>
           {/* The owner's street illustration; its background is matched to the band-alt cream. */}
           <Image
@@ -60,7 +60,7 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
           <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 text-center md:grid-cols-[26fr_23.5fr_24fr_26.5fr] md:gap-x-0">
             {everyday.map(({ title, text, places }) => (
               <li key={title} className="md:px-2">
-                <h3 className="font-display text-[1.375rem] font-semibold leading-tight text-foreground">{title}</h3>
+                <h3 className="text-balance font-display text-[1.375rem] font-semibold leading-tight text-foreground">{title}</h3>
                 <p className="mx-auto mt-2 text-[1.0625rem] leading-relaxed text-foreground">
                   {/* Two lines on wider screens, as in the owner's reference. */}
                   {text.map((line, i) => (

@@ -23,7 +23,7 @@ export function ServiceCards() {
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>OUR MAIN SERVICES</p>
         <h2 id="services-list-heading" className={`${h2} mt-4 text-foreground`}>
-          Choose your journey
+          What do you need today?
         </h2>
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1fr_minmax(0,28rem)] xl:grid-cols-[1fr_minmax(0,34rem)] xl:gap-16">
           <ol className="border-t border-primary/50">

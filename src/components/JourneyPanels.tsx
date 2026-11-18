@@ -22,7 +22,7 @@ export function JourneyPanels({ id, label, heading, panels, note }: Props) {
     <section aria-labelledby={id} className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id={id} className={`${h2} mt-4 text-foreground`}>
+        <h2 id={id} className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
         </h2>
         <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-0">

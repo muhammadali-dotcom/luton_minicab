@@ -101,14 +101,16 @@ export default function Page() {
             We also arrange pickups in these areas around Luton, Mill Hill, Hounslow and Heathrow.
           </p>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {additionalAreas.map(({ heading, places }) => (
+            {additionalAreas.map(({ id, heading, places }) => (
               <div key={heading}>
-                <h3 className="border-b border-primary pb-4 font-display text-[1.375rem] font-semibold leading-tight text-foreground">{heading}</h3>
+                <h3 id={id} className="scroll-mt-48 border-b border-primary pb-4 font-display text-[1.375rem] font-semibold leading-tight text-foreground">{heading}</h3>
                 <ul className="mt-4 space-y-3 text-[1.0625rem] leading-relaxed text-foreground">
-                  {places.map((place) => (
-                    <li key={place} className="flex items-start gap-2">
-                      <MapPin aria-hidden size={18} strokeWidth={1.5} className="mt-1 shrink-0 text-accent" />
-                      <span>{place}</span>
+                  {places.map(({ slug, name }) => (
+                    <li key={slug}>
+                      <Link href={`/areas/${slug}`} className="inline-flex min-h-11 items-center gap-2 underline decoration-primary underline-offset-4 hover:decoration-foreground">
+                        <MapPin aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-accent" />
+                        {name}
+                      </Link>
                     </li>
                   ))}
                 </ul>

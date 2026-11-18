@@ -26,7 +26,7 @@ export function LongDistanceJourney() {
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>THE LONGER JOURNEY</p>
         <h2 id="longer-journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-          Further afield. Still door to door.
+          Visiting family, or a weekend away?
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">
           From your pickup address to your destination, with a return journey if you need one.

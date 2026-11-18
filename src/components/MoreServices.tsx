@@ -39,9 +39,9 @@ export function MoreServices() {
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>MORE WAYS TO TRAVEL</p>
         <h2 id="more-services-heading" className={`${h2} mt-4 text-foreground`}>
-          Something a little different?
+          Planning something special?
         </h2>
-        <p className="mt-3 text-[1.125rem] text-foreground">Ask us and we’ll help you plan it.</p>
+        <p className="mt-3 text-[1.125rem] text-foreground">Tell us about it, and we’ll help you work out the details.</p>
         <ul className="mt-10 grid gap-5 lg:grid-cols-3">
           {extras.map(({ title, text, Icon }) => (
             <li key={title} className="flex flex-col rounded-2xl border border-border bg-alt p-6">
@@ -85,7 +85,7 @@ export function ServiceAirportBanner() {
             <h2 id="airport-banner-heading" className={`${h2} mt-4 text-foreground`}>
               Flying out or heading home?
             </h2>
-            <p className="mt-3 text-[1.125rem] text-foreground">To and from all UK airports, with flight tracking.</p>
+            <p className="mt-3 text-[1.125rem] text-foreground">We follow your flight, so we know when you land.</p>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
               <BookOnlineLink arrow />
               <Link href="/airports" className={linkClass}>

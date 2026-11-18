@@ -13,11 +13,11 @@ export function Hero() {
       eyebrow="LUTON MINICAB"
       heading={
         <>
-          <span className="block">Your Luton ride,</span>
-          <span className="block">wherever life takes you.</span>
+          <span className="block">Wherever you&rsquo;re going,</span>
+          <span className="block">we&rsquo;ll get you there.</span>
         </>
       }
-      text="Local trips, airport transfers and journeys further afield. Book online or call our team."
+      text="Early flights, school mornings, late trains home. Book in a minute, or talk to our team, day or night."
     />
   );
 }

@@ -60,14 +60,55 @@ export const regionalAirports: { region: string; airports: PageEntry[] }[] = [
   },
 ];
 
-// Additional pickup coverage confirmed by the owner (listed on /areas and in the site-wide
-// business data); these places do not have individual pages.
+// Confirmed pickup coverage used by the directory, footer and short area pages.
 export const additionalAreas = [
-  { heading: "Around Luton", places: ["Caddington", "Slip End", "Barton-le-Clay", "Toddington"] },
-  { heading: "Around Mill Hill", places: ["Edgware", "Burnt Oak", "Colindale", "Hendon", "Elstree", "Borehamwood"] },
-  { heading: "Around Hounslow", places: ["Heston", "Cranford", "Isleworth", "Feltham"] },
-  { heading: "Around Heathrow", places: ["Harlington, west London", "West Drayton", "Harmondsworth", "Stanwell"] },
+  {
+    id: "around-luton",
+    heading: "Around Luton",
+    places: [
+      { slug: "caddington", name: "Caddington", journey: "From a Caddington address to Luton station, with the pickup timed around your train." },
+      { slug: "slip-end", name: "Slip End", journey: "From home in Slip End to Luton Airport, with room planned for your luggage." },
+      { slug: "barton-le-clay", name: "Barton-le-Clay", journey: "From Barton-le-Clay into Luton for an appointment, with a separate pickup for the return if you need one." },
+      { slug: "toddington", name: "Toddington", journey: "From Toddington to a hotel in Luton, with the hotel name and address included when you book." },
+    ],
+  },
+  {
+    id: "around-mill-hill",
+    heading: "Around Mill Hill",
+    places: [
+      { slug: "edgware", name: "Edgware", journey: "From Edgware to an early flight from Heathrow, with the terminal included in your booking." },
+      { slug: "burnt-oak", name: "Burnt Oak", journey: "From a Burnt Oak address to a family visit in Mill Hill, with both addresses ready when you book." },
+      { slug: "colindale", name: "Colindale", journey: "From Colindale to a business meeting in Luton, with your pickup time based on when you need to arrive." },
+      { slug: "hendon", name: "Hendon", journey: "From Hendon to a hotel near Heathrow before a flight. Use the hotel address as your destination." },
+      { slug: "elstree", name: "Elstree", journey: "From an Elstree address to a train at Mill Hill Broadway. Include the station name when you book." },
+      { slug: "borehamwood", name: "Borehamwood", journey: "From Borehamwood to Luton Airport for a family trip. Include the number of passengers and bags." },
+    ],
+  },
+  {
+    id: "around-hounslow",
+    heading: "Around Hounslow",
+    places: [
+      { slug: "heston", name: "Heston", journey: "From Heston to central Hounslow for shopping, with a pickup address for the return if you need one." },
+      { slug: "cranford", name: "Cranford", journey: "From a Cranford address to Heathrow departures. Check your terminal before booking." },
+      { slug: "isleworth", name: "Isleworth", journey: "From Isleworth to a restaurant in Hounslow. Use the venue name and street address for the drop off." },
+      { slug: "feltham", name: "Feltham", journey: "From Feltham station to a Heathrow hotel. Choose a pickup time that gives you time to leave the station." },
+    ],
+  },
+  {
+    id: "around-heathrow",
+    heading: "Around Heathrow",
+    places: [
+      { slug: "harlington-west-london", name: "Harlington, west London", journey: "From a hotel in Harlington to your Heathrow terminal. Give the hotel name and postcode when you book." },
+      { slug: "west-drayton", name: "West Drayton", journey: "From West Drayton station to a hotel near Heathrow, with a pickup time based on your train arrival." },
+      { slug: "harmondsworth", name: "Harmondsworth", journey: "From a Harmondsworth address to Luton Airport. Enter Luton Airport as your destination when you book." },
+      { slug: "stanwell", name: "Stanwell", journey: "From a home in Stanwell to Heathrow for a group trip. Include your luggage as well as your passenger count." },
+    ],
+  },
 ];
+
+export const pickupAreas = additionalAreas.flatMap(({ id, heading, places }) =>
+  places.map((place) => ({ ...place, groupId: id, groupHeading: heading })),
+);
 
 type AreaEntry = PageEntry & { heading: string; intro: string };
 
@@ -147,7 +188,7 @@ export const areaPlaces: Record<string, string> = {
 // Vehicle categories, matching the web booker. Images (in public/brand) illustrate
 // categories, not guaranteed models. `capacity` (passengers, large cases, hand luggage) was
 // confirmed by the owner in November 2026 and is shown as "up to" on /fleet.
-// `id` is the vehicle's anchor on /fleet, used by the footer links. `tagline` is its
+// `id` is the vehicle's anchor on /fleet. `tagline` is its
 // line on /fleet; `text` is used by the homepage carousel.
 export const fleet = [
   { id: "saloon", name: "Saloon", tagline: "Everyday comfort.", text: "Everyday local trips and airport runs.", capacity: { passengers: 4, cases: 2, hand: 2 }, image: "fleet-saloon.png" },

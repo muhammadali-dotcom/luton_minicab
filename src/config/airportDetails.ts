@@ -105,7 +105,7 @@ function oneTerminal(
     factsNote,
     journeys: {
       eyebrow: `${upper} JOURNEYS`,
-      subline: "A simple journey, whichever way you’re going.",
+      subline: `To ${name} Airport for your flight, or home again after it.`,
       items: [
         {
           image: images.to,
@@ -159,8 +159,8 @@ function oneTerminal(
 export const airportDetails: Record<string, AirportDetail> = {
   luton: {
     hero: {
-      heading: "Your local ride to Luton Airport.",
-      text: "Sit back and relax. We’ll take care of the road.",
+      heading: "Flying from Luton? Leave the early start to us.",
+      text: "Tell us your flight time, and we’ll plan your pickup around it.",
     },
     cardImage: lutonCard,
     facts: [
@@ -172,7 +172,7 @@ export const airportDetails: Record<string, AirportDetail> = {
     cardText: "Pickup guidance and transfers to and from your local airport.",
     journeys: {
       eyebrow: "LUTON AIRPORT JOURNEYS",
-      subline: "A simple journey, whichever way you’re going.",
+      subline: "To Luton Airport for your flight, or home again after it.",
       items: [
         {
           image: lutonTo,
@@ -233,7 +233,7 @@ export const airportDetails: Record<string, AirportDetail> = {
     cardText: "Pickup guidance and transfers to and from Terminals 2, 3, 4 and 5.",
     journeys: {
       eyebrow: "HEATHROW AIRPORT JOURNEYS",
-      subline: "A simple journey, whichever way you’re going.",
+      subline: "To Heathrow for your flight, or home again after it.",
       items: [
         {
           image: heathrowTo,
@@ -327,7 +327,7 @@ export const airportDetails: Record<string, AirportDetail> = {
     cardText: "Pickup guidance and transfers to and from North and South Terminals.",
     journeys: {
       eyebrow: "GATWICK AIRPORT JOURNEYS",
-      subline: "A simple journey, whichever way you’re going.",
+      subline: "To Gatwick for your flight, or home again after it.",
       items: [
         {
           image: gatwickTo,
@@ -403,8 +403,8 @@ export const airportDetails: Record<string, AirportDetail> = {
   stansted: oneTerminal(
     "Stansted",
     {
-      heading: "Your holiday starts at your front door.",
-      text: "We’ll drive you to Stansted, so you can start relaxing early.",
+      heading: "An early Stansted flight, without the early stress.",
+      text: "We’re here 24/7, so however early you fly, there’s a pickup to suit it.",
     },
     stanstedCard,
     "Guidance on Stansted’s pick-up areas, with transfers both ways.",
@@ -419,7 +419,10 @@ export const airportDetails: Record<string, AirportDetail> = {
   ),
   "london-city": oneTerminal(
     "London City",
-    { heading: "Quick flight. Easy ride.", text: "To or from London City Airport, we’ll keep it simple." },
+    {
+      heading: "Off to London City? Arrive calm and ready.",
+      text: "A business trip or a city break, we’ll take you across London to the terminal.",
+    },
     londonCityCard,
     "Transfers to and from London City, for work trips and weekends away.",
     { to: londonCityTo, from: londonCityFrom, arrival: londonCityArrival },
@@ -433,7 +436,10 @@ export const airportDetails: Record<string, AirportDetail> = {
   ),
   southend: oneTerminal(
     "London Southend",
-    { heading: "Small airport. Simple ride.", text: "A calm journey to or from London Southend Airport." },
+    {
+      heading: "Flying from London Southend? Settle in for the ride.",
+      text: "A comfortable journey to or from the airport, with room for you and your bags.",
+    },
     southendCard,
     "Guidance on the Express Pick-up area, with transfers both ways.",
     { to: southendTo, from: southendFrom, arrival: southendArrival },

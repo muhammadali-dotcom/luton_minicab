@@ -23,8 +23,8 @@ export default function Page() {
         image={heroPhoto}
         alt="View from the back seat of a car, looking out at an airport terminal and a plane."
         eyebrow="AIRPORT TRANSFERS"
-        heading={<span className="block text-balance">Which airport are you travelling to or from?</span>}
-        text="Pick your airport, and leave the road to us."
+        heading={<span className="block text-balance">Off on a trip, or on your way home?</span>}
+        text="Choose your airport, and we’ll plan your pickup around your flight."
         trust={trustLocal}
         compact
       />
@@ -34,10 +34,10 @@ export default function Page() {
       {/* No flight tracking, meet and greet, price or journey-time promises for these airports. */}
       <section id="other-airports" aria-labelledby="other-airports-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
-          <h2 id="other-airports-heading" className={h2}>
-            Other UK airport journeys
+          <h2 id="other-airports-heading" className={`${h2} text-balance`}>
+            Flying from somewhere else?
           </h2>
-          <p className="mt-3 text-[1.125rem] text-foreground">Travelling to or from one of these airports? Contact our team with your pickup address, destination, travel date and passenger details to discuss your journey.</p>
+          <p className="mt-3 text-[1.125rem] text-foreground">Tell us where you’re starting, where you’re going, the date and who’s travelling, and we’ll help you plan it.</p>
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {regionalAirports.map(({ region, airports: regional }) => (
               <div key={region}>

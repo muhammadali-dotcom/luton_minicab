@@ -37,10 +37,10 @@ export function AirportFleet({ band = false }: { band?: boolean }) {
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>TRAVEL YOUR WAY</p>
         <h2 id="fleet-heading" className={`${h2} mt-4 text-foreground`}>
-          A car for every kind of journey.
+          Room for everyone, and every bag.
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">
-          A trip for one, a family holiday or a day of meetings. Find your fit.
+          Travelling light, with the family, or with a boot full of holiday cases? Choose the car that fits.
         </p>
 
         <ul className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">

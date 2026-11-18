@@ -34,16 +34,16 @@ export function FinalCta() {
           <circle cx="12" cy="17" r="5" fill="var(--color-primary)" />
           <circle cx="108" cy="17" r="5" fill="var(--color-primary)" />
         </svg>
-        <p className="mt-3 text-sm font-medium tracking-[0.3em] text-paper">WHEREVER LIFE TAKES YOU</p>
+        <p className="mt-3 text-sm font-medium tracking-[0.3em] text-paper">HERE WHEN YOU NEED US</p>
         <h2
           id="cta-heading"
           className="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-paper"
         >
-          <span className="block">You make the plans.</span>
-          <span className="block">We&rsquo;ll take you there.</span>
+          <span className="block">Wherever you&rsquo;re heading next,</span>
+          <span className="block">we&rsquo;ll be ready when you are.</span>
         </h2>
         <p className="mt-3 max-w-2xl text-[1.0625rem] leading-snug text-paper">
-          A trip across town or a journey further afield. Book your ride with us.
+          Book online in a few minutes, or call us, day or night.
         </p>
         <div className="mt-6 flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-start">
           <BookOnlineLink arrow />

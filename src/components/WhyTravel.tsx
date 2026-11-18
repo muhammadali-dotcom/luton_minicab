@@ -11,12 +11,12 @@ import {
 } from "lucide-react";
 
 const reasons = [
-  { title: "Clear fares", text: "Know your fare before you travel.", Icon: BadgePoundSterling },
-  { title: "Flight tracking", text: "We follow your flight for airport pickups.", Icon: PlaneTakeoff },
-  { title: "A friendly welcome", text: "Meet and greet for your airport arrival.", Icon: Handshake },
-  { title: "Little ones welcome", text: "Ask about child seats when you book.", Icon: Baby },
-  { title: "DBS-checked drivers", text: "Reassurance for you and your family.", Icon: ShieldCheck },
-  { title: "Here, day and night", text: "Available 24/7, whenever your plans take you.", Icon: ClockFading },
+  { title: "Clear fares", text: "You’ll know the price before you go.", Icon: BadgePoundSterling },
+  { title: "Flight tracking", text: "We watch your flight, so a delay doesn’t leave you stranded.", Icon: PlaneTakeoff },
+  { title: "A friendly welcome", text: "Someone waiting for you when you land.", Icon: Handshake },
+  { title: "Little ones welcome", text: "Child seats on request, just ask when you book.", Icon: Baby },
+  { title: "DBS-checked drivers", text: "Peace of mind for you and your family.", Icon: ShieldCheck },
+  { title: "Here, day and night", text: "Open 24/7, for the 4am flight and the midnight train.", Icon: ClockFading },
 ];
 
 const talkClass =
@@ -31,11 +31,11 @@ export function WhyTravel() {
           id="why-heading"
           className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance text-foreground"
         >
-          A little less worry. A better journey.
+          Small things that make a big difference.
         </h2>
         <p className="mt-4 flex items-center gap-5 text-[1.125rem] text-foreground">
           <span aria-hidden className="h-0.5 w-16 shrink-0 bg-primary" />
-          It&rsquo;s the little things that help you feel looked after.
+          When you&rsquo;re travelling with family or catching a flight, details like these matter.
         </p>
 
         {/* Gap-px over a border-coloured background draws hairlines between cells only. */}

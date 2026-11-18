@@ -23,7 +23,7 @@ export function Reassurances({ id, label, heading, items, card, band = false }: 
     <section aria-labelledby={id} className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id={id} className={`${h2} mt-4 text-foreground`}>
+        <h2 id={id} className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
         </h2>
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_20rem] lg:gap-12">

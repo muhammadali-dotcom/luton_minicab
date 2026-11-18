@@ -25,10 +25,10 @@ export function Airports() {
             id="airports-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance text-foreground"
           >
-            From your doorstep to your departure.
+            Holidays start at your front door.
           </h2>
           <p className="mt-3 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
-            Flying away or coming home? We&rsquo;ll take care of the drive.
+            Flying out or coming home, we&rsquo;ll be there at the right time, so you can relax.
           </p>
         </div>
 

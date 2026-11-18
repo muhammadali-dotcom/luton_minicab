@@ -28,7 +28,7 @@ export function LongDistancePage({ name, detail }: { name: string; detail: Servi
       <Reassurances
         id="longer-heading"
         label="FOR LONGER JOURNEYS"
-        heading="The details that matter on a longer trip."
+        heading="What makes a long journey easier."
         band
         items={[
           { title: "Fixed fares", text: "You’ll know your fare when you book.", Icon: PoundSterling },
@@ -52,7 +52,7 @@ export function LongDistancePage({ name, detail }: { name: string; detail: Servi
 
       <LocalAreaCards
         eyebrow="STARTING FROM LUTON"
-        heading="Longer journeys from across Luton."
+        heading="Starting from your front door in Luton."
         text="Pickups from homes in Luton and the towns nearby."
         helpText="Wherever you’re heading, tell us when you book. Just ask."
         band

@@ -18,7 +18,7 @@ type ServiceCard = {
 const cards: ServiceCard[] = [
   {
     title: "Local Journeys",
-    text: "Shopping, appointments or seeing someone you love.",
+    text: "The shops, the doctor’s, or a visit to someone you love.",
     href: "/services/local-journeys",
     Icon: CarFront,
     image: (serviceDetails["local-journeys"].heroPhoto?.image ?? serviceDetails["local-journeys"].image),
@@ -27,7 +27,7 @@ const cards: ServiceCard[] = [
   },
   {
     title: "School Runs",
-    text: "A caring start to their school day.",
+    text: "A calm, safe start to their school day.",
     href: "/services/school-runs",
     Icon: GraduationCap,
     image: (serviceDetails["school-runs"].heroPhoto?.image ?? serviceDetails["school-runs"].image),
@@ -36,7 +36,7 @@ const cards: ServiceCard[] = [
   },
   {
     title: "Corporate Travel",
-    text: "For your team, your clients and your next meeting.",
+    text: "Arrive on time and ready for the meeting.",
     href: "/services/corporate-travel",
     Icon: Briefcase,
     image: (serviceDetails["corporate-travel"].heroPhoto?.image ?? serviceDetails["corporate-travel"].image),
@@ -45,7 +45,7 @@ const cards: ServiceCard[] = [
   },
   {
     title: "Long-Distance Travel",
-    text: "A comfortable ride, wherever you’re heading.",
+    text: "Sit back for the longer journeys. We’ll do the driving.",
     href: "/services/long-distance-travel",
     Icon: Route,
     image: (serviceDetails["long-distance-travel"].heroPhoto?.image ?? serviceDetails["long-distance-travel"].image),
@@ -54,7 +54,7 @@ const cards: ServiceCard[] = [
   },
   {
     title: "Station & Hotel Transfers",
-    text: "Rides to and from stations and hotels, with time to spare.",
+    text: "To the station or your hotel, at a time that suits you.",
     href: "/services/station-hotel-transfers",
     Icon: TrainFront,
     image: (serviceDetails["station-hotel-transfers"].heroPhoto?.image ?? serviceDetails["station-hotel-transfers"].image),
@@ -63,7 +63,7 @@ const cards: ServiceCard[] = [
   },
   {
     title: "Airport Transfers",
-    text: "To and from all UK airports, with flight tracking.",
+    text: "We follow your flight, so we know when you land.",
     href: "/airports",
     Icon: Plane,
     image: airportPhoto,
@@ -89,10 +89,10 @@ export function Services() {
             id="services-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance text-foreground"
           >
-            Here for every part of your day.
+            The journeys that matter to you.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
-            Whether you’re heading across town or to the airport, we’re here to help.
+            From the school gate to the departure gate, there’s a car ready when you need one.
           </p>
         </div>
 
@@ -134,10 +134,10 @@ export function Services() {
         <div className="mt-6 flex flex-col gap-5 rounded-control bg-foreground px-6 py-6 [--color-ring:var(--color-primary)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <div>
             <h3 className="font-display text-[clamp(1.375rem,2vw,1.75rem)] font-medium leading-tight text-paper">
-              Have another journey in mind?
+              Planning something different?
             </h3>
             <p className="mt-1 text-[1.0625rem] text-paper/90">
-              Business trips, longer journeys or something different? Let&rsquo;s talk.
+              A wedding, a cruise or a trip with the dog? Tell us about it.
             </p>
           </div>
           <Link href="/contact" className={talkClass}>

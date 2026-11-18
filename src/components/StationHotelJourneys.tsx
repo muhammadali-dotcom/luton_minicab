@@ -27,7 +27,7 @@ export function StationHotelJourneys() {
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>STATIONS &amp; HOTELS</p>
         <h2 id="stations-hotels-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-          From the station to your next stop.
+          Off the train and on your way.
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">
           Rides to and from stations and hotels, arranged around your plans.

@@ -1,4 +1,4 @@
-import { additionalAreas, areas, site } from "@/config/site";
+import { areas, pickupAreas, site } from "@/config/site";
 import { siteName, siteOrigin } from "@/config/seo";
 
 // Site-wide structured data on every page: the business (TaxiService, a kind of LocalBusiness)
@@ -32,7 +32,7 @@ export function SiteSchema() {
     },
     areaServed: [
       ...areas.map((a) => ({ "@type": "Place", name: a.name })),
-      ...additionalAreas.flatMap((g) => g.places.map((name) => ({ "@type": "Place", name }))),
+      ...pickupAreas.map(({ name }) => ({ "@type": "Place", name })),
     ],
   };
   const website = {

@@ -55,8 +55,8 @@ const steps = [
 export const serviceDetails: Record<string, ServiceDetail> = {
   "school-runs": {
     hero: {
-      heading: "A little less rush. Every school day.",
-      text: "Plan the journey to school and home again. Book each school run online, or speak to us first.",
+      heading: "Calmer mornings for the whole family.",
+      text: "A friendly, DBS-checked driver for the journey to school and home again. Book each run online, or talk to us first.",
     },
     trust: [{ label: "Morning runs", Icon: CalendarDays }, { label: "Home time pickups", Icon: Car }, planAhead],
     heroPhoto: {
@@ -100,8 +100,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "corporate-travel": {
     hero: {
-      heading: "Arrive ready for business.",
-      text: "From office meetings to business events, arrange your ride and focus on your day.",
+      heading: "Arrive ready, not rushed.",
+      text: "Use the journey to prepare, make a call or simply breathe. We’ll handle the driving.",
     },
     trust: [fixedFares, allHours, { label: "Pay per journey", Icon: Wallet }],
     heroPhoto: {
@@ -135,8 +135,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "long-distance-travel": {
     hero: {
-      heading: "Going further? Make yourself comfortable.",
-      text: "From your door to your destination, settle in and leave the driving to us.",
+      heading: "Going further? Sit back and relax.",
+      text: "No timetables, no changes, no carrying bags across stations. Just your door to theirs.",
     },
     trust: [doorToDoor, fixedFares, planAhead],
     heroPhoto: {
@@ -173,8 +173,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "station-hotel-transfers": {
     hero: {
-      heading: "Your next stop, made easy.",
-      text: "From station pickup points to hotel doors, arrange your ride and enjoy the rest of your journey.",
+      heading: "Make your train, without the dash.",
+      text: "Heading for a train or checking into a hotel? Tell us your train time, and we’ll plan your pickup around it.",
     },
     trust: [doorToDoor, fixedFares, allHours],
     heroPhoto: {
@@ -208,8 +208,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   "local-journeys": {
     hero: {
-      heading: "Your everyday plans. A ride away.",
-      text: "Trips to the shops, appointments or someone special. We’ll help you get there.",
+      heading: "Life’s little trips, without the fuss.",
+      text: "The weekly shop, a doctor’s appointment, or popping round to see Mum. We’ll get you there and back.",
     },
     trust: [doorToDoor, fixedFares, allHours],
     heroPhoto: {

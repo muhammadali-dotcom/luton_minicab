@@ -1,65 +1,75 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
-import { airports, areas, fleet, services, site } from "@/config/site";
+import { ArrowRight, ArrowUp, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
+import { additionalAreas, airports, areas, services, site } from "@/config/site";
 import footerStreet from "../../public/brand/footer-street.png";
 import { routes } from "@/config/routeDetails";
 import { Logo } from "./Logo";
 
-type FooterLink = { label: string; href: string; external?: boolean };
-
+type FooterLink = { label: string; href: string; arrow?: boolean };
 
 const columns: { title: string; links: FooterLink[] }[] = [
   {
-    title: "EXPLORE",
+    title: "Explore",
     links: [
       { label: "Home", href: "/" },
       { label: "Our Fleet", href: "/fleet" },
       { label: "About Us", href: "/about" },
       { label: "Contact", href: "/contact" },
       { label: "FAQs", href: "/#faqs" },
-      // External booker: same tab, plain anchor.
-      { label: "Book Online", href: site.bookingUrl, external: true },
     ],
   },
   {
-    title: "AIRPORTS",
+    title: "Airports",
     links: [
-      ...airports.map((a) => ({ label: a.name, href: `/airports/${a.slug}` })),
-      { label: "View All Airports", href: "/airports" },
+      ...airports.map(({ name, slug }) => ({ label: name, href: `/airports/${slug}` })),
+      { label: "View All Airports", href: "/airports", arrow: true },
     ],
   },
   {
-    title: "OUR SERVICES",
+    title: "Our Services",
     links: [
       ...services
-        .filter((s) => s.slug !== "station-hotel-transfers")
-        .map((s) => ({ label: s.name, href: `/services/${s.slug}` })),
+        .filter(({ slug }) => slug !== "station-hotel-transfers")
+        .map(({ name, slug }) => ({ label: name, href: `/services/${slug}` })),
       { label: "Station & Hotel Transfers", href: "/services/station-hotel-transfers" },
+      { label: "View All Services", href: "/services", arrow: true },
     ],
-  },
-  {
-    title: "AREAS WE COVER",
-    links: [
-      // All nine areas, in site.ts order, so every area page has a footer link.
-      ...areas.map((a) => ({ label: a.name, href: `/areas/${a.slug}` })),
-      { label: "View All Areas", href: "/areas" },
-    ],
-  },
-  {
-    title: "POPULAR ROUTES",
-    links: [
-      ...routes.map((r) => ({ label: r.name, href: `/routes/${r.slug}` })),
-      { label: "Luton Airport guide", href: "/luton-airport-guide" },
-      { label: "Luton station transfers", href: "/luton-station-transfers" },
-    ],
-  },
-  {
-    title: "OUR FLEET",
-    // Each opens its card on the fleet page.
-    links: fleet.map((v) => ({ label: v.name, href: `/fleet#${v.id}` })),
   },
 ];
+
+const areaLinks: FooterLink[] = [
+  ...areas.map(({ name, slug }) => ({ label: name, href: `/areas/${slug}` })),
+  { label: "View All Areas", href: "/areas", arrow: true },
+];
+
+const routeLinks: FooterLink[] = [
+  ...routes.map(({ name, slug }) => ({
+    label: slug === "luton-to-central-london" ? "Luton to Central London" : name,
+    href: `/routes/${slug}`,
+  })),
+  { label: "Luton Airport guide", href: "/luton-airport-guide" },
+  { label: "Luton station transfers", href: "/luton-station-transfers" },
+];
+
+const pickupLinks = additionalAreas.map(({ id, heading }) => ({
+  label: heading,
+  href: `/areas#${id}`,
+}));
+
+const groupHeading = "text-sm font-bold uppercase tracking-[0.12em]";
+
+function FooterNavLink({ label, href, arrow }: FooterLink) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex min-h-[44px] items-center gap-2 text-base hover:underline hover:decoration-primary hover:underline-offset-4 lg:min-h-7"
+    >
+      {label}
+      {arrow && <ArrowRight aria-hidden size={16} className="shrink-0" />}
+    </Link>
+  );
+}
 
 // Each becomes a real link once its value is set in site.ts.
 const contacts: { label: string; Icon: LucideIcon; href: string | null }[] = [
@@ -117,29 +127,47 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        {/* Link columns */}
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-3 lg:grid-cols-6">
-          {columns.map(({ title, links }) => (
-            <div key={title}>
-              <h2 className="text-sm font-bold tracking-[0.16em]">{title}</h2>
-              <span aria-hidden className="mt-3 block h-0.5 w-12 bg-primary" />
-              <ul className="mt-2">
-                {links.map(({ label, href, external }) => (
-                  <li key={label}>
-                    {external ? (
-                      <a href={href} className={linkClass}>
-                        {label}
-                      </a>
-                    ) : (
-                      <Link href={href} className={linkClass}>
-                        {label}
-                      </Link>
-                    )}
-                  </li>
+        <nav aria-label="Footer" className="pb-6">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 py-8 sm:gap-x-8 lg:grid-cols-[0.9fr_1fr_1.25fr_1.75fr] xl:gap-x-10">
+            {columns.map(({ title, links }) => (
+              <div key={title}>
+                <h2 className={groupHeading}>{title}</h2>
+                <ul className="mt-3 lg:space-y-1">
+                  {links.map((link) => (
+                    <li key={link.href}><FooterNavLink {...link} /></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <div className="col-span-2 sm:col-span-1">
+              <h2 className={groupHeading}>Areas We Cover</h2>
+              <ul className="mt-3 grid grid-flow-col grid-cols-2 grid-rows-5 gap-x-4 lg:gap-x-6 lg:gap-y-1">
+                {areaLinks.map((link) => (
+                  <li key={link.href}><FooterNavLink {...link} /></li>
                 ))}
               </ul>
             </div>
-          ))}
+          </div>
+          <div className="grid gap-3 border-t border-primary py-6 lg:grid-cols-[1.1fr_4fr] lg:gap-0">
+            <h2 className={`${groupHeading} lg:pt-1`}>Popular Routes</h2>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 lg:grid-cols-12 lg:border-l lg:border-primary lg:pl-8 xl:pl-10">
+              {routeLinks.map((link, index) => (
+                <li key={link.href} className={index < 4 ? "lg:col-span-3" : "lg:col-span-4"}>
+                  <FooterNavLink {...link} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid gap-3 border-y border-primary py-4 lg:grid-cols-[1.1fr_4fr] lg:gap-0">
+            <h2 className={`${groupHeading} lg:self-center`}>More Pickup Areas</h2>
+            <ul className="grid grid-cols-2 gap-x-4 lg:flex lg:flex-wrap lg:gap-x-6 lg:border-l lg:border-primary lg:pl-8 xl:gap-x-8 xl:pl-10">
+              {pickupLinks.map((link) => (
+                <li key={link.href} className="flex items-center gap-6 xl:gap-8 lg:not-first:before:size-1 lg:not-first:before:rounded-full lg:not-first:before:bg-primary">
+                  <FooterNavLink {...link} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
       </div>
 

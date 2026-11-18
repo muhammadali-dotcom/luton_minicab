@@ -29,7 +29,7 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>STATIONS NEAR YOU</p>
           <h2 id="stations-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-            To the train, or home after it.
+            The stations around Luton.
           </h2>
           <p className="mt-3 text-[1.125rem] text-foreground">Rides to and from the stations around Luton.</p>
           <ul className="mt-10 grid gap-4 md:grid-cols-3 lg:gap-5">
@@ -58,7 +58,7 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
       <Reassurances
         id="hotels-heading"
         label="HOTELS MADE EASY"
-        heading="Staying nearby? We’ll take it from here."
+        heading="Staying in a hotel nearby?"
         band
         items={[
           { title: "From the hotel door", text: "We pick you up at the entrance, at the time you book.", Icon: BedDouble },
@@ -92,7 +92,7 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
 
       <LocalAreaCards
         eyebrow="WHERE WE PICK UP"
-        heading="Station and hotel rides across Luton."
+        heading="Picking up from homes and hotels across Luton."
         text="From homes, hotels and stations in Luton and the towns nearby."
         helpText="Going to a station further afield? Just ask."
         band

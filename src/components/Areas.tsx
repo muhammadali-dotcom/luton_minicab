@@ -18,8 +18,7 @@ export function Areas() {
             id="areas-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground"
           >
-            <span className="block">Your local ride.</span>
-            <span className="block">Wherever life takes you.</span>
+            <span className="block">Close to home, wherever that is.</span>
           </h2>
           <p className="mt-4 max-w-md text-[1.125rem] leading-snug text-foreground">
             From your front door to your next stop, we cover Luton and nearby towns, plus Mill Hill, Hounslow and Heathrow.

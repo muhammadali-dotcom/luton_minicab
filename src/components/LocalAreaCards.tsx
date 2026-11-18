@@ -58,7 +58,7 @@ export function LocalAreaCards({
     <section aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id="local-areas-heading" className={`${h2} mt-4 text-foreground`}>
+        <h2 id="local-areas-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>

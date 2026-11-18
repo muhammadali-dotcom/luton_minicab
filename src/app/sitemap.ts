@@ -1,12 +1,11 @@
 import type { MetadataRoute } from "next";
-import { airports, areas, services } from "@/config/site";
+import { airports, areas, pickupAreas, services } from "@/config/site";
 import { contentUpdated, isSiteIndexable, siteOrigin } from "@/config/seo";
 import { routes } from "@/config/routeDetails";
 
 type Entry = [path: string, priority: number, changeFrequency: "weekly" | "monthly" | "yearly"];
 
-// Every indexable page. Enquiry-only airports redirect to /airports and have no pages;
-// the extra pickup towns on /areas have no pages of their own.
+// Every indexable page. Enquiry-only airports redirect to /airports.
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!isSiteIndexable) return [];
   const entries: Entry[] = [
@@ -21,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...airports.map(({ slug }): Entry => [`/airports/${slug}`, 0.85, "monthly"]),
     ...routes.map(({ slug }): Entry => [`/routes/${slug}`, 0.85, "monthly"]),
     ...areas.map(({ slug }): Entry => [`/areas/${slug}`, 0.75, "monthly"]),
+    ...pickupAreas.map(({ slug }): Entry => [`/areas/${slug}`, 0.75, "monthly"]),
     ["/about", 0.7, "monthly"],
     ["/contact", 0.7, "monthly"],
     ["/privacy", 0.3, "yearly"],

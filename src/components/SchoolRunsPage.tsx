@@ -20,7 +20,7 @@ export function SchoolRunsPage({ name, detail }: { name: string; detail: Service
       <JourneyPanels
         id="school-day-heading"
         label="THE SCHOOL DAY"
-        heading="To school and home again."
+        heading="There for the morning, and the journey home."
         panels={[
           {
             label: "THE MORNING JOURNEY",
@@ -42,7 +42,7 @@ export function SchoolRunsPage({ name, detail }: { name: string; detail: Service
       <Reassurances
         id="peace-heading"
         label="PEACE OF MIND"
-        heading="The little things parents ask about."
+        heading="The questions every parent asks."
         items={[
           { title: "DBS-checked drivers", text: "Every driver is DBS-checked.", Icon: ShieldCheck },
           { title: "Child seats on request", text: "Just ask when you book.", Icon: Baby },
@@ -71,7 +71,7 @@ export function SchoolRunsPage({ name, detail }: { name: string; detail: Service
 
       <LocalAreaCards
         eyebrow="WHERE WE PICK UP"
-        heading="School runs across Luton."
+        heading="Picking up from homes across Luton."
         text="From homes in Luton and the towns nearby."
         helpText="Don’t see your area? Have a question about a school run? Just ask."
       />

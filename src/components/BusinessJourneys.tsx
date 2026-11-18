@@ -35,7 +35,7 @@ export function BusinessJourneys() {
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>BUSINESS JOURNEYS</p>
         <h2 id="business-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-          For wherever work takes you.
+          From the first meeting to the last train home.
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">
           Meetings, office visits or welcoming a client. Arrange the journey that fits your day.

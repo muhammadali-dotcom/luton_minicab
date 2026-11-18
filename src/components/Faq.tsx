@@ -48,7 +48,7 @@ type Props = {
 
 const contactClass = "inline-flex min-h-[44px] items-center underline decoration-1 underline-offset-4 hover:decoration-primary hover:decoration-2";
 
-export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are a few helpful answers.", contactLink = true, schema = true }: Props) {
+export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are the answers people ask us most.", contactLink = true, schema = true }: Props) {
   return (
     <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
       {schema && (

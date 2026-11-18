@@ -40,10 +40,10 @@ export default function Page() {
         // The car sits further left in this photo, so the photo starts later to keep it clear of the heading.
         photoLeft="lg:left-[calc(max(2.5rem,(100%-80rem)/2+2.5rem)+5rem)] xl:left-[calc(max(2.5rem,(100%-80rem)/2+2.5rem)+10rem)]"
         eyebrow="OUR SERVICES"
-        heading={<span className="block text-balance">Whatever’s planned, your ride starts here.</span>}
-        text="Local trips, school runs and journeys further afield. Find the service that fits your plans."
+        heading={<span className="block text-balance">Tell us where you’re going. We’ll take it from there.</span>}
+        text="A quick trip to the shops or a long drive to see family, there’s a journey here for you."
         secondary={{ label: "Explore Services", href: "#services-list", icon: "down" }}
-        note="Your journey. Your choice."
+        note="Booking takes a few minutes, day or night."
       />
       <ServiceCards />
       <MoreServices />

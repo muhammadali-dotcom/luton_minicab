@@ -18,7 +18,7 @@ export function CorporateTravelPage({ name, detail }: { name: string; detail: Se
       <Reassurances
         id="business-heading"
         label="FOR BUSINESS TRAVEL"
-        heading="The details that matter on a work day."
+        heading="The things that matter on a busy day."
         items={[
           { title: "Fixed fares", text: "You’ll know your fare when you book.", Icon: PoundSterling },
           { title: "Early starts, late finishes", text: "We’re available 24/7.", Icon: Clock },
@@ -51,7 +51,7 @@ export function CorporateTravelPage({ name, detail }: { name: string; detail: Se
 
       <LocalAreaCards
         eyebrow="WHERE WE PICK UP"
-        heading="Business travel from across Luton."
+        heading="Picking up from offices and homes across Luton."
         text="From homes, offices and hotels in Luton and the towns nearby."
         helpText="Don’t see your area? Have a question about a business trip? Just ask."
       />

@@ -11,7 +11,7 @@ export function AirportJourneys({ eyebrow: label, subline, items }: AirportDetai
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
         <h2 id="journeys-heading" className={`${h2} mt-4 text-foreground`}>
-          Flying out or heading home?
+          Which way are you travelling?
         </h2>
         <p className="mt-3 text-[1.125rem] text-foreground">{subline}</p>
 

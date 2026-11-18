@@ -71,10 +71,10 @@ export function Vehicles() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <p className="text-sm font-semibold tracking-[0.2em] text-accent">OUR FLEET</p>
         <h2 id="vehicles-heading" className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground">
-          Room for you. Space for your plans.
+          A car that fits your journey.
         </h2>
         <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-          From everyday trips to days out together, find your kind of ride.
+          Just you, the whole family or a boot full of suitcases, there&rsquo;s room for everyone.
         </p>
       </div>
 
