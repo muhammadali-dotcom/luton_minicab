@@ -61,14 +61,8 @@ export default function Page() {
         photoFrom="content"
         alt="Three dark cars parked on a sunny forecourt outside a brick building."
         eyebrow="OUR FLEET"
-        heading={
-          <>
-            <span className="block">Your plans.</span>
-            <span className="block">Your people.</span>
-            <span className="block">Your kind of car.</span>
-          </>
-        }
-        text="From everyday trips to family holidays and business travel, find a car that suits your journey."
+        heading={<span className="block max-w-[11em] text-balance">The right car for everyone coming along.</span>}
+        text="From a quiet ride on your own to a family holiday with all the cases, choose the car that fits."
         primary={{ label: "Explore Our Cars", href: "#choose-your-car" }}
         trust={uses}
         trustStyle="stacked"

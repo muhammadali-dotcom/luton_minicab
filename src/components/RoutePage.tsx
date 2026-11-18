@@ -72,7 +72,7 @@ export function RoutePage({ route }: { route: RouteDetail }) {
             }
           : {})}
         eyebrow={`${route.name.toUpperCase()} TAXI`}
-        heading={<span className="block text-balance">{route.hero.heading}</span>}
+        heading={<span className="block max-w-[12em] text-balance lg:max-w-[10.5em] xl:max-w-[12em]">{route.hero.heading}</span>}
         text={route.hero.text}
         trust={trustLocal}
       />
@@ -81,7 +81,7 @@ export function RoutePage({ route }: { route: RouteDetail }) {
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>YOUR JOURNEY</p>
           <h2 id="journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-            {route.name}, at a glance.
+            {route.name}: what to expect.
           </h2>
           <p className="mt-3 max-w-2xl text-[1.125rem] text-foreground">{route.journeyNote}</p>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,7 +102,7 @@ export function RoutePage({ route }: { route: RouteDetail }) {
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>GOOD TO KNOW</p>
           <h2 id="tips-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-            Tips for this journey.
+            A few things worth knowing.
           </h2>
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {route.tips.map(({ title, text }, i) => (

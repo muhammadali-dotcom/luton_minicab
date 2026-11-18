@@ -35,12 +35,7 @@ export default function Page() {
         mobilePhotoPosition="object-[95%_40%]"
         desktopPhotoPosition="lg:object-[68%_0%]"
         eyebrow="AREAS WE COVER"
-        heading={
-          <>
-            <span className="block">Your local ride.</span>
-            <span className="block text-balance">Wherever life takes you.</span>
-          </>
-        }
+        heading={<span className="block text-balance">Picking you up from right where you are.</span>}
         text="From your front door to your next stop, we cover Luton and nearby towns, plus Mill Hill, Hounslow and Heathrow."
         trust={trustLocal}
       />
@@ -96,7 +91,7 @@ export default function Page() {
       <section aria-labelledby="other-areas-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>MORE PICKUP LOCATIONS</p>
-          <h2 id="other-areas-heading" className={`${h2} mt-4 text-foreground`}>More areas we serve.</h2>
+          <h2 id="other-areas-heading" className={`${h2} mt-4 text-balance text-foreground`}>A few more places we pick up.</h2>
           <p className="mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
             We also arrange pickups in these areas around Luton, Mill Hill, Hounslow and Heathrow.
           </p>
@@ -121,8 +116,7 @@ export default function Page() {
             <div className="max-w-2xl">
               <h3 className="font-display text-[1.5rem] font-semibold leading-tight text-foreground">Can’t see your pickup area?</h3>
               <p className="mt-4 text-[1.125rem] leading-relaxed text-foreground">
-                Tell us your pickup address and destination, and our team can confirm whether we can arrange your journey.
-                Include your travel date when you get in touch.
+                Send us your pickup address, destination and travel date, and our team will let you know if we can help.
               </p>
             </div>
             <Link href="/contact" className="inline-flex min-h-13 shrink-0 items-center justify-center gap-2 self-start rounded-control bg-primary px-7 text-[1.0625rem] font-semibold text-primary-foreground transition-colors hover:bg-primary-hover md:self-auto">

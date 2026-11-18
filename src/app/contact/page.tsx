@@ -111,8 +111,13 @@ export default function Page() {
     <main id="main" className="flex-1">
       <PageHero
         eyebrow="CONTACT US"
-        heading="Contact Luton Minicab"
-        text="Book online or speak to our team to plan your journey. We’re available 24/7."
+        heading={
+          <>
+            <span className="lg:block">Talk to our team, </span>
+            <span className="lg:block">day or night.</span>
+          </>
+        }
+        text="Book online in a few minutes, or call or message us and we’ll plan your journey together."
         sideImage={{ image: officeIllustration, alt: "Illustration of a booking office on a quiet street." }}
       />
 
@@ -134,8 +139,8 @@ export default function Page() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
             <div className="flex flex-col rounded-2xl bg-foreground p-6 text-background [--color-ring:var(--color-primary)] sm:p-8">
-              <h3 className="font-display text-[1.75rem] font-semibold leading-tight">Ready for your next trip?</h3>
-              <p className="mt-2 text-[1.0625rem]">Arrange your journey in a few simple steps.</p>
+              <h3 className="font-display text-[1.75rem] font-semibold leading-tight">Prefer to book yourself?</h3>
+              <p className="mt-2 text-[1.0625rem]">It only takes a few minutes online.</p>
               <ol className="mt-6 divide-y divide-background/20">
                 {steps.map((step, i) => (
                   <li key={step} className="flex items-center gap-4 py-4 text-[1.0625rem] font-semibold">
@@ -248,9 +253,8 @@ export default function Page() {
         <div className={`${container} grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-14`}>
           <div>
             <p className={`${eyebrow} text-accent`}>THE TEAM BEHIND YOUR JOURNEY</p>
-            <h2 id="office-heading" className={`${h2} mt-4 text-foreground`}>
-              <span className="block">Local journeys.</span>
-              <span className="block">A team you can reach.</span>
+            <h2 id="office-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+              The people who answer your call.
             </h2>
             <p className="mt-4 max-w-xl text-[1.125rem] leading-relaxed text-foreground">
               Luton Minicab bookings are handled by our booking team in Mill Hill, north London.

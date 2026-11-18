@@ -196,7 +196,7 @@ export const fleet = [
   { id: "mpv6", name: "MPV6", tagline: "For family trips and small groups.", text: "More seats for families and small groups.", capacity: { passengers: 6, cases: 3, hand: 4 }, image: "fleet-mpv6.png" },
   { id: "mpv-plus", name: "MPV Plus", tagline: "Extra space for people and bags.", text: "Extra space for bigger groups and luggage.", capacity: { passengers: 6, cases: 5, hand: 6 }, image: "fleet-mpv-plus.png" },
   { id: "mpv7", name: "MPV7", tagline: "Bring the group together.", text: "Room for families and groups.", capacity: { passengers: 7, cases: 2, hand: 4 }, image: "fleet-mpv7.png" },
-  { id: "executive", name: "Executive", tagline: "Travel with a touch of refinement.", text: "A more refined car for business travel.", capacity: { passengers: 4, cases: 2, hand: 2 }, image: "fleet-executive.png" },
+  { id: "executive", name: "Executive", tagline: "Calm and polished, for business days.", text: "A more refined car for business travel.", capacity: { passengers: 4, cases: 2, hand: 2 }, image: "fleet-executive.png" },
 ];
 
 // Each entry has a holding page at /services/[slug] until content is approved.

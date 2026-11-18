@@ -108,8 +108,8 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
       <section aria-labelledby="area-journeys-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>JOURNEYS FROM {area.name.toUpperCase()}</p>
-          <h2 id="area-journeys-heading" className={`${h2} mt-4 text-foreground`}>
-            Wherever you’re heading from {area.name}.
+          <h2 id="area-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+            Where to next from {area.name}?
           </h2>
           {detail.journeysText && <p className="mt-3 text-[1.125rem] text-foreground">{detail.journeysText}</p>}
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -142,7 +142,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
       <section aria-labelledby="area-places-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AROUND {area.name.toUpperCase()}</p>
-          <h2 id="area-places-heading" className={`${h2} mt-4 text-foreground`}>
+          <h2 id="area-places-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             {detail.placesHeading ?? `Places we take you from ${area.name}.`}
           </h2>
           <p className="mt-3 text-[1.125rem] text-foreground">{detail.placesText ?? "A few of the everyday trips we make."}</p>
@@ -165,7 +165,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
       <section aria-labelledby="area-airports-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AIRPORT TRANSFERS</p>
-          <h2 id="area-airports-heading" className={`${h2} mt-4 text-foreground`}>
+          <h2 id="area-airports-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             {detail.airportsHeading ?? `Flying from ${area.name}?`}
           </h2>
           <p className="mt-3 text-[1.125rem] text-foreground">
@@ -208,7 +208,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         ]}
       />
 
-      <Faq items={detail.faqs} band heading={`Taxis in ${area.name}: your questions.`} text="Here are a few helpful answers.">
+      <Faq items={detail.faqs} band heading={`Taxis in ${area.name}: your questions.`} text="Quick answers before you book.">
         {area.slug === "luton" && <PopularRoutes className="mt-12" />}
       </Faq>
 

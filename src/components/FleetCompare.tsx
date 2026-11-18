@@ -7,7 +7,7 @@ export function FleetCompare() {
   return (
     <section aria-labelledby="fleet-compare-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
-        <p className={`${eyebrow} text-accent`}>AT A GLANCE</p>
+        <p className={`${eyebrow} text-accent`}>SIDE BY SIDE</p>
         <h2 id="fleet-compare-heading" className={`${h2} mt-4 text-foreground`}>
           Compare our cars
         </h2>

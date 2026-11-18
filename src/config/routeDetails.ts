@@ -31,7 +31,7 @@ export const routes: RouteDetail[] = [
     airportSlug: "heathrow",
     hero: {
       heading: "Luton to Heathrow, door to terminal.",
-      text: "A direct ride from your door in Luton to your Heathrow terminal, with a fixed fare agreed when you book.",
+      text: "Settle in at your front door and step out at your terminal, with your fare fixed when you book.",
     },
     metaDescription:
       "Taxis from Luton to Heathrow Airport, door to terminal. Fixed fares, flight tracking for your return, DBS-checked drivers, available 24/7.",
@@ -114,7 +114,7 @@ export const routes: RouteDetail[] = [
     name: "Luton to Stansted",
     airportSlug: "stansted",
     hero: {
-      heading: "Luton to Stansted, the simple way.",
+      heading: "Luton to Stansted, with no trains to juggle.",
       text: "There’s no direct train between the two, so a taxi is often the easiest way from Luton to Stansted.",
     },
     metaDescription:
@@ -157,7 +157,7 @@ export const routes: RouteDetail[] = [
     airportSlug: "london-city",
     hero: {
       heading: "Luton to London City, ready for your flight.",
-      text: "A direct ride across London to City Airport in the Docklands, ideal for business trips and short breaks.",
+      text: "A direct ride across London to City Airport in the Docklands, whether you’re off on business or a short break.",
     },
     metaDescription:
       "Taxis from Luton to London City Airport. Door to terminal across London, fixed fares, flight tracking on returns, available 24/7.",
@@ -197,7 +197,7 @@ export const routes: RouteDetail[] = [
     slug: "luton-to-central-london",
     name: "Luton to central London",
     hero: {
-      heading: "Luton to central London, door to door.",
+      heading: "Luton to central London, without the Tube.",
       text: "To a hotel, a meeting, a show or a station. We’ll take you from Luton to wherever you’re going in London.",
     },
     metaDescription:

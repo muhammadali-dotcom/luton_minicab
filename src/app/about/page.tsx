@@ -89,10 +89,10 @@ export default function Page() {
         eyebrow="ABOUT LUTON MINICAB"
         heading={
           <span className="block text-balance">
-            Here for wherever life takes you.
+            A friendly team, just a call away.
           </span>
         }
-        text="From everyday trips to airport journeys, our team is here to help you get there."
+        text="Whether it’s a school run or an early flight, you can talk to us, day or night."
         secondary={
           site.phone
             ? {
@@ -106,7 +106,7 @@ export default function Page() {
         illustration={{
           image: heroIllustration,
           alt: "Illustration of a Luton street with houses, a station and an airport, and a car on the road between them.",
-          caption: "LOCAL TRIPS. LONGER JOURNEYS. THE SAME CARE.",
+          caption: "THE SAME CARE, HOWEVER FAR YOU’RE GOING.",
         }}
       />
 
@@ -192,11 +192,11 @@ export default function Page() {
       >
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>WHAT WE DO</p>
-          <h2 id="what-heading" className={`${h2} mt-4 text-foreground`}>
+          <h2 id="what-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             Here for every part of your day.
           </h2>
           <p className="mt-3 text-[1.125rem] text-foreground">
-            Local trips, working days and journeys further afield.
+            From the morning school run to the late train home.
           </p>
           <Image
             src={whatIllustration}
@@ -286,9 +286,8 @@ export default function Page() {
         >
           <div>
             <p className={`${eyebrow} text-accent`}>AROUND LUTON</p>
-            <h2 id="where-heading" className={`${h2} mt-4 text-foreground`}>
-              <span className="block">Local pickups.</span>
-              <span className="block">Nearby towns, too.</span>
+            <h2 id="where-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+              Your neighbourhood, and the towns around it.
             </h2>
             <p className="mt-4 text-[1.125rem] text-foreground">
               Explore the places we cover around Luton.

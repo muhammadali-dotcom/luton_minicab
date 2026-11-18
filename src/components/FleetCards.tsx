@@ -17,10 +17,10 @@ export function FleetCards() {
           <div>
             <p className={`${eyebrow} text-accent`}>FIND YOUR FIT</p>
             <h2 id="fleet-cards-heading" className={`${h2} mt-4 text-foreground`}>
-              Six ways to make it your journey.
+              Meet our cars.
             </h2>
             <p className="mt-3 text-[1.125rem] text-foreground">
-              Explore our cars, from everyday comfort to extra room for everyone.
+              From a simple saloon to room for seven, here’s what each one can carry.
             </p>
           </div>
           <a
