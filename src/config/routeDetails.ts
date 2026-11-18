@@ -197,7 +197,7 @@ export const routes: RouteDetail[] = [
     slug: "luton-to-central-london",
     name: "Luton to central London",
     hero: {
-      heading: "Luton to central London, without the Tube.",
+      heading: "Luton to central London, without the train.",
       text: "To a hotel, a meeting, a show or a station. We’ll take you from Luton to wherever you’re going in London.",
     },
     metaDescription:

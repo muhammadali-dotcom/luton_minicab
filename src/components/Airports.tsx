@@ -57,7 +57,7 @@ export function Airports() {
               >
                 Luton Airport
               </h3>
-              <p className="mt-2 text-[1.0625rem] text-foreground">Your local airport. Your ride, taken care of.</p>
+              <p className="mt-2 text-[1.0625rem] text-foreground">Close to home, and to your flight.</p>
               <Link
                 href="/airports/luton"
                 className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-control bg-primary px-6 font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"

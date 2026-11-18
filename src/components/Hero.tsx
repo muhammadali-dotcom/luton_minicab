@@ -17,7 +17,7 @@ export function Hero() {
           <span className="block">we&rsquo;ll get you there.</span>
         </>
       }
-      text="Early flights, school mornings, late trains home. Book in a minute, or talk to our team, day or night."
+      text="Early flights, school mornings, late trains home. Book in a few minutes, or talk to our team, day or night."
     />
   );
 }
