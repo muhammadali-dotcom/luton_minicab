@@ -69,6 +69,9 @@ type Props = {
   // text sits on cream above a taller crop of the photo. `glow` is an optional soft cream wash
   // behind the text column for contrast.
   centeredPhoto?: { ratio: number; mobilePosition?: string; glow?: boolean };
+  // centeredPhoto heroes only: the eyebrow becomes the first line of the h1, so search engines
+  // read "Luton Minicab: <heading>". It looks exactly as before (same eyebrow and h1 styles).
+  eyebrowInHeading?: boolean;
   // "stacked" shows the trust row as icons above short labels, with no dividers.
   trustStyle?: "inline" | "stacked";
   // Below lg, where the photo sits above the text in a 16:9 crop: an object-position class
@@ -91,7 +94,7 @@ const fades = {
 };
 
 // The one hero used by every page: eyebrow, headline, one sentence, buttons, trust row.
-export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition, photoLeft, secondary, note, buttons = true, centered = false, illustration, sideImage, centeredPhoto }: Props) {
+export function PageHero({ eyebrow, heading, text, trust, tone = "light", image, alt = "", action, fade, photoRight = false, compact = false, primary, trustStyle = "inline", photoFrom = "edge", photoMask = "wide", mobilePhotoPosition = "object-[68%_center]", desktopPhotoPosition, photoLeft, secondary, note, buttons = true, centered = false, illustration, sideImage, centeredPhoto, eyebrowInHeading = false }: Props) {
   const dark = tone === "dark" && Boolean(image);
 
   if (centeredPhoto && image) {
@@ -123,10 +126,26 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
           />
         )}
         <div className={`relative order-1 ${container} pt-10 pb-8 text-center text-foreground sm:pt-12 lg:pt-[clamp(2rem,3vw,3.5rem)] lg:pb-0 lg:[@media(max-height:760px)]:pt-6`}>
-          <p className={`${eyebrowClass} text-foreground`}>{eyebrow}</p>
-          <h1 id="page-heading" className={`mx-auto mt-4 max-w-4xl text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
-            {heading}
-          </h1>
+          {eyebrowInHeading ? (
+            // One h1 holding both lines. The spans carry the same classes the separate eyebrow <p>
+            // and h1 had, so nothing moves; the hidden colon makes it read "Luton Minicab: …".
+            <h1 id="page-heading" className="mx-auto max-w-4xl">
+              <span className={`block ${eyebrowClass} uppercase text-foreground`}>
+                {eyebrow}
+                <span className="sr-only">: </span>
+              </span>
+              <span className={`mt-4 block text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
+                {heading}
+              </span>
+            </h1>
+          ) : (
+            <>
+              <p className={`${eyebrowClass} text-foreground`}>{eyebrow}</p>
+              <h1 id="page-heading" className={`mx-auto mt-4 max-w-4xl text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
+                {heading}
+              </h1>
+            </>
+          )}
           <p className={`mx-auto mt-5 max-w-3xl ${lead} lg:[@media(max-height:760px)]:mt-3`}>
             {/* One sentence per line from lg, as in the reference. On short windows (760px or less)
                 the text block tightens so the buttons stay above the cars. */}

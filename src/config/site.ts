@@ -226,6 +226,15 @@ export const site = {
   email: "bittacycs@hotmail.com" as string | null,
   // PLACEHOLDER: operator licence details.
   operatorLicence: null as string | null,
+  // PLACEHOLDER: the business's own public profiles. Each becomes part of the site-wide
+  // schema (`sameAs`, and `hasMap` for Google) once set; nothing shows on the page yet.
+  // Use the full public URL, e.g. the Google Business Profile's "Share" link.
+  profiles: {
+    google: null as string | null,
+    facebook: null as string | null,
+    trustpilot: null as string | null,
+    yell: null as string | null,
+  },
 
   nav: [
     { label: "Home", href: "/" },

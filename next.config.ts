@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
       permanent: true,
     })))];
   },
+  // AVIF first (smaller files), WebP for browsers without AVIF support.
+  images: { formats: ["image/avif", "image/webp"] },
   cacheComponents: true,
   partialPrefetching: true,
   experimental: {

@@ -62,8 +62,14 @@ export function Vehicles() {
       aria-labelledby="vehicles-heading"
       aria-roledescription="carousel"
       className="fleet-carousel overflow-hidden border-t border-border py-16 text-center sm:py-20"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onPointerOver={(event) => {
+        if (event.pointerType === "mouse" && event.target instanceof Element) {
+          setHovered(Boolean(event.target.closest("[data-pause-rotation]")));
+        }
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") setHovered(false);
+      }}
       onFocusCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget) && event.target.matches(":focus-visible")) setRotation(false);
       }}
@@ -79,6 +85,7 @@ export function Vehicles() {
       </div>
 
       <div
+        data-pause-rotation
         className="fleet-stage relative mx-auto mt-8 max-w-[110rem] touch-pan-y"
         onTouchStart={(event) => {
           const touch = event.touches[0];
@@ -108,7 +115,7 @@ export function Vehicles() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+      <div data-pause-rotation className="mx-auto max-w-4xl px-4 sm:px-6">
         <div aria-live={autoplay ? "off" : "polite"} aria-atomic="true" className="mt-5" role="group" aria-roledescription="slide" aria-label={`${active + 1} of ${vehicles.length}`}>
           <h3 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-tight">{vehicle.name}</h3>
           <p className="mt-2 min-h-[44px] text-lg leading-relaxed text-muted sm:min-h-7">{vehicle.text}</p>

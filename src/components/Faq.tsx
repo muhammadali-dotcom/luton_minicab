@@ -50,7 +50,7 @@ const contactClass = "inline-flex min-h-[44px] items-center underline decoration
 
 export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are the answers people ask us most.", contactLink = true, schema = true }: Props) {
   return (
-    <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
+    <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border bg-alt py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
       {schema && (
         <script
           type="application/ld+json"
@@ -64,7 +64,7 @@ export function Faq({ items = homepageFaqs, band = false, children, heading = "G
         />
       )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <p className="text-sm font-semibold tracking-[0.2em] text-accent">FAQS</p>
           <h2
             id="faq-heading"
@@ -74,15 +74,17 @@ export function Faq({ items = homepageFaqs, band = false, children, heading = "G
           </h2>
           <p className="mt-2 text-[1.125rem] text-foreground">{text}</p>
 
-          <div className="mt-8">
-            {items.map(({ q, a }, i) => (
-              <details key={q} open={i === 0} className="group border-b border-border">
-                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 text-[1.25rem] text-foreground [&::-webkit-details-marker]:hidden">
-                  {q}
-                  <Plus aria-hidden size={22} strokeWidth={1.5} className="shrink-0 group-open:hidden" />
-                  <Minus aria-hidden size={22} strokeWidth={1.5} className="hidden shrink-0 group-open:block" />
+          <div className="mt-8 space-y-3">
+            {items.map(({ q, a }) => (
+              <details key={q} className="group rounded-2xl border border-border bg-paper shadow-xs open:border-primary">
+                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-4 py-3 text-lg font-semibold text-foreground hover:bg-primary/10 group-open:rounded-b-none sm:gap-6 sm:px-6 [&::-webkit-details-marker]:hidden">
+                  <span className="min-w-0 text-pretty">{q}</span>
+                  <span aria-hidden className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/40 group-open:bg-primary">
+                    <Plus size={20} strokeWidth={1.75} className="group-open:hidden" />
+                    <Minus size={20} strokeWidth={1.75} className="hidden group-open:block" />
+                  </span>
                 </summary>
-                <p className="max-w-2xl pb-6 text-[1.0625rem] leading-relaxed text-foreground">{a}</p>
+                <p className="max-w-3xl px-4 pb-6 text-base leading-relaxed text-foreground sm:px-6">{a}</p>
               </details>
             ))}
           </div>

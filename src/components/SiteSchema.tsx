@@ -7,6 +7,8 @@ import { siteName, siteOrigin } from "@/config/seo";
 const intl = (uk: string) => `+44${uk.replace(/\s+/g, "").replace(/^0/, "")}`;
 
 export function SiteSchema() {
+  // Only profiles the owner has set (see `profiles` in site.ts).
+  const sameAs = Object.values(site.profiles).filter((url): url is string => Boolean(url));
   const business = {
     "@context": "https://schema.org",
     "@type": "TaxiService",
@@ -17,6 +19,8 @@ export function SiteSchema() {
     image: `${siteOrigin}/opengraph-image.png`,
     ...(site.phone ? { telephone: intl(site.phone) } : {}),
     ...(site.email ? { email: site.email } : {}),
+    ...(sameAs.length ? { sameAs } : {}),
+    ...(site.profiles.google ? { hasMap: site.profiles.google } : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: "2 Bittacy Hill",

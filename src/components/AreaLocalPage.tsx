@@ -20,7 +20,8 @@ import {
 } from "lucide-react";
 import type { AreaDetail } from "@/config/areaDetails";
 import { airportDetails } from "@/config/airportDetails";
-import { airports, services, site } from "@/config/site";
+import { airports, services } from "@/config/site";
+import { siteOrigin } from "@/config/seo";
 import { BookingDetails } from "./BookingDetails";
 import { Faq } from "./Faq";
 import { LocalAreaCards } from "./LocalAreaCards";
@@ -83,7 +84,8 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
     "@context": "https://schema.org",
     "@type": "TaxiService",
     name: `Taxis in ${area.name}`,
-    provider: { "@type": "LocalBusiness", name: site.name },
+    // The site-wide business from SiteSchema, so Google sees one business, not two.
+    provider: { "@id": `${siteOrigin}/#business` },
     areaServed: { "@type": "Place", name: area.name },
   };
 

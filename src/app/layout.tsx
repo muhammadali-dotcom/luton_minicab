@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteSchema } from "@/components/SiteSchema";
 import { TopBar } from "@/components/TopBar";
-import { googleVerification, isSiteIndexable, siteName, siteOrigin } from "@/config/seo";
+import { googleVerification, homeTitle, isSiteIndexable, siteName, siteOrigin } from "@/config/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   applicationName: siteName,
   title: {
-    default: "Luton Minicab | Local, School & Airport Journeys",
+    default: homeTitle,
     template: "%s | Luton Minicab",
   },
   description:

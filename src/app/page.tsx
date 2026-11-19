@@ -11,7 +11,7 @@ import { WhyTravel } from "@/components/WhyTravel";
 
 export const metadata: Metadata = pageMetadata({
   description:
-    "Local trips, school runs and airport transfers from Luton, with fixed fares and DBS-checked drivers. Book online or call, day or night.",
+    "Taxis in Luton and nearby towns, with fixed fares and DBS-checked drivers. Early flights, school mornings, late trains home: book online or call, 24/7.",
   path: "/",
 });
 

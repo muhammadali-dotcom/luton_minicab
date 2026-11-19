@@ -10,10 +10,13 @@ export function Hero() {
       image={heroPhoto}
       alt="Three dark cars parked in front of a town hall clock tower and a glass terminal building at sunset."
       centeredPhoto={{ ratio: 1836 / 857 }}
-      eyebrow="LUTON MINICAB"
+      // In the h1 (shown in capitals by CSS), so search reads "Luton Minicab: Wherever you're going…".
+      eyebrow="Luton Minicab"
+      eyebrowInHeading
       heading={
         <>
-          <span className="block">Wherever you&rsquo;re going,</span>
+          {/* The space keeps the h1's text "going, we'll" for search and screen readers. */}
+          <span className="block">Wherever you&rsquo;re going,</span>{" "}
           <span className="block">we&rsquo;ll get you there.</span>
         </>
       }

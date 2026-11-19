@@ -6,7 +6,7 @@ import { PickupAreaPage } from "@/components/PickupAreaPage";
 import { AreaLocalPage } from "@/components/AreaLocalPage";
 import { areaDetails } from "@/config/areaDetails";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { pageMetadata } from "@/config/seo";
+import { isSiteIndexable, pageMetadata } from "@/config/seo";
 import { areas, pickupAreas } from "@/config/site";
 
 const find = (slug: string) => areas.find((a) => a.slug === slug);
@@ -20,11 +20,17 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
   const { slug } = await params;
   const pickup = findPickup(slug);
   if (pickup) {
-    return pageMetadata({
-      title: `Minicabs in ${pickup.name}`,
-      path: `/areas/${slug}`,
-      description: pickup.journey,
-    });
+    // Pickup pages share one template and differ by a sentence, so they stay out of search
+    // (doorway risk) and out of the sitemap. Links are still followed. Build one out with
+    // real local content, like the nine main areas, before making it indexable.
+    return {
+      ...pageMetadata({
+        title: `Minicabs in ${pickup.name}`,
+        path: `/areas/${slug}`,
+        description: pickup.journey,
+      }),
+      robots: { index: false, follow: isSiteIndexable },
+    };
   }
   const area = find(slug);
   if (!area) return {};
