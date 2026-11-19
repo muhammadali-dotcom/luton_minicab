@@ -110,7 +110,7 @@ export default function Page() {
   return (
     <main id="main" className="flex-1">
       <PageHero
-        eyebrow="CONTACT US"
+        eyebrow="CONTACT LUTON MINICAB"
         heading={
           <>
             <span className="lg:block">Talk to our team, </span>

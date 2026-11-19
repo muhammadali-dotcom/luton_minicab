@@ -16,7 +16,8 @@ import { container, eyebrow, h2, section } from "./ui";
 // The same photos and fade as the airport pages; central London uses the wall-style street photo.
 const photoFade = "from-background/98 via-background/95 via-52% to-transparent to-66%";
 const terminalAlt = "View from the back seat of a car, looking out at a glass airport terminal.";
-const heroes: Record<string, { image: StaticImageData; alt: string; fade?: string; wall?: boolean }> = {
+// `headingWidth`: classes that keep the heading on a narrow photo wall (only the wall-style photo needs one).
+const heroes: Record<string, { image: StaticImageData; alt: string; fade?: string; wall?: boolean; headingWidth?: string }> = {
   heathrow: { image: heathrowHero, alt: terminalAlt, fade: photoFade },
   gatwick: { image: gatwickHero, alt: terminalAlt, fade: photoFade },
   stansted: { image: stanstedHero, alt: terminalAlt, fade: photoFade },
@@ -27,6 +28,8 @@ const londonHero = {
   alt: "A dark estate car parked on a sunny street, beside a cream wall, shopfronts and hanging flowers.",
   fade: "from-background/80 via-background/55 via-40% to-transparent to-55%",
   wall: true,
+  // Small laptops: wrap before the hanging flower basket in the photo.
+  headingWidth: "max-w-[12em] lg:max-w-[10.5em] xl:max-w-[12em]",
 };
 
 const linkClass =
@@ -72,7 +75,7 @@ export function RoutePage({ route }: { route: RouteDetail }) {
             }
           : {})}
         eyebrow={`${route.name.toUpperCase()} TAXI`}
-        heading={<span className="block max-w-[12em] text-balance lg:max-w-[10.5em] xl:max-w-[12em]">{route.hero.heading}</span>}
+        heading={<span className={`block text-balance ${"headingWidth" in hero ? hero.headingWidth : ""}`}>{route.hero.heading}</span>}
         text={route.hero.text}
         trust={trustLocal}
       />
