@@ -26,7 +26,7 @@ Photorealistic wide banner photograph, 21:9 (about 1920 × 820), warm late-after
 | Heathrow (`heathrow`) | On the right, the drop-off forecourt of a modern glass and steel airport terminal, with a passenger plane climbing in the sky in the distance. Warm evening light reflecting on the glass. |
 
 ## Notes
-- The nine active assets are `public/brand/areas/<slug>-hero.png`, edited from the supplied golden-hour originals to remove cars and reconstruct the surroundings.
+- The nine active assets are `public/brand/areas/<slug>-hero.png`, edited from the supplied golden-hour originals in `assets/brand/areas-original/` to remove cars and reconstruct the surroundings.
 - Mill Hill uses the timber-fascia version 10, not version 7 with its artificial station sign.
 - Preserve supplied originals. Do not reintroduce vehicles into these area hero images.
 - These are generated scenes, not exact photographs of named landmarks. Use neutral, descriptive illustration alt text.

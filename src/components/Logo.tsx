@@ -13,7 +13,8 @@ export function Logo({ className = "", eager = false }: Props) {
       src={logo}
       alt="Luton Minicab"
       className={`w-auto ${className}`}
-      sizes="(min-width: 640px) 200px, 160px"
+      // Both placements are close to these widths and can reuse the same image.
+      sizes="(min-width: 640px) 74px, 64px"
       {...(eager ? { loading: "eager" as const, fetchPriority: "high" as const } : {})}
     />
   );
