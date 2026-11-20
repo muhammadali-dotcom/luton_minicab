@@ -1,14 +1,15 @@
-import heroPhoto from "../../public/brand/home-hero.png";
+import heroPhoto from "../../public/brand/home-hero.webp";
 import { PageHero } from "./PageHero";
 
-// From the owner's reference: centred text in the sky of the town panorama (original in
-// assets/brand/home-hero-panorama-original.png; the cars' bonnet badges retouched out).
+// From the owner's reference: centred text in the sky of the town panorama, with "Luton Minicab"
+// number plates on the three cars (20 November 2026; original in
+// assets/brand/home-hero-plates-original.png, the cars' bonnet badges retouched out).
 // Gold Book Online, green eyebrow, no trust row (owner's choices, November 2026).
 export function Hero() {
   return (
     <PageHero
       image={heroPhoto}
-      alt="Three dark cars parked in front of a town hall clock tower and a glass terminal building at sunset."
+      alt="Three dark cars with Luton Minicab number plates, parked in front of a town hall clock tower and a glass terminal building at sunset."
       centeredPhoto={{ ratio: 1836 / 857 }}
       // In the h1 (shown in capitals by CSS), so search reads "Luton Minicab: Wherever you're going…".
       eyebrow="Luton Minicab"

@@ -4,7 +4,7 @@ import { ArrowRight, PartyPopper, PawPrint, Ship } from "lucide-react";
 import { site } from "@/config/site";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { container, eyebrow, h2, section } from "./styles";
-import airportPhoto from "../../public/brand/airport-luton.png";
+import airportPhoto from "../../public/brand/airport-luton.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

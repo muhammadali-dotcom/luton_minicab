@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { ArrowRight, Briefcase, CarFront, GraduationCap, Plane, Route, TrainFront, type LucideIcon } from "lucide-react";
 import { serviceDetails } from "@/config/serviceDetails";
-import airportPhoto from "../../public/brand/airport-luton.png";
+import airportPhoto from "../../public/brand/airport-luton.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

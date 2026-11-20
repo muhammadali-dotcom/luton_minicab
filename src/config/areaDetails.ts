@@ -1,13 +1,13 @@
 import type { StaticImageData } from "next/image";
-import lutonPhoto from "../../public/brand/areas/luton-hero.png";
-import leagravePhoto from "../../public/brand/areas/leagrave-hero.png";
-import stopsleyPhoto from "../../public/brand/areas/stopsley-hero.png";
-import dunstablePhoto from "../../public/brand/areas/dunstable-hero.png";
-import houghtonRegisPhoto from "../../public/brand/areas/houghton-regis-hero.png";
-import harpendenPhoto from "../../public/brand/areas/harpenden-hero.png";
-import millHillPhoto from "../../public/brand/areas/mill-hill-hero.png";
-import hounslowPhoto from "../../public/brand/areas/hounslow-hero.png";
-import heathrowPhoto from "../../public/brand/areas/heathrow-hero.png";
+import lutonPhoto from "../../public/brand/areas/luton-hero.webp";
+import leagravePhoto from "../../public/brand/areas/leagrave-hero.webp";
+import stopsleyPhoto from "../../public/brand/areas/stopsley-hero.webp";
+import dunstablePhoto from "../../public/brand/areas/dunstable-hero.webp";
+import houghtonRegisPhoto from "../../public/brand/areas/houghton-regis-hero.webp";
+import harpendenPhoto from "../../public/brand/areas/harpenden-hero.webp";
+import millHillPhoto from "../../public/brand/areas/mill-hill-hero.webp";
+import hounslowPhoto from "../../public/brand/areas/hounslow-hero.webp";
+import heathrowPhoto from "../../public/brand/areas/heathrow-hero.webp";
 
 // Content and car-free generated location illustrations for /areas/[slug], rendered by AreaLocalPage.
 // Places are plain public destinations: no partnerships, journey times, distances or prices.

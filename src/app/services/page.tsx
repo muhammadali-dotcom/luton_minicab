@@ -4,7 +4,7 @@ import { MoreServices, ServiceAirportBanner } from "@/components/MoreServices";
 import { PageHero } from "@/components/PageHero";
 import { ServiceCards } from "@/components/ServiceCards";
 import { pageMetadata } from "@/config/seo";
-import heroPhoto from "../../../public/brand/services/services-hero.png";
+import heroPhoto from "../../../public/brand/services/services-hero.webp";
 
 export const metadata: Metadata = pageMetadata({
   title: "Taxi & Minicab Services",

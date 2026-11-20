@@ -5,7 +5,7 @@ import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { additionalAreas, areas } from "@/config/site";
 import { pageMetadata } from "@/config/seo";
-import heroPhoto from "../../../public/brand/areas-overview-hero.png";
+import heroPhoto from "../../../public/brand/areas-overview-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

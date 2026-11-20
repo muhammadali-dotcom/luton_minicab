@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CalendarDays } from "lucide-react";
-import scene from "../../public/brand/station-hotel-scene.png";
+import scene from "../../public/brand/station-hotel-scene.webp";
 import { container, eyebrow, h2, section } from "./styles";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";

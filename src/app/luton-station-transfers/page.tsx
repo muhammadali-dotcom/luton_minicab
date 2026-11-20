@@ -7,7 +7,7 @@ import { PageHero, trustLocal } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { pageMetadata } from "@/config/seo";
-import heroPhoto from "../../../public/brand/services/station-hotel-transfers-hero.png";
+import heroPhoto from "../../../public/brand/services/station-hotel-transfers-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

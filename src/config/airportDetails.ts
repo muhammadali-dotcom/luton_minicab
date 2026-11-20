@@ -1,10 +1,10 @@
 import type { StaticImageData } from "next/image";
-import gatwickCard from "../../public/brand/airport-gatwick-card.png";
-import heathrowCard from "../../public/brand/airport-heathrow-card.png";
-import londonCityCard from "../../public/brand/airport-london-city-card.png";
-import lutonCard from "../../public/brand/airport-luton-card.png";
-import southendCard from "../../public/brand/airport-southend-card.png";
-import stanstedCard from "../../public/brand/airport-stansted-card.png";
+import gatwickCard from "../../public/brand/airport-gatwick-card.webp";
+import heathrowCard from "../../public/brand/airport-heathrow-card.webp";
+import londonCityCard from "../../public/brand/airport-london-city-card.webp";
+import lutonCard from "../../public/brand/airport-luton-card.webp";
+import southendCard from "../../public/brand/airport-southend-card.webp";
+import stanstedCard from "../../public/brand/airport-stansted-card.webp";
 import gatwickFrom from "../../public/brand/gatwick-journey-from.png";
 import gatwickTo from "../../public/brand/gatwick-journey-to.png";
 import heathrowFrom from "../../public/brand/heathrow-journey-from.png";

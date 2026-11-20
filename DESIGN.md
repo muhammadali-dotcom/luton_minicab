@@ -104,7 +104,7 @@ Keep headings short; one or two lines is ideal.
 - Light cream, with gold hairlines between the bands.
 - **Top row:** logo, tagline and contact items, each an icon over a label, separated by gold dividers.
 - **Columns:** five, with letter-spaced bold headings and a short gold underline.
-- **Street scene:** the owner's reference line-art street (`public/brand/footer-street.png`), with its background matched to the page cream. A designer SVG would render even sharper.
+- **Street scene:** the owner's reference line-art street (`public/brand/footer-street.webp`), with its background matched to the page cream. A designer SVG would render even sharper.
 - **Bottom bar:** copyright and "Powered by MyCabify" on the left; legal links and a circular back-to-top on the right.
 
 ## 4h. Page standard (all pages)
@@ -165,7 +165,7 @@ The current illustrations are **provisional** and drawn in code. Final artwork s
 ### Scenes needed
 | Scene | Where | Contents |
 |---|---|---|
-| Hero | Homepage top | **Photo** (November 2026): a photo-realistic image of a driver opening a dark saloon's door for a passenger outside a brick house. It's full width, with a deep-green (`#244638`) left-to-right fade (85% to 70% to transparent by 70% width: the lightest that keeps every text line at 4.5:1 or better). Headline Fraunces 500 at about 55px, with 19px body and 52px buttons behind cream text; on mobile the photo stacks above a solid green panel. It's an AI image, so never present it as the real team or fleet. The earlier storybook illustration and the line-art hero are kept in `assets/legacy/` |
+| Hero | Homepage top | **Photo** (November 2026): a photo-realistic image of a driver opening a dark saloon's door for a passenger outside a brick house. It's full width, with a deep-green (`#244638`) left-to-right fade (85% to 70% to transparent by 70% width: the lightest that keeps every text line at 4.5:1 or better). Headline Fraunces 500 at about 55px, with 19px body and 52px buttons behind cream text; on mobile the photo stacks above a solid green panel. It's an AI image, so never present it as the real team or fleet. The earlier storybook illustration and line-art hero were deleted as unused (20 November 2026) |
 | Local journeys | Services row 1 | Offices giving way to open countryside, with a larger car or MPV on the road |
 | Airport transfers | Services row 2 | Terminal, control tower, a departing plane, a minicab at the kerb with a suitcase |
 | School runs | Services row 3 | A terraced street and a school gate with railings, with a minicab outside |
@@ -217,7 +217,7 @@ Avoid:
 
 - **Current area heroes (16 November 2026):** supersedes the earlier supplied-photograph mapping. Only the nine individual /areas/[slug] heroes use car-free golden-hour generated scenes from `public/brand/areas/<slug>-hero.png`. Cars were removed from source images 1–6, 8–9 and Mill Hill timber-fascia image 10. Source photos and illustrations are archived in `assets/brand/areas-original/`. Keep local headings, buttons and trust row. Neutral illustration alt text; do not label generated buildings as exact real landmarks. Remove the old Leagrave zoom. Per-area crops and cream fades protect readability. /areas overview and all other page images stay unchanged.
 
-- **Areas overview hero (16 November 2026):** /areas now uses the supplied panorama illustration (source in `assets/brand/areas-original/British places, elegantly woven into a panorama.png`, served as `public/brand/areas-overview-hero.png`) with the light cream/green hero treatment, gold buttons, existing headline/copy/trust row, responsive focal points and neutral panorama alt text. Replaces the previous driver/passenger photo only on /areas; individual area heroes and other pages are unchanged. Preserve the source image.
+- **Areas overview hero (16 November 2026):** /areas now uses the supplied panorama illustration (source in `assets/brand/areas-original/British places, elegantly woven into a panorama.png`, served as `public/brand/areas-overview-hero.webp`) with the light cream/green hero treatment, gold buttons, existing headline/copy/trust row, responsive focal points and neutral panorama alt text. Replaces the previous driver/passenger photo only on /areas; individual area heroes and other pages are unchanged. Preserve the source image.
 
 ## Heading alignment (17 November 2026)
 

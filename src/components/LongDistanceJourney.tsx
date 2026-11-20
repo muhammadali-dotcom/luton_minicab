@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, DoorOpen, Route } from "lucide-react";
-import scene from "../../public/brand/long-distance-scene.png";
+import scene from "../../public/brand/long-distance-scene.webp";
 import { container, eyebrow, h2, section } from "./styles";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";

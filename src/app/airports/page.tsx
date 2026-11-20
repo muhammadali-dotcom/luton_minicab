@@ -6,7 +6,7 @@ import { container, h2, section } from "@/components/styles";
 import { regionalAirports } from "@/config/site";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { pageMetadata } from "@/config/seo";
-import heroPhoto from "../../../public/brand/airport-luton-hero.png";
+import heroPhoto from "../../../public/brand/airport-luton-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

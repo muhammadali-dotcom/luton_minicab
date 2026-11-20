@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUp, Mail, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import { additionalAreas, airports, areas, services, site } from "@/config/site";
-import footerStreet from "../../public/brand/footer-street.png";
+import footerStreet from "../../public/brand/footer-street.webp";
 import { routes } from "@/config/routeDetails";
 import { Logo } from "./Logo";
 

@@ -49,7 +49,7 @@ export function Vehicles() {
 
   useEffect(() => {
     if (!running) return;
-    const timer = window.setInterval(() => setActive((index) => wrap(index + 1)), 5000);
+    const timer = window.setInterval(() => setActive((index) => wrap(index + 1)), 3500);
     return () => window.clearInterval(timer);
   }, [running, interaction]);
 

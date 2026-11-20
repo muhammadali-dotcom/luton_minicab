@@ -6,8 +6,8 @@ import { LocalAreaCards } from "./LocalAreaCards";
 import { Reassurances } from "./Reassurances";
 import { ServiceHero } from "./ServiceHero";
 import bag from "../../public/brand/school-day-bag.png";
-import home from "../../public/brand/school-day-home.png";
-import morning from "../../public/brand/school-day-morning.png";
+import home from "../../public/brand/school-day-home.webp";
+import morning from "../../public/brand/school-day-morning.webp";
 
 // Confirmed facts only: no school names, contracts, regular plans, escorts, wheelchair access,
 // medical care or prices. Each school journey is booked on its own.

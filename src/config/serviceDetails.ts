@@ -1,15 +1,15 @@
 import type { StaticImageData } from "next/image";
 import { CalendarCheck, CalendarDays, Car, Clock, DoorOpen, PoundSterling, Wallet, type LucideIcon } from "lucide-react";
-import corporateTravel from "../../public/brand/services/corporate-travel.png";
-import corporateTravelHero from "../../public/brand/services/corporate-travel-hero.png";
-import localJourneys from "../../public/brand/services/local-journeys.png";
-import localJourneysHero from "../../public/brand/services/local-journeys-hero.png";
-import longDistanceTravel from "../../public/brand/services/long-distance-travel.png";
-import longDistanceHero from "../../public/brand/services/long-distance-travel-hero.png";
-import schoolRuns from "../../public/brand/services/school-runs.png";
-import schoolRunsHero from "../../public/brand/services/school-runs-hero.png";
-import stationTransfers from "../../public/brand/services/station-transfers.png";
-import stationHotelHero from "../../public/brand/services/station-hotel-transfers-hero.png";
+import corporateTravel from "../../public/brand/services/corporate-travel.webp";
+import corporateTravelHero from "../../public/brand/services/corporate-travel-hero.webp";
+import localJourneys from "../../public/brand/services/local-journeys.webp";
+import localJourneysHero from "../../public/brand/services/local-journeys-hero.webp";
+import longDistanceTravel from "../../public/brand/services/long-distance-travel.webp";
+import longDistanceHero from "../../public/brand/services/long-distance-travel-hero.webp";
+import schoolRuns from "../../public/brand/services/school-runs.webp";
+import schoolRunsHero from "../../public/brand/services/school-runs-hero.webp";
+import stationTransfers from "../../public/brand/services/station-transfers.webp";
+import stationHotelHero from "../../public/brand/services/station-hotel-transfers-hero.webp";
 
 export type ServiceDetail = {
   hero: { heading: string; text: string };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Plane } from "lucide-react";
 import { airports } from "@/config/site";
 import { PopularRoutes } from "./PopularRoutes";
-import airportPhoto from "../../public/brand/airport-luton.png";
+import airportPhoto from "../../public/brand/airport-luton.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

@@ -13,10 +13,10 @@ import {
 import { PageHero } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { areas, site } from "@/config/site";
-import heroIllustration from "../../../public/brand/about-hero.png";
-import whatIllustration from "../../../public/brand/about-what.png";
+import heroIllustration from "../../../public/brand/about-hero.webp";
+import whatIllustration from "../../../public/brand/about-what.webp";
 import { pageMetadata } from "@/config/seo";
-import whoIllustration from "../../../public/brand/about-who.png";
+import whoIllustration from "../../../public/brand/about-who.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

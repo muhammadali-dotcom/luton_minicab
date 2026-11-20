@@ -7,7 +7,7 @@ import { PageHero, trustAirport } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { pageMetadata } from "@/config/seo";
-import heroPhoto from "../../../public/brand/airport-luton-terminal-hero.png";
+import heroPhoto from "../../../public/brand/airport-luton-terminal-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

@@ -5,7 +5,7 @@ import type { ServiceDetail } from "@/config/serviceDetails";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { ServiceHero } from "./ServiceHero";
 import { container, eyebrow, h2, section } from "./styles";
-import everydayStreet from "../../public/brand/local-journeys-everyday.png";
+import everydayStreet from "../../public/brand/local-journeys-everyday.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 

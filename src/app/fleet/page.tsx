@@ -7,7 +7,7 @@ import { Briefcase, CarFront, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { fleet } from "@/config/site";
 import { pageMetadata } from "@/config/seo";
-import heroPhoto from "../../../public/brand/fleet-hero.png";
+import heroPhoto from "../../../public/brand/fleet-hero.webp";
 
 const uses = [
   { label: "Everyday journeys", Icon: CarFront },

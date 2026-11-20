@@ -11,12 +11,12 @@ import { AirportJourneys } from "./AirportJourneys";
 import { AirportLocalAreas } from "./AirportLocalAreas";
 import { AirportMeetDriver } from "./AirportMeetDriver";
 import { Faq } from "./Faq";
-import gatwickHero from "../../public/brand/airport-gatwick-hero.png";
-import heathrowHero from "../../public/brand/airport-heathrow-hero.png";
-import londonCityHero from "../../public/brand/airport-london-city-hero.png";
-import lutonTerminalHero from "../../public/brand/airport-luton-terminal-hero.png";
-import southendHero from "../../public/brand/airport-southend-hero.png";
-import stanstedHero from "../../public/brand/airport-stansted-hero.png";
+import gatwickHero from "../../public/brand/airport-gatwick-hero.webp";
+import heathrowHero from "../../public/brand/airport-heathrow-hero.webp";
+import londonCityHero from "../../public/brand/airport-london-city-hero.webp";
+import lutonTerminalHero from "../../public/brand/airport-luton-terminal-hero.webp";
+import southendHero from "../../public/brand/airport-southend-hero.webp";
+import stanstedHero from "../../public/brand/airport-stansted-hero.webp";
 import { PopularRoutes } from "./PopularRoutes";
 import { PageHero, trustAirport } from "./PageHero";
 

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { areas } from "@/config/site";
-import illustration from "../../public/brand/areas-illustration.png";
+import illustration from "../../public/brand/areas-illustration.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
