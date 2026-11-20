@@ -20,9 +20,9 @@ Business brief, approved decisions and open items for **lutonminicab.com**. Keep
 | Phone | Placeholder; no working `tel:` link until supplied |
 | WhatsApp | Placeholder; no working link until supplied (the colour `#25d366` is reserved) |
 | Email | Placeholder |
-| Operator / licence details | Placeholder |
+| Operator / licence details | A2B Radio Cars, TfL private hire operator licence 6973 (from heathrowminicab.com, 20 November 2026) |
 
-**Temporary exception (November 2026, owner's request):** phone 020 8343 4444, WhatsApp +44 7983 527104 and email bittacycs@hotmail.com, taken from bittacycars.com. Replace them with Luton Minicab's own details before launch. Otherwise, don't guess contact details.
+**Contact details (20 November 2026, owner's request):** A2B Radio Cars' details as heathrowminicab.com shows them: Bookings 020 8569 4040, Alternative 020 8343 4444, WhatsApp +44 7436 075664, email a2bradiocarss@gmail.com (spelling as on their site; owner to confirm), booking team based in Hounslow, West London (TW3), no street address. They replace the temporary Bittacy Cars details (2 Bittacy Hill, Mill Hill). Don't guess any other contact details.
 
 ## 4. Services
 **Confirmed:**
@@ -186,7 +186,7 @@ The dropdown labels open their menu only; they don't link anywhere themselves. S
 | Topic | Decision |
 |---|---|
 | A2B relationship | Luton Minicab is a separate business; A2B Radio Cars provides dispatch and drivers |
-| Operator licence holder | **Not confirmed yet**; the placeholder stays |
+| Operator licence holder | A2B Radio Cars, TfL licence 6973 |
 | Pickup coverage | Luton (incl. Leagrave, Stopsley), Dunstable, Houghton Regis, Harpenden, Mill Hill, Hounslow, Heathrow (updated November 2026) |
 | Airports | Six named airports in the menu, each with its own page, and nine more with short pages, listed on /airports (replaced the earlier "all UK airports only" decision); all UK airports are still covered |
 | Business address | No public address (service-area business) |
@@ -201,7 +201,7 @@ The dropdown labels open their menu only; they don't link anywhere themselves. S
 - [x] Logo (supplied). Still wanted from the designer: an SVG version, a horizontal lock-up and a simplified favicon
 - [ ] Final hero and section illustrations (designer pass on the provisional line art)
 - [ ] Replace the current phone, WhatsApp and email with Luton Minicab's own details before launch
-- [ ] Who holds the operator licence, plus the licensing authority and licence number
+- [x] Operator licence: A2B Radio Cars, TfL private hire operator licence 6973 (shown in the footer, on Contact and in the legal pages, 20 November 2026)
 - [ ] Verified vehicle capacities (the owner will send them)
 - [ ] Genuine reviews, if a reviews section is wanted
 - [x] Contact page (owner's structure, November 2026): "Get in touch. We’re here to help." / "Planning a journey or asking about a booking? Call, WhatsApp or send us a message."; contact details with "Available 24/7, day or night"; message form (Name, Email optional, Phone optional, Enquiry type New journey / Existing booking / Other, Booking reference optional (only for Existing booking), Message, "Continue on WhatsApp"; opens WhatsApp prefilled, nothing stored) and "For urgent booking changes, please call us."; The team behind your journey (owner's reference): "Local journeys. A team you can reach." / "Luton Minicab bookings are handled by our booking team, based in Mill Hill, north London." with an "Our Mill Hill office" card (Our booking office, 2 Bittacy Hill, Mill Hill, London, NW7 1LB; temporary, never labelled Luton) and "View on Google Maps"; FAQs How do I get a quote?, Can I change my booking?, How do I arrange a special journey?; no booking banner.
@@ -222,7 +222,7 @@ The dropdown labels open their menu only; they don't link anywhere themselves. S
 - [ ] Update the footer copyright year each January (it's fixed in `SiteFooter.tsx`).
 - [ ] Optional later ideas: a "How it works" section, a designed social sharing image and favicon, and day/night hero variants
 
-- **Branding (16 November 2026):** Use Luton Minicab and “our booking team” / “our booking office” throughout public copy. Do not name the previous business. Keep the confirmed email and the real street address (2 Bittacy Hill); the map query uses only the address. About Us uses the approved “Our booking team helps arrange…” paragraph.
+- **Branding (updated 20 November 2026):** Use Luton Minicab and “our booking team” throughout public copy. Luton Minicab is **operated by A2B Radio Cars**, TfL private hire operator licence **6973**, with the booking team **based in Hounslow, West London (TW3)**: exactly as heathrowminicab.com (also run by A2B) shows it, with no street address, company number or VAT number published. Contact details (Bookings 020 8569 4040, Alternative 020 8343 4444, WhatsApp 447436075664, email a2bradiocarss@gmail.com, spelt as on their site, owner to confirm) and `operator`, `licensingAuthority`, `operatorLicence` and `base` live in `site.ts`. The operator line shows in the footer, on Contact and in the Privacy and Terms pages; the Contact map link searches "Hounslow TW3". The old Bittacy Cars details (2 Bittacy Hill, Mill Hill) are retired: never bring them back. About Us uses the approved “Our booking team helps arrange…” paragraph.
 
 - **Area hero photos (16 November 2026, approved):** matching owner-supplied photographs on all nine individual area pages: Luton Town Hall and War Memorial; Leagrave station; Hitchin Road, Stopsley; High Street North, Dunstable; Houghton Regis residential view; Harpenden High Street; Mill Hill Broadway station; Treaty Centre entrance, Hounslow; Heathrow Terminal 5. Keep distinctive local headlines, the existing cream/green/gold design and standard hero order. Individual desktop/mobile crops and factual alt text; avoid competing taxi signage where possible. /areas overview remains unchanged.
 

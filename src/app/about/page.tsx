@@ -129,7 +129,7 @@ export default function Page() {
               A local service with a team you can reach.
             </SectionHeading>
             <p className="mt-5 text-[1.125rem] leading-relaxed text-foreground">
-              Luton Minicab is a separate business providing local journeys, school runs, airport transfers and longer trips. Our booking team is based in Mill Hill, north London.
+              Luton Minicab is a separate business providing local journeys, school runs, airport transfers and longer trips. It is operated by A2B Radio Cars, and our booking team is based in Hounslow, west London.
             </p>
             <Link
               href="/contact"

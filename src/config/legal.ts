@@ -2,7 +2,8 @@
 // Adapted from the owner's supplied privacy and terms pages at the owner's
 // request, November 2026. Owner's choices: same rules, but no £ amounts (other charges are
 // confirmed before booking); airports keep the confirmed 15 free minutes; Luton Minicab is
-// named, with bookings handled by our booking team in Mill Hill.
+// named, operated by A2B Radio Cars (TfL licence 6973), with bookings handled by our booking
+// team in Hounslow (owner's change, 20 November 2026).
 // Left out on purpose: coach bookings, Eurostar meet and greet, wheelchair wording,
 // London-only law references and every fee amount. Owner confirmed (November 2026): card
 // payments by Stripe; 15 free minutes for all pickups. Eligible prepaid cancellations
@@ -19,16 +20,16 @@ export type LegalSection = {
   links?: { label: string; href: string }[];
 };
 
-export const legalUpdated = "16 November 2026";
+export const legalUpdated = "20 November 2026";
 
-export const bookingOfficeAddress = "2 Bittacy Hill, Mill Hill, London, NW7 1LB";
+export const bookingOfficeAddress = "Hounslow, West London (TW3)";
 
 export const privacySections: LegalSection[] = [
   {
     id: "who-we-are",
     heading: "Who we are",
     paragraphs: [
-      `Luton Minicab provides local journeys, airport transfers and longer trips. Bookings are handled by our booking team at ${bookingOfficeAddress}.`,
+      `Luton Minicab provides local journeys, airport transfers and longer trips. It is operated by A2B Radio Cars, a TfL-licensed private hire operator (licence 6973). Bookings are handled by our booking team in ${bookingOfficeAddress}.`,
       "We are responsible for the personal information you share with us, and this policy explains how we look after it.",
     ],
   },
@@ -127,6 +128,9 @@ export const termsSections: LegalSection[] = [
   {
     id: "booking",
     heading: "Booking with us",
+    paragraphs: [
+      "Luton Minicab is operated by A2B Radio Cars, a TfL-licensed private hire operator (licence 6973), with our booking team in Hounslow, West London (TW3). These terms are governed by the law of England and Wales.",
+    ],
     bullets: [
       "You can book online, by phone or on WhatsApp. All bookings depend on availability.",
       "When you book online, you’ll receive a confirmation once your booking is accepted. Please check the details are correct.",

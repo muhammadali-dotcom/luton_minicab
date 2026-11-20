@@ -258,8 +258,8 @@ export const areaDetails: Record<string, AreaDetail> = {
       alt: "A golden-hour illustration of a suburban station entrance with a timber fascia and leafy street.",
       mobilePhotoPosition: "object-[90%_40%]",
       desktopPhotoPosition: "lg:object-[68%_20%]",
-      heading: "Mill Hill rides, from our home base.",
-      text: "Our booking team in Mill Hill helps arrange local trips, longer journeys and airport transfers, day or night.",
+      heading: "Rides from Mill Hill, day or night.",
+      text: "Pickups across Mill Hill in north London, for local trips, longer journeys and airport transfers.",
     },
     journeysText: "Around north London, up to Luton, or out to the airports.",
     journeyDescriptions: {
@@ -267,7 +267,7 @@ export const areaDetails: Record<string, AreaDetail> = {
       "long-distance-travel": "Longer journeys from Mill Hill, from door to door.",
       "airport-transfers": "Transfers from Mill Hill to Heathrow, Luton and other UK airports.",
     },
-    placesText: "Around our part of north London.",
+    placesText: "Around Mill Hill and north London.",
     airportsText: "Heathrow, Luton or further: we track your flight on pickups.",
     places: [
       { title: "Stations", line: "Mill Hill Broadway · Mill Hill East", icon: "train" },
@@ -284,8 +284,8 @@ export const areaDetails: Record<string, AreaDetail> = {
     },
     faqs: [
       {
-        q: "Are you based in Mill Hill?",
-        a: "Yes. Bookings are handled by our booking team in Mill Hill, north London.",
+        q: "Do you pick up across Mill Hill?",
+        a: "Yes, from homes, stations and offices across Mill Hill, day or night.",
       },
       {
         q: "Can you take me from Mill Hill to the airport?",
@@ -340,6 +340,10 @@ export const areaDetails: Record<string, AreaDetail> = {
       {
         q: "Do you do local trips in Hounslow too?",
         a: "Yes. Shops, appointments, the station or visiting family. Book online or call us.",
+      },
+      {
+        q: "Are you based near Hounslow?",
+        a: "Yes. Our booking team is based in Hounslow, west London, close to Heathrow.",
       },
       fixedFare,
     ],

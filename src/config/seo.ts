@@ -14,7 +14,7 @@ export const isSiteIndexable =
 
 // The sitemap's lastmod. Bump this when page content changes (not on every build: Google
 // ignores lastmod values that change without real edits). Not `new Date()`.
-export const contentUpdated = "2026-11-19";
+export const contentUpdated = "2026-11-20";
 
 // Search Console ownership code (the content value of the meta tag Google gives you).
 export const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;

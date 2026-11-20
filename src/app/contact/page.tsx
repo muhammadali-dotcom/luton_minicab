@@ -35,12 +35,13 @@ export const metadata: Metadata = pageMetadata({
 // Similar in flow to the owner's reference (heathrowminicab.com/contact), in Luton's own style.
 // No form: every way to reach us is a direct link. Confirmed facts only.
 
-// Confirmed booking office in Mill Hill; never label it as a Luton office.
+// The booking team's base as A2B Radio Cars publishes it (no street address); never label it
+// as a Luton office.
 const office = {
-  name: "Our booking office",
-  lines: ["2 Bittacy Hill", "Mill Hill, London", "NW7 1LB"],
+  name: "Our booking team",
+  lines: [`Based in ${site.base.area}`, site.base.postcode],
 };
-const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.lines.join(", "))}`;
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Hounslow ${site.base.postcode}`)}`;
 const tel = site.phone ? `tel:${site.phone.replace(/\s+/g, "")}` : null;
 
 type Way = {
@@ -306,7 +307,7 @@ export default function Page() {
               The people who answer your call.
             </SectionHeading>
             <p className="mt-4 max-w-xl text-[1.125rem] leading-relaxed text-foreground">
-              Luton Minicab bookings are handled by our booking team in Mill Hill, north London.
+              Luton Minicab is operated by {site.operator}, a {site.licensingAuthority}-licensed private hire operator (licence {site.operatorLicence}). Our booking team is based in Hounslow, west London.
             </p>
           </div>
           <div className="rounded-2xl border border-foreground bg-paper p-6 sm:p-8">
@@ -314,7 +315,7 @@ export default function Page() {
               <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary text-foreground">
                 <MapPin aria-hidden size={26} strokeWidth={1.75} />
               </span>
-              <p className="text-sm font-semibold tracking-[0.2em] text-foreground">OUR MILL HILL OFFICE</p>
+              <p className="text-sm font-semibold tracking-[0.2em] text-foreground">OUR BOOKING TEAM</p>
             </div>
             <address className="mt-6 not-italic text-foreground">
               <span className="block font-display text-[clamp(1.875rem,3vw,2.5rem)] font-semibold leading-tight">{office.name}</span>

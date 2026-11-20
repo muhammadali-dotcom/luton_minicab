@@ -216,16 +216,19 @@ export const site = {
     process.env.NEXT_PUBLIC_BOOKING_URL ??
     "https://heathrowminicabbooking.com/booking?site=luton",
 
-  // TEMPORARY: taken from bittacycars.com at the owner's request. Replace with
-  // Luton Minicab's own details before launch.
-  phone: "020 8343 4444" as string | null,
-  // Second line shown as "Alternative" in the top bar (owner, November 2026).
-  phoneAlt: "020 8569 4040" as string | null,
+  // Operator: A2B Radio Cars, as shown on heathrowminicab.com (also run by A2B), read
+  // 20 November 2026. No street address is published, only Hounslow, West London (TW3).
+  operator: "A2B Radio Cars",
+  licensingAuthority: "TfL",
+  operatorLicence: "6973" as string | null,
+  base: { area: "Hounslow, West London", postcode: "TW3" },
+  phone: "020 8569 4040" as string | null,
+  // Second line shown as "Alternative" in the top bar.
+  phoneAlt: "020 8343 4444" as string | null,
   // International format, digits only.
-  whatsapp: "447983527104" as string | null,
-  email: "bittacycs@hotmail.com" as string | null,
-  // PLACEHOLDER: operator licence details.
-  operatorLicence: null as string | null,
+  whatsapp: "447436075664" as string | null,
+  // Spelt "carss" on heathrowminicab.com; owner to confirm.
+  email: "a2bradiocarss@gmail.com" as string | null,
   // PLACEHOLDER: the business's own public profiles. Each becomes part of the site-wide
   // schema (`sameAs`, and `hasMap` for Google) once set; nothing shows on the page yet.
   // Use the full public URL, e.g. the Google Business Profile's "Share" link.

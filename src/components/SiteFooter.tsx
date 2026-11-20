@@ -181,6 +181,11 @@ export function SiteFooter() {
           <div className="text-[1.0625rem] leading-snug">
             {/* Fixed year: new Date() breaks prerendering under Cache Components. Update each January. */}
             <p>&copy; 2026 {site.name}</p>
+            {site.operatorLicence && (
+              <p>
+                Operated by {site.operator}, {site.licensingAuthority} private hire operator licence {site.operatorLicence}
+              </p>
+            )}
             <p>
               Powered by{" "}
               <a

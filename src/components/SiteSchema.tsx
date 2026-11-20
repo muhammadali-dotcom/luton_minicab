@@ -3,7 +3,8 @@ import { siteName, siteOrigin } from "@/config/seo";
 
 // Site-wide structured data on every page: the business (TaxiService, a kind of LocalBusiness)
 // and the website. Confirmed facts only: no reviews, ratings or prices. The address is the
-// booking office in Mill Hill (owner's choice, 18 November 2026).
+// booking team's base as A2B Radio Cars publishes it: Hounslow, TW3, with no street address
+// (owner's choice, 20 November 2026).
 const intl = (uk: string) => `+44${uk.replace(/\s+/g, "").replace(/^0/, "")}`;
 
 export function SiteSchema() {
@@ -23,11 +24,14 @@ export function SiteSchema() {
     ...(site.profiles.google ? { hasMap: site.profiles.google } : {}),
     address: {
       "@type": "PostalAddress",
-      streetAddress: "2 Bittacy Hill",
-      addressLocality: "Mill Hill, London",
-      postalCode: "NW7 1LB",
+      addressLocality: "Hounslow, London",
+      postalCode: site.base.postcode,
       addressCountry: "GB",
     },
+    parentOrganization: { "@type": "Organization", name: site.operator },
+    ...(site.operatorLicence
+      ? { identifier: `${site.licensingAuthority} private hire operator licence ${site.operatorLicence}` }
+      : {}),
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
