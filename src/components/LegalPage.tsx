@@ -16,7 +16,7 @@ export function LegalPage({ title, intro, sections }: { title: string; intro: st
     <main id="main" className="flex-1">
       <PageHero eyebrow="LEGAL" heading={title} text={intro} compact centered buttons={false} />
 
-      <RevealSection aria-label={title} className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-label={`${title} in full`} className={`band-alt border-t border-border ${section}`}>
         <div className={`${container} max-w-3xl! text-foreground`}>
           <p className="text-base">Last updated: {legalUpdated}</p>
 

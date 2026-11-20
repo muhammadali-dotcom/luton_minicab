@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   const title = titleFor((await params).slug);
   const slug = (await params).slug;
   return title
-    ? pageMetadata({ title, description: `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.`, path: `/services/${slug}` })
+    ? pageMetadata({ title, description: serviceDetails[slug].metaDescription ?? `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.`, path: `/services/${slug}` })
     : {};
 }
 

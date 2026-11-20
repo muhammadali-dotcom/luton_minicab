@@ -14,7 +14,7 @@ import { RevealSection } from "@/components/ui/reveal-section";
 export const metadata: Metadata = pageMetadata({
   title: "Luton Airport Guide: Drop-off, Pickup and Taxis",
   description:
-    "A practical guide to getting to and from London Luton Airport by taxi: the drop-off and pickup zone, the free long-stay option, when to arrive and meeting your driver.",
+    "Getting to and from London Luton Airport by taxi: the drop-off and pickup zone, the free long-stay option, when to arrive and meeting your driver.",
   path: "/luton-airport-guide",
 });
 

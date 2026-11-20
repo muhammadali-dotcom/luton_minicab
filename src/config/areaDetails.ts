@@ -156,7 +156,7 @@ export const areaDetails: Record<string, AreaDetail> = {
       heading: "No station in Dunstable? We’ll get you to one.",
       text: "Rides from Dunstable, just west of Luton, to the hospital, the shops, the airport or further afield.",
     },
-    journeysText: "The hospital, the shops, or a night out in Luton.",
+    journeysText: "Visiting family, a night out in Luton, or a weekend away.",
     placesText: "Regular trips from Dunstable and the Downs.",
     airportsText: "From Dunstable to the airports, with flight tracking on pickups.",
     places: [
@@ -350,7 +350,7 @@ export const areaDetails: Record<string, AreaDetail> = {
       alt: "A golden-hour illustration of a glass airport terminal and empty forecourt with a plane overhead.",
       mobilePhotoPosition: "object-[90%_35%]",
       desktopPhotoPosition: "lg:object-[68%_0%]",
-      heading: "From Heathrow arrivals to your front door.",
+      heading: "From Heathrow to home, a hotel or beyond.",
       text: "Pickups at Heathrow’s terminals and nearby hotels, for the journey home or onward.",
     },
     journeysText: "Home, a hotel, a meeting or another airport.",

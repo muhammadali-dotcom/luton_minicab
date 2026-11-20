@@ -13,6 +13,9 @@ import stationHotelHero from "../../public/brand/services/station-hotel-transfer
 
 export type ServiceDetail = {
   hero: { heading: string; text: string };
+  // Search description (160 characters or fewer). Without it, the hero line plus a short
+  // fixed-fares line is used.
+  metaDescription?: string;
   // The hero's trust row, picked by the owner for each service (confirmed facts only).
   trust: { label: string; Icon: LucideIcon }[];
   // Wall-style hero photo (cream wall on the left, scene on the right), used full width by
@@ -54,6 +57,8 @@ const steps = [
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   "school-runs": {
+    metaDescription:
+      "School run taxis in Luton with friendly, DBS-checked drivers. Book each journey to school and home online, or talk to our team first.",
     hero: {
       heading: "Calmer mornings for the whole family.",
       text: "A friendly, DBS-checked driver for the journey to school and home again. Book each run online, or talk to us first.",
@@ -172,6 +177,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   "station-hotel-transfers": {
+    metaDescription:
+      "Taxis to and from Luton’s train stations and local hotels, with pickups planned around your train time. Fixed fares, available 24/7.",
     hero: {
       heading: "Make your train, without the dash.",
       text: "Heading for a train or checking into a hotel? Tell us your train time, and we’ll plan your pickup around it.",
@@ -207,6 +214,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   "local-journeys": {
+    metaDescription:
+      "Local taxis around Luton for the shops, appointments and visits to family. Fixed fares, DBS-checked drivers, available 24/7.",
     hero: {
       heading: "Life’s little trips, without the fuss.",
       text: "The weekly shop, a doctor’s appointment, or popping round to see Mum. We’ll get you there and back.",

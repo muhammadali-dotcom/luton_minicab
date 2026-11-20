@@ -12,7 +12,8 @@ export function TopBar() {
   ].filter((l): l is { label: string; number: string } => !!l);
   if (!lines.length) return null;
   return (
-    <div className="bg-foreground text-background [--color-ring:var(--color-primary)]">
+    // A labelled region, so screen-reader users can find the phone numbers (axe "region").
+    <aside aria-label="Phone bookings" className="bg-foreground text-background [--color-ring:var(--color-primary)]">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-0.5 px-4 py-2 text-sm sm:px-6 sm:text-[0.9375rem] lg:px-10">
         <span>Call us to book</span>
         {lines.map(({ label, number }) => (
@@ -30,6 +31,6 @@ export function TopBar() {
           </span>
         ))}
       </div>
-    </div>
+    </aside>
   );
 }

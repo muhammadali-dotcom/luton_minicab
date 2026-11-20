@@ -77,7 +77,7 @@ export function RoutePage({ route }: { route: RouteDetail }) {
             }
           : {})}
         eyebrow={`${route.name.toUpperCase()} TAXI`}
-        heading={<span className={`block text-balance ${"headingWidth" in hero ? hero.headingWidth : ""}`}>{route.hero.heading}</span>}
+        heading={<span className={`block text-balance ${hero.headingWidth ?? ""}`}>{route.hero.heading}</span>}
         text={route.hero.text}
         trust={trustLocal}
       />
