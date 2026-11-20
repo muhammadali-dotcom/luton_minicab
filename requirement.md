@@ -10,7 +10,7 @@ Business brief, approved decisions and open items for **lutonminicab.com**. Keep
 - **Logo:** supplied by the owner (stacked emblem plus "Luton Minicab" lettering). It's used in the header, footer, favicon and app icons (emblem only), and the link-sharing image. See DESIGN.md §6. Don't alter the artwork.
 
 ## 2. Booking
-- An existing web booker is used: <https://www.heathrowminicabbooking.com/>. It's configurable through `NEXT_PUBLIC_BOOKING_URL` or `src/config/site.ts`.
+- An existing web booker is used: <https://heathrowminicabbooking.com/booking?site=luton> (Luton booking page, 20 November 2026). It's configurable through `NEXT_PUBLIC_BOOKING_URL` or `src/config/site.ts`.
 - **Book Online opens the booker in the same tab.** Don't build a booking engine or a booking form on the site.
 - Customers can also book by phone and WhatsApp. School runs and SEND/assisted transport use the same booking channels.
 

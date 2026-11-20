@@ -214,7 +214,7 @@ export const site = {
   // Existing web booker. Override per environment with NEXT_PUBLIC_BOOKING_URL.
   bookingUrl:
     process.env.NEXT_PUBLIC_BOOKING_URL ??
-    "https://heathrowminicabbooking.com/",
+    "https://heathrowminicabbooking.com/booking?site=luton",
 
   // TEMPORARY: taken from bittacycars.com at the owner's request. Replace with
   // Luton Minicab's own details before launch.
