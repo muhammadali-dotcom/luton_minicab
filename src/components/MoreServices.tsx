@@ -3,8 +3,10 @@ import Link from "next/link";
 import { ArrowRight, PartyPopper, PawPrint, Ship } from "lucide-react";
 import { site } from "@/config/site";
 import { BookOnlineLink } from "./BookOnlineLink";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
 import airportPhoto from "../../public/brand/airport-luton.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Extra services the owner confirmed (November 2026), listed here without pages of their own.
 // Confirmed facts only: no port names, bridal cars, prices or capacities. Day hire,
@@ -35,12 +37,12 @@ export function MoreServices() {
   const enquire = (title: string) =>
     site.whatsapp ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hello, I’d like to ask about ${title}.`)}` : null;
   return (
-    <section aria-labelledby="more-services-heading" className={`border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="more-services-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>MORE WAYS TO TRAVEL</p>
-        <h2 id="more-services-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="more-services-heading" className={`${h2} mt-4 text-foreground`}>
           Planning something special?
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">Tell us about it, and we’ll help you work out the details.</p>
         <ul className="mt-10 grid gap-5 lg:grid-cols-3">
           {extras.map(({ title, text, Icon }) => (
@@ -61,14 +63,14 @@ export function MoreServices() {
         </ul>
         <p className="mt-6 text-base text-foreground">All subject to availability. Ask us when you plan your trip.</p>
       </div>
-    </section>
+    </RevealSection>
   );
 }
 
 // Airport Transfers gets its own banner on /services, pointing to /airports.
 export function ServiceAirportBanner() {
   return (
-    <section aria-labelledby="airport-banner-heading" className={`band-alt border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="airport-banner-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <div className="grid overflow-hidden rounded-2xl border border-border bg-paper md:grid-cols-2">
           <div className="relative aspect-[3/2] md:aspect-auto md:min-h-80">
@@ -82,9 +84,9 @@ export function ServiceAirportBanner() {
           </div>
           <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
             <p className={`${eyebrow} text-accent`}>AIRPORT TRANSFERS</p>
-            <h2 id="airport-banner-heading" className={`${h2} mt-4 text-foreground`}>
+            <SectionHeading id="airport-banner-heading" className={`${h2} mt-4 text-foreground`}>
               Flying out or heading home?
-            </h2>
+            </SectionHeading>
             <p className="mt-3 text-[1.125rem] text-foreground">We follow your flight, so we know when you land.</p>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
               <BookOnlineLink arrow />
@@ -96,6 +98,6 @@ export function ServiceAirportBanner() {
           </div>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

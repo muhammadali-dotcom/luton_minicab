@@ -27,7 +27,9 @@ import { Faq } from "./Faq";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { PageHero, trustLocal } from "./PageHero";
 import { PopularRoutes } from "./PopularRoutes";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type Area = { slug: string; name: string; intro: string };
 
@@ -104,15 +106,15 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         eyebrow={`TAXIS IN ${area.name.toUpperCase()}`}
         heading={<span className="block text-balance">{detail.hero.heading}</span>}
         text={detail.hero.text}
-        trust={trustLocal}
+        trust={area.slug === "luton" ? undefined : trustLocal}
       />
 
-      <section aria-labelledby="area-journeys-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="area-journeys-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>JOURNEYS FROM {area.name.toUpperCase()}</p>
-          <h2 id="area-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-            Where to next from {area.name}?
-          </h2>
+          <SectionHeading id="area-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+            {`Where to next from ${area.name}?`}
+          </SectionHeading>
           {detail.journeysText && <p className="mt-3 text-[1.125rem] text-foreground">{detail.journeysText}</p>}
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {journeys.map(({ name, line, href, Icon }) => (
@@ -139,14 +141,14 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="area-places-heading" className={`border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="area-places-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AROUND {area.name.toUpperCase()}</p>
-          <h2 id="area-places-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="area-places-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             {detail.placesHeading ?? `Places we take you from ${area.name}.`}
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">{detail.placesText ?? "A few of the everyday trips we make."}</p>
           <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {detail.places.map(({ title, line, icon }) => {
@@ -162,14 +164,14 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
           </ul>
           <p className="mt-8 text-[1.125rem] text-foreground">{detail.placesNote ?? "Somewhere else? Tell us where you’re going when you book."}</p>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="area-airports-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="area-airports-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AIRPORT TRANSFERS</p>
-          <h2 id="area-airports-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="area-airports-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             {detail.airportsHeading ?? `Flying from ${area.name}?`}
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">
             {detail.airportsText ?? "Rides to and from the airports, with flight tracking on pickups."}
           </p>
@@ -197,7 +199,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
             <ArrowRight aria-hidden size={18} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
-      </section>
+      </RevealSection>
 
       <BookingDetails
         heading={`Let’s plan your ${area.name} journey.`}

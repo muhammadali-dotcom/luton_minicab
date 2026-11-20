@@ -1,18 +1,20 @@
 import Image from "next/image";
 import type { AirportDetail } from "@/config/airportDetails";
 import { BookOnlineLink } from "./BookOnlineLink";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // The illustrations sit on the page cream, so this section needs a plain (not
 // band-alt) background.
 export function AirportJourneys({ eyebrow: label, subline, items }: AirportDetail["journeys"]) {
   return (
-    <section aria-labelledby="journeys-heading" className={`border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="journeys-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id="journeys-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="journeys-heading" className={`${h2} mt-4 text-foreground`}>
           Which way are you travelling?
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">{subline}</p>
 
         <div className="mt-10 grid divide-y divide-border sm:grid-cols-2 sm:divide-x sm:divide-y-0">
@@ -35,6 +37,6 @@ export function AirportJourneys({ eyebrow: label, subline, items }: AirportDetai
           <BookOnlineLink arrow size="lg" />
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { routes } from "@/config/routeDetails";
+import { RevealArea } from "@/components/ui/reveal-section";
 
 // Internal links to the route pages and Luton guides, so visitors and search engines find them.
 export function PopularRoutes({ className = "" }: { className?: string }) {
@@ -10,7 +11,7 @@ export function PopularRoutes({ className = "" }: { className?: string }) {
     { label: "Luton station transfers", href: "/luton-station-transfers" },
   ];
   return (
-    <nav aria-labelledby="popular-routes-heading" className={className}>
+    <RevealArea as="nav" aria-labelledby="popular-routes-heading" className={className}>
       <h3 id="popular-routes-heading" className="font-display text-[1.375rem] font-semibold text-foreground">
         Popular routes from Luton
       </h3>
@@ -27,6 +28,6 @@ export function PopularRoutes({ className = "" }: { className?: string }) {
           </li>
         ))}
       </ul>
-    </nav>
+    </RevealArea>
   );
 }

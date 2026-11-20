@@ -6,7 +6,9 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { serviceDetails } from "@/config/serviceDetails";
 import { services } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // The five main services as a numbered list. On desktop one photo beside the list shows the
 // service being pointed at or focused; on smaller screens each row has its own small photo.
@@ -19,12 +21,12 @@ const rows = services.map(({ slug, name }) => {
 export function ServiceCards() {
   const [active, setActive] = useState(0);
   return (
-    <section id="services-list" aria-labelledby="services-list-heading" className={`scroll-mt-20 band-alt border-t border-border ${section}`}>
+    <RevealSection id="services-list" aria-labelledby="services-list-heading" className={`scroll-mt-20 band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>OUR MAIN SERVICES</p>
-        <h2 id="services-list-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="services-list-heading" className={`${h2} mt-4 text-foreground`}>
           What do you need today?
-        </h2>
+        </SectionHeading>
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1fr_minmax(0,28rem)] xl:grid-cols-[1fr_minmax(0,34rem)] xl:gap-16">
           <ol className="border-t border-primary/50">
             {rows.map(({ name, href, image, text }, i) => (
@@ -77,6 +79,6 @@ export function ServiceCards() {
           </div>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

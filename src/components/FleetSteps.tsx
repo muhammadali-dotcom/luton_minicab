@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { Luggage, MessageCircle, MessageCircleMore, Phone, Users } from "lucide-react";
 import { site } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
 import illustration from "../../public/brand/fleet-help.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 const tips = [
   { title: "Your passengers", text: "Count everyone travelling with you.", Icon: Users },
@@ -18,7 +20,7 @@ const buttonClass =
 // `band` gives it the deeper-cream background, to keep sections alternating on /fleet.
 export function FleetSteps({ band = false }: { band?: boolean }) {
   return (
-    <section id="not-sure" aria-labelledby="fleet-steps-heading" className={`scroll-mt-20 border-t border-border ${band ? "band-alt " : ""}${section}`}>
+    <RevealSection id="not-sure" aria-labelledby="fleet-steps-heading" className={`scroll-mt-20 border-t border-border ${band ? "band-alt " : ""}${section}`}>
       <div className={`${container} grid items-center gap-10 lg:grid-cols-2 lg:gap-14`}>
         <Image
           src={illustration}
@@ -28,9 +30,9 @@ export function FleetSteps({ band = false }: { band?: boolean }) {
         />
         <div>
           <p className={`${eyebrow} text-accent`}>A LITTLE HELP CHOOSING</p>
-          <h2 id="fleet-steps-heading" className={`${h2} mt-4 text-foreground`}>
+          <SectionHeading id="fleet-steps-heading" className={`${h2} mt-4 text-foreground`}>
             Not sure which car?
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">Tell us who’s coming and what you’re bringing.</p>
           <ul className="mt-6 divide-y divide-primary/60">
             {tips.map(({ title, text, Icon }) => (
@@ -66,6 +68,6 @@ export function FleetSteps({ band = false }: { band?: boolean }) {
           <p className="mt-4 text-[1.0625rem] text-foreground">You can also compare vehicle limits when booking online.</p>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

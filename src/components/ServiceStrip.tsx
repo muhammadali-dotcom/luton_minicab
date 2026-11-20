@@ -1,4 +1,5 @@
 import { CarFront, GraduationCap, Plane } from "lucide-react";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 const items = [
   { label: "Local journeys", Icon: CarFront },
@@ -8,7 +9,7 @@ const items = [
 
 export function ServiceStrip() {
   return (
-    <section aria-label="What we do" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+    <RevealSection aria-label="What we do" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
       <ul className="grid divide-y divide-border sm:grid-cols-3 sm:divide-y-0">
         {items.map(({ label, Icon }, i) => (
           <li
@@ -24,6 +25,6 @@ export function ServiceStrip() {
           </li>
         ))}
       </ul>
-    </section>
+    </RevealSection>
   );
 }

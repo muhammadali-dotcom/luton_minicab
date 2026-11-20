@@ -4,6 +4,8 @@ import { ArrowRight, Plane } from "lucide-react";
 import { airports } from "@/config/site";
 import { PopularRoutes } from "./PopularRoutes";
 import airportPhoto from "../../public/brand/airport-luton.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Photo for the featured Luton card. Without one, a plain panel with a plane shows.
 const photo: StaticImageData | undefined = airportPhoto;
@@ -14,19 +16,19 @@ const otherAirports = airports.filter((a) => a.slug !== "luton");
 
 export function Airports() {
   return (
-    <section aria-labelledby="airports-heading" className="border-t border-border py-16 sm:py-20">
+    <RevealSection aria-labelledby="airports-heading" className="border-t border-border py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div>
           <p className="flex items-center gap-4 text-sm font-semibold tracking-[0.2em] text-accent">
             AIRPORT JOURNEYS
             <span aria-hidden className="h-px w-16 bg-primary" />
           </p>
-          <h2
+          <SectionHeading
             id="airports-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance text-foreground"
           >
             Holidays start at your front door.
-          </h2>
+          </SectionHeading>
           <p className="mt-3 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
             Flying out or coming home, we&rsquo;ll be there at the right time, so you can relax.
           </p>
@@ -111,6 +113,6 @@ export function Airports() {
 
         <PopularRoutes className="mt-10" />
       </div>
-    </section>
+    </RevealSection>
   );
 }

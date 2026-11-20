@@ -54,6 +54,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en-GB" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <SiteSchema />
+        {/* Without JavaScript the text effect never runs, so show its headings as plain text. */}
+        <noscript>
+          <style>{".js-text-effect, .js-text-effect * { opacity: 1 !important; transform: none !important; }"}</style>
+        </noscript>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"

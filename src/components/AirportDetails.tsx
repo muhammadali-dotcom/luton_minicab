@@ -1,5 +1,7 @@
 import { Baby, Clock, PlaneLanding, PoundSterling, ShieldCheck } from "lucide-react";
-import { container, h2, section } from "./ui";
+import { container, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 const benefits = [
   { label: "DBS-checked drivers", Icon: ShieldCheck },
@@ -15,12 +17,12 @@ type Props = { name: string; facts: string[]; note: string; band?: boolean };
 // requirement.md; genuine reviews can join them here later.
 export function AirportDetails({ name, facts, note, band = false }: Props) {
   return (
-    <section aria-labelledby="details-heading" className={`border-t border-border ${section} ${band ? "band-alt" : ""}`}>
+    <RevealSection aria-labelledby="details-heading" className={`border-t border-border ${section} ${band ? "band-alt" : ""}`}>
       <div className={`${container} grid gap-10 lg:grid-cols-[7fr_5fr] lg:gap-14`}>
         <div>
-          <h2 id="details-heading" className={`${h2} text-foreground`}>
-            Good to know about {name} Airport
-          </h2>
+          <SectionHeading id="details-heading" className={`${h2} text-foreground`}>
+            {`Good to know about ${name} Airport`}
+          </SectionHeading>
           <ul className="mt-6 divide-y divide-border border-y border-border">
             {facts.map((fact) => (
               <li key={fact} className="py-4 text-[1.0625rem] leading-relaxed text-foreground">
@@ -42,6 +44,6 @@ export function AirportDetails({ name, facts, note, band = false }: Props) {
           </ul>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

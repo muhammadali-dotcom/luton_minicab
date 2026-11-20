@@ -9,6 +9,8 @@ import {
   PlaneTakeoff,
   ShieldCheck,
 } from "lucide-react";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 const reasons = [
   { title: "Clear fares", text: "You’ll know the price before you go.", Icon: BadgePoundSterling },
@@ -24,15 +26,15 @@ const talkClass =
 
 export function WhyTravel() {
   return (
-    <section aria-labelledby="why-heading" className="band-alt border-t border-border py-16 sm:py-20">
+    <RevealSection aria-labelledby="why-heading" className="band-alt border-t border-border py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <p className="text-sm font-semibold tracking-[0.2em] text-accent">WHY TRAVEL WITH US?</p>
-        <h2
+        <SectionHeading
           id="why-heading"
           className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance text-foreground"
         >
           Small things that make a big difference.
-        </h2>
+        </SectionHeading>
         <p className="mt-4 flex items-center gap-5 text-[1.125rem] text-foreground">
           <span aria-hidden className="h-0.5 w-16 shrink-0 bg-primary" />
           When you&rsquo;re travelling with family or catching a flight, details like these matter.
@@ -62,6 +64,6 @@ export function WhyTravel() {
           </Link>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

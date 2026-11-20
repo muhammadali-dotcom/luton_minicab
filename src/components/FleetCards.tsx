@@ -2,12 +2,14 @@ import Image from "next/image";
 import { ArrowRight, Briefcase, Luggage, Users } from "lucide-react";
 import { fleet } from "@/config/site";
 import { BookOnlineLink } from "./BookOnlineLink";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Pictures are category examples, not the real fleet. No capacities until the owner verifies them.
 export function FleetCards() {
   return (
-    <section
+    <RevealSection
       id="choose-your-car"
       aria-labelledby="fleet-cards-heading"
       className={`scroll-mt-20 band-alt border-t border-border ${section}`}
@@ -16,9 +18,9 @@ export function FleetCards() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className={`${eyebrow} text-accent`}>FIND YOUR FIT</p>
-            <h2 id="fleet-cards-heading" className={`${h2} mt-4 text-foreground`}>
+            <SectionHeading id="fleet-cards-heading" className={`${h2} mt-4 text-foreground`}>
               Meet our cars.
-            </h2>
+            </SectionHeading>
             <p className="mt-3 text-[1.125rem] text-foreground">
               From a simple saloon to room for seven, here’s what each one can carry.
             </p>
@@ -37,7 +39,8 @@ export function FleetCards() {
             <li
               key={id}
               id={id}
-              className="flex scroll-mt-28 flex-col border-b border-primary/70 py-8 sm:px-4 sm:first:pt-8 lg:px-6"
+              data-photo-card
+              className="group transition-[translate] duration-300 ease-out motion-safe:hover:-translate-y-1.5 flex scroll-mt-28 flex-col border-b border-primary/70 py-8 sm:px-4 sm:first:pt-8 lg:px-6"
             >
               <h3 className="flex items-baseline gap-3 font-display text-[1.75rem] font-semibold leading-tight text-foreground">
                 <span className="text-[1.375rem] text-accent">{String(i + 1).padStart(2, "0")}</span>
@@ -65,7 +68,7 @@ export function FleetCards() {
                   alt={`Example ${name.toLowerCase()} car.`}
                   fill
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-                  className="object-contain"
+                  className="object-contain transition-[scale] duration-500 ease-out motion-safe:group-hover:scale-105"
                 />
               </div>
               <div className="mt-4">
@@ -78,6 +81,6 @@ export function FleetCards() {
           Up to: luggage space depends on bag sizes. Vehicle models may vary.
         </p>
       </div>
-    </section>
+    </RevealSection>
   );
 }

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, MapPin, MessageCircle, Phone } from "lucide-react";
 import { areaPlaces, areas, site } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // The six local areas, with their location lines from `areaPlaces` in site.ts.
 const localSlugs = ["luton", "leagrave", "stopsley", "dunstable", "houghton-regis", "harpenden"];
@@ -55,12 +57,12 @@ export function LocalAreaCards({
   contact = false,
 }: Props) {
   return (
-    <section aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id="local-areas-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id="local-areas-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -117,6 +119,6 @@ export function LocalAreaCards({
           </Link>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

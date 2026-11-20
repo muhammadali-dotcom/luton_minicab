@@ -6,7 +6,9 @@ import { LocalAreaCards } from "./LocalAreaCards";
 import { Reassurances } from "./Reassurances";
 import { ServiceHero } from "./ServiceHero";
 import { StationHotelJourneys } from "./StationHotelJourneys";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Stations are plain destinations; no train tracking (only flight tracking is confirmed),
 // no hotel names (no implied partnerships), no luggage capacities on this page.
@@ -25,12 +27,12 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
 
       <StationHotelJourneys />
 
-      <section aria-labelledby="stations-heading" className={`border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="stations-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>STATIONS NEAR YOU</p>
-          <h2 id="stations-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="stations-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             The stations around Luton.
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">Rides to and from the stations around Luton.</p>
           <ul className="mt-10 grid gap-4 md:grid-cols-3 lg:gap-5">
             {stations.map(({ name: station, place }) => (
@@ -53,7 +55,7 @@ export function StationHotelPage({ name, detail }: { name: string; detail: Servi
             <ArrowRight aria-hidden size={18} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
-      </section>
+      </RevealSection>
 
       <Reassurances
         id="hotels-heading"

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, Briefcase, CarFront, GraduationCap, Plane, Route, TrainFront, type LucideIcon } from "lucide-react";
 import { serviceDetails } from "@/config/serviceDetails";
 import airportPhoto from "../../public/brand/airport-luton.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type ServiceCard = {
   title: string;
@@ -77,7 +79,7 @@ const talkClass =
 
 export function Services() {
   return (
-    <section aria-labelledby="services-heading" className="band-alt border-t border-border py-16 sm:py-20">
+    <RevealSection aria-labelledby="services-heading" className="band-alt border-t border-border py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="text-center">
           <p className="flex items-center justify-center gap-4 text-sm font-semibold tracking-[0.2em] text-accent">
@@ -85,12 +87,12 @@ export function Services() {
             OUR SERVICES
             <span aria-hidden className="h-0.5 w-12 bg-primary" />
           </p>
-          <h2
+          <SectionHeading
             id="services-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-balance text-foreground"
           >
             The journeys that matter to you.
-          </h2>
+          </SectionHeading>
           <p className="mx-auto mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
             From the school gate to the departure gate, there’s a car ready when you need one.
           </p>
@@ -98,15 +100,15 @@ export function Services() {
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map(({ title, text, href, Icon, image, imageAlt, imagePosition }) => (
-            <li key={title} className="flex flex-col overflow-hidden rounded-control border border-border bg-paper">
-              <div className="relative aspect-[3/2] bg-alt">
+            <li key={title} data-photo-card className="group transition-[translate,box-shadow,border-color] duration-300 ease-out motion-safe:hover:-translate-y-1.5 hover:shadow-lg hover:shadow-foreground/10 hover:border-foreground flex flex-col overflow-hidden rounded-control border border-border bg-paper">
+              <div className="relative aspect-[3/2] overflow-hidden bg-alt">
                 {image ? (
                   <Image
                     src={image}
                     alt={imageAlt ?? ""}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className={`object-cover ${imagePosition ?? ""}`}
+                    className={`object-cover transition-[scale] duration-500 ease-out motion-safe:group-hover:scale-105 ${imagePosition ?? ""}`}
                   />
                 ) : (
                   <div aria-hidden className="flex size-full items-center justify-center text-muted/60">
@@ -146,6 +148,6 @@ export function Services() {
           </Link>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

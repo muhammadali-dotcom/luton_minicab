@@ -5,9 +5,11 @@ import { BookingDetails } from "@/components/BookingDetails";
 import { Faq } from "@/components/Faq";
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
-import { container, eyebrow, h2, section } from "@/components/ui";
+import { container, eyebrow, h2, section } from "@/components/styles";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/services/station-hotel-transfers-hero.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
   title: "Luton Station Taxis: Luton, Parkway and Leagrave",
@@ -74,12 +76,12 @@ export default function Page() {
         trust={trustLocal}
       />
 
-      <section aria-labelledby="stations-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="stations-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>THREE STATIONS</p>
-          <h2 id="stations-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="stations-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             Which station suits you?
-          </h2>
+          </SectionHeading>
           <ul className="mt-10 grid gap-5 md:grid-cols-3">
             {stations.map(({ name, where, suits, area }) => (
               <li key={name} className="flex flex-col rounded-2xl border border-border bg-paper p-6 text-foreground">
@@ -103,14 +105,14 @@ export default function Page() {
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="pickup-heading" className={`border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="pickup-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>AT THE STATION</p>
-          <h2 id="pickup-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="pickup-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             How station pickups work.
-          </h2>
+          </SectionHeading>
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {[
               ["Share your train time", "Tell us your station and train time when you book."],
@@ -132,7 +134,7 @@ export default function Page() {
             <ArrowRight aria-hidden size={18} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
-      </section>
+      </RevealSection>
 
       <BookingDetails
         heading="Let’s plan your station transfer."

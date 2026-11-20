@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import type { AirportDetail } from "@/config/airportDetails";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
 import bags from "../../public/brand/luton-step-bags.png";
 import driver from "../../public/brand/luton-step-driver.png";
 import phone from "../../public/brand/luton-step-phone.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // `lead` is the space before each circle. On the first step it stays empty; on the
 // others it continues the gold line from the step before.
@@ -21,12 +23,12 @@ type Props = AirportDetail["meetDriver"] & { children?: ReactNode };
 
 export function AirportMeetDriver({ heading, subline, steps, children }: Props) {
   return (
-    <section aria-labelledby="meet-driver-heading" className={`band-alt border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="meet-driver-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>MEETING YOUR DRIVER</p>
-        <h2 id="meet-driver-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="meet-driver-heading" className={`${h2} mt-4 text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">{subline}</p>
 
         <ol className="mt-10 grid gap-8 lg:grid-cols-[34fr_39fr_27fr] lg:gap-0">
@@ -53,6 +55,6 @@ export function AirportMeetDriver({ heading, subline, steps, children }: Props) 
         </ol>
         {children}
       </div>
-    </section>
+    </RevealSection>
   );
 }

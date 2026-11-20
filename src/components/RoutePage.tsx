@@ -11,7 +11,9 @@ import streetHero from "../../public/brand/services/local-journeys-hero.png";
 import { BookingDetails } from "./BookingDetails";
 import { Faq } from "./Faq";
 import { PageHero, trustLocal } from "./PageHero";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // The same photos and fade as the airport pages; central London uses the wall-style street photo.
 const photoFade = "from-background/98 via-background/95 via-52% to-transparent to-66%";
@@ -80,12 +82,12 @@ export function RoutePage({ route }: { route: RouteDetail }) {
         trust={trustLocal}
       />
 
-      <section aria-labelledby="journey-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="journey-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>YOUR JOURNEY</p>
-          <h2 id="journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
-            {route.name}: what to expect.
-          </h2>
+          <SectionHeading id="journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+            {`${route.name}: what to expect.`}
+          </SectionHeading>
           <p className="mt-3 max-w-2xl text-[1.125rem] text-foreground">{route.journeyNote}</p>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {facts.map(({ title, text, Icon }) => (
@@ -99,14 +101,14 @@ export function RoutePage({ route }: { route: RouteDetail }) {
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="tips-heading" className={`border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="tips-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>GOOD TO KNOW</p>
-          <h2 id="tips-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="tips-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             A few things worth knowing.
-          </h2>
+          </SectionHeading>
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {route.tips.map(({ title, text }, i) => (
               <li key={title} className="border-t-2 border-primary pt-5 text-foreground">
@@ -123,7 +125,7 @@ export function RoutePage({ route }: { route: RouteDetail }) {
             </Link>
           )}
         </div>
-      </section>
+      </RevealSection>
 
       <BookingDetails
         heading={`Let’s plan your ${route.name} journey.`}

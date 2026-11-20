@@ -1,10 +1,12 @@
 import { BookOnlineLink } from "./BookOnlineLink";
 import { CallToBook } from "./CallToBook";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Closing booking banner. Rendered once in the root layout, so it appears on every page.
 export function FinalCta() {
   return (
-    <section
+    <RevealSection
       aria-labelledby="cta-heading"
       className="relative overflow-hidden bg-foreground py-10 [--color-ring:var(--color-primary)] sm:py-12"
     >
@@ -35,13 +37,13 @@ export function FinalCta() {
           <circle cx="108" cy="17" r="5" fill="var(--color-primary)" />
         </svg>
         <p className="mt-3 text-sm font-medium tracking-[0.3em] text-paper">HERE WHEN YOU NEED US</p>
-        <h2
+        <SectionHeading
           id="cta-heading"
           className="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-paper"
         >
           <span className="block">Wherever you&rsquo;re heading next,</span>
           <span className="block">we&rsquo;ll be ready when you are.</span>
-        </h2>
+        </SectionHeading>
         <p className="mt-3 max-w-2xl text-[1.0625rem] leading-snug text-paper">
           Book online in a few minutes, or call us, day or night.
         </p>
@@ -50,6 +52,6 @@ export function FinalCta() {
           <CallToBook onDark />
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

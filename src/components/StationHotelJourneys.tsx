@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { CalendarDays } from "lucide-react";
 import scene from "../../public/brand/station-hotel-scene.png";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // From the owner's reference (assets/brand/station-hotel-journeys-reference.png): the street
 // scene is cropped from it, with the car's grille emblem retouched out and the open background
@@ -23,12 +25,12 @@ const journeys = [
 
 export function StationHotelJourneys() {
   return (
-    <section aria-labelledby="stations-hotels-heading" className={`band-alt border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="stations-hotels-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>STATIONS &amp; HOTELS</p>
-        <h2 id="stations-hotels-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id="stations-hotels-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           Off the train and on your way.
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">
           Rides to and from stations and hotels, arranged around your plans.
         </p>
@@ -57,6 +59,6 @@ export function StationHotelJourneys() {
           Allow time for your connection and include any luggage when choosing your vehicle.
         </p>
       </div>
-    </section>
+    </RevealSection>
   );
 }

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, type LucideIcon } from "lucide-react";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type Item = { title: string; text: string; Icon: LucideIcon; link?: { label: string; href: string } };
 type Props = {
@@ -20,12 +22,12 @@ const h3 = "font-display text-[1.375rem] font-semibold leading-tight text-foregr
 // Icon reassurances in a grid, with an optional side card.
 export function Reassurances({ id, label, heading, items, card, band = false }: Props) {
   return (
-    <section aria-labelledby={id} className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
+    <RevealSection aria-labelledby={id} className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id={id} className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id={id} className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_20rem] lg:gap-12">
           <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
             {items.map(({ title, text, Icon, link }) => (
@@ -60,6 +62,6 @@ export function Reassurances({ id, label, heading, items, card, band = false }: 
           )}
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

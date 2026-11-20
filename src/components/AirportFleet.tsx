@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { fleet } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Images come from `fleet`; they illustrate categories, not guaranteed models.
 const carImage = (name: string) => `/brand/${fleet.find((v) => v.name === name)?.image}`;
@@ -33,26 +35,26 @@ const choices = [
 
 export function AirportFleet({ band = false }: { band?: boolean }) {
   return (
-    <section aria-labelledby="fleet-heading" className={`border-t border-border ${section} ${band ? "band-alt" : ""}`}>
+    <RevealSection aria-labelledby="fleet-heading" className={`border-t border-border ${section} ${band ? "band-alt" : ""}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>TRAVEL YOUR WAY</p>
-        <h2 id="fleet-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="fleet-heading" className={`${h2} mt-4 text-foreground`}>
           Room for everyone, and every bag.
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">
           Travelling light, with the family, or with a boot full of holiday cases? Choose the car that fits.
         </p>
 
         <ul className="mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
           {choices.map(({ car, alt, title, text, vehicles }) => (
-            <li key={title} className="flex flex-col">
+            <li key={title} data-photo-card className="group transition-[translate] duration-300 ease-out motion-safe:hover:-translate-y-1.5 flex flex-col">
               <div className="relative mx-auto aspect-[2/1] w-full max-w-md">
                 <Image
                   src={carImage(car)}
                   alt={alt}
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-contain object-bottom"
+                  className="object-contain object-bottom transition-[scale] duration-500 ease-out motion-safe:group-hover:scale-105"
                 />
               </div>
               <h3 className="mt-5 font-display text-[clamp(1.75rem,2.6vw,2.25rem)] font-semibold leading-tight text-foreground">
@@ -74,6 +76,6 @@ export function AirportFleet({ band = false }: { band?: boolean }) {
         </Link>
         <p className="mt-3 text-[1.0625rem] text-foreground">Choose your vehicle when booking.</p>
       </div>
-    </section>
+    </RevealSection>
   );
 }

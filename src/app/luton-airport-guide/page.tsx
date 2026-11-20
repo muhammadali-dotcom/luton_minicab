@@ -5,9 +5,11 @@ import { BookingDetails } from "@/components/BookingDetails";
 import { Faq } from "@/components/Faq";
 import { PageHero, trustAirport } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
-import { container, eyebrow, h2, section } from "@/components/ui";
+import { container, eyebrow, h2, section } from "@/components/styles";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-terminal-hero.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
   title: "Luton Airport Guide: Drop-off, Pickup and Taxis",
@@ -82,12 +84,12 @@ export default function Page() {
         trust={trustAirport}
       />
 
-      <section aria-labelledby="dropoff-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="dropoff-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>DROPPING OFF</p>
-          <h2 id="dropoff-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="dropoff-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             Where taxis drop you off.
-          </h2>
+          </SectionHeading>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2">
             {dropOff.map(({ title, text, Icon }) => (
               <li key={title} className="flex gap-4 rounded-2xl border border-border bg-paper p-6 text-foreground">
@@ -103,15 +105,15 @@ export default function Page() {
           </ul>
           <p className="mt-6 text-base text-foreground">{checked}</p>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="timing-heading" className={`border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="timing-heading" className={`border-t border-border ${section}`}>
         <div className={`${container} grid gap-10 lg:grid-cols-2 lg:gap-14`}>
           <div>
             <p className={`${eyebrow} text-accent`}>TIMING</p>
-            <h2 id="timing-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+            <SectionHeading id="timing-heading" className={`${h2} mt-4 text-balance text-foreground`}>
               Arrive with time to spare.
-            </h2>
+            </SectionHeading>
             <p className="mt-4 flex items-start gap-3 text-[1.125rem] leading-relaxed text-foreground">
               <Clock aria-hidden size={24} strokeWidth={1.5} className="mt-1 shrink-0" />
               The airport suggests arriving 2 to 3 hours before your flight, to get through check-in and security. Share your flight
@@ -120,7 +122,7 @@ export default function Page() {
           </div>
           <div>
             <p className={`${eyebrow} text-accent`}>LANDING</p>
-            <h2 className={`${h2} mt-4 text-balance text-foreground`}>Meeting your driver.</h2>
+            <SectionHeading className={`${h2} mt-4 text-balance text-foreground`}>Meeting your driver.</SectionHeading>
             <p className="mt-4 flex items-start gap-3 text-[1.125rem] leading-relaxed text-foreground">
               <ParkingCircle aria-hidden size={24} strokeWidth={1.5} className="mt-1 shrink-0" />
               We track your flight. Collect your bags, check the meeting point in your booking confirmation, then head there. Keep your
@@ -135,7 +137,7 @@ export default function Page() {
             </Link>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       <BookingDetails
         heading="Let’s plan your Luton Airport journey."

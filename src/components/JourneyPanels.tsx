@@ -1,6 +1,8 @@
 import Image, { type StaticImageData } from "next/image";
 import type { LucideIcon } from "lucide-react";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type Panel = {
   label: string;
@@ -19,12 +21,12 @@ type Props = { id: string; label: string; heading: string; panels: [Panel, Panel
 // Two journeys side by side with a divider from md (School Runs, Corporate Travel, ...).
 export function JourneyPanels({ id, label, heading, panels, note }: Props) {
   return (
-    <section aria-labelledby={id} className={`band-alt border-t border-border ${section}`}>
+    <RevealSection aria-labelledby={id} className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id={id} className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id={id} className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-0">
           {panels.map(({ label: panelLabel, title, text, image, Icon, decoration }, i) => (
             <article key={title} className={i === 1 ? "md:border-l md:border-border md:pl-8 lg:pl-10" : "md:pr-8 lg:pr-10"}>
@@ -50,6 +52,6 @@ export function JourneyPanels({ id, label, heading, panels, note }: Props) {
         </div>
         {note && <p className="mt-10 text-center text-[1.125rem] text-foreground">{note}</p>}
       </div>
-    </section>
+    </RevealSection>
   );
 }

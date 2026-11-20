@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { Minus, Plus } from "lucide-react";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Answers stick to confirmed facts; the change-booking answer adds no policy terms.
 const homepageFaqs = [
@@ -50,7 +52,7 @@ const contactClass = "inline-flex min-h-[44px] items-center underline decoration
 
 export function Faq({ items = homepageFaqs, band = false, children, heading = "Got a question?", text = "Here are the answers people ask us most.", contactLink = true, schema = true }: Props) {
   return (
-    <section id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border bg-alt py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
+    <RevealSection id="faqs" aria-labelledby="faq-heading" className={`scroll-mt-24 border-t border-border bg-alt py-16 sm:py-20 ${band ? "band-alt" : ""}`}>
       {schema && (
         <script
           type="application/ld+json"
@@ -66,12 +68,12 @@ export function Faq({ items = homepageFaqs, band = false, children, heading = "G
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <p className="text-sm font-semibold tracking-[0.2em] text-accent">FAQS</p>
-          <h2
+          <SectionHeading
             id="faq-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground"
           >
             {heading}
-          </h2>
+          </SectionHeading>
           <p className="mt-2 text-[1.125rem] text-foreground">{text}</p>
 
           <div className="mt-8 space-y-3">
@@ -100,6 +102,6 @@ export function Faq({ items = homepageFaqs, band = false, children, heading = "G
         </div>
         {children}
       </div>
-    </section>
+    </RevealSection>
   );
 }

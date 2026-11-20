@@ -11,12 +11,14 @@ import {
   Phone,
 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { container, eyebrow, h2, section } from "@/components/ui";
+import { container, eyebrow, h2, section } from "@/components/styles";
 import { areas, site } from "@/config/site";
 import heroIllustration from "../../../public/brand/about-hero.png";
 import whatIllustration from "../../../public/brand/about-what.png";
 import { pageMetadata } from "@/config/seo";
 import whoIllustration from "../../../public/brand/about-who.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
   title: "About Us",
@@ -111,7 +113,7 @@ export default function Page() {
       />
 
       {/* From the owner's reference (assets/brand/about-who-reference.png); the caption is real text. */}
-      <section
+      <RevealSection
         aria-labelledby="who-heading"
         className={`band-alt border-t border-border ${section}`}
       >
@@ -123,9 +125,9 @@ export default function Page() {
               WHO WE ARE
               <span aria-hidden className="h-px w-16 bg-primary" />
             </p>
-            <h2 id="who-heading" className={`${h2} mt-4 text-foreground`}>
+            <SectionHeading id="who-heading" className={`${h2} mt-4 text-foreground`}>
               A local service with a team you can reach.
-            </h2>
+            </SectionHeading>
             <p className="mt-5 text-[1.125rem] leading-relaxed text-foreground">
               Luton Minicab is a separate business providing local journeys, school runs, airport transfers and longer trips. Our booking team is based in Mill Hill, north London.
             </p>
@@ -183,18 +185,18 @@ export default function Page() {
             </figcaption>
           </figure>
         </div>
-      </section>
+      </RevealSection>
 
       {/* From the owner's reference (assets/brand/about-what-reference.png; the hotel sign re-lettered). */}
-      <section
+      <RevealSection
         aria-labelledby="what-heading"
         className={`border-t border-border ${section}`}
       >
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>WHAT WE DO</p>
-          <h2 id="what-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+          <SectionHeading id="what-heading" className={`${h2} mt-4 text-balance text-foreground`}>
             Here for every part of your day.
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">
             From the morning school run to the late train home.
           </p>
@@ -229,19 +231,19 @@ export default function Page() {
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
 
       {/* From the owner's reference. Tones are swapped from the reference (this one dark, the next light)
           so the page keeps alternating. */}
-      <section
+      <RevealSection
         aria-labelledby="help-heading"
         className={`band-alt border-t border-border ${section}`}
       >
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>HERE TO HELP</p>
-          <h2 id="help-heading" className={`${h2} mt-4 text-foreground`}>
+          <SectionHeading id="help-heading" className={`${h2} mt-4 text-foreground`}>
             A little help with your journey.
-          </h2>
+          </SectionHeading>
           <ul className="mt-10 grid md:grid-cols-3">
             {help.map(({ title, text, link, Icon }, i) => (
               <li
@@ -275,9 +277,9 @@ export default function Page() {
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
 
-      <section
+      <RevealSection
         aria-labelledby="where-heading"
         className={`border-t border-border ${section}`}
       >
@@ -286,9 +288,9 @@ export default function Page() {
         >
           <div>
             <p className={`${eyebrow} text-accent`}>AROUND LUTON</p>
-            <h2 id="where-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+            <SectionHeading id="where-heading" className={`${h2} mt-4 text-balance text-foreground`}>
               Your neighbourhood, and the towns around it.
-            </h2>
+            </SectionHeading>
             <p className="mt-4 text-[1.125rem] text-foreground">
               Explore the places we cover around Luton.
             </p>
@@ -327,7 +329,7 @@ export default function Page() {
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
     </main>
   );
 }

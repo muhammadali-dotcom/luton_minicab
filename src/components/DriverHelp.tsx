@@ -1,5 +1,6 @@
 import { MessageCircle, Phone } from "lucide-react";
 import { site } from "@/config/site";
+import { RevealArea } from "@/components/ui/reveal-section";
 
 const buttonClass =
   "inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-control px-6 text-base font-semibold transition-colors";
@@ -10,7 +11,7 @@ type Props = { text: string; heading?: string; headingId?: string; level?: "h2" 
 export function DriverHelp({ text, heading = "Can’t find your driver?", headingId, level = "h3", divider = true }: Props) {
   const Heading = level;
   return (
-    <div
+    <RevealArea
       className={`flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between ${divider ? "mt-10 border-t border-primary/60 pt-8" : ""}`}
     >
       <div>
@@ -39,6 +40,6 @@ export function DriverHelp({ text, heading = "Can’t find your driver?", headin
           </a>
         )}
       </div>
-    </div>
+    </RevealArea>
   );
 }

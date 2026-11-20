@@ -1,7 +1,9 @@
 import type { LucideIcon } from "lucide-react";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { ContactButtons } from "./LocalAreaCards";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type Props = {
   heading: string;
@@ -24,12 +26,12 @@ export function BookingDetails({
   band = true,
 }: Props) {
   return (
-    <section aria-labelledby="book-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="book-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>HOW TO BOOK</p>
-        <h2 id="book-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id="book-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>
         <ul className="mt-8 grid md:grid-cols-2 md:gap-x-12">
           {details.map(({ title, text: line, Icon }, i) => (
@@ -59,6 +61,6 @@ export function BookingDetails({
           </div>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

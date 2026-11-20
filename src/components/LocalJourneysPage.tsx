@@ -4,8 +4,10 @@ import { ArrowRight, MapPin } from "lucide-react";
 import type { ServiceDetail } from "@/config/serviceDetails";
 import { LocalAreaCards } from "./LocalAreaCards";
 import { ServiceHero } from "./ServiceHero";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
 import everydayStreet from "../../public/brand/local-journeys-everyday.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // Place examples are plain public names, used only as destinations (owner to confirm).
 const everyday = [
@@ -43,12 +45,12 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
     <main id="main" className="flex-1">
       <ServiceHero name={name} detail={detail} />
 
-      <section aria-labelledby="everyday-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="everyday-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>EVERYDAY JOURNEYS</p>
-          <h2 id="everyday-heading" className={`${h2} mt-4 text-foreground`}>
+          <SectionHeading id="everyday-heading" className={`${h2} mt-4 text-foreground`}>
             The trips that make up your week.
-          </h2>
+          </SectionHeading>
           {/* The owner's street illustration; its background is matched to the band-alt cream. */}
           <Image
             src={everydayStreet}
@@ -102,7 +104,7 @@ export function LocalJourneysPage({ name, detail }: { name: string; detail: Serv
             ))}
           </nav>
         </div>
-      </section>
+      </RevealSection>
 
       <LocalAreaCards contact />
     </main>

@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CarFront, MapPin, MessageCircle, Plane, TrainFront } from "lucide-react";
 import { PageHero, trustLocal } from "@/components/PageHero";
-import { container, eyebrow, h2, section } from "@/components/ui";
+import { container, eyebrow, h2, section } from "@/components/styles";
 import { additionalAreas, areas } from "@/config/site";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/areas-overview-hero.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
   title: "Areas We Cover",
@@ -39,11 +41,11 @@ export default function Page() {
         text="From your front door to your next stop, we cover Luton and nearby towns, plus Mill Hill, Hounslow and Heathrow."
         trust={trustLocal}
       />
-      <section aria-labelledby="areas-list-heading" className="band-alt border-t border-border py-16 sm:py-20">
+      <RevealSection aria-labelledby="areas-list-heading" className="band-alt border-t border-border py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-          <h2 id="areas-list-heading" className={`${h2} text-foreground`}>
+          <SectionHeading id="areas-list-heading" className={`${h2} text-foreground`}>
             Find your area
-          </h2>
+          </SectionHeading>
           <ul className="mt-8 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
             {areas.map((a) => (
               <li key={a.slug}>
@@ -61,11 +63,11 @@ export default function Page() {
             ))}
           </ul>
         </div>
-      </section>
-      <section aria-labelledby="area-journeys-heading" className={`border-t border-border ${section}`}>
+      </RevealSection>
+      <RevealSection aria-labelledby="area-journeys-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>JOURNEYS FROM YOUR AREA</p>
-          <h2 id="area-journeys-heading" className={`${h2} mt-4 text-foreground`}>Where are you heading?</h2>
+          <SectionHeading id="area-journeys-heading" className={`${h2} mt-4 text-foreground`}>Where are you heading?</SectionHeading>
           <p className="mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
             Choose the service that fits your journey, from everyday trips to station pickups and airport transfers.
           </p>
@@ -86,12 +88,12 @@ export default function Page() {
             ))}
           </ul>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="other-areas-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="other-areas-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <p className={`${eyebrow} text-accent`}>MORE PICKUP LOCATIONS</p>
-          <h2 id="other-areas-heading" className={`${h2} mt-4 text-balance text-foreground`}>A few more places we pick up.</h2>
+          <SectionHeading id="other-areas-heading" className={`${h2} mt-4 text-balance text-foreground`}>A few more places we pick up.</SectionHeading>
           <p className="mt-4 max-w-2xl text-[1.125rem] leading-relaxed text-foreground">
             We also arrange pickups in these areas around Luton, Mill Hill, Hounslow and Heathrow.
           </p>
@@ -124,7 +126,7 @@ export default function Page() {
             </Link>
           </div>
         </div>
-      </section>
+      </RevealSection>
     </main>
   );
 }

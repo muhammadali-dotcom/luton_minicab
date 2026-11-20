@@ -1,16 +1,18 @@
 import { fleet } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // The six cars side by side. A real table, so people and search engines can compare capacities.
 // Figures confirmed by the owner (November 2026), shown as "up to".
 export function FleetCompare() {
   return (
-    <section aria-labelledby="fleet-compare-heading" className={`border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="fleet-compare-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>SIDE BY SIDE</p>
-        <h2 id="fleet-compare-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="fleet-compare-heading" className={`${h2} mt-4 text-foreground`}>
           Compare our cars
-        </h2>
+        </SectionHeading>
         <div className="mt-8 overflow-x-auto rounded-2xl border border-border bg-paper">
           <table className="w-full min-w-[18rem] text-left text-base sm:text-[1.0625rem] text-foreground">
             <caption className="sr-only">Passengers and luggage for each car, up to the numbers shown</caption>
@@ -48,6 +50,6 @@ export function FleetCompare() {
           Up to. Luggage space depends on bag sizes. Tell us what you’re bringing when you book.
         </p>
       </div>
-    </section>
+    </RevealSection>
   );
 }

@@ -3,7 +3,9 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import type { AirportDetail } from "@/config/airportDetails";
 import { DriverHelp } from "./DriverHelp";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type Guide = NonNullable<AirportDetail["guide"]>;
 
@@ -45,12 +47,12 @@ export function AirportGuide({ guide }: { guide: Guide }) {
   }
 
   return (
-    <section aria-labelledby="guide-heading" className={`border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="guide-heading" className={`border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id="guide-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="guide-heading" className={`${h2} mt-4 text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">{subline}</p>
 
         {/* Green panel, so the focus ring switches to gold. */}
@@ -105,6 +107,6 @@ export function AirportGuide({ guide }: { guide: Guide }) {
 
         <DriverHelp text="Call or WhatsApp us with your booking name, terminal and where you are." />
       </div>
-    </section>
+    </RevealSection>
   );
 }

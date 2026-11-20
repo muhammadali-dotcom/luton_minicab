@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { areas } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 const localSlugs = ["luton", "leagrave", "stopsley", "dunstable", "houghton-regis", "harpenden"];
 const localAreas = areas.filter((a) => localSlugs.includes(a.slug));
@@ -16,12 +18,12 @@ export function AirportLocalAreas({
   band = true,
 }: Props) {
   return (
-    <section aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="local-areas-heading" className={`${band ? "band-alt " : ""}border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id="local-areas-heading" className={`${h2} mt-4 text-foreground`}>
+        <SectionHeading id="local-areas-heading" className={`${h2} mt-4 text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>
         <ul className="mt-8 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
           {localAreas.map(({ slug, name }) => (
@@ -50,6 +52,6 @@ export function AirportLocalAreas({
           <ArrowRight aria-hidden size={18} />
         </Link>
       </div>
-    </section>
+    </RevealSection>
   );
 }

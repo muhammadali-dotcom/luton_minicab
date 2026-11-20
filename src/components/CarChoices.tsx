@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Briefcase, Luggage, Users } from "lucide-react";
 import { fleet } from "@/config/site";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 type Props = {
   id: string;
@@ -18,12 +20,12 @@ type Props = {
 export function CarChoices({ id, label, heading, text, cars }: Props) {
   const chosen = cars.map((carId) => fleet.find((car) => car.id === carId)).filter((car) => car !== undefined);
   return (
-    <section aria-labelledby={id} className={`border-t border-border ${section}`}>
+    <RevealSection aria-labelledby={id} className={`border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>{label}</p>
-        <h2 id={id} className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id={id} className={`${h2} mt-4 text-balance text-foreground`}>
           {heading}
-        </h2>
+        </SectionHeading>
         {text && <p className="mt-3 text-[1.125rem] text-foreground">{text}</p>}
         <ul className="mt-10 grid gap-4 md:grid-cols-3 lg:gap-5">
           {chosen.map(({ id: carId, name, tagline, image, capacity }) => (
@@ -81,6 +83,6 @@ export function CarChoices({ id, label, heading, text, cars }: Props) {
           </Link>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

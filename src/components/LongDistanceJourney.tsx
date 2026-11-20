@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, DoorOpen, Route } from "lucide-react";
 import scene from "../../public/brand/long-distance-scene.png";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // From the owner's reference (assets/brand/long-distance-journey-reference.png): the country
 // scene is cropped from it, with the car's grille emblem and bonnet ornament retouched out and
@@ -22,12 +24,12 @@ const columns = [
 
 export function LongDistanceJourney() {
   return (
-    <section aria-labelledby="longer-journey-heading" className={`band-alt border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="longer-journey-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>THE LONGER JOURNEY</p>
-        <h2 id="longer-journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id="longer-journey-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           Visiting family, or a weekend away?
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">
           From your pickup address to your destination, with a return journey if you need one.
         </p>
@@ -71,6 +73,6 @@ export function LongDistanceJourney() {
           </span>
         </p>
       </div>
-    </section>
+    </RevealSection>
   );
 }

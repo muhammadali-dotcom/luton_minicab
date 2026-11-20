@@ -67,7 +67,7 @@ Keep headings short; one or two lines is ideal.
   - Secondary (cream with green outline): **Call to Book**.
   - Text links (green, gold underline on hover): "Book this journey →".
 - **Header:** the logo on the left (64px tall on mobile, 80px on desktop; the header is 80px or 96px tall so the stacked lettering stays legible) and the nav plus Book Online on the right. It's transparent at the top and turns deeper cream with a hairline once scrolled. On mobile, a menu button opens a full-width panel.
-- **Motion:** none beyond small hover and colour transitions. Respect reduced-motion settings.
+- **Motion:** small hover and colour transitions, plus headings (hero h1 and section h2) whose words slide up one by one each time they scroll into view (`SectionHeading`, see CLAUDE.md). Hero headings animate the same way, and the line under them fades up just after; hero eyebrows and buttons and all photos never animate. Below the hero, every other part of a section (eyebrows, intro lines, cards, lists, buttons, notes) fades up 16px as it scrolls into view, cards 80ms apart, replaying in both directions; photo cards animate their text only. Respect reduced-motion settings.
 - **Mobile:**
   - stack everything
   - tap targets of 44px or more
@@ -108,7 +108,7 @@ Keep headings short; one or two lines is ideal.
 - **Bottom bar:** copyright and "Powered by MyCabify" on the left; legal links and a circular back-to-top on the right.
 
 ## 4h. Page standard (all pages)
-Every page uses **`PageHero`** (`src/components/PageHero.tsx`) and the class constants in **`src/components/ui.ts`**.
+Every page uses **`PageHero`** (`src/components/PageHero.tsx`) and the class constants in **`src/components/styles.ts`**.
 
 - **Hero order:** EYEBROW (where or what) → emotional headline → one plain sentence → **Book Online →** + **Call to Book** (large) → trust row.
   - Holding pages and the 404 use one button instead.

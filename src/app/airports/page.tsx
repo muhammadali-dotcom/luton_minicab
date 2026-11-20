@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AirportCards } from "@/components/AirportCards";
 import { PageHero, trustLocal } from "@/components/PageHero";
-import { container, h2, section } from "@/components/ui";
+import { container, h2, section } from "@/components/styles";
 import { regionalAirports } from "@/config/site";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-hero.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
   title: "Airport Transfers",
@@ -32,11 +34,11 @@ export default function Page() {
       <AirportCards />
 
       {/* No flight tracking, meet and greet, price or journey-time promises for these airports. */}
-      <section id="other-airports" aria-labelledby="other-airports-heading" className={`border-t border-border ${section}`}>
+      <RevealSection id="other-airports" aria-labelledby="other-airports-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
-          <h2 id="other-airports-heading" className={`${h2} text-balance`}>
+          <SectionHeading id="other-airports-heading" className={`${h2} text-balance`}>
             Flying from somewhere else?
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">Tell us where you’re starting, where you’re going, the date and who’s travelling, and we’ll help you plan it.</p>
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {regionalAirports.map(({ region, airports: regional }) => (
@@ -62,7 +64,7 @@ export default function Page() {
           </Link>
           <PopularRoutes className="mt-12" />
         </div>
-      </section>
+      </RevealSection>
     </main>
   );
 }

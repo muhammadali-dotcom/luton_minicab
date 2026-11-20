@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { areas } from "@/config/site";
 import illustration from "../../public/brand/areas-illustration.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 
 const askClass =
@@ -10,16 +12,16 @@ const askClass =
 
 export function Areas() {
   return (
-    <section aria-labelledby="areas-heading" className="band-alt border-t border-border py-16 sm:py-20">
+    <RevealSection aria-labelledby="areas-heading" className="band-alt border-t border-border py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[5fr_7fr] lg:gap-14 lg:px-10">
         <div>
           <p className="text-sm font-semibold tracking-[0.2em] text-accent">AREAS WE COVER</p>
-          <h2
+          <SectionHeading
             id="areas-heading"
             className="mt-4 font-display text-[clamp(1.875rem,3.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground"
           >
-            <span className="block">Close to home, wherever that is.</span>
-          </h2>
+            Close to home, wherever that is.
+          </SectionHeading>
           <p className="mt-4 max-w-md text-[1.125rem] leading-snug text-foreground">
             From your front door to your next stop, we cover Luton and nearby towns, plus Mill Hill, Hounslow and Heathrow.
           </p>
@@ -67,6 +69,6 @@ export function Areas() {
           </figcaption>
         </figure>
       </div>
-    </section>
+    </RevealSection>
   );
 }

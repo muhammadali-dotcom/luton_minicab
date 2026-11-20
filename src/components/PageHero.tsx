@@ -4,7 +4,9 @@ import type { ReactNode } from "react";
 import { ArrowDown, Clock, MessageCircle, Phone, PlaneLanding, PoundSterling, ShieldCheck, Handshake, type LucideIcon } from "lucide-react";
 import { BookOnlineLink } from "./BookOnlineLink";
 import { CallToBook } from "./CallToBook";
-import { container, eyebrow as eyebrowClass, h1, lead } from "./ui";
+import { container, eyebrow as eyebrowClass, h1, lead } from "./styles";
+import { SectionHeading } from "./SectionHeading";
+import { FadeInView } from "./ui/fade-in-view";
 
 type Trust = { label: string; Icon: LucideIcon };
 
@@ -129,7 +131,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
           {eyebrowInHeading ? (
             // One h1 holding both lines. The spans carry the same classes the separate eyebrow <p>
             // and h1 had, so nothing moves; the hidden colon makes it read "Luton Minicab: …".
-            <h1 id="page-heading" className="mx-auto max-w-4xl">
+            <SectionHeading as="h1" amount={0.3} id="page-heading" className="mx-auto max-w-4xl">
               <span className={`block ${eyebrowClass} uppercase text-foreground`}>
                 {eyebrow}
                 <span className="sr-only">: </span>
@@ -137,16 +139,16 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
               <span className={`mt-4 block text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
                 {heading}
               </span>
-            </h1>
+            </SectionHeading>
           ) : (
             <>
               <p className={`${eyebrowClass} text-foreground`}>{eyebrow}</p>
-              <h1 id="page-heading" className={`mx-auto mt-4 max-w-4xl text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
+              <SectionHeading as="h1" amount={0.3} id="page-heading" className={`mx-auto mt-4 max-w-4xl text-balance ${h1} lg:[@media(max-height:760px)]:mt-3 lg:[@media(max-height:760px)]:text-[clamp(2.25rem,3.6vw,3rem)]`}>
                 {heading}
-              </h1>
+              </SectionHeading>
             </>
           )}
-          <p className={`mx-auto mt-5 max-w-3xl ${lead} lg:[@media(max-height:760px)]:mt-3`}>
+          <FadeInView delay={0.35} className={`mx-auto mt-5 max-w-3xl ${lead} lg:[@media(max-height:760px)]:mt-3`}>
             {/* One sentence per line from lg, as in the reference. On short windows (760px or less)
                 the text block tightens so the buttons stay above the cars. */}
             {text.split(/(?<=\.) /).map((sentence) => (
@@ -154,7 +156,7 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
                 {sentence}{" "}
               </span>
             ))}
-          </p>
+          </FadeInView>
           <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:justify-center lg:[@media(max-height:760px)]:mt-5">
             <BookOnlineLink arrow size="lg" />
             <CallToBook size="lg" />
@@ -213,10 +215,12 @@ export function PageHero({ eyebrow, heading, text, trust, tone = "light", image,
         >
           <div className={`${illustration ? "max-w-3xl" : "max-w-xl"} ${textTone} ${centered && !image ? "mx-auto text-center" : ""}`}>
             <p className={`${eyebrowClass} ${dark ? "text-background" : "text-accent"}`}>{eyebrow}</p>
-            <h1 id="page-heading" className={`mt-4 ${h1}`}>
+            <SectionHeading as="h1" amount={0.3} id="page-heading" className={`mt-4 ${h1}`}>
               {heading}
-            </h1>
-            <p className={`mt-5 ${illustration ? "max-w-2xl" : "max-w-md"} ${lead} ${centered && !image ? "mx-auto" : ""}`}>{text}</p>
+            </SectionHeading>
+            <FadeInView delay={0.35} className={`mt-5 ${illustration ? "max-w-2xl" : "max-w-md"} ${lead} ${centered && !image ? "mx-auto" : ""}`}>
+              {text}
+            </FadeInView>
             {buttons && (
             <div className={`mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start ${centered && !image ? "sm:justify-center" : ""}`}>
               {action ? (

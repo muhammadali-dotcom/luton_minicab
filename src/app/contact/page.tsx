@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -9,15 +9,21 @@ import {
   MapPin,
   MessageCircle,
   Phone,
+  Plane,
+  Route,
+  UsersRound,
   type LucideIcon,
 } from "lucide-react";
 import { BookOnlineLink } from "@/components/BookOnlineLink";
 import { Faq } from "@/components/Faq";
 import { PageHero } from "@/components/PageHero";
-import { container, eyebrow, h2, section } from "@/components/ui";
+import { container, eyebrow, h2, section } from "@/components/styles";
 import { site } from "@/config/site";
 import { pageMetadata } from "@/config/seo";
 import officeIllustration from "../../../public/brand/contact-office.png";
+import journeyIllustration from "../../../public/brand/fleet-help.png";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
@@ -37,44 +43,63 @@ const office = {
 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.lines.join(", "))}`;
 const tel = site.phone ? `tel:${site.phone.replace(/\s+/g, "")}` : null;
 
-type Way = { title: string; text: string; href: string; Icon: LucideIcon; detail: ReactNode };
+type Way = {
+  title: string;
+  text: string;
+  action: string;
+  href: string;
+  Icon: LucideIcon;
+  detail?: string;
+  primary?: boolean;
+};
+
 // Each way shows only when its value is set in site.ts.
-const wayOptions: (Way | false | null | "")[] = [
-  tel && {
-    title: "Call us",
+const wayOptions: (Way | null | "")[] = [
+  tel && site.phone && {
+    title: "Call our team",
     text: "For bookings, changes or pickup help.",
+    action: "Call now",
     href: tel,
     Icon: Phone,
-    detail: <span className="font-semibold underline decoration-1 underline-offset-4">{site.phone}</span>,
+    detail: site.phone,
+    primary: true,
   },
   site.whatsapp && {
-    title: "Message on WhatsApp",
-    text: "Send your pickup, destination and any flight or train details.",
+    title: "Chat on WhatsApp",
+    text: "Send your pickup, destination and travel details.",
+    action: "WhatsApp us",
     href: `https://wa.me/${site.whatsapp}`,
     Icon: MessageCircle,
-    detail: (
-      <span className="inline-flex min-h-[44px] items-center gap-2 rounded-control border border-input px-5 font-semibold">
-        <MessageCircle aria-hidden size={18} strokeWidth={1.75} />
-        Chat with us
-      </span>
-    ),
   },
   site.email && {
-    title: "Email our team",
+    title: "Send an email",
     text: "For general enquiries and journey requests.",
+    action: "Email us",
     href: `mailto:${site.email}`,
     Icon: Mail,
-    detail: <span className="break-all font-semibold underline decoration-1 underline-offset-4">{site.email}</span>,
+    detail: site.email,
   },
 ];
-const ways = wayOptions.filter((w): w is Way => !!w);
-
-const steps = ["Choose your journey", "Add your details", "Confirm your booking"];
+const ways = wayOptions.filter((way): way is Way => !!way);
 
 const checklists = [
-  { title: "Journey", items: ["Pickup address", "Destination", "Date and time"] },
-  { title: "Flight or train", items: ["Flight or train number", "Terminal or station", "Any changes to your plans"] },
-  { title: "Passengers", items: ["Number of passengers", "Large cases and cabin bags", "Child seats or a return journey"] },
+  {
+    title: "Your journey",
+    note: "For every booking",
+    Icon: Route,
+    items: ["Pickup address", "Destination", "Date and pickup time", "Return journey, if needed"],
+  },
+  {
+    title: "People & luggage",
+    Icon: UsersRound,
+    items: ["Number of passengers", "Large cases and cabin bags", "Child seat requests", "Any extra requirements"],
+  },
+  {
+    title: "Flight or train details",
+    optional: true,
+    Icon: Plane,
+    items: ["Flight or train number", "Terminal or station", "Arrival or departure time"],
+  },
 ];
 
 const nextSteps = [
@@ -113,106 +138,130 @@ export default function Page() {
         eyebrow="CONTACT LUTON MINICAB"
         heading={
           <>
-            <span className="lg:block">Talk to our team, </span>
-            <span className="lg:block">day or night.</span>
+            <span className="lg:block">Your journey starts </span>
+            <span className="lg:block">with a conversation.</span>
           </>
         }
         text="Book online in a few minutes, or call or message us and we’ll plan your journey together."
         sideImage={{ image: officeIllustration, alt: "Illustration of a booking office on a quiet street." }}
       />
 
-      <section aria-labelledby="ways-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="ways-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className={`${eyebrow} text-accent`}>GET IN TOUCH</p>
-              <h2 id="ways-heading" className={`${h2} mt-4 text-foreground`}>
-                Ways to reach us
-              </h2>
-              <p className="mt-3 text-[1.125rem] text-foreground">Book a journey or speak to our team. We’re here 24/7.</p>
+              <SectionHeading id="ways-heading" className={`${h2} mt-4 text-foreground`}>
+                A real person. A simpler journey.
+              </SectionHeading>
+              <p className="mt-3 text-[1.125rem] text-foreground">Book a ride or speak to our team. We’re here to help.</p>
             </div>
-            <p className="inline-flex items-center gap-2 self-start rounded-full border border-foreground px-4 py-2 text-base font-semibold text-foreground sm:self-auto">
+            <p className="inline-flex items-center gap-2 shrink-0 self-start rounded-full border border-primary px-4 py-2 text-base font-semibold text-foreground">
               <span aria-hidden className="size-2.5 rounded-full bg-primary" />
               Available 24/7
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-            <div className="flex flex-col rounded-2xl bg-foreground p-6 text-background [--color-ring:var(--color-primary)] sm:p-8">
-              <h3 className="font-display text-[1.75rem] font-semibold leading-tight">Prefer to book yourself?</h3>
-              <p className="mt-2 text-[1.0625rem]">It only takes a few minutes online.</p>
-              <ol className="mt-6 divide-y divide-background/20">
-                {steps.map((step, i) => (
-                  <li key={step} className="flex items-center gap-4 py-4 text-[1.0625rem] font-semibold">
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-background/15">{i + 1}</span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-              <div className="mt-auto pt-6">
-                <BookOnlineLink arrow size="lg" className="w-full justify-center" />
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-paper p-4 sm:p-6">
-              <ul className="divide-y divide-border">
-                {ways.map(({ title, text, href, Icon, detail }) => (
-                  <li key={title}>
-                    <a href={href} className="group flex min-h-[44px] items-start gap-4 rounded-xl p-3 text-foreground transition-colors hover:bg-tint sm:p-4">
-                      <span className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-border bg-alt">
-                        <Icon aria-hidden size={22} strokeWidth={1.5} />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className={`block ${cardTitle}`}>{title}</span>
-                        <span className="mt-1 block text-base">{text}</span>
-                        <span className="mt-2 block text-[1.125rem]">{detail}</span>
-                      </span>
-                      <ArrowRight aria-hidden size={20} strokeWidth={1.75} className="mt-1 shrink-0 transition-transform group-hover:translate-x-1" />
+          {ways.length > 0 && (
+            <ul className="mt-10 grid gap-6 lg:grid-cols-3">
+              {ways.map(({ title, text, action, href, Icon, detail, primary }) => (
+                <li key={title} className="flex min-w-0 flex-col rounded-2xl border border-border bg-paper p-6">
+                  <span className="flex size-12 items-center justify-center rounded-full bg-tint">
+                    <Icon aria-hidden size={24} strokeWidth={1.75} />
+                  </span>
+                  <h3 className={`${cardTitle} mt-4`}>{title}</h3>
+                  <p className="mt-2 text-base text-pretty">{text}</p>
+                  {detail && <p className={`mt-4 font-semibold wrap-anywhere ${primary ? "text-2xl tabular-nums" : "text-lg"}`}>{detail}</p>}
+                  <div className="mt-auto pt-6">
+                    <a
+                      href={href}
+                      className={`flex min-h-[44px] w-full items-center justify-between gap-3 rounded-control border border-foreground px-4 py-2 text-base font-semibold ${primary ? "bg-foreground text-paper hover:opacity-90" : "text-foreground hover:bg-tint"}`}
+                    >
+                      {action}
+                      <ArrowRight aria-hidden size={20} strokeWidth={1.75} className="shrink-0" />
                     </a>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 flex items-start gap-3 rounded-xl bg-alt p-4 text-base text-foreground">
-                <Info aria-hidden size={20} strokeWidth={1.75} className="mt-0.5 shrink-0" />
-                Need help with an existing booking? Have your booking reference ready.
-              </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <p className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-paper p-4 text-base text-foreground">
+            <Info aria-hidden size={20} strokeWidth={1.75} className="shrink-0" />
+            <span><strong className="font-semibold">Already booked?</strong> Have your booking reference ready when you contact us.</span>
+          </p>
+
+          <div className="mt-6 flex flex-col gap-6 rounded-2xl bg-foreground p-6 text-paper [--color-ring:var(--color-primary)] sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div>
+              <h3 className="font-display text-2xl font-semibold text-balance">Prefer to book online?</h3>
+              <p className="mt-2 text-base">Choose your journey, add your details and confirm.</p>
             </div>
+            <BookOnlineLink arrow size="lg" className="w-full shrink-0 sm:w-auto" />
           </div>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="send-heading" className={`border-t border-border ${section}`}>
-        <div className={container}>
-          <p className={`${eyebrow} text-accent`}>BOOKING DETAILS</p>
-          <h2 id="send-heading" className={`${h2} mt-4 text-foreground`}>
-            What to send us
-          </h2>
-          <p className="mt-3 max-w-2xl text-[1.125rem] text-foreground">
-            The clearer your details, the quicker we can confirm the right journey, car and pickup.
-          </p>
-          <ul className="mt-10 grid gap-5 md:grid-cols-3">
-            {checklists.map(({ title, items }) => (
-              <li key={title} className="rounded-2xl border border-border bg-alt p-6 text-foreground">
-                <h3 className={cardTitle}>{title}</h3>
-                <ul className="mt-4 space-y-3 text-[1.0625rem]">
-                  {items.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check aria-hidden size={20} strokeWidth={2} className="mt-0.5 shrink-0 text-accent" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+      <RevealSection aria-labelledby="send-heading" className={`border-t border-border ${section}`}>
+        <div className={`${container} grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]`}>
+          <div>
+            <p className={`${eyebrow} text-accent`}>BEFORE YOU GET IN TOUCH</p>
+            <SectionHeading id="send-heading" className={`${h2} mt-4 text-foreground`}>
+              <span className="block">A few details. </span>
+              <span className="block">A smoother journey.</span>
+            </SectionHeading>
+            <p className="mt-4 text-[1.125rem] text-pretty text-foreground">
+              Have these ready when you call, email or message us.
+            </p>
+            <Image
+              src={journeyIllustration}
+              alt=""
+              sizes="(min-width: 1280px) 320px, (min-width: 1024px) 30vw, 1px"
+              className="mt-8 hidden h-auto w-full lg:block"
+            />
+          </div>
+
+          <div>
+            <ul className="grid gap-3 text-foreground">
+              {checklists.map(({ title, note, optional, Icon, items }) => (
+                <li key={title} className="grid gap-4 rounded-2xl border border-border bg-alt p-6 sm:grid-cols-2 sm:items-center sm:gap-6">
+                  <div className="flex items-center gap-4">
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-tint">
+                      <Icon aria-hidden size={24} strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <h3 className={`${cardTitle} text-balance`}>{title}</h3>
+                      {note && <p className="mt-1 text-base">{note}</p>}
+                      {optional && (
+                        <p className="mt-2 inline-block rounded-lg border border-accent px-2 py-0.5 text-sm font-medium text-accent">
+                          If applicable
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <ul className="space-y-2 text-base sm:border-l sm:border-border sm:pl-6">
+                    {items.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <Check aria-hidden size={18} strokeWidth={2} className="mt-0.5 shrink-0 text-accent" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 flex items-start gap-3 rounded-xl bg-primary/15 p-4 text-base text-foreground">
+              <Info aria-hidden size={20} strokeWidth={1.75} className="shrink-0 text-accent" />
+              <span><strong className="font-semibold">Already booked?</strong> Include your booking reference and tell us what has changed.</span>
+            </p>
+          </div>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="next-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="next-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={container}>
-          <h2 id="next-heading" className={`${h2} text-foreground`}>
+          <SectionHeading id="next-heading" className={`${h2} text-foreground`}>
             What happens after you get in touch
-          </h2>
+          </SectionHeading>
           <p className="mt-3 text-[1.125rem] text-foreground">
             Whether you book online, call or send a WhatsApp message, the steps are the same.
           </p>
@@ -225,13 +274,13 @@ export default function Page() {
             ))}
           </ol>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="driver-heading" className={`border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="driver-heading" className={`border-t border-border ${section}`}>
         <div className={container}>
-          <h2 id="driver-heading" className={`${h2} text-foreground`}>
+          <SectionHeading id="driver-heading" className={`${h2} text-foreground`}>
             Can’t find your driver?
-          </h2>
+          </SectionHeading>
           <div className="mt-8 rounded-2xl border border-border bg-alt p-6 text-foreground sm:p-8">
             <p className="max-w-2xl text-[1.125rem] leading-relaxed">
               Stay at the agreed pickup point and call us with your booking name and where you are, so we can guide you.
@@ -247,15 +296,15 @@ export default function Page() {
             )}
           </div>
         </div>
-      </section>
+      </RevealSection>
 
-      <section aria-labelledby="office-heading" className={`band-alt border-t border-border ${section}`}>
+      <RevealSection aria-labelledby="office-heading" className={`band-alt border-t border-border ${section}`}>
         <div className={`${container} grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-14`}>
           <div>
             <p className={`${eyebrow} text-accent`}>THE TEAM BEHIND YOUR JOURNEY</p>
-            <h2 id="office-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+            <SectionHeading id="office-heading" className={`${h2} mt-4 text-balance text-foreground`}>
               The people who answer your call.
-            </h2>
+            </SectionHeading>
             <p className="mt-4 max-w-xl text-[1.125rem] leading-relaxed text-foreground">
               Luton Minicab bookings are handled by our booking team in Mill Hill, north London.
             </p>
@@ -288,7 +337,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       <Faq items={faqs} heading="Questions before you contact us" contactLink={false} />
     </main>

@@ -3,7 +3,9 @@ import { CalendarDays } from "lucide-react";
 import meetings from "../../public/brand/corporate-meetings.png";
 import events from "../../public/brand/corporate-events.png";
 import guests from "../../public/brand/corporate-guests.png";
-import { container, eyebrow, h2, section } from "./ui";
+import { container, eyebrow, h2, section } from "./styles";
+import { SectionHeading } from "@/components/SectionHeading";
+import { RevealSection } from "@/components/ui/reveal-section";
 
 // From the owner's reference (assets/brand/corporate-journeys-reference.png): three scenes
 // cropped from it, with the cars' grille emblems and bonnet ornaments retouched out and the
@@ -31,12 +33,12 @@ const journeys = [
 
 export function BusinessJourneys() {
   return (
-    <section aria-labelledby="business-journeys-heading" className={`band-alt border-t border-border ${section}`}>
+    <RevealSection aria-labelledby="business-journeys-heading" className={`band-alt border-t border-border ${section}`}>
       <div className={container}>
         <p className={`${eyebrow} text-accent`}>BUSINESS JOURNEYS</p>
-        <h2 id="business-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
+        <SectionHeading id="business-journeys-heading" className={`${h2} mt-4 text-balance text-foreground`}>
           From the first meeting to the last train home.
-        </h2>
+        </SectionHeading>
         <p className="mt-3 text-[1.125rem] text-foreground">
           Meetings, office visits or welcoming a client. Arrange the journey that fits your day.
         </p>
@@ -57,6 +59,6 @@ export function BusinessJourneys() {
           Book each journey in advance. Share your pickup time and destination when booking.
         </p>
       </div>
-    </section>
+    </RevealSection>
   );
 }
