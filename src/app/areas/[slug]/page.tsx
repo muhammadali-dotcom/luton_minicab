@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PageFallback } from "@/components/PageFallback";
 import { PickupAreaPage } from "@/components/PickupAreaPage";
 import { AreaLocalPage } from "@/components/AreaLocalPage";
 import { areaDetails } from "@/config/areaDetails";
@@ -38,13 +36,11 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
   return pageMetadata({ title: area.heading, path: `/areas/${area.slug}`, description: detail ? `${detail.hero.text} Fixed fares, DBS-checked drivers, available 24/7.` : `${area.intro} Book online or call, day or night.` });
 }
 
-// params is URL data, so it's read inside Suspense to keep navigation instant.
+// No <Suspense> around the content: React moves a large finished boundary to the end of the
+// HTML (after the footer, in a hidden div), which text extractors and AI crawlers skip. The
+// slugs are prerendered from generateStaticParams, so the page ships as complete static HTML.
 export default function Page({ params }: PageProps<"/areas/[slug]">) {
-  return (
-    <Suspense fallback={<PageFallback />}>
-      <AreaContent params={params} />
-    </Suspense>
-  );
+  return <AreaContent params={params} />;
 }
 
 async function AreaContent({ params }: { params: PageProps<"/areas/[slug]">["params"] }) {

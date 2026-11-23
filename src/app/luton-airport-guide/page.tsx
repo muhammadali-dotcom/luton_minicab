@@ -6,6 +6,7 @@ import { Faq } from "@/components/Faq";
 import { PageHero, trustAirport } from "@/components/PageHero";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { container, eyebrow, h2, section } from "@/components/styles";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-terminal-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -73,6 +74,7 @@ const faqs = [
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "Luton Airport Guide", path: "/luton-airport-guide" }]} />
       <PageHero
         tone="light"
         image={heroPhoto}

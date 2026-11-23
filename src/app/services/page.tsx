@@ -3,13 +3,14 @@ import { Faq } from "@/components/Faq";
 import { MoreServices, ServiceAirportBanner } from "@/components/MoreServices";
 import { PageHero } from "@/components/PageHero";
 import { ServiceCards } from "@/components/ServiceCards";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/services/services-hero.webp";
 
 export const metadata: Metadata = pageMetadata({
   title: "Taxi & Minicab Services",
   description:
-    "Local journeys, airport transfers, school runs, assisted travel, business and long-distance trips from Luton. Fixed fares, available 24/7.",
+    "Local journeys, airport transfers, school runs, business and long-distance trips from Luton. Fixed fares, available 24/7.",
   path: "/services",
 });
 
@@ -29,6 +30,7 @@ const faqs = [
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "Our Services", path: "/services" }]} />
       {/* The owner's wall-style photo, set up like the service pages (no car badges to retouch). */}
       <PageHero
         tone="light"

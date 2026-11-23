@@ -4,6 +4,7 @@ import { ArrowRight, CarFront, MapPin, MessageCircle, Plane, TrainFront } from "
 import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { additionalAreas, areas } from "@/config/site";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/areas-overview-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -29,6 +30,7 @@ const journeys = [
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "Areas We Cover", path: "/areas" }]} />
       <PageHero
         tone="light"
         image={heroPhoto}

@@ -7,6 +7,18 @@ import { siteName, siteOrigin } from "@/config/seo";
 // (owner's choice, 20 November 2026).
 const intl = (uk: string) => `+44${uk.replace(/\s+/g, "").replace(/^0/, "")}`;
 
+const allWeek = {
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+  opens: "00:00",
+  closes: "23:59",
+};
+
+// The operator licence as a machine-readable value (not free text).
+const licence = site.operatorLicence
+  ? { "@type": "PropertyValue", propertyID: `${site.licensingAuthority} private hire operator licence`, value: site.operatorLicence }
+  : null;
+
 export function SiteSchema() {
   // Only profiles the owner has set (see `profiles` in site.ts).
   const sameAs = Object.values(site.profiles).filter((url): url is string => Boolean(url));
@@ -22,22 +34,31 @@ export function SiteSchema() {
     ...(site.email ? { email: site.email } : {}),
     ...(sameAs.length ? { sameAs } : {}),
     ...(site.profiles.google ? { hasMap: site.profiles.google } : {}),
+    // Both published numbers, so search and AI tools see one business with two lines.
+    contactPoint: [
+      ...(site.phone
+        ? [{ "@type": "ContactPoint", contactType: "reservations", telephone: intl(site.phone), areaServed: "GB", availableLanguage: "en", hoursAvailable: allWeek }]
+        : []),
+      ...(site.phoneAlt
+        ? [{ "@type": "ContactPoint", contactType: "customer service", telephone: intl(site.phoneAlt), areaServed: "GB", availableLanguage: "en" }]
+        : []),
+    ],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Hounslow, London",
+      addressLocality: "Hounslow",
+      addressRegion: "London",
       postalCode: site.base.postcode,
       addressCountry: "GB",
     },
-    parentOrganization: { "@type": "Organization", name: site.operator },
-    ...(site.operatorLicence
-      ? { identifier: `${site.licensingAuthority} private hire operator licence ${site.operatorLicence}` }
-      : {}),
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "00:00",
-      closes: "23:59",
+    // A2B Radio Cars as its own entity (with the licence), so it can be referenced by @id.
+    parentOrganization: {
+      "@type": "Organization",
+      "@id": `${siteOrigin}/#operator`,
+      name: site.operator,
+      ...(licence ? { identifier: licence } : {}),
     },
+    ...(licence ? { identifier: licence } : {}),
+    openingHoursSpecification: allWeek,
     areaServed: [
       ...areas.map((a) => ({ "@type": "Place", name: a.name })),
       ...pickupAreas.map(({ name }) => ({ "@type": "Place", name })),

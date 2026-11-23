@@ -11,5 +11,5 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function Page() {
-  return <LegalPage title="Cookies" intro="Short and simple: our website doesn’t use cookies." sections={cookiesSections} />;
+  return <LegalPage path="/cookies" title="Cookies" intro="Short and simple: our website doesn’t use cookies." sections={cookiesSections} />;
 }

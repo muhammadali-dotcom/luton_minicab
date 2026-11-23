@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import { ArrowRight, CalendarClock, Clock, Luggage, MapPin, PlaneLanding, PoundSterling, ShieldCheck, Signpost } from "lucide-react";
-import { airports, site } from "@/config/site";
+import { airports } from "@/config/site";
+import { siteOrigin } from "@/config/seo";
 import { routes, type RouteDetail } from "@/config/routeDetails";
 import gatwickHero from "../../public/brand/airport-gatwick-hero.webp";
 import heathrowHero from "../../public/brand/airport-heathrow-hero.webp";
@@ -53,8 +54,11 @@ export function RoutePage({ route }: { route: RouteDetail }) {
     {
       "@context": "https://schema.org",
       "@type": "TaxiService",
+      "@id": `${siteOrigin}/routes/${route.slug}#service`,
       name: `${route.name} taxi`,
-      provider: { "@type": "LocalBusiness", name: site.name },
+      url: `${siteOrigin}/routes/${route.slug}`,
+      // The site-wide business from SiteSchema, so Google sees one business, not two.
+      provider: { "@id": `${siteOrigin}/#business` },
       areaServed: [{ "@type": "Place", name: "Luton" }, { "@type": "Place", name: airport ? `${airport.name} Airport` : "Central London" }],
     },
   ];

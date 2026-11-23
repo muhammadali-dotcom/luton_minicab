@@ -11,5 +11,5 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function Page() {
-  return <LegalPage title="Terms & Conditions" intro="The simple rules for booking and travelling with us." sections={termsSections} />;
+  return <LegalPage path="/terms" title="Terms & Conditions" intro="The simple rules for booking and travelling with us." sections={termsSections} />;
 }

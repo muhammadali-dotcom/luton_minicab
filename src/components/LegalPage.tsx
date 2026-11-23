@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { legalUpdated, type LegalSection } from "@/config/legal";
 import { site } from "@/config/site";
+import { BreadcrumbSchema } from "./BreadcrumbSchema";
 import { PageHero } from "./PageHero";
 import { container, section } from "./styles";
 import { RevealSection } from "@/components/ui/reveal-section";
@@ -11,9 +12,10 @@ const linkClass =
 
 // Privacy, Terms and Cookies: a plain centred hero, then one band-alt reading column with an
 // "On this page" list, numbered sections and a contact line. Content lives in config/legal.ts.
-export function LegalPage({ title, intro, sections }: { title: string; intro: string; sections: LegalSection[] }) {
+export function LegalPage({ title, intro, sections, path }: { title: string; intro: string; sections: LegalSection[]; path: string }) {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: title, path }]} />
       <PageHero eyebrow="LEGAL" heading={title} text={intro} compact centered buttons={false} />
 
       <RevealSection aria-label={`${title} in full`} className={`band-alt border-t border-border ${section}`}>
@@ -21,9 +23,10 @@ export function LegalPage({ title, intro, sections }: { title: string; intro: st
           <p className="text-base">Last updated: {legalUpdated}</p>
 
           <nav aria-labelledby="contents-heading" className="mt-6 rounded-2xl border border-border bg-paper p-6">
-            <h2 id="contents-heading" className="text-sm font-semibold tracking-[0.2em] text-accent">
-              ON THIS PAGE
-            </h2>
+            {/* A label for the contents list, not a section of the page, so not a heading. */}
+            <p id="contents-heading" className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+              On this page
+            </p>
             <ol className="mt-3 grid gap-x-8 sm:grid-cols-2">
               {sections.map(({ id, heading }, i) => (
                 <li key={id}>

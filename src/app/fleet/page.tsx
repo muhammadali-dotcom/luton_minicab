@@ -6,6 +6,7 @@ import { FleetSteps } from "@/components/FleetSteps";
 import { Briefcase, CarFront, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { fleet } from "@/config/site";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/fleet-hero.webp";
 
@@ -54,6 +55,7 @@ const fleetSchema = {
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "Our Fleet", path: "/fleet" }]} />
       <PageHero
         tone="light"
         image={heroPhoto}

@@ -15,6 +15,7 @@ import { container, eyebrow, h2, section } from "@/components/styles";
 import { areas, site } from "@/config/site";
 import heroIllustration from "../../../public/brand/about-hero.webp";
 import whatIllustration from "../../../public/brand/about-what.webp";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import whoIllustration from "../../../public/brand/about-who.webp";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -85,6 +86,7 @@ const linkClass =
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "About Us", path: "/about" }]} />
       {/* From the owner's reference: the street scene is cropped from assets/brand/about-hero-reference.png,
           with the car's grille retouched to remove the maker's design. */}
       <PageHero

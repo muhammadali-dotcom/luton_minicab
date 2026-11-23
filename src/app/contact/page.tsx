@@ -19,6 +19,7 @@ import { Faq } from "@/components/Faq";
 import { PageHero } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { site } from "@/config/site";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import officeIllustration from "../../../public/brand/contact-office.png";
 import journeyIllustration from "../../../public/brand/fleet-help.png";
@@ -135,6 +136,7 @@ const cardTitle = "font-display text-[1.375rem] font-semibold leading-tight";
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "Contact", path: "/contact" }]} />
       <PageHero
         eyebrow="CONTACT LUTON MINICAB"
         heading={

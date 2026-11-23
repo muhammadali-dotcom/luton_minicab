@@ -5,6 +5,7 @@ import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, h2, section } from "@/components/styles";
 import { regionalAirports } from "@/config/site";
 import { PopularRoutes } from "@/components/PopularRoutes";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -20,6 +21,7 @@ export const metadata: Metadata = pageMetadata({
 export default function Page() {
   return (
     <main id="main" className="flex-1">
+      <BreadcrumbSchema items={[{ name: "Airports", path: "/airports" }]} />
       <PageHero
         tone="light"
         image={heroPhoto}

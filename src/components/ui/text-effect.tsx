@@ -227,6 +227,10 @@ export function TextEffect({
   // Presplit JSX keeps every element and its classes; motion variants reach the nested word spans
   // through context, so the stagger runs across all lines in order.
   const segmentNodes = presplit ? children : renderSegments(text, "t");
+  // The heading's text once as a real (visually hidden) text node: screen readers read it, and
+  // so do search and AI text extractors, which skip the aria-hidden word spans. Replaces the
+  // old aria-label, so the heading's name is unchanged.
+  const plainCopy = ariaLabel ? <span className="sr-only">{ariaLabel}</span> : null;
 
   if (inView) {
     return (
@@ -236,11 +240,11 @@ export function TextEffect({
           id={id}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          aria-label={ariaLabel}
           variants={delayedContainerVariants}
           className={cn("js-text-effect", className)}
           onAnimationComplete={onAnimationComplete}
         >
+          {plainCopy}
           {segmentNodes}
         </MotionTag>
       </MotionConfig>
@@ -255,11 +259,11 @@ export function TextEffect({
           initial="hidden"
           animate="visible"
           exit="exit"
-          aria-label={ariaLabel}
           variants={delayedContainerVariants}
           className={cn("whitespace-pre-wrap", className)}
           onAnimationComplete={onAnimationComplete}
         >
+          {plainCopy}
           {segmentNodes}
         </MotionTag>
       )}

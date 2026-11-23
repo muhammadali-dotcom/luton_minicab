@@ -11,5 +11,5 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function Page() {
-  return <LegalPage title="Privacy Policy" intro="How we look after your information." sections={privacySections} />;
+  return <LegalPage path="/privacy" title="Privacy Policy" intro="How we look after your information." sections={privacySections} />;
 }

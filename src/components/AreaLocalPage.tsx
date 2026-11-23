@@ -31,7 +31,7 @@ import { container, eyebrow, h2, section } from "./styles";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
-type Area = { slug: string; name: string; intro: string };
+type Area = { slug: string; name: string; heading: string; intro: string };
 
 const serviceIcons: Record<string, LucideIcon> = {
   "local-journeys": CarFront,
@@ -85,7 +85,9 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "TaxiService",
+    "@id": `${siteOrigin}/areas/${area.slug}#service`,
     name: `Taxis in ${area.name}`,
+    url: `${siteOrigin}/areas/${area.slug}`,
     // The site-wide business from SiteSchema, so Google sees one business, not two.
     provider: { "@id": `${siteOrigin}/#business` },
     areaServed: { "@type": "Place", name: area.name },
@@ -212,7 +214,7 @@ export function AreaLocalPage({ area, detail }: { area: Area; detail: AreaDetail
         ]}
       />
 
-      <Faq items={detail.faqs} band heading={`Taxis in ${area.name}: your questions.`} text="Quick answers before you book.">
+      <Faq items={detail.faqs} band heading={`${area.heading}: your questions.`} text="Quick answers before you book.">
         {area.slug === "luton" && <PopularRoutes className="mt-12" />}
       </Faq>
 

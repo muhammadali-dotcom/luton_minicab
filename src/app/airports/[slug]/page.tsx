@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PageFallback } from "@/components/PageFallback";
 import { AirportPage } from "@/components/AirportPage";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { pageMetadata } from "@/config/seo";
@@ -26,13 +24,11 @@ export async function generateMetadata({ params }: PageProps<"/airports/[slug]">
   return {};
 }
 
-// params is URL data, so it's read inside Suspense to keep navigation instant.
+// No <Suspense> around the content: React moves a large finished boundary to the end of the
+// HTML (after the footer, in a hidden div), which text extractors and AI crawlers skip. The
+// slugs are prerendered from generateStaticParams, so the page ships as complete static HTML.
 export default function Page({ params }: PageProps<"/airports/[slug]">) {
-  return (
-    <Suspense fallback={<PageFallback />}>
-      <Content params={params} />
-    </Suspense>
-  );
+  return <Content params={params} />;
 }
 
 async function Content({ params }: { params: PageProps<"/airports/[slug]">["params"] }) {

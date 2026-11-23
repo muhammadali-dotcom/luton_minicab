@@ -18,7 +18,8 @@ const itemName = ({ number, label }: Item) => (number ? `Terminal ${number}` : `
 function GuidePanel({ item }: { item: Item }) {
   return (
     <>
-      <h3 className={`${eyebrow} text-primary`}>{itemName(item).toUpperCase()}</h3>
+      {/* Capitals by CSS, so search reads "North Terminal", not "NORTH TERMINAL". */}
+      <h3 className={`${eyebrow} uppercase text-primary`}>{itemName(item)}</h3>
       <p className="mt-5 text-[1.0625rem] text-background">Head for</p>
       <p className="mt-1 font-display text-[clamp(1.5rem,2.6vw,2.25rem)] font-semibold leading-tight text-background">
         {item.headFor}
