@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AirportPage } from "@/components/AirportPage";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { pageMetadata } from "@/config/seo";
+import { pageMetadata, sellTitle } from "@/config/seo";
 import { airports } from "@/config/site";
 
 const find = (slug: string) => airports.find((a) => a.slug === slug);
@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps<"/airports/[slug]">
   const airport = find(slug);
   if (airport) {
     return pageMetadata({
-      title: `${airport.name} Airport Transfers`,
-      description: `Taxis to and from ${airport.name} Airport with flight tracking, meet and greet and fixed fares. Book online or call, day or night.`,
+      title: sellTitle(`${airport.name} Airport Taxi`),
+      description: `Taxis to and from ${airport.name} Airport with fixed fares, flight tracking and 15 minutes free waiting. DBS-checked drivers, 24/7. Book online in minutes.`,
       path: `/airports/${slug}`,
     });
   }

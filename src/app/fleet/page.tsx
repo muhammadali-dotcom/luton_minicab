@@ -17,7 +17,7 @@ const uses = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: "Our Fleet: Saloon, Estate, MPV & Executive",
+  title: "Our Cars: Saloon, Estate, MPV & Executive",
   description:
     "Saloons and estates for up to 4 passengers, MPVs for up to 7, and executive cars. See passenger, suitcase and hand luggage space for each car.",
   path: "/fleet",

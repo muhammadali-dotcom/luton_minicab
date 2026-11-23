@@ -11,7 +11,7 @@ import { WhyTravel } from "@/components/WhyTravel";
 
 export const metadata: Metadata = pageMetadata({
   description:
-    "Taxis in Luton and nearby towns, with fixed fares and DBS-checked drivers. Early flights, school mornings, late trains home: book online or call, 24/7.",
+    "Taxis in Luton and nearby towns with fixed fares, DBS-checked drivers and 15 minutes free waiting. Airport transfers and school runs, day or night, 24/7.",
   path: "/",
 });
 

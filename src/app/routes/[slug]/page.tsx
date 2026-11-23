@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { RoutePage } from "@/components/RoutePage";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { pageMetadata } from "@/config/seo";
+import { pageMetadata, sellTitle } from "@/config/seo";
 import { findRoute, routes } from "@/config/routeDetails";
 
 export function generateStaticParams() {
@@ -12,7 +12,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/routes/[slug]">): Promise<Metadata> {
   const route = findRoute((await params).slug);
   if (!route) return {};
-  return pageMetadata({ title: `${route.name} Taxi`, description: route.metaDescription, path: `/routes/${route.slug}` });
+  return pageMetadata({ title: sellTitle(`${route.name} Taxi`), description: route.metaDescription, path: `/routes/${route.slug}` });
 }
 
 // No <Suspense> around the content: React moves a large finished boundary to the end of the

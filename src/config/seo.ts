@@ -4,8 +4,17 @@ import type { Metadata } from "next";
 // address redirect to it (set in Vercel, and www also in next.config.ts). Keep these in step.
 export const siteOrigin = "https://lutonminicab.com";
 export const siteName = "Luton Minicab";
-// The homepage's title in search results and link previews (owner approved, 19 November 2026).
-export const homeTitle = "Luton Minicab | Taxis & Airport Transfers in Luton";
+// The homepage's title in search results and link previews (owner approved, 23 November 2026:
+// lead with proven benefits, never "cheap" or other price claims the site can't back up).
+export const homeTitle = "Luton Minicab | Taxis & Airport Transfers, Fixed Fares 24/7";
+
+// Search titles: the page's keyword plus the proven selling points (owner's choice, 23 November
+// 2026). The layout adds " | Luton Minicab", so the part here stays within 44 characters (about
+// 60 in all, what Google shows); ", 24/7" is dropped when the keyword is long.
+export function sellTitle(keyword: string) {
+  const full = `${keyword} | Fixed Fares, 24/7`;
+  return full.length <= 44 ? full : `${keyword} | Fixed Fares`;
+}
 
 // Indexable only on the production deployment, or when SITE_INDEXABLE=true is set. Don't use
 // NODE_ENV here: every `next build` (including Vercel previews) runs with NODE_ENV=production.

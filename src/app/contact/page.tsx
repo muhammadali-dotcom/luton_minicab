@@ -27,7 +27,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact",
+  title: "Contact Us | Book a Taxi 24/7",
   description:
     "Call, WhatsApp or email Luton Minicab. Our team is available 24/7 to help with new journeys and existing bookings.",
   path: "/contact",

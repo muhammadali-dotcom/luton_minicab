@@ -13,7 +13,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Luton Station Taxis: Luton, Parkway and Leagrave",
+  title: "Luton Station Taxis | Parkway & Leagrave",
   description:
     "Taxis to and from Luton, Luton Airport Parkway and Leagrave stations. Pickups at the station pickup point, fixed fares, DBS-checked drivers, available 24/7.",
   path: "/luton-station-transfers",

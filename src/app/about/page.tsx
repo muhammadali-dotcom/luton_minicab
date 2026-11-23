@@ -22,7 +22,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Us",
+  title: "About Us | Local Taxis Available 24/7",
   description:
     "Luton Minicab offers local journeys, school runs, airport transfers and longer trips from Luton, with a team you can reach day or night.",
   path: "/about",

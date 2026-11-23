@@ -8,7 +8,7 @@ import { SchoolRunsPage } from "@/components/SchoolRunsPage";
 import { StationHotelPage } from "@/components/StationHotelPage";
 import { serviceDetails } from "@/config/serviceDetails";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { pageMetadata } from "@/config/seo";
+import { pageMetadata, sellTitle } from "@/config/seo";
 import { services } from "@/config/site";
 
 const titleFor = (slug: string) => services.find((s) => s.slug === slug)?.name ?? null;
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   const title = titleFor((await params).slug);
   const slug = (await params).slug;
   return title
-    ? pageMetadata({ title, description: serviceDetails[slug].metaDescription ?? `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.`, path: `/services/${slug}` })
+    ? pageMetadata({ title: serviceDetails[slug].seoTitle ?? sellTitle(title), description: serviceDetails[slug].metaDescription ?? `${serviceDetails[slug].hero.text} Luton Minicab: fixed fares, DBS-checked drivers, available 24/7.`, path: `/services/${slug}` })
     : {};
 }
 

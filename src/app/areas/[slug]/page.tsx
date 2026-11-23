@@ -4,7 +4,7 @@ import { PickupAreaPage } from "@/components/PickupAreaPage";
 import { AreaLocalPage } from "@/components/AreaLocalPage";
 import { areaDetails } from "@/config/areaDetails";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { isSiteIndexable, pageMetadata } from "@/config/seo";
+import { isSiteIndexable, pageMetadata, sellTitle } from "@/config/seo";
 import { areas, pickupAreas } from "@/config/site";
 
 const find = (slug: string) => areas.find((a) => a.slug === slug);
@@ -12,6 +12,13 @@ const findPickup = (slug: string) => pickupAreas.find((area) => area.slug === sl
 
 export function generateStaticParams() {
   return [...areas, ...pickupAreas].map(({ slug }) => ({ slug }));
+}
+
+// Each area keeps its own hero line (so no two descriptions match), then the selling points,
+// shortened when the whole would pass 160 characters.
+function areaDescription(text: string) {
+  const full = `${text} Fixed fares, DBS-checked drivers, 15 minutes free waiting, 24/7.`;
+  return full.length <= 160 ? full : `${text} Fixed fares, DBS-checked drivers, available 24/7.`;
 }
 
 export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): Promise<Metadata> {
@@ -23,7 +30,7 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
     // real local content, like the nine main areas, before making it indexable.
     return {
       ...pageMetadata({
-        title: `Minicabs in ${pickup.name}`,
+        title: sellTitle(`Taxis in ${pickup.name}`),
         path: `/areas/${slug}`,
         description: pickup.journey,
       }),
@@ -33,7 +40,7 @@ export async function generateMetadata({ params }: PageProps<"/areas/[slug]">): 
   const area = find(slug);
   if (!area) return {};
   const detail = areaDetails[area.slug];
-  return pageMetadata({ title: area.heading, path: `/areas/${area.slug}`, description: detail ? `${detail.hero.text} Fixed fares, DBS-checked drivers, available 24/7.` : `${area.intro} Book online or call, day or night.` });
+  return pageMetadata({ title: sellTitle(`${area.name} Taxis`), path: `/areas/${area.slug}`, description: detail ? areaDescription(detail.hero.text) : `${area.intro} Book online or call, day or night.` });
 }
 
 // No <Suspense> around the content: React moves a large finished boundary to the end of the

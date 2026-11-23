@@ -6,15 +6,15 @@ import { container, h2, section } from "@/components/styles";
 import { regionalAirports } from "@/config/site";
 import { PopularRoutes } from "@/components/PopularRoutes";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { pageMetadata } from "@/config/seo";
+import { pageMetadata, sellTitle } from "@/config/seo";
 import heroPhoto from "../../../public/brand/airport-luton-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Airport Transfers",
+  title: sellTitle("Airport Taxis from Luton"),
   description:
-    "Transfers to and from UK airports. Book online or contact our team to arrange your journey.",
+    "Airport taxis from Luton to Heathrow, Gatwick, Stansted, Luton, London City and London Southend. Fixed fares, flight tracking, available 24/7.",
   path: "/airports",
 });
 

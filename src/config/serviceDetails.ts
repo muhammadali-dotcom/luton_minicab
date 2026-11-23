@@ -16,6 +16,8 @@ export type ServiceDetail = {
   // Search description (160 characters or fewer). Without it, the hero line plus a short
   // fixed-fares line is used.
   metaDescription?: string;
+  // Search title before " | Luton Minicab" (44 characters or fewer); without it, sellTitle(name).
+  seoTitle?: string;
   // The hero's trust row, picked by the owner for each service (confirmed facts only).
   trust: { label: string; Icon: LucideIcon }[];
   // Wall-style hero photo (cream wall on the left, scene on the right), used full width by
@@ -57,6 +59,7 @@ const steps = [
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   "school-runs": {
+    seoTitle: "Luton School Run Taxis | DBS-Checked Drivers",
     metaDescription:
       "School run taxis in Luton with friendly, DBS-checked drivers. Book each journey to school and home online, or talk to our team first.",
     hero: {
@@ -104,6 +107,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   "corporate-travel": {
+    seoTitle: "Business Taxis in Luton | Fixed Fares, 24/7",
+    metaDescription:
+      "Business taxis from Luton to meetings, offices and events. Fixed fares, executive cars on request, DBS-checked drivers, available 24/7.",
     hero: {
       heading: "Arrive ready, not rushed.",
       text: "Use the journey to prepare, make a call or simply breathe. We’ll handle the driving.",
@@ -139,6 +145,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   "long-distance-travel": {
+    seoTitle: "Long-Distance Taxis from Luton | Fixed Fares",
+    metaDescription:
+      "Long-distance taxis from Luton, door to door, with room for your luggage. Fixed fares, DBS-checked drivers, return journeys available, 24/7.",
     hero: {
       heading: "Going further? Sit back and relax.",
       text: "No timetables, no changes, no carrying bags across stations. Just your door to theirs.",
@@ -177,6 +186,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   "station-hotel-transfers": {
+    seoTitle: "Luton Station & Hotel Taxis | Fixed Fares",
     metaDescription:
       "Taxis to and from Luton’s train stations and local hotels, with pickups planned around your train time. Fixed fares, available 24/7.",
     hero: {
@@ -214,8 +224,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   "local-journeys": {
+    seoTitle: "Local Taxis in Luton | Fixed Fares, 24/7",
     metaDescription:
-      "Local taxis around Luton for the shops, appointments and visits to family. Fixed fares, DBS-checked drivers, available 24/7.",
+      "Local taxis around Luton for the shops, appointments and visits to family. Fixed fares, DBS-checked drivers, 15 minutes free waiting. Available 24/7.",
     hero: {
       heading: "Life’s little trips, without the fuss.",
       text: "The weekly shop, a doctor’s appointment, or popping round to see Mum. We’ll get you there and back.",

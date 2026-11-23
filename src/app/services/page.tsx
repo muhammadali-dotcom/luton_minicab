@@ -8,9 +8,9 @@ import { pageMetadata } from "@/config/seo";
 import heroPhoto from "../../../public/brand/services/services-hero.webp";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Taxi & Minicab Services",
+  title: "Luton Taxi & Minicab Services | Fixed Fares",
   description:
-    "Local journeys, airport transfers, school runs, business and long-distance trips from Luton. Fixed fares, available 24/7.",
+    "Local journeys, airport transfers, school runs, business and long-distance trips from Luton. Fixed fares, DBS-checked drivers, available 24/7.",
   path: "/services",
 });
 

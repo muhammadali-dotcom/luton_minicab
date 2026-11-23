@@ -5,13 +5,13 @@ import { PageHero, trustLocal } from "@/components/PageHero";
 import { container, eyebrow, h2, section } from "@/components/styles";
 import { additionalAreas, areas } from "@/config/site";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
-import { pageMetadata } from "@/config/seo";
+import { pageMetadata, sellTitle } from "@/config/seo";
 import heroPhoto from "../../../public/brand/areas-overview-hero.webp";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RevealSection } from "@/components/ui/reveal-section";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Areas We Cover",
+  title: sellTitle("Taxis in Luton & Nearby"),
   description:
     "Taxis across Luton, Leagrave and Stopsley, plus Dunstable, Houghton Regis, Harpenden, Mill Hill, Hounslow and Heathrow, with transfers to all UK airports.",
   path: "/areas",
